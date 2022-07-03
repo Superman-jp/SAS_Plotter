@@ -1,13 +1,9 @@
-*--------------------------------------------------------;
+options locale=en_US;
 *Load styles;
-*--------------------------------------------------------;
-*Load styles;
-
+ods escapechar="^";
 %include "color_palette.sas";
 
-*--------------------------------------------------------;
-*macro difinition;
-*--------------------------------------------------------;
+/* -------------------------------------------------------------- */
 %macro RainCloud(
 		 data=,
 		 x=,
@@ -39,9 +35,11 @@
 
 	data _null_;
 	set catalog;
-	if name="&group." then call symputx("grpfmt",format );
+	if name="&group." and "&group." ^="None" then call symputx("grpfmt",format );
 	if name="&x." then call symputx("xfmt",format );
 	run;
+
+	%put &grpfmt.;
 
 	*--------------------------------------------------------;
 	*Data preparation;
@@ -230,7 +228,8 @@ data dat2;
 	drop dum_x;
 	group2=group;
 	y2=y;
-	format group2 &grpfmt..;
+	%if "&group"^="None" %then
+		format group2 &grpfmt..;;
 	keep dum_x2 y2 group2;
 run;
 
@@ -434,6 +433,7 @@ proc template;
 	end;
 run;
 
+
 *--------------------------------------------------------;
 *Generate plot;
 *--------------------------------------------------------;
@@ -464,5 +464,9 @@ run;
 			_NLEVEL="&nlevel."
 			_LEGEND ="&legend.";
 	run;
+
+*--------------------------------------------------------;
+*delete temporary files;
+*--------------------------------------------------------;
 
 %mend;
