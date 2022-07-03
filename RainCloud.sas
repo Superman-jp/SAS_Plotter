@@ -11,28 +11,28 @@ ods escapechar="^";
 		 group=None,
 		 xlabel=x,
 		 ylabel=y,
-		 ticklst=, 
+		 ticklst=,
 		 cat_iv=2.5,
 		 element_iv=0.02,
-		 scale=area, 
+		 scale=area,
 		 connect=false,
 		 gridsize=100,
 		 bw=sjpi,
-		 orient=h, 
+		 orient=h,
 		 legend=false,
 		 jitterwidth=0.1);
-		 
-		 
+
+
 	/*store ods setting*/
 	ods graphics / push;
 	ods graphics / reset=all;
-	
+
 	*--------------------------------------------------------;
 	*get category format and group format;
 	*--------------------------------------------------------;
 	proc contents data=&data. noprint out=catalog;
 	run;
-	
+
 	data _null_;
 	set catalog;
 	if name="&group." then call symputx("grpfmt",format );
@@ -54,7 +54,7 @@ ods escapechar="^";
 	%end;
 	%else %do;
 		%if "&group." ^= "&x." %then %do;
-		
+
 			data dat;
 				set &data.(rename=(&x.=x &y.=y &group.=group));
 				keep x y group;
@@ -68,13 +68,13 @@ ods escapechar="^";
 			run;
 		%end;
 	%end;
-	
-	
+
+
 
 	proc sort;
 		by x group;
 	run;
-	
+
 	*--------------------------------------------------------;
 	*KDE;
 	*--------------------------------------------------------;
@@ -108,7 +108,7 @@ ods escapechar="^";
 	%if "&scale."="area" %then %do;
 
 		proc sql noprint;
-			create table density_scale as 
+			create table density_scale as
 				select a.*,
 					   a.density / b.max_density as density_scaled
 				from (
@@ -116,25 +116,25 @@ ods escapechar="^";
 					from density
 					)as a
 				inner join (select max_density ,1 as dmy
-							from max 
+							from max
 							where x=. and group=.) as b
 				on a.dmy=b.dmy;
 		quit;
 
 	%end;
-	
+
 	*scaling based on violin plot width;
 	*scale the max density of each violin plot to 1;
 
 	%if "&scale."="width" %then %do;
 
 		proc sql noprint;
-			create table density_scale as 
+			create table density_scale as
 				select a.*,
 					   a.density / b.max_density as density_scaled
 				from density as a
-				inner join (select * 
-							from max 
+				inner join (select *
+							from max
 							where x^=. and group^=.) as b
 				on a.x=b.x and a.group=b.group;
 		quit;
@@ -146,10 +146,10 @@ ods escapechar="^";
 	*--------------------------------------------------------;
 
 	proc sql noprint;
-		select max(density_scaled)*&cat_iv. into:cat_width 
+		select max(density_scaled)*&cat_iv. into:cat_width
 		from density_scale;
-		
-		
+
+
 		*number of group level;
 		select count(distinct group) into:nlevel from dat;
 	quit;
@@ -180,7 +180,7 @@ ods escapechar="^";
 	fmtname="cat";
 	label=vvalue(x);
 	run;
-	
+
 	proc format cntlin=dummy;
 	run;
 
@@ -256,38 +256,38 @@ run;
 
 proc template;
 	define statgraph Raincloud_h;
-		dynamic _XLABEL _YLABEL _ORIENT _CONNECT 
+		dynamic _XLABEL _YLABEL _ORIENT _CONNECT
 				_XTICKS _YTICKS _VMIN _VMAX _JW  _LEGEND;
 		nmvar _NLEVEL;
-		
+
 		begingraph;
-		
-		layout overlay / 
-		xaxisopts=(label=_XLABEL 
+
+		layout overlay /
+		xaxisopts=(label=_XLABEL
 			linearopts=(
-				tickvalueformat=cat. tickvaluelist=_XTICKS) offsetmin=0.1 
-				offsetmax=0.1) 
-		yaxisopts=(label=_YLABEL linearopts=(tickvaluelist=_YTICKS 
+				tickvalueformat=cat. tickvaluelist=_XTICKS) offsetmin=0.1
+				offsetmax=0.1)
+		yaxisopts=(label=_YLABEL linearopts=(tickvaluelist=_YTICKS
 			viewmin=_VMIN viewmax=_VMAX));
-		
+
 		/*band plot*/
 		if (_NLEVEL>1)
-		
-			bandplot y=value limitupper=dens limitlower=dens2 / group=group_dens 
+
+			bandplot y=value limitupper=dens limitlower=dens2 / group=group_dens
 				display=(fill) fillattrs=(transparency=0.6) index=group;
 		else
-			bandplot y=value limitupper=dens limitlower=dens2 / group=group_dens 
+			bandplot y=value limitupper=dens limitlower=dens2 / group=group_dens
 				display=(fill) index=group;
 		endif;
-		
-		
+
+
 		/* 	 box plot    */
-		if (upcase(_CONNECT)="TRUE") 
-			boxplot x=dum_x2 y=y2 / 
+		if (upcase(_CONNECT)="TRUE")
+			boxplot x=dum_x2 y=y2 /
 				display=(mean median outliers connect)
 				capshape=none
 				outlierattrs=(symbol=diamondfilled size=5)
-				meanattrs=(symbol=circlefilled size=7) 
+				meanattrs=(symbol=circlefilled size=7)
 				groupdisplay=cluster
 				clusterwidth=0.3
 				boxwidth=0.7
@@ -295,12 +295,12 @@ proc template;
 				spread=true
 				name="box";
 		endif;
-		if (upcase(_CONNECT)="FALSE") 
-			boxplot x=dum_x2 y=y2 / 
+		if (upcase(_CONNECT)="FALSE")
+			boxplot x=dum_x2 y=y2 /
 				display=(mean median outliers )
 				capshape=none
 				outlierattrs=(symbol=diamondfilled size=5)
-				meanattrs=(symbol=circlefilled size=7) 
+				meanattrs=(symbol=circlefilled size=7)
 				groupdisplay=cluster
 				clusterwidth=0.3
 				boxwidth=0.7
@@ -308,33 +308,33 @@ proc template;
 				spread=true
 				name="box";
 		endif;
-		
+
 		/* strip plot*/
-		
+
 		if (_NLEVEL^=1)
-			scatterplot x=dum_x3 y=y3 / 
+			scatterplot x=dum_x3 y=y3 /
 				group=group3
 				markerattrs=(symbol=circlefilled size=4 transparency=0.5)
 				jitter=auto
 			jitteropts=(axis=x width=_JW);
 		else
-			scatterplot x=dum_x3 y=y3 / 
+			scatterplot x=dum_x3 y=y3 /
 				group=group3
 				markerattrs=(symbol=circlefilled size=4)
 				jitter=auto
 			jitteropts=(axis=x width=_JW);
 		endif;
-		
+
 		/*if set group option, display legend*/
-		
+
 		if (upcase(_LEGEND)="TRUE")
-			discretelegend "box" / 
-				title="&group." 
-				location=outside 
+			discretelegend "box" /
+				title="&group."
+				location=outside
 				across=1
 				halign=right;
 		endif;
-		
+
 		endlayout;
 		endgraph;
 	end;
@@ -344,39 +344,39 @@ run;
 *--------------------------------------------------------;
 proc template;
 	define statgraph Raincloud_v;
-		dynamic _XLABEL _YLABEL _ORIENT _CONNECT 
+		dynamic _XLABEL _YLABEL _ORIENT _CONNECT
 				_XTICKS _YTICKS _VMIN _VMAX _JW  _LEGEND;
 		nmvar _NLEVEL;
-		
+
 		begingraph;
-	
-		layout overlay / 
+
+		layout overlay /
 		yaxisopts=(label=_XLABEL reverse=true
 			linearopts=(
-				tickvalueformat=cat. tickvaluelist=_XTICKS) offsetmin=0.1 
-				offsetmax=0.1) 
-		xaxisopts=(label=_YLABEL linearopts=(tickvaluelist=_YTICKS 
+				tickvalueformat=cat. tickvaluelist=_XTICKS) offsetmin=0.1
+				offsetmax=0.1)
+		xaxisopts=(label=_YLABEL linearopts=(tickvaluelist=_YTICKS
 			viewmin=_VMIN viewmax=_VMAX));
-		
+
 		/*band plot*/
 		if (_NLEVEL>1 and "&x." ^= "&group.")
-		
-			bandplot x=value limitupper=dens limitlower=dens2 / group=group_dens 
+
+			bandplot x=value limitupper=dens limitlower=dens2 / group=group_dens
 				display=(fill) fillattrs=(transparency=0.6) index=group;
 		else
-			bandplot x=value limitupper=dens limitlower=dens2 / group=group_dens 
+			bandplot x=value limitupper=dens limitlower=dens2 / group=group_dens
 				display=(fill) index=group;
 		endif;
-		
-		
+
+
 		/* 	 box plot    */
-		if (upcase(_CONNECT)="TRUE") 
-			boxplot x=dum_x2 y=y2 / 
+		if (upcase(_CONNECT)="TRUE")
+			boxplot x=dum_x2 y=y2 /
 				display=(mean median outliers connect)
 				capshape=none
 				orient=horizontal
 				outlierattrs=(symbol=diamondfilled size=5)
-				meanattrs=(symbol=circlefilled size=7) 
+				meanattrs=(symbol=circlefilled size=7)
 				groupdisplay=cluster
 				clusterwidth=0.3
 				boxwidth=0.7
@@ -384,13 +384,13 @@ proc template;
 				spread=true
 				name="box";
 		endif;
-		if (upcase(_CONNECT)="FALSE") 
-			boxplot x=dum_x2 y=y2 / 
+		if (upcase(_CONNECT)="FALSE")
+			boxplot x=dum_x2 y=y2 /
 				display=(mean median outliers )
 				capshape=none
 				orient=horizontal
 				outlierattrs=(symbol=diamondfilled size=5)
-				meanattrs=(symbol=circlefilled size=7) 
+				meanattrs=(symbol=circlefilled size=7)
 				groupdisplay=cluster
 				clusterwidth=0.3
 				boxwidth=0.7
@@ -398,138 +398,67 @@ proc template;
 				spread=true
 				name="box";
 		endif;
-		
+
 		/* strip plot*/
-		
+
 		if (_NLEVEL^=1)
-			scatterplot y=dum_x3 x=y3 / 
+			scatterplot y=dum_x3 x=y3 /
 				group=group3
 				markerattrs=(symbol=circlefilled size=4 transparency=0.5)
 				jitter=auto
 			jitteropts=(axis=y width=_JW);
 		else
-			scatterplot y=dum_x3 x=y3 / 
+			scatterplot y=dum_x3 x=y3 /
 				group=group3
 				markerattrs=(symbol=circlefilled size=4)
 				jitter=auto
 			jitteropts=(axis=y width=_JW);
 		endif;
-		
+
 		/*if set group option, display legend*/
-		
+
 		if (upcase(_LEGEND)="TRUE")
-			discretelegend "box" / 
-				title="&group." 
-				location=outside 
+			discretelegend "box" /
+				title="&group."
+				location=outside
 				across=1
 				halign=right;
 		endif;
-		
+
 		endlayout;
 		endgraph;
 	end;
 run;
 
-	/*vertical plot*/
-	/* 	define statgraph Raincloud_v; */
-	/* 	dynamic  _XLABEL  _YLABEL _ORIENT _CONNECT */
-	/* 			_TICKS _VMIN _VMAX _JW */
-	/* 			_MCOLOR ; */
-	/* 	nmvar _NLEVEL ; */
-	/* 			 */
-	/* 	begingraph; */
-	/* 	layout overlay /  */
-	/* 	    yaxisopts=(label=_XLABEL reverse=True linearopts=(tickvalueformat=cat. tickvaluelist=(&valuelist.)) */
-	/* 	    offsetmin=0.05 offsetmax=0.05) */
-	/* 	    xaxisopts=(label=_YLABEL linearopts=(tickvaluelist=_TICKS  */
-	/* 	    									viewmin=_VMIN */
-	/* 	    									viewmax=_VMAX)); */
-	/* 	if (_NLEVEL = 1) */
-	/* 		bandplot x=value limitupper=dens limitlower=dens2 /  */
-	/* 		    group=dum_x */
-	/* 		    display=(fill ) */
-	/* 		    fillattrs=(color=GraphData1:color); */
-	/* 	else */
-	/* 		bandplot x=value limitupper=dens limitlower=dens2 /  */
-	/* 		    group=group */
-	/* 		    display=(fill ); */
-	/* 	endif; */
-	/* 	     */
-	/* 		 box plot    */
-	/* 	if (_CONNECT="TRUE")      */
-	/* 		boxplot x=dum_x2 y=y2 /  */
-	/* 			display=( mean median outliers connect) */
-	/* 			capshape=none  */
-	/* 			orient=horizontal */
-	/* 			outlierattrs=(symbol=diamondfilled color=black size=5) */
-	/* 			outlineattrs=(color=black thickness=1) */
-	/* 			whiskerattrs=(color=black thickness=1) */
-	/* 			medianattrs=(color=black thickness=1) */
-	/* 			meanattrs=(symbol=circlefilled size=8) */
-	/* 			connectattrs=(color=_MCOLOR thickness=2) */
-	/* 			boxwidth=0.1  */
-	/* 			group=group2 */
-	/* 			groupdisplay=cluster */
-	/* 			spread=true; */
-	/* 	endif; */
-	/* 	 */
-	/* 	if (_CONNECT="FALSE") */
-	/* 		boxplot x=dum_x2 y=y2 /  */
-	/* 			display=( mean median outliers ) */
-	/* 			capshape=none  */
-	/* 			orient=horizontal */
-	/* 			outlierattrs=(symbol=diamondfilled color=black size=5) */
-	/* 			outlineattrs=(color=black thickness=1) */
-	/* 			whiskerattrs=(color=black thickness=1) */
-	/* 			medianattrs=(color=black thickness=1) */
-	/* 			meanattrs=(symbol=circlefilled size=8) */
-	/* 			boxwidth=0.1  */
-	/* 			group=group2 */
-	/* 			groupdisplay=cluster */
-	/* 			spread=true; */
-	/* 	endif; */
-	/* 	 */
-	/* 	scatterplot y=dum_x3 x=y3 /  */
-	/* 				group=group3 */
-	/* 				markerattrs=(symbol=circlefilled size=5 transparency=0.5) */
-	/* 				jitter =auto  */
-	/* 				jitteropts=(axis=y width=_JW); */
-	/* 			 */
-	/* 	 */
-	/* 	endlayout; */
-	/* 	endgraph; */
-	/* 	end; */
-/* run; */
-
 *--------------------------------------------------------;
 *Generate plot;
 *--------------------------------------------------------;
 	ods graphics / pop;
-	
+
 	%if "&orient."="h" %then
 	%do;
 
 		proc sgrender data=plot template=Raincloud_h;
-		
+
 	%end;
-	
+
 	%else %if "&orient."="v" %then
 	%do;
 
 		proc sgrender data=plot template=Raincloud_v;
-		
+
 	%end;
-	
+
 	dynamic _XLABEL="&xlabel."
 			_YLABEL="&ylabel."
-			_CONNECT="&connect." 
+			_CONNECT="&connect."
 			_XTICKS = "&xvaluelist."
 			_YTICKS="&ticklst."
-			_VMIN=%scan(&ticklst., 1, " ") 
-			_VMAX=%scan(&ticklst., -1, " ") 
-			_JW="&jitterwidth."  
+			_VMIN=%scan(&ticklst., 1, " ")
+			_VMAX=%scan(&ticklst., -1, " ")
+			_JW="&jitterwidth."
 			_NLEVEL="&nlevel."
 			_LEGEND ="&legend.";
 	run;
-	%put -----------------&nlevel.;
+
 %mend;
