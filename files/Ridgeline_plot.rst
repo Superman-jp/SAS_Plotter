@@ -3,19 +3,15 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-SAS Plotter
-modern data visualization package for SAS
+Ridgeline plot
 =======================================
 
-.. toctree::
-   :maxdepth: 2
-   :caption: Contents:
 
-   ./Ridgeline_plot
-
-Indices and tables
+Introduction
 ==================
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+input data
+==================
+
+argument
+==================
