@@ -3,18 +3,21 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-SAS Plotter
-modern data visualization package for SAS
-=======================================
+.. image:: ./img/SAS-Plotter-logo.svg
+
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
 
+   ./Introduction
+   ./Raincloud_plot
+   ./Raincloud_plot_paired
    ./Ridgeline_plot
 
+*******************
 Indices and tables
-==================
+*******************
 
 * :ref:`genindex`
 * :ref:`modindex`

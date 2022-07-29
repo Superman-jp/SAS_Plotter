@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Raincloud plot &mdash; SAS Plotter 0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Raincloud plot (paired)" href="Raincloud_plot_paired.html" />
+    <link rel="prev" title="Introduction" href="Introduction.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> SAS Plotter
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Introduction.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Raincloud plot</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#what-s-this">What’s this?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#input-data">Input data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#syntax">Syntax</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#parameters">Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#example">example</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#simple-raincloud-plot">Simple raincloud plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#grouped-raincloud-plot">Grouped raincloud plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#trim-parameter">Trim parameter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#scale-parameter">Scale parameter</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Raincloud_plot_paired.html">Raincloud plot (paired)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Ridgeline_plot.html">Ridgeline plot</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">SAS Plotter</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Raincloud plot</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Raincloud_plot.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="raincloud-plot">
+<h1>Raincloud plot<a class="headerlink" href="#raincloud-plot" title="Permalink to this headline">¶</a></h1>
+<section id="what-s-this">
+<h2>What’s this?<a class="headerlink" href="#what-s-this" title="Permalink to this headline">¶</a></h2>
+<p>Macro for generate raincloud plot using SAS GRAPH.</p>
+<p>Raincloud plot is contained density plot (half-violin plot) , box plot and strip plot.</p>
+<p>density plot displays distribution estimated by KDE (kernel density estimation) of input data.</p>
+<p>box plot displays discriptive statistics (mean, q1, q2, q3 outlier).</p>
+<p>strip plot is jittered scatterplot and displays individual data.</p>
+<p>more information is described in following paper.</p>
+<p>Allen M, Poggiali D, Whitaker K et al. Raincloud plots: a multi-platform tool for robust data visualization [version 2; peer review: 2 approved]. Wellcome Open Res 2021, 4:63 (<a class="reference external" href="https://doi.org/10.12688/wellcomeopenres.15191.2">https://doi.org/10.12688/wellcomeopenres.15191.2</a>)</p>
+</section>
+<section id="input-data">
+<h2>Input data<a class="headerlink" href="#input-data" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>key</strong></p></td>
+<td><p><strong>variable</strong></p></td>
+<td><p><strong>type</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>category</p></td>
+<td><p>numeric or string</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>group</p></td>
+<td><p>numeric or string</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>response</p></td>
+<td><p>numeric</p></td>
+</tr>
+</tbody>
+</table>
+<p>group variable is optional.</p>
+<p>I recommended that the variable type of category and group are set to numeric with format.
+if the variable type is string, item order is defined as acending character order.</p>
+</section>
+<section id="syntax">
+<h2>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ods</span> <span class="n">graphics</span> <span class="o">/</span> <span class="o">&lt;</span> <span class="n">graphics</span> <span class="n">option</span> <span class="o">&gt;</span> <span class="p">;</span>
+<span class="n">ods</span> <span class="n">listing</span> <span class="n">gpath</span><span class="o">=&lt;</span> <span class="n">output</span> <span class="n">path</span> <span class="o">&gt;</span><span class="p">;</span>
+
+ <span class="o">%</span><span class="n">RainCloud</span><span class="p">(</span>
+              <span class="n">data</span><span class="o">=</span><span class="p">,</span>
+              <span class="n">x</span><span class="o">=</span><span class="p">,</span>
+              <span class="n">y</span><span class="o">=</span><span class="p">,</span>
+              <span class="n">group</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+              <span class="n">yticks</span><span class="o">=</span><span class="p">,</span>
+              <span class="n">xlabel</span><span class="o">=</span><span class="n">x</span><span class="p">,</span>
+              <span class="n">ylabel</span><span class="o">=</span><span class="n">y</span><span class="p">,</span>
+              <span class="n">cat_iv</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span>
+              <span class="n">element_iv</span><span class="o">=</span><span class="mf">0.02</span><span class="p">,</span>
+              <span class="n">scale</span><span class="o">=</span><span class="n">area</span><span class="p">,</span>
+              <span class="n">trim</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+              <span class="n">connect</span><span class="o">=</span><span class="n">false</span><span class="p">,</span>
+              <span class="n">gridsize</span><span class="o">=</span><span class="mi">401</span><span class="p">,</span>
+              <span class="n">bw_method</span><span class="o">=</span><span class="n">sjpi</span><span class="p">,</span>
+              <span class="n">bw_adjust</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+              <span class="n">orient</span><span class="o">=</span><span class="n">v</span><span class="p">,</span>
+              <span class="n">legend</span><span class="o">=</span><span class="n">false</span><span class="p">,</span>
+              <span class="n">jitterwidth</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+              <span class="n">outlinewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p><strong>data : dataset name (required)</strong></p>
+<blockquote>
+<div><p>input data. keep, rename and  where options are available.</p>
+</div></blockquote>
+</li>
+<li><p><strong>x : variable name (required)</strong></p>
+<blockquote>
+<div><p>category variable</p>
+</div></blockquote>
+</li>
+<li><p><strong>y : variable name (required)</strong></p>
+<blockquote>
+<div><p>response variable</p>
+</div></blockquote>
+</li>
+<li><p><strong>group : variable name (optional)</strong></p>
+<blockquote>
+<div><p>group variable for grouping data at each category.</p>
+<p>when the parameter is not set, all of graph object is set same color.</p>
+<p>when the parameter is set category variable, the graph object of rach category is
+set  different color.</p>
+<p>default is “None”.</p>
+</div></blockquote>
+</li>
+<li><p><strong>xlabel : string (optional)</strong></p>
+<blockquote>
+<div><p>label string of category axis.
+default is “x”. when the label is not displayed , set like below.</p>
+<p>xlabel=,</p>
+</div></blockquote>
+</li>
+<li><p><strong>ylabel : string (optional)</strong></p>
+<blockquote>
+<div><p>optional. label string of response axis.
+default is “y”. when the label is not displayed , set like below.</p>
+<p>ylabel=,</p>
+</div></blockquote>
+</li>
+<li><p><strong>yticks : numeric list (required)</strong></p>
+<blockquote>
+<div><p>tickvalue list of response axis.
+the list is set as the numeric list separated by space .
+the item of the list should be set ascending order.</p>
+<p>ex. yticks = 10 20 30 40,</p>
+</div></blockquote>
+</li>
+<li><p><strong>cat_iv : numeric (optional)</strong></p>
+<blockquote>
+<div><p>the interval of category.
+the default is 2.5.</p>
+</div></blockquote>
+</li>
+<li><p><strong>element_iv : numeric (optional)</strong></p>
+<blockquote>
+<div><p>the interval of density plot, boxplot and strip plot.
+the default is 0.02.</p>
+</div></blockquote>
+</li>
+<li><p><strong>scale: area or width (optional)</strong></p>
+<blockquote>
+<div><p>The method used to scale the width of each density plot.</p>
+<p>If area, each plot will have the same area.
+If width, each plot will have the same width.</p>
+<p>when the density plots are far different each other, width keyword may be useful.
+the default is “area”.</p>
+</div></blockquote>
+</li>
+<li><p><strong>trim: bool (optional)</strong></p>
+<blockquote>
+<div><p>if True the density outside of observed data range will be trimmed.
+the default is “True”.</p>
+<p>If area, each plot will have the same area.
+If width, each plot will have the same width.</p>
+<p>when the density plots are far different each other, width keyword may be useful.</p>
+</div></blockquote>
+</li>
+<li><p><strong>connect: bool (optional)</strong></p>
+<blockquote>
+<div><p>if True the mean values in same group are connected by solid line.
+the default is “False”.</p>
+</div></blockquote>
+</li>
+<li><p><strong>gridsize : integer (optional)</strong></p>
+<blockquote>
+<div><p>the number of KDE gridsize.
+default is 401 (the default of proc kde)</p>
+</div></blockquote>
+</li>
+<li><p><strong>bw_method : keyword (optional)</strong></p>
+<blockquote>
+<div><p>the bandwidth estimation method of KDE.
+default is “sjpi” (the default of proc kde).</p>
+<p>method keyword described below is available.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>sjpi (Sheather-Jones plug-in)</p></li>
+<li><p>snr (simple normal reference)</p></li>
+<li><p>snrq (simple normal reference that uses the interquartile range)</p></li>
+<li><p>srot (Silverman’s rule of thumb)</p></li>
+<li><p>os (oversmoothed)</p></li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+</li>
+<li><p><strong>bw_adjust : numeric (optional)</strong></p>
+<blockquote>
+<div><p>the bandwidth multiplier. Increasing will make the curve smoother.</p>
+<p>the default is 1.</p>
+</div></blockquote>
+</li>
+<li><p><strong>legend : bool (optional)</strong></p>
+<blockquote>
+<div><p>if “True” the legend of group item is displayed.
+if group parameter is “None”, the parameter will be ignored.</p>
+<p>default is “False”.</p>
+</div></blockquote>
+</li>
+<li><p><strong>orient : v or h (optional)</strong></p>
+<blockquote>
+<div><p>Orientation of the plot (vertical or horizontal).</p>
+<p>the default is “v”.</p>
+</div></blockquote>
+</li>
+<li><p><strong>jitterwidth : numeric(between 0 and 1) (optional)</strong></p>
+<blockquote>
+<div><p>jitter width of strip plot. Increasing this parameter may be made the data point overlapped on boxplot.</p>
+<p>the default is “0.05”.</p>
+</div></blockquote>
+</li>
+<li><p><strong>outlinewidth : numeric (optional)</strong></p>
+<blockquote>
+<div><p>outline width of density plot and boxplot.</p>
+<p>the default is “1”.</p>
+</div></blockquote>
+</li>
+</ul>
+</section>
+<section id="example">
+<h2>example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<section id="simple-raincloud-plot">
+<h3>Simple raincloud plot<a class="headerlink" href="#simple-raincloud-plot" title="Permalink to this headline">¶</a></h3>
+<p>in this example, dataframe “tips” in python package “Seaborn” is used.</p>
+<p>datasets (tips)</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>variable</strong></p></td>
+<td><p><strong>detail</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>day</p></td>
+<td><p>Thur, Fri, Sat, Sun</p></td>
+</tr>
+<tr class="row-odd"><td><p>total_bill</p></td>
+<td><p>numeric</p></td>
+</tr>
+<tr class="row-even"><td><p>smoker</p></td>
+<td><p>numeric with format, 1=Yes, 2=No</p></td>
+</tr>
+<tr class="row-odd"><td><p>time</p></td>
+<td><p>numeric with format, 1=Lunch, 2=Dinner</p></td>
+</tr>
+</tbody>
+</table>
+<p>code</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ods</span> <span class="n">graphics</span> <span class="o">/</span><span class="n">reset</span><span class="o">=</span><span class="nb">all</span> <span class="n">height</span><span class="o">=</span><span class="mi">15</span><span class="n">cm</span> <span class="n">width</span><span class="o">=</span><span class="mi">25</span><span class="n">cm</span> <span class="n">imagename</span><span class="o">=</span><span class="s2">&quot;rain_simple&quot;</span> <span class="n">imagefmt</span><span class="o">=</span><span class="n">svg</span><span class="p">;</span>
+<span class="n">ods</span> <span class="n">listing</span>  <span class="n">gpath</span><span class="o">=</span><span class="s2">&quot;/home/user/sasuser.v94/image&quot;</span> <span class="n">style</span><span class="o">=</span><span class="n">sns_default</span> <span class="p">;</span>
+
+ <span class="o">%</span><span class="n">RainCloud</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">import</span><span class="p">,</span>
+             <span class="n">x</span><span class="o">=</span><span class="n">day</span><span class="p">,</span>
+             <span class="n">y</span><span class="o">=</span><span class="n">total_bill</span><span class="p">,</span>
+             <span class="n">group</span><span class="o">=</span><span class="n">day</span><span class="p">,</span>
+             <span class="n">cat_iv</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span>
+             <span class="n">element_iv</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+             <span class="n">xlabel</span><span class="o">=</span><span class="n">day</span><span class="p">,</span>
+             <span class="n">ylabel</span><span class="o">=</span><span class="n">Total</span> <span class="n">bill</span><span class="p">(</span><span class="n">USD</span><span class="p">),</span>
+             <span class="n">yticks</span><span class="o">=%</span><span class="nb">str</span><span class="p">(</span><span class="mi">0</span> <span class="mi">20</span> <span class="mi">40</span> <span class="mi">60</span><span class="p">),</span>
+             <span class="n">bw_method</span><span class="o">=</span><span class="n">srot</span>
+             <span class="p">);</span>
+</pre></div>
+</div>
+<p>output</p>
+<img alt="_images/rain_simple.svg" src="_images/rain_simple.svg" /><p>when orient parameter is set “h”, the orientation of plot is changed horizontal (x=response, y=category)</p>
+<img alt="_images/rain_simple_h.svg" src="_images/rain_simple_h.svg" /></section>
+<section id="grouped-raincloud-plot">
+<h3>Grouped raincloud plot<a class="headerlink" href="#grouped-raincloud-plot" title="Permalink to this headline">¶</a></h3>
+<p>code</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ods</span> <span class="n">graphics</span> <span class="o">/</span><span class="n">reset</span><span class="o">=</span><span class="nb">all</span> <span class="n">height</span><span class="o">=</span><span class="mi">15</span><span class="n">cm</span> <span class="n">width</span><span class="o">=</span><span class="mi">25</span><span class="n">cm</span> <span class="n">imagename</span><span class="o">=</span><span class="s2">&quot;rain_simple&quot;</span> <span class="n">imagefmt</span><span class="o">=</span><span class="n">svg</span><span class="p">;</span>
+<span class="n">ods</span> <span class="n">listing</span>  <span class="n">gpath</span><span class="o">=</span><span class="s2">&quot;/home/user/sasuser.v94/image&quot;</span> <span class="n">style</span><span class="o">=</span><span class="n">sns_default</span> <span class="p">;</span>
+
+ <span class="o">%</span><span class="n">RainCloud</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">import</span><span class="p">,</span>
+             <span class="n">x</span><span class="o">=</span><span class="n">day</span><span class="p">,</span>
+             <span class="n">y</span><span class="o">=</span><span class="n">total_bill</span><span class="p">,</span>
+             <span class="n">group</span><span class="o">=</span><span class="n">smoker</span><span class="p">,</span>
+             <span class="n">cat_iv</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span>
+             <span class="n">element_iv</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+             <span class="n">xlabel</span><span class="o">=</span><span class="n">day</span><span class="p">,</span>
+             <span class="n">ylabel</span><span class="o">=</span><span class="n">Total</span> <span class="n">bill</span><span class="p">(</span><span class="n">USD</span><span class="p">),</span>
+             <span class="n">yticks</span><span class="o">=%</span><span class="nb">str</span><span class="p">(</span><span class="mi">0</span> <span class="mi">20</span> <span class="mi">40</span> <span class="mi">60</span><span class="p">),</span>
+             <span class="n">bw_method</span><span class="o">=</span><span class="n">srot</span>
+             <span class="n">orient</span><span class="o">=</span><span class="n">h</span><span class="p">,</span>
+             <span class="n">legend</span><span class="o">=</span><span class="kc">True</span>
+             <span class="p">);</span>
+</pre></div>
+</div>
+<p>output</p>
+<img alt="_images/rain_group.svg" src="_images/rain_group.svg" /><p>when connect parameter is set “True”, mean of each group is connected.</p>
+<p>connect = True</p>
+<img alt="_images/rain_group_connect.svg" src="_images/rain_group_connect.svg" /></section>
+<section id="trim-parameter">
+<h3>Trim parameter<a class="headerlink" href="#trim-parameter" title="Permalink to this headline">¶</a></h3>
+<p>if Trim parameter is set “False”, the density plot is displayed at all range.
+but the density outside of observed data range may be ambiguos.</p>
+<p>code</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ods</span> <span class="n">graphics</span> <span class="o">/</span><span class="n">reset</span><span class="o">=</span><span class="nb">all</span> <span class="n">height</span><span class="o">=</span><span class="mi">15</span><span class="n">cm</span> <span class="n">width</span><span class="o">=</span><span class="mi">25</span><span class="n">cm</span> <span class="n">imagename</span><span class="o">=</span><span class="s2">&quot;rain_simple&quot;</span> <span class="n">imagefmt</span><span class="o">=</span><span class="n">svg</span><span class="p">;</span>
+<span class="n">ods</span> <span class="n">listing</span>  <span class="n">gpath</span><span class="o">=</span><span class="s2">&quot;/home/user/sasuser.v94/image&quot;</span> <span class="n">style</span><span class="o">=</span><span class="n">sns_default</span> <span class="p">;</span>
+
+ <span class="o">%</span><span class="n">RainCloud</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">import</span><span class="p">,</span>
+             <span class="n">x</span><span class="o">=</span><span class="n">day</span><span class="p">,</span>
+             <span class="n">y</span><span class="o">=</span><span class="n">total_bill</span><span class="p">,</span>
+             <span class="n">group</span><span class="o">=</span><span class="n">smoker</span><span class="p">,</span>
+             <span class="n">cat_iv</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span>
+             <span class="n">element_iv</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+             <span class="n">xlabel</span><span class="o">=</span><span class="n">day</span><span class="p">,</span>
+             <span class="n">ylabel</span><span class="o">=</span><span class="n">Total</span> <span class="n">bill</span><span class="p">(</span><span class="n">USD</span><span class="p">),</span>
+             <span class="n">yticks</span><span class="o">=%</span><span class="nb">str</span><span class="p">(</span><span class="o">-</span><span class="mi">20</span> <span class="mi">0</span> <span class="mi">20</span> <span class="mi">40</span> <span class="mi">60</span><span class="p">),</span>
+             <span class="n">trim</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+             <span class="n">bw_method</span><span class="o">=</span><span class="n">srot</span>
+             <span class="n">orient</span><span class="o">=</span><span class="n">h</span><span class="p">,</span>
+             <span class="n">legend</span><span class="o">=</span><span class="kc">True</span>
+             <span class="p">);</span>
+</pre></div>
+</div>
+<p>output</p>
+<img alt="_images/rain_group_nontrim.svg" src="_images/rain_group_nontrim.svg" /></section>
+<section id="scale-parameter">
+<h3>Scale parameter<a class="headerlink" href="#scale-parameter" title="Permalink to this headline">¶</a></h3>
+<p>if scale parameter is set “area”, all areas under density plot is same.
+In below example, the density plot of the “vesicolor” and “Verginica” is broad so
+density peak is displayed small.</p>
+<p>code</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ods</span> <span class="n">graphics</span> <span class="o">/</span><span class="n">reset</span><span class="o">=</span><span class="nb">all</span> <span class="n">height</span><span class="o">=</span><span class="mi">15</span><span class="n">cm</span> <span class="n">width</span><span class="o">=</span><span class="mi">25</span><span class="n">cm</span> <span class="n">imagename</span><span class="o">=</span><span class="s2">&quot;rain_area&quot;</span> <span class="n">imagefmt</span><span class="o">=</span><span class="n">svg</span><span class="p">;</span>
+<span class="n">ods</span> <span class="n">listing</span>  <span class="n">gpath</span><span class="o">=</span><span class="s2">&quot;/home/user/sasuser.v94/image&quot;</span> <span class="n">style</span><span class="o">=</span><span class="n">sns_default</span> <span class="p">;</span>
+
+ <span class="o">%</span><span class="n">RainCloud</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">sashelp</span><span class="o">.</span><span class="n">iris</span><span class="p">,</span>
+             <span class="n">x</span><span class="o">=</span><span class="n">species</span><span class="p">,</span>
+             <span class="n">y</span><span class="o">=</span><span class="n">petalwidth</span><span class="p">,</span>
+             <span class="n">group</span><span class="o">=</span><span class="n">species</span><span class="p">,</span>
+             <span class="n">xlabel</span><span class="o">=</span><span class="n">Species</span><span class="p">,</span>
+             <span class="n">ylabel</span><span class="o">=</span><span class="n">Petal</span> <span class="n">Width</span> <span class="p">(</span><span class="n">cm</span><span class="p">),</span>
+             <span class="n">yticks</span><span class="o">=</span><span class="mi">0</span> <span class="mi">10</span> <span class="mi">20</span> <span class="mi">30</span> <span class="mi">40</span><span class="p">,</span>
+             <span class="n">cat_iv</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span>
+             <span class="n">element_iv</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span>
+             <span class="n">trim</span><span class="o">=</span><span class="n">false</span><span class="p">,</span>
+             <span class="n">scale</span><span class="o">=</span><span class="n">area</span><span class="p">,</span>
+             <span class="n">bw_method</span><span class="o">=</span><span class="n">srot</span>
+             <span class="p">);</span>
+</pre></div>
+</div>
+<p>output</p>
+<img alt="_images/rain_area.svg" src="_images/rain_area.svg" /><p>if scale parameter is set “width”, width od all density plot is same.
+the density plot of the “vesicolor” and “Verginica” is magnified.
+it is easy to see density peak.</p>
+<p>note:
+density plot is “non-quantitative”. and density plots using “width” keyword can’t be performed relative comparison.</p>
+<p>code</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ods</span> <span class="n">graphics</span> <span class="o">/</span><span class="n">reset</span><span class="o">=</span><span class="nb">all</span> <span class="n">height</span><span class="o">=</span><span class="mi">15</span><span class="n">cm</span> <span class="n">width</span><span class="o">=</span><span class="mi">25</span><span class="n">cm</span> <span class="n">imagename</span><span class="o">=</span><span class="s2">&quot;rain_width&quot;</span> <span class="n">imagefmt</span><span class="o">=</span><span class="n">svg</span><span class="p">;</span>
+<span class="n">ods</span> <span class="n">listing</span>  <span class="n">gpath</span><span class="o">=</span><span class="s2">&quot;/home/user/sasuser.v94/image&quot;</span> <span class="n">style</span><span class="o">=</span><span class="n">sns_default</span> <span class="p">;</span>
+
+ <span class="o">%</span><span class="n">RainCloud</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">sashelp</span><span class="o">.</span><span class="n">iris</span><span class="p">,</span>
+             <span class="n">x</span><span class="o">=</span><span class="n">species</span><span class="p">,</span>
+             <span class="n">y</span><span class="o">=</span><span class="n">petalwidth</span><span class="p">,</span>
+             <span class="n">group</span><span class="o">=</span><span class="n">species</span><span class="p">,</span>
+             <span class="n">xlabel</span><span class="o">=</span><span class="n">Species</span><span class="p">,</span>
+             <span class="n">ylabel</span><span class="o">=</span><span class="n">Petal</span> <span class="n">Width</span> <span class="p">(</span><span class="n">cm</span><span class="p">),</span>
+             <span class="n">cat_iv</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span>
+             <span class="n">element_iv</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span>
+             <span class="n">trim</span><span class="o">=</span><span class="n">false</span><span class="p">,</span>
+             <span class="n">scale</span><span class="o">=</span><span class="n">width</span><span class="p">,</span>
+             <span class="n">gridsize</span><span class="o">=</span><span class="mi">401</span><span class="p">,</span>
+             <span class="n">bw_method</span><span class="o">=</span><span class="n">srot</span><span class="p">,</span>
+             <span class="n">yticks</span><span class="o">=</span><span class="mi">0</span> <span class="mi">10</span> <span class="mi">20</span> <span class="mi">30</span> <span class="mi">40</span>
+             <span class="p">);</span>
+</pre></div>
+</div>
+<img alt="_images/rain_width.svg" src="_images/rain_width.svg" /></section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Introduction.html" class="btn btn-neutral float-left" title="Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Raincloud_plot_paired.html" class="btn btn-neutral float-right" title="Raincloud plot (paired)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Superman-jp.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
