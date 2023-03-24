@@ -3,10 +3,10 @@
 *SAS_plotter;
 *raincloud plot (paired) macro;
 *author: SupermanJP;
-*version: 0.1 beta;
+*version: 1.0;
 *--------------------------------------------------------;
 
-%include "/home/centraldogma7771/sasuser.v94/GTL/color_palette.sas";
+%include "color_palette.sas";
 
 %macro RainCloudPaired(
 		 data=,

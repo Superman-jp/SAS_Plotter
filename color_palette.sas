@@ -4,29 +4,10 @@ import color palettes of seaborn and matplotlib to SAS style;
 
 *-------------------------------------------;
 
-
-
 proc template ;
-define style base;
-parent = styles.HTMLblue;
-    class GraphFonts /
-       'NodeDetailFont' = ("Times New Roman, MS Mincho",7pt)
-       'NodeInputLabelFont' = ("Times New Roman, MS Mincho",9pt)
-       'NodeLabelFont' = ("Times New Roman, MS Mincho",9pt)
-       'NodeTitleFont' = ("Times New Roman, MS Mincho",9pt)
-       'GraphDataFont' = ("Times New Roman, MS Mincho",7pt)
-       'GraphUnicodeFont' = ("Times New Roman",9pt)
-       'GraphValueFont' = ("Times New Roman, MS Mincho",9pt)
-       'GraphLabel2Font' = ("Times New Roman, MS Mincho",10pt)
-       'GraphLabelFont' = ("Times New Roman, MS Mincho",10pt)
-       'GraphFootnoteFont' = ("Times New Roman, MS Mincho",10pt)
-       'GraphTitleFont' = ("Times New Roman, MS Mincho",11pt,bold)
-       'GraphTitle1Font' = ("Times New Roman, MS Mincho",14pt,bold)
-       'GraphAnnoFont' = ("Times New Roman, MS Mincho",10pt);
-end;
 
 define style sns_default;
-parent = base;
+parent = styles.HTMLblue;
 class GraphColors /
        'gcdata' = cx808080
        'gcdata1' = cx4c72b0
@@ -58,7 +39,7 @@ class GraphColors /
 end;
 
 define style mpl_set2;
-parent = base;
+parent = styles.HTMLblue;
 class GraphColors /
        'gcdata' = cx808080
        'gcdata1' = cx66c2a5
