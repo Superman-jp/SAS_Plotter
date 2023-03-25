@@ -40,6 +40,10 @@ if the variable type is string, item order is defined as acending character orde
 ***************
 Syntax
 ***************
+before use this macro, macro file described below is loaded by %include statement.
+
+- RainCloudPaired.sas
+
 
  ::
 

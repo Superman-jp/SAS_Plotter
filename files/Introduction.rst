@@ -26,11 +26,11 @@ history
       * Raincloud plot
       * RainCloud plot (paired)
       * Ridgeline plot
-- 1.0
-   bug fix 
-   new macros were added.
-      * mirrored histogram
 
+- 1.0 (beta version)
+
+   bug fix. new macros were added.
+      * mirrored histogram
 
 ******************
 requirement
@@ -45,6 +45,8 @@ custom style
 ******************
 
 this package is contained following custom styles.
+
+the color_pallete.sas is loaded by %include statement before use.
 
 these styles make the SAS defalut color palette (GraphData1-GraphData10) replaced.
 

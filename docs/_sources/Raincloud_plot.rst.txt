@@ -42,6 +42,9 @@ if the variable type is string, item order is defined as acending character orde
 ***************
 Syntax
 ***************
+before use this macro, macro file described below is loaded by %include statement.
+
+- RainCloud.sas
 
  ::
 
@@ -186,7 +189,7 @@ Parameters
 
 - **legend : bool (optional)**
 
-   if "True" the legend of group item is displayed.
+   if "True", legend of group item is displayed.
    if group parameter is "None", the parameter will be ignored.
 
    default is "False".

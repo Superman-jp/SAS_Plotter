@@ -4,8 +4,6 @@
 *author: SupermanJP;
 *version: 1.0;
 *--------------------------------------------------------;
-%include "color_palette.sas";
-
 %macro ridgeline(
 	data=,
 	x=,

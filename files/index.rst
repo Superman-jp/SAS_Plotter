@@ -14,6 +14,7 @@
    ./Raincloud_plot
    ./Raincloud_plot_paired
    ./Ridgeline_plot
+   ./Mirrored_histogram
 
 *******************
 Indices and tables

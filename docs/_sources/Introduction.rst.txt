@@ -27,7 +27,10 @@ history
       * RainCloud plot (paired)
       * Ridgeline plot
 
+- 1.0 (beta version)
 
+   bug fix. new macros were added.
+      * mirrored histogram
 
 ******************
 requirement
@@ -43,9 +46,9 @@ custom style
 
 this package is contained following custom styles.
 
-these styles make the SAS defalut color palette (GraphData1-GraphData10) replaced.
+the color_pallete.sas is loaded by %include statement before use.
 
-all graph font is set "Times New Roman".
+these styles make the SAS defalut color palette (GraphData1-GraphData10) replaced.
 
 - **sns_default**
 

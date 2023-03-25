@@ -18,11 +18,11 @@
 # -- Project information -----------------------------------------------------
 
 project = 'SAS Plotter'
-copyright = '2022, Superman-jp'
-author = 'Superman-jp'
+copyright = '2023, SupermanJP'
+author = 'SupermanJP'
 
 # The full version, including alpha/beta/rc tags
-release = '0.1'
+release = '1'
 
 
 # -- General configuration ---------------------------------------------------
@@ -47,31 +47,9 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-import sphinx_rtd_theme
-
-html_theme = "sphinx_rtd_theme"
-
-html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
+html_theme = 'alabaster'
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
-
-source_suffix = ['.rst', '.md']
-
-from recommonmark.parser import CommonMarkParser
-
-source_parsers = {
-    '.md': CommonMarkParser,
-}
-
-from recommonmark.transform import AutoStructify
-
-github_doc_root = 'https://github.com/rtfd/recommonmark/tree/master/doc/'
-def setup(app):
-    app.add_config_value('recommonmark_config', {
-            'url_resolver': lambda url: github_doc_root + url,
-            'auto_toc_tree_section': 'Contents',
-            }, True)
-    app.add_transform(AutoStructify)
