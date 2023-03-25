@@ -38,6 +38,7 @@ before use this macro, macro file described below is loaded by %include statemen
 
 - mirrored_histogram.sas
 
+
 and macro file described below must be placed in the directory of mirrored_histogram.sas.
 
 - generate_ytick.sas
