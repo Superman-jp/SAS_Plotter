@@ -205,6 +205,7 @@ when ytickfmt paramater is set "09.99", percent ticks will be displayed at secon
 
 .. image:: ./img/mirrored_histo_v2.svg
 
+
 horizontal histogram
 =======================
 
