@@ -1,4 +1,9 @@
-
+*--------------------------------------------------------;
+*SAS_plotter;
+*Mirrored histogram macro;
+*author: SupermanJP;
+*version: 1.0;
+*--------------------------------------------------------;
 
 %macro mirroredhist(
 data=,
@@ -27,7 +32,9 @@ outline=true
 %let line=;
 %let margin_err=;
 
-
+*--------------------------------------------------------;
+*Data check;
+*--------------------------------------------------------;
 %if %upcase("&outline.")="TRUE" %then
 	%let line=outline;
 ;
@@ -109,6 +116,9 @@ run;
 	%goto exit;
 %end;
 
+*--------------------------------------------------------;
+*generate plot;
+*--------------------------------------------------------;
 /*input data*/
 data indata;
 set &data.;
@@ -215,7 +225,7 @@ run;
 proc sgrender data=indata template=&orient.hist;
 
 dynamic _XLABEL="&xlabel."
-              _YLABEL="&ylabel.";
+        _YLABEL="&ylabel.";
 run;
 
 %exit:
