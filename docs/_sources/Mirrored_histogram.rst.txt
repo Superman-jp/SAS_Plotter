@@ -34,9 +34,12 @@ I recommended that format is applied to group variable.
 ***************
 Syntax
 ***************
-before use this macro, two macro files is loaded by %include statement.
+before use this macro, macro file described below is loaded by %include statement.
 
 - mirrored_histogram.sas
+
+and macro file described below is placed in the directory of mirrored_histogram.sas.
+
 - generate_ytick.sas
 
  ::
