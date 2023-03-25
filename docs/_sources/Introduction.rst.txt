@@ -27,7 +27,7 @@ history
       * RainCloud plot (paired)
       * Ridgeline plot
 
-- 1.0 (beta version)
+- 1.0 
 
    bug fix. new macros were added.
       * mirrored histogram
