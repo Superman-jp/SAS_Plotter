@@ -17,7 +17,7 @@ Histogram of the group which level is 2 will be inverted.
 Input data
 *****************
 Input data must be pre-summarized data. To summarize raw data, proc univariate is useful.
-requited variable is described below.
+required variable is described below.
 
 .. csv-table:: 
 
@@ -38,7 +38,7 @@ before use this macro, macro file described below is loaded by %include statemen
 
 - mirrored_histogram.sas
 
-and macro file described below is placed in the directory of mirrored_histogram.sas.
+and macro file described below must be placed in the directory of mirrored_histogram.sas.
 
 - generate_ytick.sas
 
