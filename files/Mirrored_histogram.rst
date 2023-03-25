@@ -16,7 +16,7 @@ Histogram of the group which level is 2 will be inverted.
 *****************
 Input data
 *****************
-Input data must be pre-summarized data. To summarize raw data, proc univiate is useful.
+Input data must be pre-summarized data. To summarize raw data, proc univariate is useful.
 requited variable is described below.
 
 .. csv-table:: 
