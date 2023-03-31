@@ -36,7 +36,7 @@ outline=true
 *Data check;
 *--------------------------------------------------------;
 %if %upcase("&outline.")="TRUE" %then
-	%let line=outline;
+  %let line=outline;
 ;
 
 /*number of category*/
@@ -52,38 +52,38 @@ quit;
 /*if number of category  and max category is not two, stop macro*/
 
 %if &max_cat.^=2 or &catno.^=2 %then %do;
-	data _null_;
-	put "ERROR: " "category is wrong";
-	run;
-	%goto exit;
+  data _null_;
+  put "ERROR: " "category is wrong";
+  run;
+  %goto exit;
 %end;
 
 /*if xaxistype is wrong stop macro*/
 %if %upcase("&xaxistype.")^="DISCRETE" and %upcase("&xaxistype.")^="LINEAR" %then %do;
-	data _null_;
-	put "ERROR:" "xaxistype must be linear or discrete";
-	run;
-	%goto exit;
+  data _null_;
+  put "ERROR:" "xaxistype must be linear or discrete";
+  run;
+  %goto exit;
 %end;
 
 /*if orient is wrong, stop macro*/
 
 %if %upcase("&orient.")^="H" and %upcase("&orient.")^="V" %then %do;
-	data _null_;
-	put "ERROR:" "orient setting is wrong";
-	run;
-	%goto exit;
+  data _null_;
+  put "ERROR:" "orient setting is wrong";
+  run;
+  %goto exit;
 %end;
 
 /*if xticks option is "none", xticks will be genereated automatically*/
 
 %if %upcase("&xticks.")="NONE" %then %do;
 
-	proc sql noprint;
-		select distinct &x. into : xticks separated by " "
-		from &data.;
-	quit;
-	%put &xticks.;
+  proc sql noprint;
+    select distinct &x. into : xticks separated by " "
+    from &data.;
+  quit;
+  %put &xticks.;
 
 %end;
 
@@ -93,10 +93,10 @@ quit;
 /*if terminate flg is true, stop macro*/
 
 %if &stop.=1 %then %do;
-	data _null_;
-	put "ERROR:" "yticks is wrong";
-	run;
-	%goto exit;
+  data _null_;
+  put "ERROR:" "yticks is wrong";
+  run;
+  %goto exit;
 %end;
 
 /*margin factor check*/
@@ -110,10 +110,10 @@ call symput("margin_err","1");
 run;
 
 %if &margin_err.=1 %then %do;
-	data _null_;
-	put "ERROR:" "ymargin must be numeric and greater than 1";
-	run;
-	%goto exit;
+  data _null_;
+  put "ERROR:" "ymargin must be numeric and greater than 1";
+  run;
+  %goto exit;
 %end;
 
 *--------------------------------------------------------;
@@ -122,11 +122,7 @@ run;
 /*input data*/
 data indata;
 set &data.;
-cat=&group.;
-x=&x.;
-y=&y.;
-keep cat x y;
-proc sort; by cat x;
+proc sort; by &group. &x.;
 run;
 
 /*generate picture*/
@@ -146,28 +142,28 @@ layout overlay /
   walldisplay=none
 
   yaxisopts=(label=_YLABEL display=(line label ticks tickvalues) type=linear 
-			linearopts=( tickvalueformat=val. tickvaluelist=(&yticks.)
-			viewmin=&min_view. viewmax=&max_view. ))
+      linearopts=( tickvalueformat=val. tickvaluelist=(&yticks.) 
+      viewmin=&min_view. viewmax=&max_view. ))
 
 %if %upcase("&xaxistype.")="DISCRETE" %then %do;
-  xaxisopts=(label=_XLABEL display=(line label ticks tickvalues) type=discrete)
+  xaxisopts=(label=_XLABEL display=(line label ticks tickvalues) type=discrete discreteopts=(tickvaluefitpolicy=rotate) )
 %end;
 
 %if %upcase("&xaxistype.")="LINEAR" %then %do;
-	xaxisopts=(label=_XLABEL display=(line label ticks tickvalues) type=linear linearopts=(tickvaluelist=(&xticks.)))
+  xaxisopts=(label=_XLABEL display=(line label ticks tickvalues) type=linear linearopts=(tickvaluelist=(&xticks. tickvaluefitpolicy=rotate) ))
 %end;
 ;
 
-  barchartparm category=x response=eval(ifn(cat=2,-y,y))/
-    group=cat
-	display=(fill &line.)
+  barchartparm category=&x. response=eval(ifn(&group.=2,-&y.,&y.))/
+    group=&group.
+  display=(fill &line.)
     barwidth=&barwidth.
     outlineattrs=(color=black thickness=1)
     name="hist";
 
-	%if %upcase("&legend.")="TRUE" %then %do;
-	    discretelegend "hist";
-	%end;
+  %if %upcase("&legend.")="TRUE" %then %do;
+      discretelegend "hist";
+  %end;
 
   referenceline y=0 / lineattrs=(color=black thickness=1);
     
@@ -189,11 +185,11 @@ layout overlay /
   walldisplay=none
 
   xaxisopts=(label=_YLABEL display=(line ticks label tickvalues) type=linear 
-			linearopts=( tickvalueformat=val. tickvaluelist=(&yticks.)
-			viewmin=&min_view. viewmax=&max_view. ))
+      linearopts=( tickvalueformat=val. tickvaluelist=(&yticks.) tickvaluefitpolicy=rotate
+      viewmin=&min_view. viewmax=&max_view. ))
 
 %if %upcase("&xaxistype.")="DISCRETE" %then %do;
-  yaxisopts=(label=_XLABEL reverse=true display=(line ticks label tickvalues) type=discrete)
+  yaxisopts=(label=_XLABEL reverse=true display=(line ticks label tickvalues) type=discrete )
 %end;
 
 %if %upcase("&xaxistype.")="LINEAR" %then %do;
@@ -201,17 +197,17 @@ layout overlay /
 %end;
 ;
 
-  barchartparm category=x response=eval(ifn(cat=1,-y,y))/
-    group=cat
-	display=(fill &line.)
+  barchartparm category=&x. response=eval(ifn(&group.=1,-&y.,&y.))/
+    group=&group.
+  display=(fill &line.)
     barwidth=&barwidth.
     outlineattrs=(color=black thickness=1)
-	orient=HORIZONTAL
+  orient=HORIZONTAL
     name="hist";
 
-	%if %upcase("&legend.")="TRUE" %then %do;
-	    discretelegend "hist";
-	%end;
+  %if %upcase("&legend.")="TRUE" %then %do;
+      discretelegend "hist";
+  %end;
     
 referenceline x=0 / lineattrs=(color=black thickness=1);
 
