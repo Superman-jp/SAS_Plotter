@@ -384,7 +384,6 @@ default is “True”.</p>
 <h3>horizontal histogram<a class="headerlink" href="#horizontal-histogram" title="Permalink to this heading">¶</a></h3>
 <p>when orient parameter is set “h”, histogram is displayed in horizontal Orientation.The plot is also called “Butterfly chart”.
 (x: response, y=level)</p>
-<p>if xaxistype parameter is “discrete”, y-axis will be reversed.</p>
 <p>code</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">mirroredhist</span><span class="p">(</span>
      <span class="n">data</span><span class="o">=</span><span class="n">graph_data</span><span class="p">,</span>
@@ -417,7 +416,29 @@ default is “True”.</p>
     <span class="p">);</span>
 </pre></div>
 </div>
-<img alt="_images/mirrored_histo_h2.svg" src="_images/mirrored_histo_h2.svg" /></section>
+<img alt="_images/mirrored_histo_h2.svg" src="_images/mirrored_histo_h2.svg" /><p>if xaxistype parameter is “discrete” and orient parameter is “h”, y-axis will be reversed.</p>
+<p>code</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span><span class="n">patients</span> <span class="n">of</span> <span class="n">COVID</span><span class="o">-</span><span class="mi">19</span> <span class="ow">in</span> <span class="n">Tokyo</span><span class="o">*/</span>
+
+<span class="o">/*</span> <span class="n">dataset</span> <span class="n">difinition</span> <span class="o">*/</span>
+<span class="o">/*</span> <span class="n">agegrp</span> <span class="p">:</span> <span class="n">category</span> <span class="n">of</span> <span class="n">patient</span><span class="s1">&#39;s age */</span>
+<span class="o">/*</span> <span class="n">count</span><span class="p">:</span> <span class="n">number</span> <span class="n">of</span> <span class="n">COVID</span><span class="o">-</span><span class="mi">19</span> <span class="n">patients</span> <span class="o">*/</span>
+
+<span class="o">%</span><span class="n">mirroredhist</span><span class="p">(</span>
+   <span class="n">data</span><span class="o">=</span><span class="n">dat2</span><span class="p">,</span>
+   <span class="n">group</span><span class="o">=</span><span class="n">sex</span><span class="p">,</span>
+   <span class="n">x</span><span class="o">=</span><span class="n">agegrp</span><span class="p">,</span>
+   <span class="n">y</span><span class="o">=</span><span class="n">count</span><span class="p">,</span>
+   <span class="n">xlabel</span><span class="o">=</span><span class="n">age</span><span class="p">,</span>
+   <span class="n">ylabel</span><span class="o">=</span><span class="n">number</span> <span class="n">of</span> <span class="n">patients</span><span class="p">,</span>
+   <span class="n">xaxistype</span><span class="o">=</span><span class="n">discrete</span><span class="p">,</span>
+   <span class="n">yticks</span><span class="o">=%</span><span class="nb">str</span><span class="p">(</span><span class="mi">0</span> <span class="mi">50000</span> <span class="mi">100000</span> <span class="mi">150000</span> <span class="mi">200000</span> <span class="mi">250000</span> <span class="mi">300000</span><span class="p">),</span>
+   <span class="n">ytickfmt</span><span class="o">=%</span><span class="nb">str</span><span class="p">(</span><span class="mi">000</span><span class="p">,</span><span class="mi">009</span><span class="p">),</span>
+   <span class="n">orient</span><span class="o">=</span><span class="n">h</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<img alt="_images/mirrored_histo_discrete.svg" src="_images/mirrored_histo_discrete.svg" /></section>
 </section>
 </section>
 

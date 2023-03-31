@@ -220,8 +220,6 @@ horizontal histogram
 when orient parameter is set "h", histogram is displayed in horizontal Orientation.The plot is also called "Butterfly chart".
 (x: response, y=level)
 
-if xaxistype parameter is "discrete", y-axis will be reversed.
-
 code ::
 
    %mirroredhist(
@@ -258,3 +256,29 @@ code ::
         );
 
 .. image:: ./img/mirrored_histo_h2.svg
+
+
+if xaxistype parameter is "discrete" and orient parameter is "h", y-axis will be reversed.
+
+code ::
+
+   /*patients of COVID-19 in Tokyo*/
+
+   /* dataset difinition */
+   /* agegrp : category of patient's age */
+   /* count: number of COVID-19 patients */
+
+   %mirroredhist(
+      data=dat2,
+      group=sex,
+      x=agegrp,
+      y=count,
+      xlabel=age,
+      ylabel=number of patients,
+      xaxistype=discrete,
+      yticks=%str(0 50000 100000 150000 200000 250000 300000),
+      ytickfmt=%str(000,009),
+      orient=h
+   );
+
+.. image:: ./img/mirrored_histo_discrete.svg
