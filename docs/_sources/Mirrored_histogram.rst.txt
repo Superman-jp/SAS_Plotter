@@ -217,7 +217,7 @@ when ytickfmt paramater is set "09.99", percent ticks will be displayed at secon
 horizontal histogram
 =======================
 
-when orient parameter is set "h", histogram is displayed in horizontal Orientation.
+when orient parameter is set "h", histogram is displayed in horizontal Orientation.The plot is also called "Butterfly chart".
 (x: response, y=level)
 
 if xaxistype parameter is "discrete", y-axis will be reversed.
