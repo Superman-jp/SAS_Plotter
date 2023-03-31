@@ -342,9 +342,13 @@ default is “True”.</p>
 <p>code</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">inc</span> <span class="s2">&quot;mirrored_histogram.sas&quot;</span><span class="p">;</span>
 
+<span class="n">ods</span> <span class="n">select</span> <span class="n">histogram</span><span class="p">;</span>
 <span class="n">proc</span> <span class="n">univariate</span> <span class="n">data</span><span class="o">=</span><span class="n">sashelp</span><span class="o">.</span><span class="n">heart</span><span class="p">;</span>
 <span class="n">var</span> <span class="n">diastolic</span> <span class="n">systolic</span><span class="p">;</span>
-<span class="n">histogram</span>   <span class="n">diastolic</span> <span class="n">systolic</span> <span class="o">/</span> <span class="n">outhistogram</span><span class="o">=</span><span class="n">histo</span> <span class="n">vscale</span><span class="o">=</span><span class="n">percent</span>  <span class="n">midpoint</span><span class="o">=</span><span class="mi">50</span> <span class="n">to</span> <span class="mi">400</span> <span class="n">by</span> <span class="mi">5</span><span class="p">;</span>
+<span class="n">histogram</span>   <span class="n">diastolic</span> <span class="n">systolic</span> <span class="o">/</span>
+  <span class="n">outhistogram</span><span class="o">=</span><span class="n">histo</span>
+  <span class="n">vscale</span><span class="o">=</span><span class="n">percent</span>
+  <span class="n">midpoints</span><span class="o">=</span><span class="mi">50</span> <span class="n">to</span> <span class="mi">400</span> <span class="n">by</span> <span class="mi">5</span><span class="p">;</span>
 <span class="n">run</span><span class="p">;</span>
 
 <span class="n">proc</span> <span class="nb">format</span><span class="p">;</span>

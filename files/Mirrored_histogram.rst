@@ -171,9 +171,13 @@ code ::
 
     %inc "mirrored_histogram.sas";
 
+    ods select histogram;
     proc univariate data=sashelp.heart;
     var diastolic systolic;
-    histogram   diastolic systolic / outhistogram=histo vscale=percent  midpoint=50 to 400 by 5;
+    histogram   diastolic systolic / 
+      outhistogram=histo
+      vscale=percent
+      midpoints=50 to 400 by 5;
     run;
 
     proc format;
