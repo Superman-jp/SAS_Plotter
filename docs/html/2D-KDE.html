@@ -285,18 +285,18 @@ see color palette section of introduction page. defalut is “SNS” (Seaborn de
 <span class="n">ods</span> <span class="n">graphics</span> <span class="o">/</span>  <span class="n">height</span><span class="o">=</span><span class="mi">24</span><span class="n">cm</span> <span class="n">width</span><span class="o">=</span><span class="mi">24</span><span class="n">cm</span> <span class="n">imagename</span><span class="o">=</span><span class="s2">&quot;groupedKDE&quot;</span> <span class="n">imagefmt</span><span class="o">=</span><span class="n">svg</span><span class="p">;</span>
 
 <span class="o">%</span><span class="n">kde2d</span><span class="p">(</span>
-<span class="n">dat</span><span class="o">=</span><span class="n">penguins</span><span class="p">,</span>
-<span class="n">x</span><span class="o">=</span><span class="n">bill_length_mm</span><span class="p">,</span>
-<span class="n">y</span><span class="o">=</span><span class="n">bill_depth_mm</span><span class="p">,</span>
-<span class="n">group</span><span class="o">=</span><span class="n">species2</span><span class="p">,</span>
-<span class="n">univar_style</span><span class="o">=</span><span class="n">line</span><span class="p">,</span>
-<span class="n">bivar_nlevel</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
-<span class="n">bivar_style</span><span class="o">=</span><span class="n">line</span><span class="p">,</span>
-<span class="n">bivar_grid</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
-<span class="n">xlabel</span><span class="o">=</span><span class="n">bill_length</span> <span class="p">(</span><span class="n">mm</span><span class="p">),</span>
-<span class="n">ylabel</span><span class="o">=</span><span class="n">bill_depth</span> <span class="p">(</span><span class="n">mm</span><span class="p">),</span>
-<span class="n">legend</span><span class="o">=</span><span class="n">true</span><span class="p">,</span>
-<span class="n">palette</span><span class="o">=</span><span class="n">sns</span>
+   <span class="n">dat</span><span class="o">=</span><span class="n">penguins</span><span class="p">,</span>
+   <span class="n">x</span><span class="o">=</span><span class="n">bill_length_mm</span><span class="p">,</span>
+   <span class="n">y</span><span class="o">=</span><span class="n">bill_depth_mm</span><span class="p">,</span>
+   <span class="n">group</span><span class="o">=</span><span class="n">species2</span><span class="p">,</span>
+   <span class="n">univar_style</span><span class="o">=</span><span class="n">line</span><span class="p">,</span>
+   <span class="n">bivar_nlevel</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+   <span class="n">bivar_style</span><span class="o">=</span><span class="n">line</span><span class="p">,</span>
+   <span class="n">bivar_grid</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+   <span class="n">xlabel</span><span class="o">=</span><span class="n">bill_length</span> <span class="p">(</span><span class="n">mm</span><span class="p">),</span>
+   <span class="n">ylabel</span><span class="o">=</span><span class="n">bill_depth</span> <span class="p">(</span><span class="n">mm</span><span class="p">),</span>
+   <span class="n">legend</span><span class="o">=</span><span class="n">true</span><span class="p">,</span>
+   <span class="n">palette</span><span class="o">=</span><span class="n">sns</span>
 <span class="p">);</span>
 </pre></div>
 </div>
@@ -311,18 +311,18 @@ Bivariate KDE plot is supported three styles, LINE, FILL, and LINEFILL. these st
 <span class="n">ods</span> <span class="n">graphics</span> <span class="o">/</span>  <span class="n">height</span><span class="o">=</span><span class="mi">24</span><span class="n">cm</span> <span class="n">width</span><span class="o">=</span><span class="mi">24</span><span class="n">cm</span> <span class="n">imagename</span><span class="o">=</span><span class="s2">&quot;linefillKDE&quot;</span> <span class="n">imagefmt</span><span class="o">=</span><span class="n">svg</span><span class="p">;</span>
 
 <span class="o">%</span><span class="n">kde2d</span><span class="p">(</span>
-<span class="n">dat</span><span class="o">=</span><span class="n">penguins</span><span class="p">(</span><span class="n">where</span><span class="o">=</span><span class="p">(</span><span class="n">species2</span><span class="o">=</span><span class="mi">2</span><span class="p">)),</span>
-<span class="n">x</span><span class="o">=</span><span class="n">bill_length_mm</span><span class="p">,</span>
-<span class="n">y</span><span class="o">=</span><span class="n">bill_depth_mm</span><span class="p">,</span>
-<span class="n">group</span><span class="o">=</span><span class="n">species2</span><span class="p">,</span>
-<span class="n">univar_style</span><span class="o">=</span><span class="n">fill</span><span class="p">,</span>
-<span class="n">bivar_nlevel</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
-<span class="n">bivar_style</span><span class="o">=</span><span class="n">linefill</span><span class="p">,</span>
-<span class="n">bivar_grid</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
-<span class="n">xlabel</span><span class="o">=</span><span class="n">bill_length</span> <span class="p">(</span><span class="n">mm</span><span class="p">),</span>
-<span class="n">ylabel</span><span class="o">=</span><span class="n">bill_depth</span> <span class="p">(</span><span class="n">mm</span><span class="p">),</span>
-<span class="n">legend</span><span class="o">=</span><span class="n">true</span><span class="p">,</span>
-<span class="n">palette</span><span class="o">=</span><span class="n">sns</span>
+   <span class="n">dat</span><span class="o">=</span><span class="n">penguins</span><span class="p">(</span><span class="n">where</span><span class="o">=</span><span class="p">(</span><span class="n">species2</span><span class="o">=</span><span class="mi">2</span><span class="p">)),</span>
+   <span class="n">x</span><span class="o">=</span><span class="n">bill_length_mm</span><span class="p">,</span>
+   <span class="n">y</span><span class="o">=</span><span class="n">bill_depth_mm</span><span class="p">,</span>
+   <span class="n">group</span><span class="o">=</span><span class="n">species2</span><span class="p">,</span>
+   <span class="n">univar_style</span><span class="o">=</span><span class="n">fill</span><span class="p">,</span>
+   <span class="n">bivar_nlevel</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+   <span class="n">bivar_style</span><span class="o">=</span><span class="n">linefill</span><span class="p">,</span>
+   <span class="n">bivar_grid</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+   <span class="n">xlabel</span><span class="o">=</span><span class="n">bill_length</span> <span class="p">(</span><span class="n">mm</span><span class="p">),</span>
+   <span class="n">ylabel</span><span class="o">=</span><span class="n">bill_depth</span> <span class="p">(</span><span class="n">mm</span><span class="p">),</span>
+   <span class="n">legend</span><span class="o">=</span><span class="n">true</span><span class="p">,</span>
+   <span class="n">palette</span><span class="o">=</span><span class="n">sns</span>
 <span class="p">);</span>
 </pre></div>
 </div>

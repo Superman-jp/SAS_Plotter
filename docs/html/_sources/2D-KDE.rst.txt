@@ -184,18 +184,18 @@ code ::
    ods graphics /  height=24cm width=24cm imagename="groupedKDE" imagefmt=svg;
 
    %kde2d(
-   dat=penguins,
-   x=bill_length_mm,
-   y=bill_depth_mm,
-   group=species2,
-   univar_style=line,
-   bivar_nlevel=10,
-   bivar_style=line,
-   bivar_grid=100,
-   xlabel=bill_length (mm),
-   ylabel=bill_depth (mm),
-   legend=true,
-   palette=sns
+      dat=penguins,
+      x=bill_length_mm,
+      y=bill_depth_mm,
+      group=species2,
+      univar_style=line,
+      bivar_nlevel=10,
+      bivar_style=line,
+      bivar_grid=100,
+      xlabel=bill_length (mm),
+      ylabel=bill_depth (mm),
+      legend=true,
+      palette=sns
    );
 
 
@@ -215,18 +215,18 @@ code ::
    ods graphics /  height=24cm width=24cm imagename="linefillKDE" imagefmt=svg;
 
    %kde2d(
-   dat=penguins(where=(species2=2)),
-   x=bill_length_mm,
-   y=bill_depth_mm,
-   group=species2,
-   univar_style=fill,
-   bivar_nlevel=10,
-   bivar_style=linefill,
-   bivar_grid=100,
-   xlabel=bill_length (mm),
-   ylabel=bill_depth (mm),
-   legend=true,
-   palette=sns
+      dat=penguins(where=(species2=2)),
+      x=bill_length_mm,
+      y=bill_depth_mm,
+      group=species2,
+      univar_style=fill,
+      bivar_nlevel=10,
+      bivar_style=linefill,
+      bivar_grid=100,
+      xlabel=bill_length (mm),
+      ylabel=bill_depth (mm),
+      legend=true,
+      palette=sns
    );
 
 .. image:: ./img/linefillKDE.svg
