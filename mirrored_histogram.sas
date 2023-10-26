@@ -20,7 +20,8 @@ orient=v,
 legend=true,
 barwidth=1,
 ymargin=1.1,
-outline=true
+outline=true,
+palette=sns
 );
 
 /*initialize*/
@@ -33,8 +34,27 @@ outline=true
 %let margin_err=;
 
 *--------------------------------------------------------;
+*parameter check;
+*--------------------------------------------------------;
+
+
+%if %upcase("&palette.") ^= "SAS" and
+    %upcase("&palette.") ^= "SNS" and
+    %upcase("&palette.") ^= "STATA" and
+    %upcase("&palette.") ^= "TABLEAU" %then %do;
+    
+    data _null_;
+    put "WAR" "NING: palette parameter must be set SAS, SNS, STATA or Tableau";
+    run;
+    
+    %goto exit;
+    
+%end;
+
+*--------------------------------------------------------;
 *Data check;
 *--------------------------------------------------------;
+
 %if %upcase("&outline.")="TRUE" %then
   %let line=outline;
 ;
@@ -88,7 +108,7 @@ quit;
 %end;
 
 /*generate yticks sequence*/
-%inc "generate_ytick.sas";
+%inc "&plotter_dir./generate_ytick.sas";
 
 /*if terminate flg is true, stop macro*/
 
@@ -217,7 +237,7 @@ endgraph;
 end;
 run;
 
-
+ods listing style=&palette.;
 proc sgrender data=indata template=&orient.hist;
 
 dynamic _XLABEL="&xlabel."
