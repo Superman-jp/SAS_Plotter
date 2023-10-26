@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ridgeline plot &mdash; SAS Plotter 1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Mirrored Histogram" href="Mirrored_histogram.html" />
+    <link rel="prev" title="Raincloud plot (paired)" href="Raincloud_plot_paired.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> SAS Plotter
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Raincloud_plot.html">Raincloud plot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Raincloud_plot_paired.html">Raincloud plot (paired)</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Ridgeline plot</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#what-s-this">What’s this?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#input-data">Input data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#syntax">Syntax</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#parameters">Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#example">example</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#simple-ridgeline-plot">simple ridgeline plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#grouped-ridgeline-plot">grouped ridgeline plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ridgeline-plot-with-rugplot-and-statistics">ridgeline plot with rugplot and statistics</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Mirrored_histogram.html">Mirrored Histogram</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2D-KDE.html">2D-KDE</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">SAS Plotter</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">Ridgeline plot</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Ridgeline_plot.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="ridgeline-plot">
+<h1>Ridgeline plot<a class="headerlink" href="#ridgeline-plot" title="Permalink to this heading"></a></h1>
+<section id="what-s-this">
+<h2>What’s this?<a class="headerlink" href="#what-s-this" title="Permalink to this heading"></a></h2>
+<p>Macro for generate ridgeline plot using SAS GRAPH.</p>
+<p>Ridgeline plot shows the distribution of response variable each groups.
+the distribution is estimated by KDE (Kernel Density Estimation) using proc kde.</p>
+<p>rugplot and several discriptive statistics (mean, q1, q2, q3, iqr) can be overlaid on the ridgeline plot.</p>
+</section>
+<section id="input-data">
+<h2>Input data<a class="headerlink" href="#input-data" title="Permalink to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>key</strong></p></td>
+<td><p><strong>variable</strong></p></td>
+<td><p><strong>type</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>category</p></td>
+<td><p>numeric or string</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>group</p></td>
+<td><p>numeric or string</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>response</p></td>
+<td><p>numeric</p></td>
+</tr>
+</tbody>
+</table>
+<p>group variable is optional.</p>
+<p>I recommended that the variable type of category and group are set to numeric with format.
+if the variable type is string, item order is defined as acending character order.</p>
+</section>
+<section id="syntax">
+<h2>Syntax<a class="headerlink" href="#syntax" title="Permalink to this heading"></a></h2>
+<p>before use this macro, macro file described below is loaded by %include statement.</p>
+<ul class="simple">
+<li><p>Ridgeline.sas</p></li>
+</ul>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ods</span> <span class="n">graphics</span> <span class="o">/</span> <span class="o">&lt;</span> <span class="n">graphics</span> <span class="n">option</span> <span class="o">&gt;</span> <span class="p">;</span>
+<span class="n">ods</span> <span class="n">listing</span> <span class="n">gpath</span><span class="o">=&lt;</span> <span class="n">output</span> <span class="n">path</span> <span class="o">&gt;</span><span class="p">;</span>
+
+<span class="o">%</span><span class="n">ridgeline</span><span class="p">(</span>
+   <span class="n">data</span><span class="o">=</span><span class="p">,</span>
+   <span class="n">x</span><span class="o">=</span><span class="p">,</span>
+   <span class="n">y</span><span class="o">=</span><span class="p">,</span>
+   <span class="n">group</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+   <span class="n">xlabel</span><span class="o">=</span><span class="n">x</span><span class="p">,</span>
+   <span class="n">ylabel</span><span class="o">=</span><span class="n">y</span><span class="p">,</span>
+   <span class="n">yticks</span><span class="o">=</span><span class="p">,</span>
+   <span class="n">cat_iv</span><span class="o">=</span><span class="mf">1.2</span><span class="p">,</span>
+   <span class="n">gridsize</span><span class="o">=</span><span class="mi">401</span><span class="p">,</span>
+   <span class="n">bw_method</span><span class="o">=</span><span class="n">sjpi</span><span class="p">,</span>
+   <span class="n">bw_adjust</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+   <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+   <span class="n">fill_density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+   <span class="n">stat</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+   <span class="n">rug</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+   <span class="n">ruglength</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+   <span class="n">meancolor</span><span class="o">=</span><span class="n">red</span><span class="p">,</span>
+   <span class="n">qcolor</span><span class="o">=</span><span class="n">white</span><span class="p">,</span>
+   <span class="n">iqrcolor</span><span class="o">=</span><span class="n">cx89D0F5</span><span class="p">,</span>
+   <span class="n">palette</span><span class="o">=</span><span class="n">sns</span><span class="p">);</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this heading"></a></h2>
+<ul>
+<li><p><strong>data : dataset name (required)</strong></p>
+<blockquote>
+<div><p>input data. keep, rename and  where options are available.</p>
+</div></blockquote>
+</li>
+<li><p><strong>x : variable name (required)</strong></p>
+<blockquote>
+<div><p>category variable</p>
+</div></blockquote>
+</li>
+<li><p><strong>y : variable name (required)</strong></p>
+<blockquote>
+<div><p>response variable</p>
+</div></blockquote>
+</li>
+<li><p><strong>group : variable name (optional)</strong></p>
+<blockquote>
+<div><p>group variable for grouping data at each category.</p>
+<p>when the parameter is not set, all of graph object is set same color.</p>
+<p>when the parameter is set category variable, the graph object of rach category is
+set  different color.</p>
+<p>default is “None”.</p>
+</div></blockquote>
+</li>
+<li><p><strong>xlabel : string (optional)</strong></p>
+<blockquote>
+<div><p>label string of category axis.
+default is “x”. when the label is not displayed , set like below.</p>
+<p>xlabel=,</p>
+</div></blockquote>
+</li>
+<li><p><strong>ylabel : string (optional)</strong></p>
+<blockquote>
+<div><p>optional. label string of response axis.
+default is “y”. when the label is not displayed , set like below.</p>
+<p>ylabel=,</p>
+</div></blockquote>
+</li>
+<li><p><strong>yticks : numeric list (required)</strong></p>
+<blockquote>
+<div><p>tickvalue list of response axis.
+the list is set as the numeric list separated by space .
+the item of the list should be set ascending order.</p>
+<p>ex. yticks = 10 20 30 40,</p>
+</div></blockquote>
+</li>
+<li><p><strong>cat_iv : numeric (optional)</strong></p>
+<blockquote>
+<div><p>the interval of category.
+the default is 1.2.
+when this parameter is set below 1, each density may be overlapped.</p>
+</div></blockquote>
+</li>
+<li><p><strong>gridsize : integer (optional)</strong></p>
+<blockquote>
+<div><p>the number of KDE gridsize.
+default is 401 (the default of proc kde)</p>
+</div></blockquote>
+</li>
+<li><p><strong>bw_method : keyword (optional)</strong></p>
+<blockquote>
+<div><p>the bandwidth estimation method of KDE.
+default is “sjpi” (the default of proc kde).</p>
+<p>method keyword described below is available.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>sjpi (Sheather-Jones plug-in)</p></li>
+<li><p>snr (simple normal reference)</p></li>
+<li><p>snrq (simple normal reference that uses the interquartile range)</p></li>
+<li><p>srot (Silverman’s rule of thumb)</p></li>
+<li><p>os (oversmoothed)</p></li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+</li>
+<li><p><strong>bw_adjust : numeric (optional)</strong></p>
+<blockquote>
+<div><p>the bandwidth multiplier. Increasing will make the curve smoother.
+the default is 1.</p>
+</div></blockquote>
+</li>
+<li><p><strong>legend : bool (optional)</strong></p>
+<blockquote>
+<div><p>if “True” the legend of group item is displayed.
+if group parameter is “None”, the parameter will be ignored.
+default is “False”.</p>
+</div></blockquote>
+</li>
+<li><p><strong>fill_density : bool (optional)</strong></p>
+<blockquote>
+<div><p>if “True” the fill of the area under the density curve is displayed.
+default is “True”.</p>
+</div></blockquote>
+</li>
+<li><p><strong>stat : keyword (optional)</strong></p>
+<blockquote>
+<div><p>display descriptive statistics.
+select the keyword described below.</p>
+<ul class="simple">
+<li><p>mean</p></li>
+<li><p>q1</p></li>
+<li><p>q2</p></li>
+<li><p>q3</p></li>
+<li><p>iqr</p></li>
+<li><p>None (any statistics is not displayed)</p></li>
+</ul>
+<p>when this parameter is set several keywords, each keyword shoud be separated by space.</p>
+<p>ex. stat = mean iqr,</p>
+<p>the default is “mean”.</p>
+</div></blockquote>
+</li>
+<li><p><strong>rug : bool (optional)</strong></p>
+<blockquote>
+<div><p>if “True” the rugplot is displayed.
+the default is “False”</p>
+</div></blockquote>
+</li>
+<li><p><strong>ruglength : numeric (optional)</strong></p>
+<blockquote>
+<div><p>the scale facter of the rugplot.when rug parameter is set “False”, this parameter will be ignored.
+the default is 1. if set larger value, the rugplot is prolonged.</p>
+</div></blockquote>
+</li>
+<li><p><strong>meancolor  : color keyword (optional)</strong></p>
+<blockquote>
+<div><p>the color of mean. when stat parameter is not set “mean”, this parameter will be ignored.
+color can be set as color name (ex. red blue) or RGB code (ex.cxffffff).
+default is “red”.</p>
+</div></blockquote>
+</li>
+<li><p><strong>qcolor : color keyword (optional)</strong></p>
+<blockquote>
+<div><p>the color of quartile(q1 ,q2, and q3). when stat parameter is not set quartile keyword,
+this parameter will be ignored.
+color can be set as color name (ex. red blue) or RGB code (ex.cxffffff).
+default is “white”.</p>
+</div></blockquote>
+</li>
+<li><p><strong>iqrcolor : color keyword (optional)</strong></p>
+<blockquote>
+<div><p>the color of IQR. when stat parameter is not set “iqr”, this parameter will be ignored.
+color can be set as color name (ex. red blue) or RGB code (ex.cxffffff).
+default is “cx89D0F5”.</p>
+</div></blockquote>
+</li>
+<li><p><strong>pallete : keyword (optional)</strong></p>
+<blockquote>
+<div><p>color palette for fill, line and markers. the palletes described below is available.
+see color palette section of introduction page. defalut is “SNS” (Seaborn defalut palette).</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>SAS</p></li>
+<li><p>SNS (Seaborn)</p></li>
+<li><p>STATA</p></li>
+<li><p>TABLEAU</p></li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+</li>
+</ul>
+</section>
+<section id="example">
+<h2>example<a class="headerlink" href="#example" title="Permalink to this heading"></a></h2>
+<section id="simple-ridgeline-plot">
+<h3>simple ridgeline plot<a class="headerlink" href="#simple-ridgeline-plot" title="Permalink to this heading"></a></h3>
+<p>datasets (ds1)</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>variable</strong></p></td>
+<td><p><strong>detail</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>cat</p></td>
+<td><p>string, A to J</p></td>
+</tr>
+<tr class="row-odd"><td><p>response</p></td>
+<td><p>numeric</p></td>
+</tr>
+</tbody>
+</table>
+<p>code</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ods</span> <span class="n">graphics</span> <span class="o">/</span><span class="n">reset</span><span class="o">=</span><span class="nb">all</span> <span class="n">height</span><span class="o">=</span><span class="mi">15</span><span class="n">cm</span> <span class="n">width</span><span class="o">=</span><span class="mi">25</span><span class="n">cm</span> <span class="n">imagename</span><span class="o">=</span><span class="s2">&quot;ridgeline1&quot;</span> <span class="n">imagefmt</span><span class="o">=</span><span class="n">svg</span><span class="p">;</span>
+<span class="n">ods</span> <span class="n">listing</span>  <span class="n">gpath</span><span class="o">=</span><span class="s2">&quot;/home/user/sasuser.v94/image&quot;</span> <span class="n">style</span><span class="o">=</span><span class="n">sns_default</span> <span class="p">;</span>
+
+<span class="o">%</span><span class="n">ridgeline</span><span class="p">(</span>
+   <span class="n">data</span><span class="o">=</span><span class="n">ds1</span><span class="p">,</span>
+   <span class="n">x</span><span class="o">=</span><span class="n">cat</span><span class="p">,</span>
+   <span class="n">y</span><span class="o">=</span><span class="n">response</span><span class="p">,</span>
+   <span class="n">group</span><span class="o">=</span><span class="n">cat</span><span class="p">,</span>
+   <span class="n">xlabel</span><span class="o">=</span><span class="p">,</span>
+   <span class="n">ylabel</span><span class="o">=</span><span class="n">response</span><span class="p">,</span>
+   <span class="n">yticks</span><span class="o">=</span><span class="mi">60</span> <span class="mi">65</span> <span class="mi">70</span> <span class="mi">75</span> <span class="mi">80</span><span class="p">,</span>
+   <span class="n">cat_iv</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span>
+   <span class="n">bw_method</span><span class="o">=</span><span class="n">srot</span><span class="p">,</span>
+   <span class="n">stat</span><span class="o">=</span><span class="kc">None</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>output</p>
+<img alt="_images/ridgeline1.svg" src="_images/ridgeline1.svg" /></section>
+<section id="grouped-ridgeline-plot">
+<h3>grouped ridgeline plot<a class="headerlink" href="#grouped-ridgeline-plot" title="Permalink to this heading"></a></h3>
+<p>datasets (ds2)</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>variable</strong></p></td>
+<td><p><strong>detail</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>month</p></td>
+<td><p>numeric width format</p></td>
+</tr>
+<tr class="row-odd"><td><p>max_temp</p></td>
+<td><p>numeric, maximum temperature</p></td>
+</tr>
+<tr class="row-even"><td><p>region</p></td>
+<td><p>numeric with format, 1=Tokyo, 2=Naha</p></td>
+</tr>
+</tbody>
+</table>
+<p>code</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ods graphics /reset=all height=15cm width=25cm imagename=&quot;ridgeline_grouped&quot; imagefmt=svg;
+ods listing  gpath=&quot;/home/user/sasuser.v94/image&quot; style=sns_default ;
+
+%ridgeline(
+   data=ds2(where=(month in(1:6))),
+   x=month,
+   y=max_temp,
+   group=region,
+   xlabel=month,
+   ylabel=maximum temperature (°C),
+   yticks=0 5 10 15 20 25 30 35 40,
+   cat_iv=1.2,
+   legend=true,
+   stat=None
+   );
+</pre></div>
+</div>
+<p>output</p>
+<img alt="_images/ridgeline_grouped.svg" src="_images/ridgeline_grouped.svg" /></section>
+<section id="ridgeline-plot-with-rugplot-and-statistics">
+<h3>ridgeline plot with rugplot and statistics<a class="headerlink" href="#ridgeline-plot-with-rugplot-and-statistics" title="Permalink to this heading"></a></h3>
+<p>code</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ods graphics /reset=all height=15cm width=25cm imagename=&quot;ridgeline_stat_rug&quot; imagefmt=svg;
+ods listing  gpath=&quot;/home/user/sasuser.v94/image&quot; style=sns_default ;
+
+%ridgeline(
+   data=ds2(where=(region=1 and month in(1:6))),
+   x=month,
+   y=max_temp,
+   xlabel=month,
+   ylabel=maximum temperature (°C),
+   yticks=0 5 10 15 20 25 30 35 40,
+   cat_iv=1.2,
+   fill_density=False,
+   stat=mean q1 q2 q3 iqr,
+   rug=True,
+   ruglength=3,
+   meancolor=red,
+   qcolor=black
+   );
+</pre></div>
+</div>
+<p>output</p>
+<img alt="_images/ridgeline_stat_rug.svg" src="_images/ridgeline_stat_rug.svg" /></section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Raincloud_plot_paired.html" class="btn btn-neutral float-left" title="Raincloud plot (paired)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Mirrored_histogram.html" class="btn btn-neutral float-right" title="Mirrored Histogram" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, SupermanJP.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

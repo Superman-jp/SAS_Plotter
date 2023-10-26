@@ -1,0 +1,978 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" baseProfile="full" version="1.1" id="SVGMain" onload='SVGMain_Init("SVGMain")' viewBox="-1 -1 908 908">
+<desc id="desc_SVGMain">SGPlot プロシジャ</desc>
+<defs>
+<clipPath id="SVGMain_clipPage1">
+<rect x="-1" y="-1" width="908" height="908"></rect>
+</clipPath>
+</defs>
+<g id="SVGMain_Page1" clip-path="url(#SVGMain_clipPage1)">
+<g transform=" scale(1.0, 1.0)">
+<rect x="0.0" y="0.0" width="906.0" height="906.0" style="fill: #FFFFFF; "></rect>
+<rect x="0.0" y="0.0" width="906.0" height="906.0" style="fill: #FFFFFF; "></rect>
+<rect x="0.0" y="0.0" width="906.0" height="906.0" style="stroke: #D1D1D1; stroke-width: 1; fill: none; "></rect>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 20.0, 20.0)">
+<defs>
+<clipPath id="SVGMain_ClipPath0">
+<rect x="-1.0" y="-1.0" width="868.0" height="868.0" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVGMain_ClipPath0)">
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 30.0)">
+<defs>
+<clipPath id="SVGMain_ClipPath1">
+<rect x="-1.0" y="-1.0" width="868.0" height="800.0" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVGMain_ClipPath1)">
+<rect x="62.92741" y="2.96198" width="803.07373" height="743.14285" style="fill: #FFFFFF; "></rect>
+<defs>
+<clipPath id="SVGMain_ClipPath2">
+<rect x="62.0" y="2.0" width="805.0" height="745.0" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVGMain_ClipPath2)">
+<rect x="210.25748" y="7.95622" width="50.94124" height="738.14861" style="fill: #4C72B0; "></rect>
+<rect x="210.25748" y="7.95622" width="50.94124" height="738.14861" style="stroke: #4C72B0; stroke-width: 1; fill: none; "></rect>
+<rect x="261.19873" y="7.95622" width="50.94124" height="738.14861" style="fill: #DD8452; "></rect>
+<rect x="261.19873" y="7.95622" width="50.94124" height="738.14861" style="stroke: #DD8452; stroke-width: 1; fill: none; "></rect>
+<rect x="312.13997" y="7.95622" width="50.94124" height="738.14861" style="fill: #55A868; "></rect>
+<rect x="312.13997" y="7.95622" width="50.94124" height="738.14861" style="stroke: #55A868; stroke-width: 1; fill: none; "></rect>
+<rect x="363.08122" y="7.95622" width="50.94124" height="738.14861" style="fill: #C44E52; "></rect>
+<rect x="363.08122" y="7.95622" width="50.94124" height="738.14861" style="stroke: #C44E52; stroke-width: 1; fill: none; "></rect>
+<rect x="414.02246" y="7.95622" width="50.94124" height="738.14861" style="fill: #8172B3; "></rect>
+<rect x="414.02246" y="7.95622" width="50.94124" height="738.14861" style="stroke: #8172B3; stroke-width: 1; fill: none; "></rect>
+<rect x="464.9637" y="7.95622" width="50.94124" height="738.14861" style="fill: #937860; "></rect>
+<rect x="464.9637" y="7.95622" width="50.94124" height="738.14861" style="stroke: #937860; stroke-width: 1; fill: none; "></rect>
+<rect x="515.90495" y="7.95622" width="50.94124" height="738.14861" style="fill: #DA8BC3; "></rect>
+<rect x="515.90495" y="7.95622" width="50.94124" height="738.14861" style="stroke: #DA8BC3; stroke-width: 1; fill: none; "></rect>
+<rect x="566.84619" y="7.95622" width="50.94124" height="738.14861" style="fill: #8C8C8C; "></rect>
+<rect x="566.84619" y="7.95622" width="50.94124" height="738.14861" style="stroke: #8C8C8C; stroke-width: 1; fill: none; "></rect>
+<rect x="617.78744" y="7.95622" width="50.94124" height="738.14861" style="fill: #CCB974; "></rect>
+<rect x="617.78744" y="7.95622" width="50.94124" height="738.14861" style="stroke: #CCB974; stroke-width: 1; fill: none; "></rect>
+<rect x="668.72868" y="7.95622" width="50.94124" height="738.14861" style="fill: #64B5CD; "></rect>
+<rect x="668.72868" y="7.95622" width="50.94124" height="738.14861" style="stroke: #64B5CD; stroke-width: 1; fill: none; "></rect>
+<path d="M62.92741 746.10483L866.00115 746.10483" style="stroke: #989EA1; stroke-width: 1; fill: none; "></path>
+</g>
+<defs>
+<clipPath id="SVGMain_ClipPath3">
+<rect x="-1.0" y="-1.0" width="868.0" height="800.0" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVGMain_ClipPath3)">
+<path d="M62.92741 746.10483L866.00115 746.10483" style="stroke: #989EA1; stroke-width: 1; fill: none; "></path>
+<path d="M866.00115 746.10483L866.00115 2.96198" style="stroke: #989EA1; stroke-width: 1; fill: none; "></path>
+<path d="M62.92741 2.96198L866.00115 2.96198" style="stroke: #989EA1; stroke-width: 1; fill: none; "></path>
+<path d="M62.92741 746.10483L62.92741 2.96198" style="stroke: #989EA1; stroke-width: 1; fill: none; "></path>
+<path d="M62.92741 746.10483L866.00115 746.10483" style="stroke: #989EA1; stroke-width: 1; fill: none; "></path>
+<path d="M464.46428 746.10483L464.46428 752.50483" style="stroke: #989EA1; stroke-width: 1; fill: none; "></path>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 451.96428, 769.50483)">
+<text textLength="25.0" lengthAdjust="spacingAndGlyphs" x="0.0" y="0.5" style="fill: #000000; font-family: 'SVGMain_MS PGothic Font3', 'MS PGothic', sans-serif; font-size: 15px; white-space: pre; ">&#x000074;&#x000065;&#x000073;&#x000074;</text>
+</g>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 453.9637, 794.50483)">
+<text textLength="22.0" lengthAdjust="spacingAndGlyphs" x="0.0" y="0.5" style="fill: #000000; font-family: 'SVGMain_MS PGothic Font3', 'MS PGothic', sans-serif; font-size: 16px; white-space: pre; ">&#x000063;&#x000061;&#x000074;</text>
+</g>
+<path d="M62.92741 746.10483L62.92741 2.96198" style="stroke: #989EA1; stroke-width: 1; fill: none; "></path>
+<path d="M62.92741 746.10483L56.52741 746.10483" style="stroke: #989EA1; stroke-width: 1; fill: none; "></path>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 33.52741, 751.10483)">
+<text textLength="19.0" lengthAdjust="spacingAndGlyphs" x="0.0" y="0.5" style="fill: #000000; font-family: 'SVGMain_MS PGothic Font3', 'MS PGothic', sans-serif; font-size: 15px; white-space: pre; ">&#x000030;&#x00002E;&#x000030;</text>
+</g>
+<path d="M62.92741 598.47511L56.52741 598.47511" style="stroke: #989EA1; stroke-width: 1; fill: none; "></path>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 33.52741, 603.47511)">
+<text textLength="19.0" lengthAdjust="spacingAndGlyphs" x="0.0" y="0.5" style="fill: #000000; font-family: 'SVGMain_MS PGothic Font3', 'MS PGothic', sans-serif; font-size: 15px; white-space: pre; ">&#x000030;&#x00002E;&#x000032;</text>
+</g>
+<path d="M62.92741 450.84539L56.52741 450.84539" style="stroke: #989EA1; stroke-width: 1; fill: none; "></path>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 33.52741, 455.84539)">
+<text textLength="19.0" lengthAdjust="spacingAndGlyphs" x="0.0" y="0.5" style="fill: #000000; font-family: 'SVGMain_MS PGothic Font3', 'MS PGothic', sans-serif; font-size: 15px; white-space: pre; ">&#x000030;&#x00002E;&#x000034;</text>
+</g>
+<path d="M62.92741 303.21566L56.52741 303.21566" style="stroke: #989EA1; stroke-width: 1; fill: none; "></path>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 33.52741, 308.21566)">
+<text textLength="19.0" lengthAdjust="spacingAndGlyphs" x="0.0" y="0.5" style="fill: #000000; font-family: 'SVGMain_MS PGothic Font3', 'MS PGothic', sans-serif; font-size: 15px; white-space: pre; ">&#x000030;&#x00002E;&#x000036;</text>
+</g>
+<path d="M62.92741 155.58594L56.52741 155.58594" style="stroke: #989EA1; stroke-width: 1; fill: none; "></path>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 33.52741, 160.58594)">
+<text textLength="19.0" lengthAdjust="spacingAndGlyphs" x="0.0" y="0.5" style="fill: #000000; font-family: 'SVGMain_MS PGothic Font3', 'MS PGothic', sans-serif; font-size: 15px; white-space: pre; ">&#x000030;&#x00002E;&#x000038;</text>
+</g>
+<path d="M62.92741 7.95622L56.52741 7.95622" style="stroke: #989EA1; stroke-width: 1; fill: none; "></path>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 33.52741, 12.95622)">
+<text textLength="19.0" lengthAdjust="spacingAndGlyphs" x="0.0" y="0.5" style="fill: #000000; font-family: 'SVGMain_MS PGothic Font3', 'MS PGothic', sans-serif; font-size: 15px; white-space: pre; ">&#x000031;&#x00002E;&#x000030;</text>
+</g>
+<g transform="matrix(0.0, -1.0, 1.0, 0.0, 14.52741, 385.03341)">
+<text textLength="21.0" lengthAdjust="spacingAndGlyphs" x="0.0" y="0.5" style="fill: #000000; font-family: 'SVGMain_MS PGothic Font3', 'MS PGothic', sans-serif; font-size: 16px; white-space: pre; ">&#x000072;&#x000065;&#x000073;</text>
+</g>
+</g>
+</g>
+</g>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 156.0, 829.0)">
+<defs>
+<clipPath id="SVGMain_ClipPath4">
+<rect x="-1.0" y="-1.0" width="620.0" height="39.0" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVGMain_ClipPath4)">
+<rect x="0.0" y="19.0" width="618.0" height="18.0" style="fill: #FFFFFF; "></rect>
+<rect x="0.0" y="19.0" width="618.0" height="18.0" style="stroke: #D1D1D1; stroke-width: 1; fill: none; "></rect>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 614.0, 20.0)">
+<defs>
+<clipPath id="SVGMain_ClipPath5">
+<rect x="-1.0" y="-1.0" width="5.0" height="18.0" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVGMain_ClipPath5)">
+</g>
+</g>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 556.0, 20.0)">
+<defs>
+<clipPath id="SVGMain_ClipPath6">
+<rect x="-1.0" y="-1.0" width="9.0" height="18.0" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVGMain_ClipPath6)">
+</g>
+</g>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 506.0, 20.0)">
+<defs>
+<clipPath id="SVGMain_ClipPath7">
+<rect x="-1.0" y="-1.0" width="9.0" height="18.0" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVGMain_ClipPath7)">
+</g>
+</g>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 456.0, 20.0)">
+<defs>
+<clipPath id="SVGMain_ClipPath8">
+<rect x="-1.0" y="-1.0" width="9.0" height="18.0" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVGMain_ClipPath8)">
+</g>
+</g>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 406.0, 20.0)">
+<defs>
+<clipPath id="SVGMain_ClipPath9">
+<rect x="-1.0" y="-1.0" width="9.0" height="18.0" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVGMain_ClipPath9)">
+</g>
+</g>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 356.0, 20.0)">
+<defs>
+<clipPath id="SVGMain_ClipPath10">
+<rect x="-1.0" y="-1.0" width="9.0" height="18.0" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVGMain_ClipPath10)">
+</g>
+</g>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 306.0, 20.0)">
+<defs>
+<clipPath id="SVGMain_ClipPath11">
+<rect x="-1.0" y="-1.0" width="9.0" height="18.0" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVGMain_ClipPath11)">
+</g>
+</g>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 256.0, 20.0)">
+<defs>
+<clipPath id="SVGMain_ClipPath12">
+<rect x="-1.0" y="-1.0" width="9.0" height="18.0" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVGMain_ClipPath12)">
+</g>
+</g>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 206.0, 20.0)">
+<defs>
+<clipPath id="SVGMain_ClipPath13">
+<rect x="-1.0" y="-1.0" width="9.0" height="18.0" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVGMain_ClipPath13)">
+</g>
+</g>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 156.0, 20.0)">
+<defs>
+<clipPath id="SVGMain_ClipPath14">
+<rect x="-1.0" y="-1.0" width="9.0" height="18.0" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVGMain_ClipPath14)">
+</g>
+</g>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 82.0, 20.0)">
+<defs>
+<clipPath id="SVGMain_ClipPath15">
+<rect x="-1.0" y="-1.0" width="33.0" height="18.0" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVGMain_ClipPath15)">
+</g>
+</g>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 1.0, 20.0)">
+<defs>
+<clipPath id="SVGMain_ClipPath16">
+<rect x="-1.0" y="-1.0" width="9.0" height="18.0" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVGMain_ClipPath16)">
+</g>
+</g>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 586.0, 20.0)">
+<defs>
+<clipPath id="SVGMain_ClipPath17">
+<rect x="-1.0" y="-1.0" width="29.0" height="17.0" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVGMain_ClipPath17)">
+<text textLength="16.0" lengthAdjust="spacingAndGlyphs" x="6.0" y="13.0" style="fill: #000000; font-family: 'SVGMain_MS PGothic Font3', 'MS PGothic', sans-serif; font-size: 15px; white-space: pre; ">&#x000031;&#x000030;</text>
+</g>
+</g>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 564.0, 23.0)">
+<defs>
+<clipPath id="SVGMain_ClipPath18">
+<rect x="-1.0" y="-1.0" width="23.0" height="11.0" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVGMain_ClipPath18)">
+<rect x="6.0" y="0.0" width="9.0" height="9.0" style="fill: #64B5CD; "></rect>
+<rect x="6.0" y="0.0" width="9.0" height="9.0" style="stroke: #64B5CD; stroke-width: 1; fill: none; stroke-linecap: square; "></rect>
+</g>
+</g>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 536.0, 20.0)">
+<defs>
+<clipPath id="SVGMain_ClipPath19">
+<rect x="-1.0" y="-1.0" width="21.0" height="17.0" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVGMain_ClipPath19)">
+<text textLength="8.0" lengthAdjust="spacingAndGlyphs" x="6.0" y="13.0" style="fill: #000000; font-family: 'SVGMain_MS PGothic Font3', 'MS PGothic', sans-serif; font-size: 15px; white-space: pre; ">&#x000039;</text>
+</g>
+</g>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 514.0, 23.0)">
+<defs>
+<clipPath id="SVGMain_ClipPath20">
+<rect x="-1.0" y="-1.0" width="23.0" height="11.0" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVGMain_ClipPath20)">
+<rect x="6.0" y="0.0" width="9.0" height="9.0" style="fill: #CCB974; "></rect>
+<rect x="6.0" y="0.0" width="9.0" height="9.0" style="stroke: #CCB974; stroke-width: 1; fill: none; stroke-linecap: square; "></rect>
+</g>
+</g>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 486.0, 20.0)">
+<defs>
+<clipPath id="SVGMain_ClipPath21">
+<rect x="-1.0" y="-1.0" width="21.0" height="17.0" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVGMain_ClipPath21)">
+<text textLength="8.0" lengthAdjust="spacingAndGlyphs" x="6.0" y="13.0" style="fill: #000000; font-family: 'SVGMain_MS PGothic Font3', 'MS PGothic', sans-serif; font-size: 15px; white-space: pre; ">&#x000038;</text>
+</g>
+</g>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 464.0, 23.0)">
+<defs>
+<clipPath id="SVGMain_ClipPath22">
+<rect x="-1.0" y="-1.0" width="23.0" height="11.0" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVGMain_ClipPath22)">
+<rect x="6.0" y="0.0" width="9.0" height="9.0" style="fill: #8C8C8C; "></rect>
+<rect x="6.0" y="0.0" width="9.0" height="9.0" style="stroke: #8C8C8C; stroke-width: 1; fill: none; stroke-linecap: square; "></rect>
+</g>
+</g>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 436.0, 20.0)">
+<defs>
+<clipPath id="SVGMain_ClipPath23">
+<rect x="-1.0" y="-1.0" width="21.0" height="17.0" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVGMain_ClipPath23)">
+<text textLength="8.0" lengthAdjust="spacingAndGlyphs" x="6.0" y="13.0" style="fill: #000000; font-family: 'SVGMain_MS PGothic Font3', 'MS PGothic', sans-serif; font-size: 15px; white-space: pre; ">&#x000037;</text>
+</g>
+</g>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 414.0, 23.0)">
+<defs>
+<clipPath id="SVGMain_ClipPath24">
+<rect x="-1.0" y="-1.0" width="23.0" height="11.0" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVGMain_ClipPath24)">
+<rect x="6.0" y="0.0" width="9.0" height="9.0" style="fill: #DA8BC3; "></rect>
+<rect x="6.0" y="0.0" width="9.0" height="9.0" style="stroke: #DA8BC3; stroke-width: 1; fill: none; stroke-linecap: square; "></rect>
+</g>
+</g>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 386.0, 20.0)">
+<defs>
+<clipPath id="SVGMain_ClipPath25">
+<rect x="-1.0" y="-1.0" width="21.0" height="17.0" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVGMain_ClipPath25)">
+<text textLength="8.0" lengthAdjust="spacingAndGlyphs" x="6.0" y="13.0" style="fill: #000000; font-family: 'SVGMain_MS PGothic Font3', 'MS PGothic', sans-serif; font-size: 15px; white-space: pre; ">&#x000036;</text>
+</g>
+</g>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 364.0, 23.0)">
+<defs>
+<clipPath id="SVGMain_ClipPath26">
+<rect x="-1.0" y="-1.0" width="23.0" height="11.0" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVGMain_ClipPath26)">
+<rect x="6.0" y="0.0" width="9.0" height="9.0" style="fill: #937860; "></rect>
+<rect x="6.0" y="0.0" width="9.0" height="9.0" style="stroke: #937860; stroke-width: 1; fill: none; stroke-linecap: square; "></rect>
+</g>
+</g>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 336.0, 20.0)">
+<defs>
+<clipPath id="SVGMain_ClipPath27">
+<rect x="-1.0" y="-1.0" width="21.0" height="17.0" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVGMain_ClipPath27)">
+<text textLength="8.0" lengthAdjust="spacingAndGlyphs" x="6.0" y="13.0" style="fill: #000000; font-family: 'SVGMain_MS PGothic Font3', 'MS PGothic', sans-serif; font-size: 15px; white-space: pre; ">&#x000035;</text>
+</g>
+</g>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 314.0, 23.0)">
+<defs>
+<clipPath id="SVGMain_ClipPath28">
+<rect x="-1.0" y="-1.0" width="23.0" height="11.0" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVGMain_ClipPath28)">
+<rect x="6.0" y="0.0" width="9.0" height="9.0" style="fill: #8172B3; "></rect>
+<rect x="6.0" y="0.0" width="9.0" height="9.0" style="stroke: #8172B3; stroke-width: 1; fill: none; stroke-linecap: square; "></rect>
+</g>
+</g>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 286.0, 20.0)">
+<defs>
+<clipPath id="SVGMain_ClipPath29">
+<rect x="-1.0" y="-1.0" width="21.0" height="17.0" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVGMain_ClipPath29)">
+<text textLength="8.0" lengthAdjust="spacingAndGlyphs" x="6.0" y="13.0" style="fill: #000000; font-family: 'SVGMain_MS PGothic Font3', 'MS PGothic', sans-serif; font-size: 15px; white-space: pre; ">&#x000034;</text>
+</g>
+</g>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 264.0, 23.0)">
+<defs>
+<clipPath id="SVGMain_ClipPath30">
+<rect x="-1.0" y="-1.0" width="23.0" height="11.0" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVGMain_ClipPath30)">
+<rect x="6.0" y="0.0" width="9.0" height="9.0" style="fill: #C44E52; "></rect>
+<rect x="6.0" y="0.0" width="9.0" height="9.0" style="stroke: #C44E52; stroke-width: 1; fill: none; stroke-linecap: square; "></rect>
+</g>
+</g>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 236.0, 20.0)">
+<defs>
+<clipPath id="SVGMain_ClipPath31">
+<rect x="-1.0" y="-1.0" width="21.0" height="17.0" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVGMain_ClipPath31)">
+<text textLength="8.0" lengthAdjust="spacingAndGlyphs" x="6.0" y="13.0" style="fill: #000000; font-family: 'SVGMain_MS PGothic Font3', 'MS PGothic', sans-serif; font-size: 15px; white-space: pre; ">&#x000033;</text>
+</g>
+</g>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 214.0, 23.0)">
+<defs>
+<clipPath id="SVGMain_ClipPath32">
+<rect x="-1.0" y="-1.0" width="23.0" height="11.0" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVGMain_ClipPath32)">
+<rect x="6.0" y="0.0" width="9.0" height="9.0" style="fill: #55A868; "></rect>
+<rect x="6.0" y="0.0" width="9.0" height="9.0" style="stroke: #55A868; stroke-width: 1; fill: none; stroke-linecap: square; "></rect>
+</g>
+</g>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 186.0, 20.0)">
+<defs>
+<clipPath id="SVGMain_ClipPath33">
+<rect x="-1.0" y="-1.0" width="21.0" height="17.0" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVGMain_ClipPath33)">
+<text textLength="8.0" lengthAdjust="spacingAndGlyphs" x="6.0" y="13.0" style="fill: #000000; font-family: 'SVGMain_MS PGothic Font3', 'MS PGothic', sans-serif; font-size: 15px; white-space: pre; ">&#x000032;</text>
+</g>
+</g>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 164.0, 23.0)">
+<defs>
+<clipPath id="SVGMain_ClipPath34">
+<rect x="-1.0" y="-1.0" width="23.0" height="11.0" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVGMain_ClipPath34)">
+<rect x="6.0" y="0.0" width="9.0" height="9.0" style="fill: #DD8452; "></rect>
+<rect x="6.0" y="0.0" width="9.0" height="9.0" style="stroke: #DD8452; stroke-width: 1; fill: none; stroke-linecap: square; "></rect>
+</g>
+</g>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 136.0, 20.0)">
+<defs>
+<clipPath id="SVGMain_ClipPath35">
+<rect x="-1.0" y="-1.0" width="21.0" height="17.0" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVGMain_ClipPath35)">
+<text textLength="8.0" lengthAdjust="spacingAndGlyphs" x="6.0" y="13.0" style="fill: #000000; font-family: 'SVGMain_MS PGothic Font3', 'MS PGothic', sans-serif; font-size: 15px; white-space: pre; ">&#x000031;</text>
+</g>
+</g>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 114.0, 23.0)">
+<defs>
+<clipPath id="SVGMain_ClipPath36">
+<rect x="-1.0" y="-1.0" width="23.0" height="11.0" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVGMain_ClipPath36)">
+<rect x="6.0" y="0.0" width="9.0" height="9.0" style="fill: #4C72B0; "></rect>
+<rect x="6.0" y="0.0" width="9.0" height="9.0" style="stroke: #4C72B0; stroke-width: 1; fill: none; stroke-linecap: square; "></rect>
+</g>
+</g>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 9.0, 20.0)">
+<defs>
+<clipPath id="SVGMain_ClipPath37">
+<rect x="-1.0" y="-1.0" width="74.0" height="18.0" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVGMain_ClipPath37)">
+<text textLength="73.0" lengthAdjust="spacingAndGlyphs" x="0.0" y="14.0" style="fill: #000000; font-family: 'SVGMain_MS PGothic Font3', 'MS PGothic', sans-serif; font-size: 16px; white-space: pre; ">&#x000047;&#x000072;&#x000061;&#x000070;&#x000068;&#x000044;&#x000061;&#x000074;&#x000061;</text>
+</g>
+</g>
+</g>
+</g>
+<defs>
+<clipPath id="SVGMain_ClipPath38">
+<rect x="-1.0" y="-1.0" width="868.0" height="31.0" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVGMain_ClipPath38)">
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 409.0, 0.0)">
+<defs>
+<clipPath id="SVGMain_ClipPath39">
+<rect x="-1.0" y="-1.0" width="113.0" height="21.0" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVGMain_ClipPath39)">
+<text textLength="100.0" lengthAdjust="spacingAndGlyphs" x="6.0" y="16.32812" style="fill: #000000; font-family: 'SVGMain_MS PGothic Font6', 'MS PGothic', sans-serif; font-size: 19px; white-space: pre; ">&#x000070;&#x000061;&#x00006C;&#x000065;&#x000074;&#x000074;&#x000065;&#x00003D;&#x000053;&#x00004E;&#x000053;</text>
+</g>
+</g>
+</g>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 30.0)">
+</g>
+<defs>
+<clipPath id="SVGMain_ClipPath40">
+<rect x="62.0" y="2.0" width="805.0" height="745.0" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVGMain_ClipPath40)">
+</g>
+<defs>
+<clipPath id="SVGMain_ClipPath41">
+<rect x="-1.0" y="-1.0" width="868.0" height="868.0" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVGMain_ClipPath41)">
+</g>
+</g>
+</g>
+</g>
+<rect x="0" y="0" width="907" height="907" fill="#FFFFFF" fill-opacity="0" aria-hidden="true">
+<desc>SGPlot プロシジャ</desc>
+</rect>
+</g>
+<g id="SVGMain_singleTip1" visibility="hidden" pointer-events="none">
+   <rect id="SVGMain_singleBox1" x="0" y="0" width="88" height="20" rx="2" ry="2" fill="white" stroke="black" stroke-width="1.51166" opacity="0.8"></rect>
+   <text id="SVGMain_singleText1" x="5" y="15" font-family="'MS PGothic', sans-serif" font-size="12"><tspan id="SVGMain_tiptspan1" x="7" class="tiptext"><![CDATA[ ]]></tspan></text>
+</g>
+<defs>
+<style type="text/css"><![CDATA[
+    tspan.tiptext { white-space: pre }
+]]></style>
+</defs>
+<defs>
+<style type="text/css"><![CDATA[
+  @font-face {
+      font-family: "SVGMain_MS PGothic Font3";
+      src: url("#SVGMain_Font3") format("svg")
+      }
+]]></style>
+<font id="SVGMain_Font3" horiz-adv-x="3072" >
+   <font-face      font-family="SVGMain_MS PGothic Font3"
+    units-per-em="2048" ascent="220" descent="-36" >
+      <font-face-src>
+         <font-face-name name="SVGMain_MS PGothic Font3"></font-face-name>
+      </font-face-src>
+   </font-face>
+<missing-glyph><path d="M0 0v4512h4608v-4512h-4608" fill="none"></path>
+</missing-glyph>
+<glyph unicode="&#40;" horiz-adv-x="637" 
+d="M472 -160Q72 216 72 712 Q72 1208 472 1584 L560 1496Q192 1152 192 712 Q192 272 560 -72 Z" ></glyph>
+<glyph unicode="&#47;" horiz-adv-x="1020" 
+d="M48 -16L896 1496L976 1448L128 -64L48 -16Z" ></glyph>
+<glyph unicode="&#104;" horiz-adv-x="1020" 
+d="M110 1392L280 1392L280 760Q416 936 576 936 Q744 936 824 856 Q904 776 904 664 L904 24L734 
+24L734 624Q734 712 688 768 Q648 808 576 808 Q488 808 416 736 Q328 648 280 488 L280 24L
+110 24L110 1392Z" ></glyph>
+<glyph unicode="&#65;" horiz-adv-x="1275" 
+d="M24 24L568 1408L728 1408L1272 24L1080 24L912 422L384 422L216 24L24 24ZM648 1144L440 
+592L856 592L648 1144Z" ></glyph>
+<glyph unicode="&#103;" horiz-adv-x="935" 
+d="M136 624Q136 760 224 848 Q312 936 448 936 Q576 936 672 856 Q752 936 864 936 L936 936L936 
+784Q840 824 720 792 Q776 720 776 624 Q776 480 688 392 Q608 312 456 312 Q376 312 288 352 Q
+248 320 248 288 Q248 264 264 248 Q304 208 448 200 Q576 192 720 184 Q800 168 840 128 Q904 
+64 904 -24 Q904 -120 840 -184 Q752 -272 456 -272 Q208 -272 120 -184 Q64 -128 64 -48 Q64 8 
+104 48 Q136 80 200 112 Q176 128 144 160 Q104 200 104 264 Q104 344 224 416 Q136 504 136 
+624 ZM448 800Q392 800 352 760 Q296 704 296 624 Q296 544 344 496 Q392 448 456 448 Q528 448 
+568 488 Q616 536 616 624 Q616 704 560 760 Q520 800 448 800 ZM616 48Q424 56 320 72 Q264 
+56 240 32 Q208 0 208 -40 Q208 -80 240 -112 Q288 -160 448 -160 Q664 -160 720 -104 Q752 -72 
+752 -40 Q752 -8 728 16 Q696 48 616 48 Z" ></glyph>
+<glyph unicode="&#116;" horiz-adv-x="722" 
+d="M182 1232L352 1232L352 920L624 920L624 792L352 792L352 272Q352 224 392 184 Q424 152 496 
+152 Q608 152 696 208 L696 56Q608 8 504 8 Q344 8 272 80 Q182 160 182 256 L182 792L
+0 792L0 920L182 920L182 1232Z" ></glyph>
+<glyph unicode="&#101;" horiz-adv-x="1020" 
+d="M96 472Q96 688 232 824 Q344 936 520 936 Q688 936 808 816 Q920 704 920 472 L272 472Q272 
+304 352 224 Q424 152 536 152 Q648 152 696 200 Q752 256 752 328 L928 328Q896 184 824 112 Q
+720 8 536 8 Q344 8 224 128 Q96 256 96 472 ZM512 800Q416 800 352 736 Q296 680 280 
+600 L707 600Q707 680 672 744 Q616 800 512 800 Z" ></glyph>
+<glyph unicode="&#115;" horiz-adv-x="935" 
+d="M120 664Q120 768 192 840 Q288 936 464 936 Q656 936 744 848 Q824 768 824 672 L664 672Q656 
+728 632 752 Q584 800 456 800 Q376 800 328 752 Q288 712 288 664 Q288 632 312 608 Q344 576 
+512 536 Q616 512 688 488 Q752 464 784 432 Q848 368 848 280 Q848 184 768 104 Q672 8 472 
+8 Q272 8 176 104 Q96 184 96 304 L256 304Q264 232 296 200 Q352 144 464 144 Q600 144 
+648 192 Q680 224 680 272 Q680 304 640 344 Q608 376 536 392 Q392 424 320 448 Q232 472 192 
+512 Q120 584 120 664 Z" ></glyph>
+<glyph unicode="&#99;" horiz-adv-x="1020" 
+d="M96 464Q96 680 224 808 Q344 928 520 928 Q712 928 808 832 Q896 744 912 616 L736 616Q728 
+680 672 736 Q624 784 528 784 Q432 784 368 720 Q272 624 272 456 Q272 296 360 208 Q424 144 
+520 144 Q632 144 696 208 Q760 272 760 376 L936 376Q928 208 824 104 Q720 0 520 0 Q352 
+0 240 112 Q96 256 96 464 Z" ></glyph>
+<glyph unicode="&#97;" horiz-adv-x="977" 
+d="M112 656Q136 768 216 848 Q304 936 472 936 Q672 936 760 848 Q840 768 840 664 L840 160Q840 
+72 904 24 L712 24Q680 56 680 128 Q560 8 376 8 Q224 8 144 88 Q72 160 72 256 Q
+72 368 144 440 Q224 520 368 544 Q464 560 536 584 Q640 608 680 632 Q680 696 632 744 Q584 
+792 496 792 Q384 792 336 744 Q304 712 288 656 L112 656L112 656ZM670 480Q627 464 592 456 Q
+456 424 384 408 Q320 392 288 360 Q248 320 248 272 Q248 216 288 176 Q312 152 392 152 Q528 
+152 616 240 Q663 296 670 320 Z" ></glyph>
+<glyph unicode="&#48;" horiz-adv-x="1020" 
+d="M72 792Q72 1144 232 1304 Q344 1416 512 1416 Q680 1416 792 1304 Q952 1144 952 792 L952 632Q952 
+288 792 128 Q680 16 512 16 Q344 16 232 128 Q72 288 72 632 ZM512 1264Q432 1264 368 1200 Q
+264 1096 264 808 L264 624Q264 344 376 232 Q440 168 512 168 Q592 168 656 232 Q760 336 760 
+624 L760 808Q760 1096 656 1200 Q592 1264 512 1264 Z" ></glyph>
+<glyph unicode="&#46;" horiz-adv-x="425" 
+d="M91 200L304 200L304 30L91 30L91 200Z" ></glyph>
+<glyph unicode="&#50;" horiz-adv-x="1020" 
+d="M136 928Q136 1176 264 1304 Q368 1408 512 1408 Q688 1408 792 1304 Q896 1200 896 1048 Q896 856 776 
+712 Q664 576 544 448 Q480 376 416 304 Q360 240 320 176 L920 176L920 6L104 6L104 160Q
+120 240 240 384 Q440 600 568 744 Q704 888 704 1048 Q704 1144 640 1208 Q592 1256 520 1256 Q456 
+1256 408 1208 Q320 1120 320 928 Z" ></glyph>
+<glyph unicode="&#52;" horiz-adv-x="1020" 
+d="M608 1408L792 1408L792 528L960 528L960 358L792 358L792 24L579 24L579 358L72 358L72 
+536L608 1408ZM579 1112L248 528L579 528L579 1112Z" ></glyph>
+<glyph unicode="&#54;" horiz-adv-x="1020" 
+d="M112 680Q112 1120 304 1312 Q400 1408 544 1408 Q696 1408 792 1312 Q896 1208 896 1048 L712 1048Q712 
+1160 664 1208 Q616 1256 544 1256 Q472 1256 424 1208 Q296 1080 296 760 Q328 816 376 864 Q448 936 
+552 936 Q696 936 792 840 Q912 720 912 480 Q912 232 784 104 Q688 8 520 8 Q376 8 256 
+128 Q112 272 112 680 ZM536 792Q456 792 400 736 Q312 648 312 496 Q312 304 408 208 Q464 152 
+528 152 Q600 152 648 200 Q720 272 720 480 Q720 664 648 736 Q592 792 536 792 Z" ></glyph>
+<glyph unicode="&#56;" horiz-adv-x="1020" 
+d="M136 1024Q136 1200 248 1312 Q344 1408 512 1408 Q680 1408 784 1304 Q888 1200 888 1024 Q888 888 792 
+792 Q752 752 696 736 L696 720Q768 704 832 640 Q928 544 928 384 Q928 224 816 112 Q712 8 
+512 8 Q312 8 208 112 Q96 224 96 384 Q96 544 192 640 Q256 704 328 720 L328 736Q280 
+752 224 808 Q136 896 136 1024 ZM512 1264Q432 1264 376 1208 Q312 1144 312 1024 Q312 912 376 848 Q
+432 792 504 792 Q600 792 648 840 Q712 904 712 1024 Q712 1144 648 1208 Q592 1264 512 1264 ZM512 
+656Q408 656 344 592 Q280 528 280 408 Q280 288 352 216 Q416 152 512 152 Q608 152 672 216 Q
+744 288 744 408 Q744 528 672 600 Q616 656 512 656 Z" ></glyph>
+<glyph unicode="&#49;" horiz-adv-x="1020" 
+d="M464 1256Q536 1328 544 1416 L640 1416L640 32L427 32L427 1107L216 1107L216 1192L288 1192Q400 
+1192 464 1256 Z" ></glyph>
+<glyph unicode="&#114;" horiz-adv-x="722" 
+d="M360 808Q488 936 704 936 L704 760Q672 768 616 768 Q496 768 392 664 Q304 576 272 480 L272 
+24L102 24L102 920L272 920L272 696Q312 760 360 808 Z" ></glyph>
+<glyph unicode="&#57;" horiz-adv-x="1020" 
+d="M112 936Q112 1176 256 1320 Q344 1408 496 1408 Q640 1408 744 1304 Q912 1136 912 720 Q912 296 736 
+120 Q624 8 472 8 Q320 8 232 96 Q128 200 128 368 L312 368Q304 264 376 192 Q408 160 
+472 160 Q544 160 600 216 Q728 344 728 688 Q696 640 656 600 Q568 512 440 512 Q320 512 240 
+592 Q112 720 112 936 ZM496 1264Q432 1264 384 1216 Q304 1136 304 936 Q304 776 368 712 Q424 656 
+480 656 Q576 656 624 704 Q712 792 712 920 Q712 1120 624 1208 Q568 1264 496 1264 Z" ></glyph>
+<glyph unicode="&#55;" horiz-adv-x="1020" 
+d="M136 1392L896 1392L896 1216L512 24L336 24L720 1222L136 1222L136 1392Z" ></glyph>
+<glyph unicode="&#53;" horiz-adv-x="1020" 
+d="M200 1392L888 1392L888 1222L352 1222L352 1216Q344 1064 328 920 Q320 896 320 872 Q424 968 544 
+968 Q704 968 808 864 Q920 752 920 536 Q920 264 776 120 Q664 8 496 8 Q336 8 232 112 Q
+128 216 104 424 L288 424Q304 272 368 208 Q416 160 488 160 Q584 160 640 216 Q728 304 728 
+512 Q728 712 656 784 Q608 832 544 832 Q448 832 376 760 Q328 712 312 688 L152 688Q160 720 
+160 744 L200 1360L200 1392Z" ></glyph>
+<glyph unicode="&#51;" horiz-adv-x="1020" 
+d="M136 1000Q136 1184 256 1304 Q360 1408 512 1408 Q688 1408 792 1304 Q888 1208 888 1048 Q888 888 808 
+808 Q752 752 688 744 Q768 720 824 664 Q920 568 920 408 Q920 232 808 120 Q696 8 496 8 Q
+328 8 216 120 Q75 232 75 384 L75 448L288 448L288 392Q288 288 360 216 Q416 160 496 
+160 Q600 160 664 224 Q728 288 728 424 Q728 536 664 600 Q600 664 520 664 L456 664L456 800L
+504 800Q576 800 640 864 Q704 928 704 1048 Q704 1152 640 1216 Q592 1264 512 1264 Q440 1264 384 
+1208 Q320 1144 312 1000 Z" ></glyph>
+<glyph unicode="&#71;" horiz-adv-x="1402" 
+d="M128 704Q128 1056 312 1240 Q480 1408 720 1408 Q960 1408 1112 1256 Q1240 1128 1248 944 L1056 944Q1048 
+1080 960 1168 Q872 1256 720 1256 Q568 1256 464 1152 Q320 1008 320 704 Q320 416 472 264 Q576 160 
+760 160 Q896 160 984 248 Q1048 336 1059 432 L1059 542L856 542L856 712L1272 712L1272 8L1136 
+8L1088 144Q952 8 744 8 Q488 8 328 168 Q128 368 128 704 Z" ></glyph>
+<glyph unicode="&#112;" horiz-adv-x="1020" 
+d="M264 -272L94 -272L94 920L264 920L264 816Q360 936 512 936 Q680 936 784 832 Q912 704 912 
+472 Q912 232 784 104 Q680 0 512 0 Q344 0 264 128 ZM512 792Q416 792 344 720 Q264 640 
+264 528 L264 416Q264 304 352 216 Q424 144 512 144 Q592 144 648 200 Q736 288 736 472 Q736 
+648 656 728 Q592 792 512 792 Z" ></glyph>
+<glyph unicode="&#68;" horiz-adv-x="1317" 
+d="M107 1392L616 1392Q856 1392 1024 1224 Q1200 1048 1200 696 Q1200 360 1016 176 Q864 6 616 6 L107 
+6L107 1392ZM320 1222L320 176L608 176Q760 176 856 272 Q1008 424 1008 696 Q1008 984 864 1128 Q
+752 1222 608 1222 Z" ></glyph>
+</font>
+<style type="text/css"><![CDATA[
+  @font-face {
+      font-family: "SVGMain_MS PGothic Font6";
+      src: url("#SVGMain_Font6") format("svg")
+      }
+]]></style>
+<font id="SVGMain_Font6" horiz-adv-x="3072" >
+   <font-face      font-family="SVGMain_MS PGothic Font6"
+    units-per-em="2048" ascent="220" descent="-36" >
+      <font-face-src>
+         <font-face-name name="SVGMain_MS PGothic Font6"></font-face-name>
+      </font-face-src>
+   </font-face>
+<missing-glyph><path d="M0 0v4512h4608v-4512h-4608" fill="none"></path>
+</missing-glyph>
+<glyph unicode="&#40;" horiz-adv-x="637" 
+d="M508 -174Q72 236 72 748 Q72 1259 508 1670 L648 1531Q264 1172 264 748 Q264 323 648 -35 Z" ></glyph>
+<glyph unicode="&#47;" horiz-adv-x="1020" 
+d="M35 7L918 1582L1060 1496L177 -78L35 7Z" ></glyph>
+<glyph unicode="&#104;" horiz-adv-x="1020" 
+d="M110 1464L352 1464L352 901Q434 1008 612 1008 Q794 1008 885 917 Q976 826 976 700 L976 24L734 
+24L734 660Q734 735 697 780 Q669 808 612 808 Q538 808 477 746 Q396 664 352 518 L352 24L
+110 24L110 1464Z" ></glyph>
+<glyph unicode="&#65;" horiz-adv-x="1275" 
+d="M7 24L579 1480L788 1480L1360 24L1092 24L924 422L444 422L276 24L7 24ZM684 1078L528 
+664L840 664L684 1078Z" ></glyph>
+<glyph unicode="&#103;" horiz-adv-x="935" 
+d="M136 660Q136 810 234 909 Q333 1008 484 1008 Q625 1008 706 940 Q773 1008 900 1008 L1008 1008L1008 
+766Q873 822 818 807 Q848 768 848 660 Q848 501 749 402 Q658 312 492 312 Q404 312 329 346 Q
+320 338 320 324 Q320 314 325 309 Q356 279 486 272 Q614 264 760 256 Q854 237 901 189 Q976 
+114 976 12 Q976 -98 901 -173 Q802 -272 492 -272 Q229 -272 130 -173 Q64 -106 64 -12 Q64 58 
+114 109 Q150 145 202 150 Q189 136 154 170 Q104 221 104 300 Q104 400 202 459 Q136 525 136 
+660 ZM484 800Q442 800 413 770 Q368 725 368 660 Q368 594 405 557 Q442 520 492 520 Q549 520 
+578 549 Q616 586 616 660 Q616 725 570 770 Q541 800 484 800 ZM651 48Q456 56 358 71 Q318 
+60 301 42 Q280 21 280 -4 Q280 -29 301 -50 Q338 -88 484 -88 Q685 -88 730 -42 Q752 -21 
+752 -4 Q752 13 738 26 Q717 48 651 48 Z" ></glyph>
+<glyph unicode="&#112;" horiz-adv-x="1020" 
+d="M336 -272L94 -272L94 992L336 992L336 954Q378 1008 548 1008 Q730 1008 845 893 Q984 754 984 
+508 Q984 253 845 114 Q730 0 548 0 Q360 0 336 38 ZM548 792Q466 792 405 730 Q336 661 
+336 564 L336 452Q336 354 413 277 Q474 216 548 216 Q613 216 658 261 Q736 338 736 508 Q736 
+669 666 738 Q613 792 548 792 Z" ></glyph>
+<glyph unicode="&#97;" horiz-adv-x="977" 
+d="M103 656Q139 822 226 909 Q325 1008 508 1008 Q722 1008 821 909 Q912 818 912 700 L912 196Q912 
+126 1048 24 L733 24Q680 77 686 92 Q610 8 412 8 Q245 8 154 98 Q72 181 72 292 Q
+72 418 154 501 Q242 589 398 615 Q491 631 562 654 Q662 678 680 688 Q680 717 642 754 Q605 
+792 532 792 Q434 792 397 754 Q372 729 351 656 L103 656L103 656ZM674 470Q674 465 636 456 Q
+500 424 428 408 Q374 395 349 370 Q320 341 320 308 Q320 266 349 237 Q362 224 428 224 Q549 
+224 625 300 Q666 349 670 360 Z" ></glyph>
+<glyph unicode="&#108;" horiz-adv-x="425" 
+d="M126 1464L368 1464L368 24L126 24L126 1464Z" ></glyph>
+<glyph unicode="&#101;" horiz-adv-x="1020" 
+d="M96 508Q96 738 242 885 Q365 1008 556 1008 Q738 1008 869 877 Q992 754 992 472 L344 472Q344 
+354 413 285 Q474 224 572 224 Q669 224 706 261 Q752 306 752 400 L1008 400Q964 202 885 122 Q
+770 8 572 8 Q365 8 234 138 Q96 277 96 508 ZM548 800Q466 800 413 746 Q365 698 360 
+672 L707 672Q707 706 678 758 Q637 800 548 800 Z" ></glyph>
+<glyph unicode="&#116;" horiz-adv-x="722" 
+d="M182 1304L424 1304L424 992L696 992L696 792L424 792L424 308Q424 274 453 245 Q474 224 532 
+224 Q633 224 768 309 L768 70Q653 8 540 8 Q365 8 283 90 Q182 180 182 292 L182 792L
+0 792L0 992L182 992L182 1304Z" ></glyph>
+<glyph unicode="&#61;" horiz-adv-x="1020" 
+d="M56 1112L1040 1112L1040 912L56 912L56 1112ZM56 624L1040 624L1040 424L56 424L56 624Z" ></glyph>
+<glyph unicode="&#83;" horiz-adv-x="1232" 
+d="M152 1068Q152 1234 274 1357 Q397 1480 644 1480 Q906 1480 1045 1341 Q1168 1218 1168 1016 L912 1016Q912 
+1133 858 1186 Q797 1248 660 1248 Q506 1248 453 1194 Q408 1149 408 1092 Q408 1034 429 1013 Q464 978 
+561 941 Q746 860 978 757 Q1048 730 1109 669 Q1208 570 1208 436 Q1208 261 1085 138 Q954 8 668 
+8 Q389 8 234 162 Q120 277 120 528 L376 528Q376 362 429 309 Q506 232 676 232 Q829 232 
+898 301 Q952 354 952 404 Q952 461 914 498 Q879 534 796 571 Q716 611 589 667 Q445 731 358 
+770 Q288 797 234 850 Q152 933 152 1068 Z" ></glyph>
+<glyph unicode="&#78;" horiz-adv-x="1317" 
+d="M115 1464L400 1464L955 484L955 1464L1240 1464L1240 24L983 24L400 1008L400 24L115 24L115 
+1464Z" ></glyph>
+</font>
+</defs>
+<script type="text/ecmascript"><![CDATA[
+var SVGMain_SVGRoot = null;
+var SVGMain_viewBox = null;
+var SVGMain_TrueCoords = null;
+var SVGMain_singleTip = null;
+var SVGMain_singleBox = null;
+var SVGMain_singleText = null;
+var SVGMain_tiptspan = null;
+var SVGMain_attrScale = 1;
+var SVGMain_rightEdge = null;
+var SVGMain_SVGHeight = null;
+var SVGMain_SVGWidth = null;
+function SVGMain_Init(anchor) {
+   SVGMain_SVGRoot = document.getElementById(anchor);
+   SVGMain_TrueCoords = SVGMain_SVGRoot.createSVGPoint();
+   SVGMain_singleTip = document.getElementById(anchor + '_singleTip1');
+   SVGMain_singleBox = document.getElementById(anchor + '_singleBox1');
+   SVGMain_singleText = document.getElementById(anchor + '_singleText1');
+   SVGMain_tiptspan = document.getElementById(anchor + '_tiptspan1');
+   SVGMain_tiptspan.firstChild.nodeValue = null;
+   SVGMain_SVGRoot.addEventListener('mousemove', SVGMain_ShowTooltip, false);
+   SVGMain_SVGRoot.addEventListener('mouseout', SVGMain_HideTooltip, false);
+   SVGMain_SVGHeight = SVGMain_SVGRoot.getAttributeNS(null, "height");
+   SVGMain_SVGWidth = SVGMain_SVGRoot.getAttributeNS(null, "width");
+   if (!isNaN(parseFloat(SVGMain_SVGHeight)) && !isNaN(parseFloat(SVGMain_SVGWidth)))
+      SVGMain_GetHW();
+   SVGMain_viewBox  = new ViewBox(SVGMain_SVGRoot);
+}
+function SVGMain_GetHW()
+{
+    if (SVGMain_SVGWidth != null && SVGMain_SVGWidth != "") {
+       if (SVGMain_SVGWidth.match(/%/)) {
+          var factor = parseFloat(SVGMain_SVGWidth.replace(/%/,""))/100;
+          SVGMain_SVGWidth = window.innerWidth * factor;
+       }
+       else if (SVGMain_SVGWidth.match(/in/))
+          SVGMain_SVGWidth = parseFloat(SVGMain_SVGWidth.replace(/in/,""))*96;
+       else if (SVGMain_SVGWidth.match(/cm/))
+          SVGMain_SVGWidth = parseFloat(SVGMain_SVGWidth.replace(/in/,""))*96/2.54;
+       else
+           SVGMain_SVGWidth = parseFloat(SVGMain_SVGWidth);
+    }
+    if (SVGMain_SVGHeight != null && SVGMain_SVGHeight != "") {
+       if (SVGMain_SVGHeight.match(/%/)) {
+          var factor = parseFloat(SVGMain_SVGHeight.replace(/%/,""))/100;
+          SVGMain_SVGHeight = window.innerHeight * factor;
+       }
+       else if (SVGMain_SVGHeight.match(/in/))
+          SVGMain_SVGHeight = parseFloat(SVGMain_SVGHeight.replace(/in/,""))*96;
+       else if (SVGMain_SVGHeight.match(/cm/))
+          SVGMain_SVGHeight = parseFloat(SVGMain_SVGHeight.replace(/in/,""))*96/2.54;
+       else
+           SVGMain_SVGHeight = parseFloat(SVGMain_SVGHeight);
+    }
+}
+function SVGMain_GetScaleFactors(evt)
+{
+   var zoomFactor = 1;
+   windowWidth  = (top.innerWidth==undefined)  ? window.innerWidth  : top.innerWidth;
+   windowHeight = (top.innerHeight==undefined) ? window.innerHeight : top.innerHeight;
+   SVGMain_rightEdge = (SVGMain_SVGWidth) ? SVGMain_SVGWidth - window.pageXOffset : windowWidth;
+   if (parseFloat(SVGMain_SVGWidth) > 0 || parseFloat(SVGMain_SVGHeight) > 0)
+      var tipScale = 0.99228;
+   else {
+      var tipXScale  = (screen.width/windowWidth) / SVGMain_SVGRoot.currentScale;
+      var tipYScale  = (screen.height/windowHeight) / SVGMain_SVGRoot.currentScale;
+      var tipScale   = (tipXScale + tipYScale)/2.0;
+   }
+   SVGMain_attrScale = tipScale;
+   if (navigator.appName == 'Adobe SVG Viewer') {
+      if (screen.deviceXDPI != null && screen.logicalXDPI != null)
+         zoomFactor = screen.deviceXDPI/screen.logicalXDPI;
+      SVGMain_attrScale = zoomFactor*tipScale;
+   }
+   else if (navigator.userAgent != null && navigator.userAgent != '') {
+      var ua = navigator.userAgent.toLowerCase();
+      if (ua.indexOf("msie") != -1 || ua.indexOf("trident") != -1) {
+         zoomFactor = screen.deviceXDPI/screen.logicalXDPI;
+         SVGMain_attrScale = tipScale/zoomFactor;
+         SVGMain_rightEdge /= zoomFactor;
+      }
+      else if (ua.indexOf("ipad") != -1) {
+         zoomFactor = SVGMain_SVGRoot.clientWidth / window.innerWidth;
+         SVGMain_attrScale = 1.5 / zoomFactor;
+         SVGMain_rightEdge /= zoomFactor;
+      }
+      else if (ua.indexOf("opera") != -1)
+         SVGMain_attrScale = tipScale;
+      else if (ua.indexOf("firefox") != -1)
+         SVGMain_attrScale = tipScale;
+      else {
+         if (SVGMain_SVGWidth > 0 || SVGMain_SVGHeight > 0)
+            zoomFactor = 1;
+         else
+            zoomFactor = parseInt(document.defaultView.getComputedStyle(SVGMain_SVGRoot, null).width,10)/
+                                  SVGMain_SVGRoot.clientWidth;
+         SVGMain_attrScale = tipScale/zoomFactor;
+         SVGMain_rightEdge *= zoomFactor;
+      }
+   }
+}
+function SVGMain_GetTrueCoords(evt)
+{
+   var trans = SVGMain_SVGRoot.currentTranslate;
+   var scale = SVGMain_SVGRoot.currentScale;
+   SVGMain_GetScaleFactors();
+   var p1    = SVGMain_SVGRoot.createSVGPoint();
+   var p2;
+   if (!SVGMain_SVGRoot.getScreenCTM) {
+      var m = SVGMain_viewBox.getTM();
+      m = m.scale( 1/scale );
+      m = m.translate(-trans.x, -trans.y);
+      p1.x = evt.clientX;
+      p1.y = evt.clientY;
+      p2 = p1.matrixTransform(m);
+   }
+   else {
+      var m = SVGMain_SVGRoot.getScreenCTM();
+      if (navigator.userAgent.toLowerCase().indexOf("ipad") != -1) {
+         p1.x = evt.clientX + window.pageXOffset;
+         p1.y = evt.clientY + window.pageYOffset;
+      }
+      else {
+      p1.x = evt.clientX;
+      p1.y = evt.clientY;
+      }
+      p2 = p1.matrixTransform(m.inverse());
+   }
+   SVGMain_TrueCoords.x = Math.round(p2.x*100) / 100;
+   SVGMain_TrueCoords.y = Math.round(p2.y*100) / 100;
+}
+function SVGMain_HideTooltip( evt )
+{
+   SVGMain_tiptspan.firstChild.nodeValue = null;
+   SVGMain_singleTip.setAttributeNS(null, 'visibility', 'hidden');
+}
+function SVGMain_ShowTooltip( evt )
+{
+   SVGMain_GetTrueCoords( evt );
+   var targetElement = evt.target;
+   var tspanCount = targetElement.getElementsByTagName('desc').length;
+   if (tspanCount == 1) {
+      var targetTspan = targetElement.getElementsByTagName('desc').item(0);
+      if ( targetTspan) {
+         if (targetTspan.firstChild != null)
+            SVGMain_tiptspan.firstChild.nodeValue = targetTspan.firstChild.nodeValue; }
+   }
+   if ( '' != SVGMain_tiptspan.firstChild.nodeValue )
+   {
+      var outline = SVGMain_singleText.getBBox();
+      SVGMain_singleBox.setAttributeNS(null, 'transform', 'scale(' + SVGMain_attrScale + ',' + SVGMain_attrScale + ')' );
+      SVGMain_singleText.setAttributeNS(null, 'transform', 'scale(' + SVGMain_attrScale + ',' + SVGMain_attrScale + ')' );
+      SVGMain_singleTip.setAttributeNS(null, 'visibility', 'visible');
+      if (evt.clientX + ((outline.width + 15)/1.51166) * SVGMain_attrScale > SVGMain_rightEdge) {
+         var xPos = SVGMain_TrueCoords.x - parseInt((outline.width + 15)*SVGMain_attrScale);
+         if (xPos < 0)
+            xPos = 0;
+      }
+      else
+         var xPos = SVGMain_TrueCoords.x;
+      if (SVGMain_TrueCoords.y < 30) {
+         var yPos = SVGMain_TrueCoords.y + ((outline.height + 30)/1.51166)*SVGMain_attrScale;
+         if (yPos > windowHeight)
+            yPos = SVGMain_TrueCoords.y - parseInt((outline.height + 15)*SVGMain_attrScale);
+      }
+      else
+         var yPos = SVGMain_TrueCoords.y - parseInt((outline.height + 15)*SVGMain_attrScale);
+      if (Number(outline.width == 0))
+         SVGMain_singleBox.setAttributeNS(null, 'width', outline.width);
+      else
+         SVGMain_singleBox.setAttributeNS(null, 'width', outline.width + 15);
+      SVGMain_singleBox.setAttributeNS(null, 'height', outline.height + 15);
+      SVGMain_singleTip.setAttributeNS(null, 'transform', 'translate(' + xPos + ',' + yPos + ')');
+   }
+}
+/*****
+*   ViewBox.js
+*   copyright 2002, Kevin Lindsey
+*****/
+ViewBox.VERSION = "1.0";
+/*****
+*   constructor
+*****/
+function ViewBox(svgNode) {
+    if ( arguments.length > 0 ) {
+        this.init(svgNode);
+    }
+}
+/*****
+*   init
+*****/
+ViewBox.prototype.init = function(svgNode) {
+    var viewBox = svgNode.getAttributeNS(null, "viewBox");
+    var preserveAspectRatio = svgNode.getAttributeNS(null, "preserveAspectRatio");
+      if ( viewBox != null && viewBox != "" ) {
+        var params = viewBox.split(/\s*,\s*|\s+/);
+        this.x      = parseFloat( params[0] );
+        this.y      = parseFloat( params[1] );
+        this.width  = parseFloat( params[2] );
+        this.height = parseFloat( params[3] );
+    }
+    else {
+        this.x      = 0;
+        this.y      = 0;
+        this.width  = window.innerWidth;
+        this.height = window.innerHeight;
+    }
+    if (preserveAspectRatio != null && preserveAspectRatio != "" )
+    {
+        var params = preserveAspectRatio.split(/\s+/);
+        var align  = params[0];
+        if ( align == "none" ) {
+            this.alignX = "none";
+            this.alignY = "none";
+        } else {
+            this.alignX = align.substring(1,4);
+            this.alignY = align.substring(5,9);
+        }
+        if ( params.length == 2 ) {
+            this.meetOrSlice = params[1];
+        } else {
+            this.meetOrSlice = "meet";
+        }
+    } else {
+        this.align  = "xMidYMid";
+        this.alignX = "Mid";
+        this.alignY = "Mid";
+        this.meetOrSlice = "meet";
+    }
+}
+ViewBox.prototype.getTM = function() {
+    var matrix       = SVGMain_SVGRoot.createSVGMatrix();
+    if (isNaN(parseFloat(SVGMain_SVGWidth)))
+       var width = window.innerWidth;
+    else
+       var width = SVGMain_SVGWidth;
+    if (isNaN(parseFloat(SVGMain_SVGHeight)))
+       var height = window.innerHeight
+    else
+       var height = SVGMain_SVGHeight;
+    var x_ratio = this.width  / width;
+    var y_ratio = this.height / height;
+    matrix = matrix.translate(this.x, this.y);
+    if ( this.alignX == "none" ) {
+        matrix = matrix.scaleNonUniform( x_ratio, y_ratio );
+    } else {
+        if ( x_ratio < y_ratio && this.meetOrSlice == "meet" ||
+             x_ratio > y_ratio && this.meetOrSlice == "slice")
+        {
+           var x_trans = 0;
+           var x_diff  = width*y_ratio - this.width;
+           if ( this.alignX == "Mid" )
+              x_trans = -x_diff/2;
+           else if ( this.alignX == "Max" )
+              x_trans = -x_diff;
+           matrix = matrix.translate(x_trans, 0);
+           matrix = matrix.scale( y_ratio );
+        }
+        else if ( x_ratio > y_ratio && this.meetOrSlice == "meet" ||
+                  x_ratio < y_ratio && this.meetOrSlice == "slice"   )
+        {
+            var y_trans = 0;
+            var y_diff  = height*x_ratio - this.height;
+            if ( this.alignY == "Mid" )
+               y_trans = -y_diff/2;
+            else if ( this.alignY == "Max" )
+                y_trans = -y_diff;
+            matrix = matrix.translate(0, y_trans);
+            matrix = matrix.scale( x_ratio );
+        }
+        else
+            matrix = matrix.scale( x_ratio );
+    }
+    return matrix;
+}
+]]></script>
+</svg>

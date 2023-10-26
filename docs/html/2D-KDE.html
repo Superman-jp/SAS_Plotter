@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2D-KDE &mdash; SAS Plotter 1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Mirrored Histogram" href="Mirrored_histogram.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> SAS Plotter
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Raincloud_plot.html">Raincloud plot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Raincloud_plot_paired.html">Raincloud plot (paired)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Ridgeline_plot.html">Ridgeline plot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mirrored_histogram.html">Mirrored Histogram</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">2D-KDE</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#what-s-this">What’s this?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#input-data">Input data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#syntax">Syntax</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#parameters">Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#example">example</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#grouped-kde-plot">grouped KDE plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#style-of-kde-plot">Style of KDE plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#scatter-plot">scatter plot</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">SAS Plotter</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">2D-KDE</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/2D-KDE.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="d-kde">
+<h1>2D-KDE<a class="headerlink" href="#d-kde" title="Permalink to this heading"></a></h1>
+<section id="what-s-this">
+<h2>What’s this?<a class="headerlink" href="#what-s-this" title="Permalink to this heading"></a></h2>
+<p>Macro for two dementional kernel density estimation (2D-KDE) plot using SAS GRAPH.</p>
+<p>2D-KDE will show as contour plot with marginal KDE curve</p>
+</section>
+<section id="input-data">
+<h2>Input data<a class="headerlink" href="#input-data" title="Permalink to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>key</strong></p></td>
+<td><p><strong>variable</strong></p></td>
+<td><p><strong>type</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>group</p></td>
+<td><p>numeric</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>x</p></td>
+<td><p>numeric</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>y</p></td>
+<td><p>numeric</p></td>
+</tr>
+</tbody>
+</table>
+<p>I recommended that format is applied to group variable.</p>
+</section>
+<section id="syntax">
+<h2>Syntax<a class="headerlink" href="#syntax" title="Permalink to this heading"></a></h2>
+<p>code</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ods</span> <span class="n">graphics</span> <span class="o">/</span> <span class="o">&lt;</span> <span class="n">graphics</span> <span class="n">option</span> <span class="o">&gt;</span> <span class="p">;</span>
+<span class="n">ods</span> <span class="n">listing</span> <span class="n">gpath</span><span class="o">=&lt;</span> <span class="n">output</span> <span class="n">path</span> <span class="o">&gt;</span><span class="p">;</span>
+
+<span class="o">%</span><span class="n">macro</span> <span class="n">kde2d</span><span class="p">(</span>
+         <span class="n">data</span><span class="o">=</span><span class="p">,</span>
+         <span class="n">group</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+         <span class="n">x</span><span class="o">=</span><span class="p">,</span>
+         <span class="n">y</span><span class="o">=</span><span class="p">,</span>
+         <span class="n">xlabel</span><span class="o">=</span><span class="n">x</span><span class="p">,</span>
+         <span class="n">ylabel</span><span class="o">=</span><span class="n">y</span><span class="p">,</span>
+         <span class="n">univar_grid</span><span class="o">=</span><span class="mi">401</span><span class="p">,</span>
+         <span class="n">bw_method</span><span class="o">=</span><span class="n">sjpi</span><span class="p">,</span>
+         <span class="n">bw_adjust</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+         <span class="n">univar_style</span><span class="o">=</span><span class="n">line</span><span class="p">,</span>
+         <span class="n">bivar_grid</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span>
+         <span class="n">bivar_nlevel</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+         <span class="n">bivar_style</span><span class="o">=</span><span class="n">line</span><span class="p">,</span>
+         <span class="n">thresh</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span>
+         <span class="n">legend</span><span class="o">=</span><span class="n">true</span><span class="p">,</span>
+         <span class="n">scatter</span><span class="o">=</span><span class="n">false</span><span class="p">,</span>
+         <span class="n">palette</span><span class="o">=</span><span class="n">sns</span>
+
+<span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this heading"></a></h2>
+<ul>
+<li><p><strong>data : dataset name (required)</strong></p>
+<blockquote>
+<div><p>input data. keep, rename and  where options are available.</p>
+</div></blockquote>
+</li>
+<li><p><strong>group : variable name (required)</strong></p>
+<blockquote>
+<div><p>group variable. number of groups  must be two.</p>
+</div></blockquote>
+</li>
+<li><p><strong>x : variable name (required)</strong></p>
+<blockquote>
+<div><p>level variable or midpoint of bins</p>
+</div></blockquote>
+</li>
+<li><p><strong>y : variable name (required)</strong></p>
+<blockquote>
+<div><p>response variable</p>
+</div></blockquote>
+</li>
+<li><p><strong>xlabel : string (optional)</strong></p>
+<blockquote>
+<div><p>label string of x-axis.
+default is “x”. when the label is not displayed , set like below.</p>
+<p>xlabel=,</p>
+</div></blockquote>
+</li>
+<li><p><strong>ylabel : string (optional)</strong></p>
+<blockquote>
+<div><p>optional. label string of y-axis.
+default is “y”. when the label is not displayed , set like below.</p>
+<p>ylabel=,</p>
+</div></blockquote>
+</li>
+<li><p><strong>univar_grid : integer (optional)</strong></p>
+<blockquote>
+<div><p>the number of univariate KDE gridsize.
+default is 401 (the default of proc kde)</p>
+</div></blockquote>
+</li>
+<li><p><strong>bw_method : keyword (optional)</strong></p>
+<blockquote>
+<div><p>the bandwidth estimation method of univariate KDE.
+default is “sjpi” (the default of proc kde).</p>
+<p>method keyword described below is available.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>sjpi (Sheather-Jones plug-in)</p></li>
+<li><p>snr (simple normal reference)</p></li>
+<li><p>snrq (simple normal reference that uses the interquartile range)</p></li>
+<li><p>srot (Silverman’s rule of thumb)</p></li>
+<li><p>os (oversmoothed)</p></li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+</li>
+<li><p><strong>bw_adjust : numeric (optional)</strong></p>
+<blockquote>
+<div><p>the bandwidth multiplier of univariate KDE. Increasing will make the curve smoother.
+the default is 1.</p>
+</div></blockquote>
+</li>
+<li><p><strong>univar_style : keyword (optional)</strong></p>
+<blockquote>
+<div><dl class="simple">
+<dt>the style of univariate KDE. style keyword described below is available.</dt><dd><ul class="simple">
+<li><p>line</p></li>
+<li><p>fill</p></li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+</li>
+<li><p><strong>bivar_grid : integer (optional)</strong></p>
+<blockquote>
+<div><p>the number of bivariate KDE gridsize.
+default is 60 (the default of proc kde).</p>
+</div></blockquote>
+</li>
+<li><p><strong>bivar_nlevel : integer (optional)</strong></p>
+<blockquote>
+<div><p>the number of level for bivariate KDE.
+default is 10.</p>
+</div></blockquote>
+</li>
+<li><p><strong>bivar_style : keyword (optional)</strong></p>
+<blockquote>
+<div><dl class="simple">
+<dt>the style of bivariate KDE. style keyword described below is available.</dt><dd><ul class="simple">
+<li><p>line</p></li>
+<li><p>fill</p></li>
+<li><p>linefill</p></li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+</li>
+<li><p><strong>thresh : integer (0 to 1, optional)</strong></p>
+<blockquote>
+<div><p>the density threhold of bivariate KDE. The grid that density is under the threhold will removed from the bivariate KDE plot.
+default is 0.001.</p>
+</div></blockquote>
+</li>
+<li><p><strong>scatter : bool (optional)</strong></p></li>
+<li><p>if True the scatter plot will be displayed.
+default is False.</p></li>
+<li><p><strong>rug : bool (optional)</strong></p></li>
+<li><p>if True the rug plot will be displayed on the univariate KDE plot.
+default is False.</p></li>
+<li><p><strong>legend : bool (optional)</strong></p>
+<blockquote>
+<div><p>if “True” , legend of group item is displayed.
+default is “True”.</p>
+</div></blockquote>
+</li>
+<li><p><strong>pallete : keyword (optional)</strong></p></li>
+<li><p>color palette for fill, line and markers. the palletes described below is available.
+see color palette section of introduction page. defalut is “SNS” (Seaborn defalut palette).</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>SAS</p></li>
+<li><p>SNS (Seaborn)</p></li>
+<li><p>STATA</p></li>
+<li><p>TABLEAU</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</section>
+<section id="example">
+<h2>example<a class="headerlink" href="#example" title="Permalink to this heading"></a></h2>
+<section id="grouped-kde-plot">
+<h3>grouped KDE plot<a class="headerlink" href="#grouped-kde-plot" title="Permalink to this heading"></a></h3>
+<p>if the group parameter is set, univariate KDE and bivariate KDE plot will be generated by group. Group color is depend on the color palette set by palette parameter.</p>
+<p>code</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ods</span> <span class="n">listing</span> <span class="n">gpath</span><span class="o">=&lt;</span><span class="n">your</span> <span class="n">path</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="n">ods</span> <span class="n">graphics</span> <span class="o">/</span>  <span class="n">height</span><span class="o">=</span><span class="mi">24</span><span class="n">cm</span> <span class="n">width</span><span class="o">=</span><span class="mi">24</span><span class="n">cm</span> <span class="n">imagename</span><span class="o">=</span><span class="s2">&quot;groupedKDE&quot;</span> <span class="n">imagefmt</span><span class="o">=</span><span class="n">svg</span><span class="p">;</span>
+
+<span class="o">%</span><span class="n">kde2d</span><span class="p">(</span>
+<span class="n">dat</span><span class="o">=</span><span class="n">penguins</span><span class="p">,</span>
+<span class="n">x</span><span class="o">=</span><span class="n">bill_length_mm</span><span class="p">,</span>
+<span class="n">y</span><span class="o">=</span><span class="n">bill_depth_mm</span><span class="p">,</span>
+<span class="n">group</span><span class="o">=</span><span class="n">species2</span><span class="p">,</span>
+<span class="n">univar_style</span><span class="o">=</span><span class="n">line</span><span class="p">,</span>
+<span class="n">bivar_nlevel</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+<span class="n">bivar_style</span><span class="o">=</span><span class="n">line</span><span class="p">,</span>
+<span class="n">bivar_grid</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+<span class="n">xlabel</span><span class="o">=</span><span class="n">bill_length</span> <span class="p">(</span><span class="n">mm</span><span class="p">),</span>
+<span class="n">ylabel</span><span class="o">=</span><span class="n">bill_depth</span> <span class="p">(</span><span class="n">mm</span><span class="p">),</span>
+<span class="n">legend</span><span class="o">=</span><span class="n">true</span><span class="p">,</span>
+<span class="n">palette</span><span class="o">=</span><span class="n">sns</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<img alt="_images/groupedKDE.svg" src="_images/groupedKDE.svg" /></section>
+<section id="style-of-kde-plot">
+<h3>Style of KDE plot<a class="headerlink" href="#style-of-kde-plot" title="Permalink to this heading"></a></h3>
+<p>Univariate KDE plot is supported two styles, LINE, and FILL. these styles can be set by univar_style parameter.
+Bivariate KDE plot is supported three styles, LINE, FILL, and LINEFILL. these styles can be set by bivar_style parameter.</p>
+<p>Because FILL and LINEFILL styles can not be adjust the transparency of the fill, the overlapped grouped KDE plot with FILL style or LINEFILL style is not recommended.</p>
+<p>code</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ods</span> <span class="n">listing</span> <span class="n">gpath</span><span class="o">=&lt;</span><span class="n">your</span> <span class="n">path</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="n">ods</span> <span class="n">graphics</span> <span class="o">/</span>  <span class="n">height</span><span class="o">=</span><span class="mi">24</span><span class="n">cm</span> <span class="n">width</span><span class="o">=</span><span class="mi">24</span><span class="n">cm</span> <span class="n">imagename</span><span class="o">=</span><span class="s2">&quot;linefillKDE&quot;</span> <span class="n">imagefmt</span><span class="o">=</span><span class="n">svg</span><span class="p">;</span>
+
+<span class="o">%</span><span class="n">kde2d</span><span class="p">(</span>
+<span class="n">dat</span><span class="o">=</span><span class="n">penguins</span><span class="p">(</span><span class="n">where</span><span class="o">=</span><span class="p">(</span><span class="n">species2</span><span class="o">=</span><span class="mi">2</span><span class="p">)),</span>
+<span class="n">x</span><span class="o">=</span><span class="n">bill_length_mm</span><span class="p">,</span>
+<span class="n">y</span><span class="o">=</span><span class="n">bill_depth_mm</span><span class="p">,</span>
+<span class="n">group</span><span class="o">=</span><span class="n">species2</span><span class="p">,</span>
+<span class="n">univar_style</span><span class="o">=</span><span class="n">fill</span><span class="p">,</span>
+<span class="n">bivar_nlevel</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+<span class="n">bivar_style</span><span class="o">=</span><span class="n">linefill</span><span class="p">,</span>
+<span class="n">bivar_grid</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+<span class="n">xlabel</span><span class="o">=</span><span class="n">bill_length</span> <span class="p">(</span><span class="n">mm</span><span class="p">),</span>
+<span class="n">ylabel</span><span class="o">=</span><span class="n">bill_depth</span> <span class="p">(</span><span class="n">mm</span><span class="p">),</span>
+<span class="n">legend</span><span class="o">=</span><span class="n">true</span><span class="p">,</span>
+<span class="n">palette</span><span class="o">=</span><span class="n">sns</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<img alt="_images/linefillKDE.svg" src="_images/linefillKDE.svg" /></section>
+<section id="scatter-plot">
+<h3>scatter plot<a class="headerlink" href="#scatter-plot" title="Permalink to this heading"></a></h3>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Mirrored_histogram.html" class="btn btn-neutral float-left" title="Mirrored Histogram" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, SupermanJP.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
