@@ -2,7 +2,7 @@
 *SAS_plotter;
 *ridgeline plot macro;
 *author: SupermanJP;
-*version: 1.0;
+*version: 1.1;
 *--------------------------------------------------------;
 %macro ridgeline(
 	data=,

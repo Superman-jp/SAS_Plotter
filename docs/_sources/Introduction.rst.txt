@@ -58,6 +58,21 @@ SAS base 9.4 or later
 
 SAS GRAPH 9.4 or later
 
+
+******************
+usage
+******************
+
+#. Set the directory path of SAS plotter macro to the "SASPlotter.sas"
+
+   .. image:: ./img/Path_settings.png
+
+
+#. load the "SASPlotter.sas" using %include statement.
+
+#. Execute plot macros.
+
+
 ******************
 Color palette
 ******************

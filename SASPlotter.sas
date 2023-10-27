@@ -2,7 +2,7 @@
 *SAS_plotter;
 
 *author: SupermanJP;
-*version: 1.0;
+*version: 1.1;
 
 *--------------------------------------------------------;
 
@@ -10,7 +10,7 @@
 *settings;
 *--------------------------------------------------------;
 
-%let plotter_dir = /home/centraldogma7771/sasuser.v94/SAS_Plotter/;
+%let plotter_dir = <your macro directory path>;
 
 
 
