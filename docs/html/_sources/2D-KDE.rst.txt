@@ -205,9 +205,10 @@ Style of KDE plot
 =======================
 
 Univariate KDE plot is supported two styles, LINE, and FILL. these styles can be set by univar_style parameter.
+
 Bivariate KDE plot is supported three styles, LINE, FILL, and LINEFILL. these styles can be set by bivar_style parameter.
 
-Because FILL and LINEFILL styles can not be adjust the transparency of the fill, the overlapped grouped KDE plot with FILL style or LINEFILL style is not recommended.
+Because FILL and LINEFILL styles of KDE plot can not be adjust the transparency of the fill, the overlapped grouped KDE plot with LINE style  is recommended.
 
 code ::
 
@@ -231,6 +232,36 @@ code ::
 
 .. image:: ./img/linefillKDE.svg
 
-scatter plot
+Diaplay individual data
 =======================
 
+the individual data visualization is available. this macro supports two visualization method, scatter plot and rug plot.
+
+Scatter plot is displayed the  data points for two numeric variable. The data points as dot are overlaied on the bivariate KDE plot.
+Rug plot is is displayed the data points for one numeric variable, The data points as short bar (like barcode) are overlaied on the bottom of univariate KDE plot.
+
+Because FILL and LINEFILL styles of KDE plot can not be adjust the transparency of the fill, the scatter plot and rug plot with with LINE style is recommended.
+
+code ::
+
+   ods listing gpath="&curdir./img";
+   ods graphics /  height=24cm width=24cm imagename="rugscatterKDE" imagefmt=svg;
+
+   %kde2d(
+   dat=penguins(where=(species2=2)),
+   x=bill_length_mm,
+   y=bill_depth_mm,
+   group=species2,
+   univar_style=line,
+   bivar_nlevel=10,
+   bivar_style=line,
+   bivar_grid=100,
+   xlabel=bill_length (mm),
+   ylabel=bill_depth (mm),
+   legend=true,
+   rug=true,
+   scatter=true,
+   palette=sns
+   );
+
+.. image:: ./img/rugscatterKDE.svg

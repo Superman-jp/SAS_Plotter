@@ -71,11 +71,23 @@ ods graphics / reset=all;
 %if "&group."="None" %then %do;
 
 	data dat;
-	set dat.;
+	length grp2 $5000;
+	set &dat.;
 	x=&x.;
 	y=&y.;
 	group=1;
-	keep x y group;
+	grp2="1";
+	keep x y group grp2;
+	run;
+	
+/* 	if group variable is not set, legend parameter will be disabled. */
+	%let legend = False;
+	
+/* 	dummy group list */
+	data grp;
+	group="1";
+	run;
+	
 %end;
 
 /* grp2: group variable for 2D-KDE */
@@ -91,12 +103,13 @@ ods graphics / reset=all;
 	keep x y &group. grp2;
 	proc sort; by group;
 	run;
-
-%end;
-
+	
 /* get group name */
 
-proc sort data=&dat. out=grp(keep=&group. rename=(&group.=group)) nodupkey; by &group.;run;
+	proc sort data=&dat. out=grp(keep=&group. rename=(&group.=group)) nodupkey; by group ;run;
+%end;
+
+
 
 data _null_;
 length list $5000;
