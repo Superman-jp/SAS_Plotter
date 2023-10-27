@@ -6,7 +6,7 @@
 *version: 1.1;
 *--------------------------------------------------------;
 %macro kde2d(
-dat=,
+data=,
 x=,
 y=,
 group=None,
@@ -77,7 +77,7 @@ ods graphics / reset=all;
 
 	data dat;
 	length grp2 $5000;
-	set &dat.;
+	set &data.;
 	x=&x.;
 	y=&y.;
 	group=1;
@@ -100,7 +100,7 @@ ods graphics / reset=all;
 %else %do;
 	data dat;
 	length grp2 $5000;
-	set &dat.;
+	set &data.;
 	x=&x.;
 	y=&y.;
 	rename &group.=group;
@@ -111,7 +111,7 @@ ods graphics / reset=all;
 	
 /* get group name */
 
-	proc sort data=&dat. out=grp(keep=&group. rename=(&group.=group)) nodupkey; by &group. ;run;
+	proc sort data=&data. out=grp(keep=&group. rename=(&group.=group)) nodupkey; by &group. ;run;
 %end;
 
 
