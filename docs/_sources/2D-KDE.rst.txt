@@ -18,7 +18,7 @@ Input data
 .. csv-table:: 
 
    "**key**", "**variable** ", "**type**"
-   "1","group","numeric"
+   "1","group","numeric or character"
    "2","x", "numeric"
    "","y", "numeric"
 
