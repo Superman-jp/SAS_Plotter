@@ -66,15 +66,15 @@ Parameters
 
 - **group : variable name (required)**
 
-   group variable. number of groups  must be two.
+   group variable. if group variable is not set, the legend parameter will be ignored.
 
 - **x : variable name (required)**
 
-   level variable or midpoint of bins
+   numeric variable as x-axis.
 
 - **y : variable name (required)**
 
-   response variable
+   numeric variable as x-axis.
 
 - **xlabel : string (optional)**
 
@@ -140,7 +140,7 @@ Parameters
 - **thresh : integer (0 to 1, optional)**
 
    the density threhold of bivariate KDE. The grid that density is under the threhold will removed from the bivariate KDE plot.
-   default is 0.001.
+   default is 0.
 
 - **scatter : bool (optional)**
 - 
@@ -265,3 +265,34 @@ code ::
    );
 
 .. image:: ./img/rugscatterKDE.svg
+
+Thresh parameter
+=======================
+
+the density set to the thresh parameter will be removed bivariate KDE plot. if style is "FILL" or "LINEFILL", the fill of the density below under the thresh parameter
+will be disabled. level of the contour will be set using the density except for below under the thresh parameter.
+
+code ::
+
+   ods listing gpath="&curdir./img";
+   ods graphics /  height=24cm width=24cm imagename="threshKDE" imagefmt=svg;
+
+   %kde2d(
+         dat=penguins(where=(species2=2)),
+         x=bill_length_mm,
+         y=bill_depth_mm,
+         group=species2,
+         univar_style=line,
+         bivar_nlevel=10,
+         bivar_style=linefill,
+         bivar_grid=100,
+         xlabel=bill_length (mm),
+         ylabel=bill_depth (mm),
+         thresh=0.002,
+         legend=true,
+         rug=true,
+         scatter=true,
+         palette=sns
+   );
+
+.. image:: ./img/threshKDE.svg

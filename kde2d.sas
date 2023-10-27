@@ -106,7 +106,7 @@ ods graphics / reset=all;
 	
 /* get group name */
 
-	proc sort data=&dat. out=grp(keep=&group. rename=(&group.=group)) nodupkey; by group ;run;
+	proc sort data=&dat. out=grp(keep=&group. rename=(&group.=group)) nodupkey; by &group. ;run;
 %end;
 
 

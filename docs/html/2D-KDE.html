@@ -53,6 +53,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#grouped-kde-plot">grouped KDE plot</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#style-of-kde-plot">Style of KDE plot</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#diaplay-individual-data">Diaplay individual data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#thresh-parameter">Thresh parameter</a></li>
 </ul>
 </li>
 </ul>
@@ -153,17 +154,17 @@
 </li>
 <li><p><strong>group : variable name (required)</strong></p>
 <blockquote>
-<div><p>group variable. number of groups  must be two.</p>
+<div><p>group variable. if group variable is not set, the legend parameter will be ignored.</p>
 </div></blockquote>
 </li>
 <li><p><strong>x : variable name (required)</strong></p>
 <blockquote>
-<div><p>level variable or midpoint of bins</p>
+<div><p>numeric variable as x-axis.</p>
 </div></blockquote>
 </li>
 <li><p><strong>y : variable name (required)</strong></p>
 <blockquote>
-<div><p>response variable</p>
+<div><p>numeric variable as x-axis.</p>
 </div></blockquote>
 </li>
 <li><p><strong>xlabel : string (optional)</strong></p>
@@ -246,7 +247,7 @@ default is 10.</p>
 <li><p><strong>thresh : integer (0 to 1, optional)</strong></p>
 <blockquote>
 <div><p>the density threhold of bivariate KDE. The grid that density is under the threhold will removed from the bivariate KDE plot.
-default is 0.001.</p>
+default is 0.</p>
 </div></blockquote>
 </li>
 <li><p><strong>scatter : bool (optional)</strong></p></li>
@@ -356,6 +357,34 @@ Rug plot is is displayed the data points for one numeric variable, The data poin
 </pre></div>
 </div>
 <img alt="_images/rugscatterKDE.svg" src="_images/rugscatterKDE.svg" /></section>
+<section id="thresh-parameter">
+<h3>Thresh parameter<a class="headerlink" href="#thresh-parameter" title="Permalink to this heading"></a></h3>
+<p>the density set to the thresh parameter will be removed bivariate KDE plot. if style is “FILL” or “LINEFILL”, the fill of the density below under the thresh parameter
+will be disabled. level of the contour will be set using the density except for below under the thresh parameter.</p>
+<p>code</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ods</span> <span class="n">listing</span> <span class="n">gpath</span><span class="o">=</span><span class="s2">&quot;&amp;curdir./img&quot;</span><span class="p">;</span>
+<span class="n">ods</span> <span class="n">graphics</span> <span class="o">/</span>  <span class="n">height</span><span class="o">=</span><span class="mi">24</span><span class="n">cm</span> <span class="n">width</span><span class="o">=</span><span class="mi">24</span><span class="n">cm</span> <span class="n">imagename</span><span class="o">=</span><span class="s2">&quot;threshKDE&quot;</span> <span class="n">imagefmt</span><span class="o">=</span><span class="n">svg</span><span class="p">;</span>
+
+<span class="o">%</span><span class="n">kde2d</span><span class="p">(</span>
+      <span class="n">dat</span><span class="o">=</span><span class="n">penguins</span><span class="p">(</span><span class="n">where</span><span class="o">=</span><span class="p">(</span><span class="n">species2</span><span class="o">=</span><span class="mi">2</span><span class="p">)),</span>
+      <span class="n">x</span><span class="o">=</span><span class="n">bill_length_mm</span><span class="p">,</span>
+      <span class="n">y</span><span class="o">=</span><span class="n">bill_depth_mm</span><span class="p">,</span>
+      <span class="n">group</span><span class="o">=</span><span class="n">species2</span><span class="p">,</span>
+      <span class="n">univar_style</span><span class="o">=</span><span class="n">line</span><span class="p">,</span>
+      <span class="n">bivar_nlevel</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+      <span class="n">bivar_style</span><span class="o">=</span><span class="n">linefill</span><span class="p">,</span>
+      <span class="n">bivar_grid</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+      <span class="n">xlabel</span><span class="o">=</span><span class="n">bill_length</span> <span class="p">(</span><span class="n">mm</span><span class="p">),</span>
+      <span class="n">ylabel</span><span class="o">=</span><span class="n">bill_depth</span> <span class="p">(</span><span class="n">mm</span><span class="p">),</span>
+      <span class="n">thresh</span><span class="o">=</span><span class="mf">0.002</span><span class="p">,</span>
+      <span class="n">legend</span><span class="o">=</span><span class="n">true</span><span class="p">,</span>
+      <span class="n">rug</span><span class="o">=</span><span class="n">true</span><span class="p">,</span>
+      <span class="n">scatter</span><span class="o">=</span><span class="n">true</span><span class="p">,</span>
+      <span class="n">palette</span><span class="o">=</span><span class="n">sns</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<img alt="_images/threshKDE.svg" src="_images/threshKDE.svg" /></section>
 </section>
 </section>
 
