@@ -35,9 +35,9 @@
           <div class="body" role="main">
             
   <section id="raincloud-plot-paired">
-<h1>Raincloud plot (paired)<a class="headerlink" href="#raincloud-plot-paired" title="Permalink to this heading">¶</a></h1>
+<h1>Raincloud plot (paired)<a class="headerlink" href="#raincloud-plot-paired" title="Permalink to this heading"></a></h1>
 <section id="what-s-this">
-<h2>What’s this?<a class="headerlink" href="#what-s-this" title="Permalink to this heading">¶</a></h2>
+<h2>What’s this?<a class="headerlink" href="#what-s-this" title="Permalink to this heading"></a></h2>
 <p>Macro for generate paired raincloud plot using SAS GRAPH.</p>
 <p>this macro is useful for display raincloud plot of repeated measure study.
 number of replicate should be two.</p>
@@ -45,7 +45,7 @@ number of replicate should be two.</p>
 <p>spaghetti plot (individual tracings for each subject ) can be overlaid on the raincloud plot.</p>
 </section>
 <section id="input-data">
-<h2>Input data<a class="headerlink" href="#input-data" title="Permalink to this heading">¶</a></h2>
+<h2>Input data<a class="headerlink" href="#input-data" title="Permalink to this heading"></a></h2>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>key</strong></p></td>
@@ -79,7 +79,7 @@ number of replicate should be two.</p>
 if the variable type is string, item order is defined as acending character order.</p>
 </section>
 <section id="syntax">
-<h2>Syntax<a class="headerlink" href="#syntax" title="Permalink to this heading">¶</a></h2>
+<h2>Syntax<a class="headerlink" href="#syntax" title="Permalink to this heading"></a></h2>
 <p>before use this macro, macro file described below is loaded by %include statement.</p>
 <ul class="simple">
 <li><p>RainCloudPaired.sas</p></li>
@@ -116,7 +116,7 @@ if the variable type is string, item order is defined as acending character orde
 </div></blockquote>
 </section>
 <section id="parameters">
-<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this heading">¶</a></h2>
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this heading"></a></h2>
 <ul>
 <li><p><strong>data : dataset name (required)</strong></p>
 <blockquote>
@@ -280,9 +280,9 @@ see color palette section of introduction page. defalut is “SNS” (Seaborn de
 </ul>
 </section>
 <section id="example">
-<h2>example<a class="headerlink" href="#example" title="Permalink to this heading">¶</a></h2>
+<h2>example<a class="headerlink" href="#example" title="Permalink to this heading"></a></h2>
 <section id="simple-paired-raincloud-plot">
-<h3>Simple paired raincloud plot<a class="headerlink" href="#simple-paired-raincloud-plot" title="Permalink to this heading">¶</a></h3>
+<h3>Simple paired raincloud plot<a class="headerlink" href="#simple-paired-raincloud-plot" title="Permalink to this heading"></a></h3>
 <p>datasets (ds1)</p>
 <table class="docutils align-default">
 <tbody>
@@ -324,7 +324,7 @@ see color palette section of introduction page. defalut is “SNS” (Seaborn de
 <img alt="_images/rainpaired_simple.svg" src="_images/rainpaired_simple.svg" /><p>when orient parameter is set “h”, the orientation of plot is changed horizontal (x=response, y=category)</p>
 <img alt="_images/rainpaired_simple_h.svg" src="_images/rainpaired_simple_h.svg" /></section>
 <section id="grouped-raincloud-plot">
-<h3>Grouped raincloud plot<a class="headerlink" href="#grouped-raincloud-plot" title="Permalink to this heading">¶</a></h3>
+<h3>Grouped raincloud plot<a class="headerlink" href="#grouped-raincloud-plot" title="Permalink to this heading"></a></h3>
 <p>datasets (ds2)</p>
 <table class="docutils align-default">
 <tbody>
@@ -369,7 +369,7 @@ see color palette section of introduction page. defalut is “SNS” (Seaborn de
 <p>output</p>
 <img alt="_images/rainpaird_group.svg" src="_images/rainpaird_group.svg" /></section>
 <section id="connect-parameter">
-<h3>Connect parameter<a class="headerlink" href="#connect-parameter" title="Permalink to this heading">¶</a></h3>
+<h3>Connect parameter<a class="headerlink" href="#connect-parameter" title="Permalink to this heading"></a></h3>
 <p>If connect parameter is set “True”, means of each group will be connected.</p>
 <p>code</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ods</span> <span class="n">graphics</span> <span class="o">/</span> <span class="n">reset</span><span class="o">=</span><span class="nb">all</span> <span class="n">imagefmt</span><span class="o">=</span><span class="n">svg</span> <span class="n">imagename</span><span class="o">=</span><span class="s2">&quot;rainpaird_group_connect&quot;</span> <span class="n">width</span><span class="o">=</span><span class="mi">20</span><span class="n">cm</span> <span class="n">height</span><span class="o">=</span><span class="mi">20</span><span class="n">cm</span><span class="p">;</span>

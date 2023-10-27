@@ -35,15 +35,15 @@
           <div class="body" role="main">
             
   <section id="mirrored-histogram">
-<h1>Mirrored Histogram<a class="headerlink" href="#mirrored-histogram" title="Permalink to this heading">¶</a></h1>
+<h1>Mirrored Histogram<a class="headerlink" href="#mirrored-histogram" title="Permalink to this heading"></a></h1>
 <section id="what-s-this">
-<h2>What’s this?<a class="headerlink" href="#what-s-this" title="Permalink to this heading">¶</a></h2>
+<h2>What’s this?<a class="headerlink" href="#what-s-this" title="Permalink to this heading"></a></h2>
 <p>Macro for Mirrored histogram using SAS GRAPH.</p>
 <p>Mirrored histogram shows the distribution of response variable two groups.
 Histogram of the group which level is 2 will be inverted.</p>
 </section>
 <section id="input-data">
-<h2>Input data<a class="headerlink" href="#input-data" title="Permalink to this heading">¶</a></h2>
+<h2>Input data<a class="headerlink" href="#input-data" title="Permalink to this heading"></a></h2>
 <p>Input data must be pre-summarized data. To summarize raw data, proc univariate is useful.
 required variable is described below.</p>
 <table class="docutils align-default">
@@ -70,7 +70,7 @@ required variable is described below.</p>
 <p>I recommended that format is applied to group variable.</p>
 </section>
 <section id="syntax">
-<h2>Syntax<a class="headerlink" href="#syntax" title="Permalink to this heading">¶</a></h2>
+<h2>Syntax<a class="headerlink" href="#syntax" title="Permalink to this heading"></a></h2>
 <p>before use this macro, macro file described below is loaded by %include statement.</p>
 <ul class="simple">
 <li><p>mirrored_histogram.sas</p></li>
@@ -106,7 +106,7 @@ required variable is described below.</p>
 </div></blockquote>
 </section>
 <section id="parameters">
-<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this heading">¶</a></h2>
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this heading"></a></h2>
 <ul>
 <li><p><strong>data : dataset name (required)</strong></p>
 <blockquote>
@@ -220,9 +220,9 @@ see color palette section of introduction page. defalut is “SNS” (Seaborn de
 </ul>
 </section>
 <section id="example">
-<h2>example<a class="headerlink" href="#example" title="Permalink to this heading">¶</a></h2>
+<h2>example<a class="headerlink" href="#example" title="Permalink to this heading"></a></h2>
 <section id="vertical-histogram">
-<h3>vertical histogram<a class="headerlink" href="#vertical-histogram" title="Permalink to this heading">¶</a></h3>
+<h3>vertical histogram<a class="headerlink" href="#vertical-histogram" title="Permalink to this heading"></a></h3>
 <p>code</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">inc</span> <span class="s2">&quot;mirrored_histogram.sas&quot;</span><span class="p">;</span>
 
@@ -265,7 +265,7 @@ see color palette section of introduction page. defalut is “SNS” (Seaborn de
 <img alt="_images/mirrored_histo_v.svg" src="_images/mirrored_histo_v.svg" /><p>when ytickfmt paramater is set “09.99”, percent ticks will be displayed at second decimal place.</p>
 <img alt="_images/mirrored_histo_v2.svg" src="_images/mirrored_histo_v2.svg" /></section>
 <section id="horizontal-histogram">
-<h3>horizontal histogram<a class="headerlink" href="#horizontal-histogram" title="Permalink to this heading">¶</a></h3>
+<h3>horizontal histogram<a class="headerlink" href="#horizontal-histogram" title="Permalink to this heading"></a></h3>
 <p>when orient parameter is set “h”, histogram is displayed in horizontal Orientation.The plot is also called “Butterfly chart”.
 (x: response, y=level)</p>
 <p>code</p>

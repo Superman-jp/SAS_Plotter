@@ -35,16 +35,16 @@
           <div class="body" role="main">
             
   <section id="ridgeline-plot">
-<h1>Ridgeline plot<a class="headerlink" href="#ridgeline-plot" title="Permalink to this heading">¶</a></h1>
+<h1>Ridgeline plot<a class="headerlink" href="#ridgeline-plot" title="Permalink to this heading"></a></h1>
 <section id="what-s-this">
-<h2>What’s this?<a class="headerlink" href="#what-s-this" title="Permalink to this heading">¶</a></h2>
+<h2>What’s this?<a class="headerlink" href="#what-s-this" title="Permalink to this heading"></a></h2>
 <p>Macro for generate ridgeline plot using SAS GRAPH.</p>
 <p>Ridgeline plot shows the distribution of response variable each groups.
 the distribution is estimated by KDE (Kernel Density Estimation) using proc kde.</p>
 <p>rugplot and several discriptive statistics (mean, q1, q2, q3, iqr) can be overlaid on the ridgeline plot.</p>
 </section>
 <section id="input-data">
-<h2>Input data<a class="headerlink" href="#input-data" title="Permalink to this heading">¶</a></h2>
+<h2>Input data<a class="headerlink" href="#input-data" title="Permalink to this heading"></a></h2>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>key</strong></p></td>
@@ -70,7 +70,7 @@ the distribution is estimated by KDE (Kernel Density Estimation) using proc kde.
 if the variable type is string, item order is defined as acending character order.</p>
 </section>
 <section id="syntax">
-<h2>Syntax<a class="headerlink" href="#syntax" title="Permalink to this heading">¶</a></h2>
+<h2>Syntax<a class="headerlink" href="#syntax" title="Permalink to this heading"></a></h2>
 <p>before use this macro, macro file described below is loaded by %include statement.</p>
 <ul class="simple">
 <li><p>Ridgeline.sas</p></li>
@@ -105,7 +105,7 @@ if the variable type is string, item order is defined as acending character orde
 </div></blockquote>
 </section>
 <section id="parameters">
-<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this heading">¶</a></h2>
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this heading"></a></h2>
 <ul>
 <li><p><strong>data : dataset name (required)</strong></p>
 <blockquote>
@@ -269,9 +269,9 @@ see color palette section of introduction page. defalut is “SNS” (Seaborn de
 </ul>
 </section>
 <section id="example">
-<h2>example<a class="headerlink" href="#example" title="Permalink to this heading">¶</a></h2>
+<h2>example<a class="headerlink" href="#example" title="Permalink to this heading"></a></h2>
 <section id="simple-ridgeline-plot">
-<h3>simple ridgeline plot<a class="headerlink" href="#simple-ridgeline-plot" title="Permalink to this heading">¶</a></h3>
+<h3>simple ridgeline plot<a class="headerlink" href="#simple-ridgeline-plot" title="Permalink to this heading"></a></h3>
 <p>datasets (ds1)</p>
 <table class="docutils align-default">
 <tbody>
@@ -306,7 +306,7 @@ see color palette section of introduction page. defalut is “SNS” (Seaborn de
 <p>output</p>
 <img alt="_images/ridgeline1.svg" src="_images/ridgeline1.svg" /></section>
 <section id="grouped-ridgeline-plot">
-<h3>grouped ridgeline plot<a class="headerlink" href="#grouped-ridgeline-plot" title="Permalink to this heading">¶</a></h3>
+<h3>grouped ridgeline plot<a class="headerlink" href="#grouped-ridgeline-plot" title="Permalink to this heading"></a></h3>
 <p>datasets (ds2)</p>
 <table class="docutils align-default">
 <tbody>
@@ -345,7 +345,7 @@ ods listing  gpath=&quot;/home/user/sasuser.v94/image&quot; style=sns_default ;
 <p>output</p>
 <img alt="_images/ridgeline_grouped.svg" src="_images/ridgeline_grouped.svg" /></section>
 <section id="ridgeline-plot-with-rugplot-and-statistics">
-<h3>ridgeline plot with rugplot and statistics<a class="headerlink" href="#ridgeline-plot-with-rugplot-and-statistics" title="Permalink to this heading">¶</a></h3>
+<h3>ridgeline plot with rugplot and statistics<a class="headerlink" href="#ridgeline-plot-with-rugplot-and-statistics" title="Permalink to this heading"></a></h3>
 <p>code</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ods graphics /reset=all height=15cm width=25cm imagename=&quot;ridgeline_stat_rug&quot; imagefmt=svg;
 ods listing  gpath=&quot;/home/user/sasuser.v94/image&quot; style=sns_default ;
