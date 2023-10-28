@@ -70,11 +70,11 @@ Parameters
 
 - **x : variable name (required)**
 
-   numeric variable as x-axis.
+   numeric variable of x-axis.
 
 - **y : variable name (required)**
 
-   numeric variable as x-axis.
+   numeric variable of y-axis.
 
 - **xlabel : string (optional)**
 
@@ -117,6 +117,7 @@ Parameters
 - **univar_style : keyword (optional)**
 
    the style of univariate KDE. style keyword described below is available.
+
       * line
       * fill
 
@@ -133,6 +134,7 @@ Parameters
 - **bivar_style : keyword (optional)**
 
    the style of bivariate KDE. style keyword described below is available.
+
       * line
       * fill
       * linefill
@@ -143,12 +145,12 @@ Parameters
    default is 0.
 
 - **scatter : bool (optional)**
-- 
+
    if True the scatter plot will be displayed.
    default is False.
 
 - **rug : bool (optional)**
-- 
+
    if True the rug plot will be displayed on the univariate KDE plot.
    default is False.
 
@@ -158,7 +160,7 @@ Parameters
    default is "True".
 
 - **pallete : keyword (optional)**
-- 
+
    color palette for fill, line and markers. the palletes described below is available.
    see color palette section of introduction page. defalut is "SNS" (Seaborn defalut palette).
 
