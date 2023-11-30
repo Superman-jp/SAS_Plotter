@@ -16,6 +16,7 @@
    ./Ridgeline_plot
    ./Mirrored_histogram
    ./2D-KDE
+   ./Sankey
 
 *******************
 Indices and tables

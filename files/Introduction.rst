@@ -49,6 +49,11 @@ history
       * STATA
       * TABLEAU
 
+- 1.15 (beta)
+
+   new macros were added.
+
+      * Sankey
 
 ******************
 requirement

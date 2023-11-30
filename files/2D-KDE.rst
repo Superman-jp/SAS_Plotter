@@ -48,7 +48,7 @@ code ::
             bivar_grid=60,
             bivar_nlevel=10,
             bivar_style=line,
-            thresh=0.001,
+            thresh=0,
             legend=true,
             scatter=false,
             palette=sns
