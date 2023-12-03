@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sankey diagram &mdash; SAS Plotter 1.1 documentation</title>
+  <title>Sankey diagram &mdash; SAS Plotter 1.15 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -67,6 +67,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#change-the-fill-appearance">Change the fill appearance</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#change-the-text-appearance">Change the text appearance</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#focus-parameter">Focus parameter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#reference">Reference</a></li>
 </ul>
 </li>
 </ul>
@@ -104,8 +105,11 @@
 <p>Macro for Sankey diagram using SAS GRAPH.</p>
 <p>A Sankey diagram is a visualization used to depict a flow from one domain of values to another domain.
 Sankey graphs is useful for showing flow and relationships among multiple categories.</p>
-<p>In pharmacoepidemiology study, this diagram is used for Changes of the state of a patient over time, such as medication switching, disease stage progression,
-or movement through treatment pathways.1(1)</p>
+<p>In pharmacoepidemiology study, this diagram is used for changes of the state of a patient over time, such as medication switching, disease stage progression,
+or movement through treatment pathways. <a class="footnote-reference brackets" href="#footcite-https-doi-org-10-1002-pds-5529" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</p>
+<p>In the past, there are reports of sankey diagram example using SAS GRAPH <a class="footnote-reference brackets" href="#footcite-barchartsankey" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a><a class="footnote-reference brackets" href="#footcite-sasofficialsankey" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>.
+But in this macro, more options such as statistics display and node focus are available.</p>
+<p>If you can allow the use of HTML, I suggest you refer to the case study of using D3.js and SAS <a class="footnote-reference brackets" href="#footcite-sankeywithsasandd3js" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a>.</p>
 <section id="elements-of-sankey-diagram">
 <h3>Elements of sankey diagram<a class="headerlink" href="#elements-of-sankey-diagram" title="Permalink to this heading"></a></h3>
 <p>Sankey diagram is contained the three elements.</p>
@@ -241,6 +245,7 @@ interval of domains is depends on the values of format. labels of the format are
 </div></blockquote>
 </li>
 <li><p><strong>domaintextattrs : text appearance (optional)</strong></p></li>
+<li><p>The appearance (font size, font color and font weights) of domain text. default is “(size=11 color=black).</p></li>
 </ul>
 </section>
 <section id="node-settings">
@@ -263,6 +268,9 @@ defalt is “auto”.</p>
 <div><p>the width of node shapes. the default is 0.2.</p>
 </div></blockquote>
 </li>
+</ul>
+<img alt="_images/nodewidth.png" src="_images/nodewidth.png" />
+<ul>
 <li><p><strong>nodeattrs : keyword or fill appearance  (optional)</strong></p>
 <blockquote>
 <div><p>node appearance .
@@ -308,6 +316,9 @@ defalt is “auto”.</p>
 default is 0.15.</p>
 </div></blockquote>
 </li>
+</ul>
+<img alt="_images/linktext_offset.png" src="_images/linktext_offset.png" />
+<ul>
 <li><p><strong>linktextattrs : text appearance  (optional)</strong></p>
 <blockquote>
 <div><p>the appearance (font size, font color and font weights) of link text.
@@ -331,7 +342,7 @@ for example, if “type A” node of second domain is forcused, set the paramete
 <li><p><strong>stat : keyword (optional)</strong></p>
 <blockquote>
 <div><p>displays the frequency or percentage of nodes and links.
-the keyword described below is available.</p>
+the keyword described below is available. default is “both”.</p>
 <blockquote>
 <div><blockquote>
 <div><ul class="simple">
@@ -554,6 +565,27 @@ The not-highlighted nodes and the links whose source node is not highlighted are
 </pre></div>
 </div>
 <img alt="_images/sankey_focus.svg" src="_images/sankey_focus.svg" /></section>
+<section id="reference">
+<h3>Reference<a class="headerlink" href="#reference" title="Permalink to this heading"></a></h3>
+<div class="docutils container" id="id5">
+<aside class="footnote brackets" id="footcite-https-doi-org-10-1002-pds-5529" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Nicolle M. Gatto, Shirley V. Wang, William Murk, Pattra Mattox, M. Alan Brookhart, Andrew Bate, Sebastian Schneeweiss, and Jeremy A. Rassen. Visualizations throughout pharmacoepidemiology study planning, implementation, and reporting. <em>Pharmacoepidemiology and Drug Safety</em>, 31(11):1140–1152, 2022. URL: <a class="reference external" href="https://onlinelibrary.wiley.com/doi/abs/10.1002/pds.5529">https://onlinelibrary.wiley.com/doi/abs/10.1002/pds.5529</a>, <a class="reference external" href="https://arxiv.org/abs/https://onlinelibrary.wiley.com/doi/pdf/10.1002/pds.5529">arXiv:https://onlinelibrary.wiley.com/doi/pdf/10.1002/pds.5529</a>, <a class="reference external" href="https://doi.org/https://doi.org/10.1002/pds.5529">doi:https://doi.org/10.1002/pds.5529</a>.</p>
+</aside>
+<aside class="footnote brackets" id="footcite-barchartsankey" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p>Chapel Hill Shane Rosanbalm. Getting sankey with bar charts. 2015. URL: <a class="reference external" href="https://www.pharmasug.org/proceedings/2015/DV/PharmaSUG-2015-DV07.pdf">https://www.pharmasug.org/proceedings/2015/DV/PharmaSUG-2015-DV07.pdf</a>.</p>
+</aside>
+<aside class="footnote brackets" id="footcite-sasofficialsankey" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">3</a><span class="fn-bracket">]</span></span>
+<p>Sanjay Matange. Sankey diagrams. 2015. URL: <a class="reference external" href="https://blogs.sas.com/content/graphicallyspeaking/2015/03/21/sankey-diagrams/">https://blogs.sas.com/content/graphicallyspeaking/2015/03/21/sankey-diagrams/</a>.</p>
+</aside>
+<aside class="footnote brackets" id="footcite-sankeywithsasandd3js" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">4</a><span class="fn-bracket">]</span></span>
+<p>Tanmay Khole. Using sankey diagram to analyze drug pipeline. 2020. URL: <a class="reference external" href="https://www.lexjansen.com/phuse-us/2020/dv/DV03.pdf">https://www.lexjansen.com/phuse-us/2020/dv/DV03.pdf</a>.</p>
+</aside>
+</div>
+</section>
 </section>
 </section>
 

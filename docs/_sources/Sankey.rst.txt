@@ -11,8 +11,13 @@ Macro for Sankey diagram using SAS GRAPH.
 A Sankey diagram is a visualization used to depict a flow from one domain of values to another domain. 
 Sankey graphs is useful for showing flow and relationships among multiple categories.
 
-In pharmacoepidemiology study, this diagram is used for Changes of the state of a patient over time, such as medication switching, disease stage progression,
-or movement through treatment pathways.1(1)
+In pharmacoepidemiology study, this diagram is used for changes of the state of a patient over time, such as medication switching, disease stage progression,
+or movement through treatment pathways. :footcite:p:`https://doi.org/10.1002/pds.5529`.
+
+In the past, there are reports of sankey diagram example using SAS GRAPH :footcite:p:`barchartSankey`:footcite:p:`SASofficialSankey`. 
+But in this macro, more options such as statistics display and node focus are available.
+
+If you can allow the use of HTML, I suggest you refer to the case study of using D3.js and SAS :footcite:p:`sankeywithSASandD3js`. 
 
 
 ============================
@@ -136,8 +141,8 @@ Domain settings
    interval of domains is depends on the values of format. labels of the format are displayed on plot.
 
 - **domaintextattrs : text appearance (optional)**
-
-   
+- 
+   The appearance (font size, font color and font weights) of domain text. default is “(size=11 color=black).
 
 ================
 Node settings
@@ -158,6 +163,7 @@ Node settings
 
    the width of node shapes. the default is 0.2.
 
+.. image:: ./img/nodewidth.png
 
 - **nodeattrs : keyword or fill appearance  (optional)**
 
@@ -200,6 +206,8 @@ Link settings
    the gap between node shape and link text.
    default is 0.15.
 
+.. image:: ./img/linktext_offset.png
+
 - **linktextattrs : text appearance  (optional)**
 
    the appearance (font size, font color and font weights) of link text.
@@ -223,7 +231,7 @@ Other settings
 - **stat : keyword (optional)**
 
    displays the frequency or percentage of nodes and links.
-   the keyword described below is available.
+   the keyword described below is available. default is "both".
 
       * FREQ: frequency
       * PCT:  percentage(displays second decimal place)
@@ -464,3 +472,8 @@ code ::
         palette=sns);
 
 .. image:: ./img/sankey_focus.svg
+
+================
+Reference
+================
+.. footbibliography::
