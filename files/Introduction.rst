@@ -55,6 +55,16 @@ history
 
       * Sankey
 
+- 1.2
+
+   new macros were added.
+
+      * Multihistogram
+   
+   bug fix. following macros were updated.
+      * Sankey
+      * ridgeline
+
 ******************
 requirement
 ******************
