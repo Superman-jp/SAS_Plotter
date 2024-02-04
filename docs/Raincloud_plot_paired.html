@@ -59,6 +59,7 @@
 <li class="toctree-l1"><a class="reference internal" href="Mirrored_histogram.html">Mirrored Histogram</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2D-KDE.html">2D-KDE</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Sankey.html">Sankey diagram</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Multihistogram.html">MultiHistogram</a></li>
 </ul>
 
         </div>
@@ -127,14 +128,10 @@ number of replicate should be two.</p>
 </table>
 <p>group variable is optional.</p>
 <p>I recommended that the variable type of category , “replicate” and group are set to numeric with format.
-if the variable type is string, item order is defined as acending character order.</p>
+if the variable type is string, item order is defined as ascending character order.</p>
 </section>
 <section id="syntax">
 <h2>Syntax<a class="headerlink" href="#syntax" title="Permalink to this heading"></a></h2>
-<p>before use this macro, macro file described below is loaded by %include statement.</p>
-<ul class="simple">
-<li><p>RainCloudPaired.sas</p></li>
-</ul>
 <blockquote>
 <div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ods</span> <span class="n">graphics</span> <span class="o">/</span> <span class="o">&lt;</span> <span class="n">graphics</span> <span class="n">option</span> <span class="o">&gt;</span> <span class="p">;</span>
 <span class="n">ods</span> <span class="n">listing</span> <span class="n">gpath</span><span class="o">=&lt;</span> <span class="n">output</span> <span class="n">path</span> <span class="o">&gt;</span><span class="p">;</span>
@@ -199,7 +196,7 @@ if other, this macro will be stopped.</p>
 <blockquote>
 <div><p>group variable for grouping data at each category.</p>
 <p>when the parameter is not set, all of graph object is set same color.</p>
-<p>when the parameter is set category variable, the graph object of rach category is
+<p>when the parameter is set category variable, the graph object of each category is
 set  different color.</p>
 <p>default is “None”.</p>
 </div></blockquote>
@@ -263,7 +260,7 @@ the default is “True”.</p>
 </li>
 <li><p><strong>gridsize : integer (optional)</strong></p>
 <blockquote>
-<div><p>the number of KDE gridsize.
+<div><p>the number of KDE grid size.
 default is 401 (the default of proc kde)</p>
 </div></blockquote>
 </li>
@@ -314,10 +311,10 @@ if group parameter is “None”, the parameter will be ignored.</p>
 <p>the default is “1”.</p>
 </div></blockquote>
 </li>
-<li><p><strong>pallete : keyword (optional)</strong></p>
+<li><p><strong>palette : keyword (optional)</strong></p>
 <blockquote>
-<div><p>color palette for fill, line and markers. the palletes described below is available.
-see color palette section of introduction page. defalut is “SNS” (Seaborn defalut palette).</p>
+<div><p>color palette for fill, line and markers. the palettes described below is available.
+see color palette section of introduction page. default is “SNS” (Seaborn default palette).</p>
 <blockquote>
 <div><ul class="simple">
 <li><p>SAS</p></li>
@@ -356,7 +353,7 @@ see color palette section of introduction page. defalut is “SNS” (Seaborn de
 </table>
 <p>code</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ods</span> <span class="n">graphics</span> <span class="o">/</span> <span class="n">reset</span><span class="o">=</span><span class="nb">all</span> <span class="n">imagefmt</span><span class="o">=</span><span class="n">svg</span> <span class="n">imagename</span><span class="o">=</span><span class="s2">&quot;rainpair_simple&quot;</span> <span class="n">width</span><span class="o">=</span><span class="mi">20</span><span class="n">cm</span> <span class="n">height</span><span class="o">=</span><span class="mi">20</span><span class="n">cm</span><span class="p">;</span>
-<span class="n">ods</span> <span class="n">listing</span> <span class="n">gpath</span><span class="o">=</span><span class="s2">&quot;/home/user/sasuser.v94/GTL/image&quot;</span> <span class="n">style</span><span class="o">=</span><span class="n">sns_default</span> <span class="p">;</span>
+<span class="n">ods</span> <span class="n">listing</span> <span class="n">gpath</span><span class="o">=</span><span class="s2">&quot;&lt;output path&gt;&quot;</span><span class="p">;</span>
 <span class="o">%</span><span class="n">RainCloudPaired</span><span class="p">(</span>
         <span class="n">data</span><span class="o">=</span><span class="n">ds1</span><span class="p">,</span>
         <span class="n">x</span><span class="o">=</span><span class="n">cat</span><span class="p">,</span>
@@ -401,7 +398,7 @@ see color palette section of introduction page. defalut is “SNS” (Seaborn de
 </table>
 <p>code</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ods</span> <span class="n">graphics</span> <span class="o">/</span> <span class="n">reset</span><span class="o">=</span><span class="nb">all</span> <span class="n">imagefmt</span><span class="o">=</span><span class="n">svg</span> <span class="n">imagename</span><span class="o">=</span><span class="s2">&quot;rainpaird-group&quot;</span> <span class="n">width</span><span class="o">=</span><span class="mi">20</span><span class="n">cm</span> <span class="n">height</span><span class="o">=</span><span class="mi">15</span><span class="n">cm</span><span class="p">;</span>
-<span class="n">ods</span> <span class="n">listing</span> <span class="n">gpath</span><span class="o">=</span><span class="s2">&quot;/home/user/sasuser.v94/GTL/image&quot;</span> <span class="n">style</span><span class="o">=</span><span class="n">sns_default</span> <span class="p">;</span>
+<span class="n">ods</span> <span class="n">listing</span> <span class="n">gpath</span><span class="o">=</span><span class="s2">&quot;&lt;output path&gt;&quot;</span><span class="p">;</span>
 <span class="o">%</span><span class="n">RainCloudPaired</span><span class="p">(</span>
              <span class="n">data</span><span class="o">=</span><span class="n">ds2</span><span class="p">,</span>
              <span class="n">x</span><span class="o">=</span><span class="n">cat</span><span class="p">,</span>
@@ -424,7 +421,7 @@ see color palette section of introduction page. defalut is “SNS” (Seaborn de
 <p>If connect parameter is set “True”, means of each group will be connected.</p>
 <p>code</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ods</span> <span class="n">graphics</span> <span class="o">/</span> <span class="n">reset</span><span class="o">=</span><span class="nb">all</span> <span class="n">imagefmt</span><span class="o">=</span><span class="n">svg</span> <span class="n">imagename</span><span class="o">=</span><span class="s2">&quot;rainpaird_group_connect&quot;</span> <span class="n">width</span><span class="o">=</span><span class="mi">20</span><span class="n">cm</span> <span class="n">height</span><span class="o">=</span><span class="mi">20</span><span class="n">cm</span><span class="p">;</span>
-<span class="n">ods</span> <span class="n">listing</span> <span class="n">gpath</span><span class="o">=</span><span class="s2">&quot;/home/centraldogma7771/sasuser.v94/GTL/image&quot;</span> <span class="n">style</span><span class="o">=</span><span class="n">sns_default</span> <span class="p">;</span>
+<span class="n">ods</span> <span class="n">listing</span> <span class="n">gpath</span><span class="o">=</span><span class="s2">&quot;&lt;output path&gt;&quot;</span><span class="p">;</span>
 <span class="o">%</span><span class="n">RainCloudPaired</span><span class="p">(</span>
              <span class="n">data</span><span class="o">=</span><span class="n">ds2</span><span class="p">,</span>
              <span class="n">x</span><span class="o">=</span><span class="n">cat</span><span class="p">,</span>

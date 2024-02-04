@@ -34,16 +34,12 @@ Input data
 group variable is optional. 
 
 I recommended that the variable type of category , "replicate" and group are set to numeric with format.
-if the variable type is string, item order is defined as acending character order.
+if the variable type is string, item order is defined as ascending character order.
 
 
 ***************
 Syntax
 ***************
-before use this macro, macro file described below is loaded by %include statement.
-
-- RainCloudPaired.sas
-
 
  ::
 
@@ -106,7 +102,7 @@ Parameters
 
    when the parameter is not set, all of graph object is set same color.
 
-   when the parameter is set category variable, the graph object of rach category is 
+   when the parameter is set category variable, the graph object of each category is 
    set  different color.
 
    default is "None".
@@ -170,7 +166,7 @@ Parameters
 
 - **gridsize : integer (optional)**
 
-   the number of KDE gridsize.
+   the number of KDE grid size.
    default is 401 (the default of proc kde)
 
 
@@ -218,10 +214,10 @@ Parameters
 
     the default is "1".
 
-- **pallete : keyword (optional)**
+- **palette : keyword (optional)**
 
-   color palette for fill, line and markers. the palletes described below is available.
-   see color palette section of introduction page. defalut is "SNS" (Seaborn defalut palette).
+   color palette for fill, line and markers. the palettes described below is available.
+   see color palette section of introduction page. default is "SNS" (Seaborn default palette).
 
       * SAS
       * SNS (Seaborn)
@@ -249,7 +245,7 @@ datasets (ds1)
 code ::
 
     ods graphics / reset=all imagefmt=svg imagename="rainpair_simple" width=20cm height=20cm;
-    ods listing gpath="/home/user/sasuser.v94/GTL/image" style=sns_default ;
+    ods listing gpath="<output path>";
     %RainCloudPaired(
             data=ds1,
             x=cat,
@@ -289,7 +285,7 @@ datasets (ds2)
 code ::
 
     ods graphics / reset=all imagefmt=svg imagename="rainpaird-group" width=20cm height=15cm;
-    ods listing gpath="/home/user/sasuser.v94/GTL/image" style=sns_default ;
+    ods listing gpath="<output path>";
     %RainCloudPaired(
 		 data=ds2,
 		 x=cat,
@@ -317,7 +313,7 @@ If connect parameter is set "True", means of each group will be connected.
 code ::
 
     ods graphics / reset=all imagefmt=svg imagename="rainpaird_group_connect" width=20cm height=20cm;
-    ods listing gpath="/home/centraldogma7771/sasuser.v94/GTL/image" style=sns_default ;
+    ods listing gpath="<output path>";
     %RainCloudPaired(
 		 data=ds2,
 		 x=cat,

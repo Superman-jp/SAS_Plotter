@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MultiHistogram &mdash; SAS Plotter 1.15 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Sankey diagram" href="Sankey.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> SAS Plotter
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Raincloud_plot.html">Raincloud plot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Raincloud_plot_paired.html">Raincloud plot (paired)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Ridgeline_plot.html">Ridgeline plot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mirrored_histogram.html">Mirrored Histogram</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2D-KDE.html">2D-KDE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Sankey.html">Sankey diagram</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">MultiHistogram</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#what-s-this">What’s this?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#syntax">Syntax</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#parameters">Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#example">example</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#basic-multiple-histogram">Basic multiple histogram</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#orientation">orientation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#split-mode">split mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#display-response-value">display response value</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">SAS Plotter</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">MultiHistogram</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Multihistogram.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="multihistogram">
+<h1>MultiHistogram<a class="headerlink" href="#multihistogram" title="Permalink to this heading"></a></h1>
+<section id="what-s-this">
+<h2>What’s this?<a class="headerlink" href="#what-s-this" title="Permalink to this heading"></a></h2>
+<p>Macro for multiple histogram using SAS GRAPH.</p>
+<p>A Sankey diagram is a visualization used to depict a flow from one domain of values to another domain.
+Sankey graphs is useful for showing flow and relationships among multiple categories.</p>
+<p>In pharmacoepidemiology study, this diagram is used for changes of the state of a patient over time, such as medication switching, disease stage progression,
+or movement through treatment pathways. <a class="footnote-reference brackets" href="#footcite-https-doi-org-10-1002-pds-5529" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</p>
+<p>In the past, there are reports of sankey diagram example using SAS GRAPH <a class="footnote-reference brackets" href="#footcite-barchartsankey" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a><a class="footnote-reference brackets" href="#footcite-sasofficialsankey" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>.
+But in this macro, more options such as statistics display and node focus are available.</p>
+<p>If you can allow the use of HTML, I suggest you refer to the case study of using D3.js and SAS <a class="footnote-reference brackets" href="#footcite-sankeywithsasandd3js" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a>.</p>
+</section>
+<section id="syntax">
+<h2>Syntax<a class="headerlink" href="#syntax" title="Permalink to this heading"></a></h2>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ods</span> <span class="n">graphics</span> <span class="o">/</span> <span class="o">&lt;</span> <span class="n">graphics</span> <span class="n">option</span> <span class="o">&gt;</span> <span class="p">;</span>
+<span class="n">ods</span> <span class="n">listing</span> <span class="n">gpath</span><span class="o">=&lt;</span> <span class="n">output</span> <span class="n">path</span> <span class="o">&gt;</span><span class="p">;</span>
+
+<span class="o">%</span><span class="n">macro</span> <span class="n">multihistogram</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="p">,</span>
+    <span class="n">group</span><span class="o">=</span><span class="p">,</span>
+    <span class="n">pair</span><span class="o">=</span><span class="n">none</span><span class="p">,</span>
+    <span class="n">level</span><span class="o">=</span><span class="p">,</span>
+    <span class="n">levelfmt</span><span class="o">=</span><span class="p">,</span>
+    <span class="n">response</span><span class="o">=</span><span class="p">,</span>
+    <span class="n">leveltitle</span><span class="o">=</span><span class="n">level</span><span class="p">,</span>
+    <span class="n">responsetxt</span><span class="o">=</span><span class="n">false</span><span class="p">,</span>
+    <span class="n">orient</span><span class="o">=</span><span class="n">v</span><span class="p">,</span>
+    <span class="n">pairsplit</span><span class="o">=</span><span class="n">false</span><span class="p">,</span>
+    <span class="n">pairtitle</span><span class="o">=</span><span class="n">pair</span><span class="p">,</span>
+    <span class="n">legend</span><span class="o">=</span><span class="n">true</span><span class="p">,</span>
+    <span class="n">palette</span><span class="o">=</span><span class="n">sns</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this heading"></a></h2>
+<ul>
+<li><p><strong>data : dataset name (required)</strong></p>
+<blockquote>
+<div><p>input data. where and rename options are available but keep option is not.
+input data is copied to work library and keep only domain variable set to domain parameter.</p>
+</div></blockquote>
+</li>
+<li><p><strong>category : variable name (required)</strong></p>
+<blockquote>
+<div><p>category variable.</p>
+</div></blockquote>
+</li>
+<li><p><strong>pair : variable name (optional)</strong></p>
+<blockquote>
+<div><p>binomial variable such as YES/NO or Male/Female etc.</p>
+</div></blockquote>
+</li>
+<li><p><strong>level : variable name (required)</strong></p>
+<blockquote>
+<div><p>category variable.</p>
+</div></blockquote>
+</li>
+<li><p><strong>levelfmt : format name (required)</strong></p>
+<blockquote>
+<div><p>format of level variable.</p>
+</div></blockquote>
+</li>
+<li><p><strong>response : variable name (required)</strong></p>
+<blockquote>
+<div><p>response variable such as frequency.</p>
+</div></blockquote>
+</li>
+<li><p><strong>leveltitle : text (optional)</strong></p>
+<blockquote>
+<div><p>label of level axis. default is “Level”.</p>
+</div></blockquote>
+</li>
+<li><p><strong>responsetxt : bool (optional)</strong></p>
+<blockquote>
+<div><p>if True the response value will be displayd. default is “false”.</p>
+</div></blockquote>
+</li>
+<li><p><strong>orient : keyword  (optional)</strong></p>
+<blockquote>
+<div><p>Define the orientation of graph, vertical(v) or horizontal(h).default is “v”.</p>
+</div></blockquote>
+</li>
+<li><p><strong>pairsplit : bool (optional)</strong></p>
+<blockquote>
+<div><p>if True the histogram will be split by pair variable. default is “False”.</p>
+</div></blockquote>
+</li>
+<li><p><strong>pairtitle : text  (optional)</strong></p>
+<blockquote>
+<div><p>title of pair variable legend. if legend parameter is set “False”, this parameter will be ignored.
+default is “Pair”.</p>
+</div></blockquote>
+</li>
+<li><p><strong>legend : bool (optional)</strong></p>
+<blockquote>
+<div><p>if “True” the legend of pair variable is displayed.if pair parameter is “None”, this parameter will be ignored.
+default is “True”.</p>
+</div></blockquote>
+</li>
+<li><p><strong>pallete : keyword (optional)</strong></p>
+<blockquote>
+<div><p>color palette for fill, line and markers. the palletes described below is available.
+see color palette section of introduction page. defalut is “SNS” (Seaborn defalut palette).</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>SAS</p></li>
+<li><p>SNS (Seaborn)</p></li>
+<li><p>STATA</p></li>
+<li><p>TABLEAU</p></li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+</li>
+</ul>
+</section>
+<section id="example">
+<h2>example<a class="headerlink" href="#example" title="Permalink to this heading"></a></h2>
+<section id="basic-multiple-histogram">
+<h3>Basic multiple histogram<a class="headerlink" href="#basic-multiple-histogram" title="Permalink to this heading"></a></h3>
+<p>before use, the aggregation of data is required.</p>
+<p>code</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">proc</span> <span class="nb">format</span><span class="p">;</span>
+<span class="n">value</span> <span class="n">regionf</span>
+    <span class="mi">1</span><span class="o">=</span><span class="s2">&quot;Region 1&quot;</span>
+    <span class="mi">2</span><span class="o">=</span><span class="s2">&quot;Region 2&quot;</span>
+    <span class="p">;</span>
+<span class="n">value</span> <span class="n">eyecolorf</span>
+    <span class="mi">1</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span>
+    <span class="mi">2</span><span class="o">=</span><span class="s2">&quot;brown&quot;</span>
+    <span class="mi">3</span><span class="o">=</span><span class="s2">&quot;green&quot;</span>
+    <span class="p">;</span>
+
+<span class="n">value</span> <span class="n">haircolorf</span>
+    <span class="mi">1</span><span class="o">=</span><span class="s2">&quot;black&quot;</span>
+    <span class="mi">2</span><span class="o">=</span><span class="s2">&quot;dark&quot;</span>
+    <span class="mi">3</span><span class="o">=</span><span class="s2">&quot;fair&quot;</span>
+    <span class="mi">4</span><span class="o">=</span><span class="s2">&quot;medium&quot;</span>
+    <span class="mi">5</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">;</span>
+<span class="n">run</span><span class="p">;</span>
+
+<span class="n">data</span> <span class="n">Color</span><span class="p">;</span>
+<span class="nb">format</span> <span class="n">region</span> <span class="n">regionf</span><span class="o">.</span> <span class="n">eyes</span> <span class="n">eyecolorf</span><span class="o">.</span> <span class="n">hair</span> <span class="n">haircolorf</span><span class="o">.</span><span class="p">;</span>
+<span class="nb">input</span> <span class="n">Region</span> <span class="n">Eyes</span> <span class="n">Hair</span> <span class="n">Count</span> <span class="o">@@</span><span class="p">;</span>
+<span class="n">label</span> <span class="n">Eyes</span>  <span class="o">=</span><span class="s1">&#39;Eye Color&#39;</span>
+        <span class="n">Hair</span>  <span class="o">=</span><span class="s1">&#39;Hair Color&#39;</span>
+        <span class="n">Region</span><span class="o">=</span><span class="s1">&#39;Geographic Region&#39;</span><span class="p">;</span>
+
+<span class="n">datalines</span><span class="p">;</span>
+<span class="mi">1</span> <span class="mi">1</span> <span class="mi">3</span> <span class="mi">23</span>  <span class="mi">1</span> <span class="mi">1</span> <span class="mi">5</span> <span class="mi">7</span>   <span class="mi">1</span> <span class="mi">1</span> <span class="mi">4</span> <span class="mi">24</span>
+<span class="mi">1</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">11</span>  <span class="mi">1</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">19</span>  <span class="mi">1</span> <span class="mi">3</span> <span class="mi">5</span> <span class="mi">7</span>
+<span class="mi">1</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">18</span>  <span class="mi">1</span> <span class="mi">3</span> <span class="mi">2</span> <span class="mi">14</span>  <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">34</span>
+<span class="mi">1</span> <span class="mi">2</span> <span class="mi">5</span> <span class="mi">5</span>   <span class="mi">1</span> <span class="mi">2</span> <span class="mi">4</span> <span class="mi">41</span>  <span class="mi">1</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">40</span>
+<span class="mi">1</span> <span class="mi">2</span> <span class="mi">1</span> <span class="mi">3</span>   <span class="mi">2</span> <span class="mi">1</span> <span class="mi">3</span> <span class="mi">46</span>  <span class="mi">2</span> <span class="mi">1</span> <span class="mi">5</span> <span class="mi">21</span>
+<span class="mi">2</span> <span class="mi">1</span> <span class="mi">4</span> <span class="mi">44</span>  <span class="mi">2</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">40</span>  <span class="mi">2</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">6</span>
+<span class="mi">2</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">50</span>  <span class="mi">2</span> <span class="mi">3</span> <span class="mi">5</span> <span class="mi">31</span>  <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">37</span>
+<span class="mi">2</span> <span class="mi">3</span> <span class="mi">2</span> <span class="mi">23</span>  <span class="mi">2</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">56</span>  <span class="mi">2</span> <span class="mi">2</span> <span class="mi">5</span> <span class="mi">42</span>
+<span class="mi">2</span> <span class="mi">2</span> <span class="mi">4</span> <span class="mi">53</span>  <span class="mi">2</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">54</span>  <span class="mi">2</span> <span class="mi">2</span> <span class="mi">1</span> <span class="mi">13</span>
+<span class="p">;</span>
+<span class="n">proc</span> <span class="n">sort</span><span class="p">;</span> <span class="n">by</span> <span class="n">region</span> <span class="n">eyes</span> <span class="n">hair</span><span class="p">;</span>
+<span class="n">run</span><span class="p">;</span>
+
+<span class="o">/*</span> <span class="n">dummy</span> <span class="n">data</span> <span class="o">*/</span>
+<span class="n">data</span> <span class="n">dummy</span><span class="p">;</span>
+<span class="n">do</span> <span class="n">region</span> <span class="o">=</span><span class="mi">1</span> <span class="n">to</span> <span class="mi">2</span><span class="p">;</span>
+<span class="n">do</span> <span class="n">eyes</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">to</span> <span class="mi">3</span><span class="p">;</span>
+<span class="n">do</span> <span class="n">hair</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">to</span> <span class="mi">5</span><span class="p">;</span>
+<span class="n">output</span><span class="p">;</span>
+<span class="n">end</span><span class="p">;</span>
+<span class="n">end</span><span class="p">;</span>
+<span class="n">end</span><span class="p">;</span>
+<span class="n">run</span><span class="p">;</span>
+
+<span class="n">data</span> <span class="n">freq</span><span class="p">;</span>
+<span class="n">merge</span> <span class="n">dummy</span> <span class="n">color</span><span class="p">;</span>
+<span class="n">by</span> <span class="n">region</span> <span class="n">eyes</span> <span class="n">hair</span><span class="p">;</span>
+<span class="k">if</span> <span class="n">count</span><span class="o">=.</span> <span class="n">then</span> <span class="n">count</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+<span class="n">run</span><span class="p">;</span>
+
+<span class="o">/*</span> <span class="n">basic</span> <span class="n">mutiple</span> <span class="n">histogram</span> <span class="o">*/</span>
+
+<span class="n">ods</span> <span class="n">listing</span> <span class="n">gpath</span><span class="o">=</span><span class="s2">&quot;output path&quot;</span><span class="p">;</span>
+<span class="n">ods</span> <span class="n">graphics</span> <span class="o">/</span> <span class="n">height</span><span class="o">=</span><span class="mi">15</span><span class="n">cm</span> <span class="n">width</span><span class="o">=</span><span class="mi">15</span><span class="n">cm</span> <span class="n">imagefmt</span><span class="o">=</span><span class="n">svg</span> <span class="n">imagename</span><span class="o">=</span><span class="s2">&quot;multihisto_basic&quot;</span> <span class="p">;</span>
+
+<span class="o">%</span><span class="n">multihistogram</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">freq</span><span class="p">,</span>
+    <span class="n">category</span><span class="o">=</span><span class="n">eyes</span><span class="p">,</span>
+    <span class="n">pair</span><span class="o">=</span><span class="n">region</span><span class="p">,</span>
+    <span class="n">level</span><span class="o">=</span><span class="n">hair</span><span class="p">,</span>
+    <span class="n">response</span><span class="o">=</span><span class="n">count</span><span class="p">,</span>
+    <span class="n">levelfmt</span> <span class="o">=</span> <span class="n">haircolorf</span><span class="p">,</span>
+    <span class="n">leveltitle</span><span class="o">=</span><span class="n">hair</span> <span class="n">color</span><span class="p">,</span>
+    <span class="n">pairtitle</span><span class="o">=</span><span class="n">region</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<img alt="_images/multihisto_basic.svg" src="_images/multihisto_basic.svg" /><p>Pair parameter is optional. If pair parameter is not set, the bar color will be defined based on the level.</p>
+<p>code</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">multihistogram</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">freq</span><span class="p">(</span><span class="n">where</span><span class="o">=</span><span class="p">(</span><span class="n">region</span><span class="o">=</span><span class="mi">1</span><span class="p">)),</span>
+    <span class="n">category</span><span class="o">=</span><span class="n">eyes</span><span class="p">,</span>
+    <span class="n">level</span><span class="o">=</span><span class="n">hair</span><span class="p">,</span>
+    <span class="n">response</span><span class="o">=</span><span class="n">count</span><span class="p">,</span>
+    <span class="n">levelfmt</span> <span class="o">=</span> <span class="n">haircolorf</span><span class="p">,</span>
+    <span class="n">leveltitle</span><span class="o">=</span><span class="n">hair</span> <span class="n">color</span><span class="p">,</span>
+    <span class="n">pairtitle</span><span class="o">=</span><span class="n">region</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<img alt="_images/multihisto_basic_nopair.svg" src="_images/multihisto_basic_nopair.svg" /></section>
+<section id="orientation">
+<h3>orientation<a class="headerlink" href="#orientation" title="Permalink to this heading"></a></h3>
+<p>To create horizontal multiple histogram, the orient parameter is set “h”.</p>
+<p>code</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">multihistogram</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">freq</span><span class="p">,</span>
+    <span class="n">category</span><span class="o">=</span><span class="n">eyes</span><span class="p">,</span>
+    <span class="n">pair</span><span class="o">=</span><span class="n">region</span><span class="p">,</span>
+    <span class="n">level</span><span class="o">=</span><span class="n">hair</span><span class="p">,</span>
+    <span class="n">response</span><span class="o">=</span><span class="n">count</span><span class="p">,</span>
+    <span class="n">orient</span><span class="o">=</span><span class="n">h</span><span class="p">,</span>
+    <span class="n">levelfmt</span> <span class="o">=</span> <span class="n">haircolorf</span><span class="p">,</span>
+    <span class="n">leveltitle</span><span class="o">=</span><span class="n">hair</span> <span class="n">color</span><span class="p">,</span>
+    <span class="n">pairtitle</span><span class="o">=</span><span class="n">region</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<img alt="_images/multihisto_h.svg" src="_images/multihisto_h.svg" /></section>
+<section id="split-mode">
+<h3>split mode<a class="headerlink" href="#split-mode" title="Permalink to this heading"></a></h3>
+<p>when normal mode (pairsplit=false),  the bar of histogram will be extended side by side symmetrically like violin plot.</p>
+<p>whreas when split mode (pairsplit=true), the symmetrical histogram will be separated based on pair variable.</p>
+<p>code</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">multihistogram</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">freq</span><span class="p">,</span>
+    <span class="n">category</span><span class="o">=</span><span class="n">eyes</span><span class="p">,</span>
+    <span class="n">pair</span><span class="o">=</span><span class="n">region</span><span class="p">,</span>
+    <span class="n">level</span><span class="o">=</span><span class="n">hair</span><span class="p">,</span>
+    <span class="n">response</span><span class="o">=</span><span class="n">count</span><span class="p">,</span>
+    <span class="n">pairsplit</span><span class="o">=</span><span class="n">true</span><span class="p">,</span>
+    <span class="n">levelfmt</span> <span class="o">=</span> <span class="n">haircolorf</span><span class="p">,</span>
+    <span class="n">leveltitle</span><span class="o">=</span><span class="n">hair</span> <span class="n">color</span><span class="p">,</span>
+    <span class="n">pairtitle</span><span class="o">=</span><span class="n">region</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<img alt="_images/multihisto_pairsplit.svg" src="_images/multihisto_pairsplit.svg" /></section>
+<section id="display-response-value">
+<h3>display response value<a class="headerlink" href="#display-response-value" title="Permalink to this heading"></a></h3>
+<p>Basic mutilple histogram is difficult to read the response value from the plot because there is not response variable axis.
+but if responsetxt parameter is set “true”. the reponse value will be displayed.
+code</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">multihistogram</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">freq</span><span class="p">,</span>
+    <span class="n">category</span><span class="o">=</span><span class="n">eyes</span><span class="p">,</span>
+    <span class="n">pair</span><span class="o">=</span><span class="n">region</span><span class="p">,</span>
+    <span class="n">level</span><span class="o">=</span><span class="n">hair</span><span class="p">,</span>
+    <span class="n">response</span><span class="o">=</span><span class="n">count</span><span class="p">,</span>
+    <span class="n">responsetxt</span><span class="o">=</span><span class="n">true</span><span class="p">,</span>
+    <span class="n">levelfmt</span> <span class="o">=</span> <span class="n">haircolorf</span><span class="p">,</span>
+    <span class="n">leveltitle</span><span class="o">=</span><span class="n">hair</span> <span class="n">color</span><span class="p">,</span>
+    <span class="n">pairtitle</span><span class="o">=</span><span class="n">region</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<img alt="_images/multihisto_resvalue.svg" src="_images/multihisto_resvalue.svg" /></section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Sankey.html" class="btn btn-neutral float-left" title="Sankey diagram" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, SupermanJP.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -17,6 +17,7 @@
    ./Mirrored_histogram
    ./2D-KDE
    ./Sankey
+   ./Multihistogram
 
 *******************
 Indices and tables

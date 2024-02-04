@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sankey diagram &mdash; SAS Plotter 1.15 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="2D-KDE" href="2D-KDE.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> SAS Plotter
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Raincloud_plot.html">Raincloud plot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Raincloud_plot_paired.html">Raincloud plot (paired)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Ridgeline_plot.html">Ridgeline plot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mirrored_histogram.html">Mirrored Histogram</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2D-KDE.html">2D-KDE</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Sankey diagram</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#what-s-this">What’s this?</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#elements-of-sankey-diagram">Elements of sankey diagram</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rules">Rules</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#input-data">Input data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#syntax">Syntax</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#parameters">Parameters</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#domain-settings">Domain settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#node-settings">Node settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#link-settings">Link settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#other-settings">Other settings</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#example">example</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#basic-sankey-diagram">Basic sankey diagram</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adjust-the-domain-interval">Adjust the domain interval</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#node-format-and-legend">Node format and legend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#change-the-fill-appearance">Change the fill appearance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#change-the-text-appearance">Change the text appearance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#focus-parameter">Focus parameter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#reference">Reference</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">SAS Plotter</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">Sankey diagram</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Sankey.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="sankey-diagram">
+<h1>Sankey diagram<a class="headerlink" href="#sankey-diagram" title="Permalink to this heading"></a></h1>
+<section id="what-s-this">
+<h2>What’s this?<a class="headerlink" href="#what-s-this" title="Permalink to this heading"></a></h2>
+<p>Macro for Sankey diagram using SAS GRAPH.</p>
+<p>A Sankey diagram is a visualization used to depict a flow from one domain of values to another domain.
+Sankey graphs is useful for showing flow and relationships among multiple categories.</p>
+<p>In pharmacoepidemiology study, this diagram is used for changes of the state of a patient over time, such as medication switching, disease stage progression,
+or movement through treatment pathways. <a class="footnote-reference brackets" href="#footcite-https-doi-org-10-1002-pds-5529" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</p>
+<p>In the past, there are reports of sankey diagram example using SAS GRAPH <a class="footnote-reference brackets" href="#footcite-barchartsankey" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a><a class="footnote-reference brackets" href="#footcite-sasofficialsankey" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>.
+But in this macro, more options such as statistics display and node focus are available.</p>
+<p>If you can allow the use of HTML, I suggest you refer to the case study of using D3.js and SAS <a class="footnote-reference brackets" href="#footcite-sankeywithsasandd3js" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a>.</p>
+<section id="elements-of-sankey-diagram">
+<h3>Elements of sankey diagram<a class="headerlink" href="#elements-of-sankey-diagram" title="Permalink to this heading"></a></h3>
+<p>Sankey diagram is contained the three elements.</p>
+<img alt="_images/elements_of_sankey_diagram.png" src="_images/elements_of_sankey_diagram.png" />
+<ul>
+<li><p>domain</p>
+<blockquote>
+<div><p>the group of data as x-axis</p>
+</div></blockquote>
+</li>
+<li><p>Node</p>
+<blockquote>
+<div><p>the category. displays as rectangle shape.</p>
+</div></blockquote>
+</li>
+<li><p>link (flow)</p>
+<blockquote>
+<div><p>sigmoid shapes connected from node (source node) to next node (target node). amounts of flow are displays as widths of sigmoid shapes.
+the links are connected the nodes in order left domain to right domain.</p>
+</div></blockquote>
+</li>
+</ul>
+</section>
+<section id="rules">
+<h3>Rules<a class="headerlink" href="#rules" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p>the nodes are stacked in node category order.</p></li>
+<li><p>all records of the input data are displaied in the all domains.</p></li>
+<li><p>nodes in the first domain shoud be source node only, not target node.</p></li>
+<li><p>the nodes of last domain shoud be target node only, not source node.</p></li>
+<li><p>left-to right links (circular links) are not allowed.</p></li>
+</ul>
+</div></blockquote>
+</section>
+</section>
+<section id="input-data">
+<h2>Input data<a class="headerlink" href="#input-data" title="Permalink to this heading"></a></h2>
+<p>the node categories are set to each domain variables like below.
+I recommended that the node category format is applied to each domain variable.
+the domain variables should be numeric.</p>
+<p>null value is allowed. null value is defined as null node and same as other nodes.</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>domain1</strong></p></td>
+<td><p><strong>domain2</strong></p></td>
+<td><p><strong>domain3</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>node A</p></td>
+<td><p>node B</p></td>
+<td><p>node C</p></td>
+</tr>
+<tr class="row-odd"><td><p>node B</p></td>
+<td><p>node A</p></td>
+<td><p>node C</p></td>
+</tr>
+<tr class="row-even"><td><p>node D</p></td>
+<td><p>node A</p></td>
+<td><p>node B</p></td>
+</tr>
+</tbody>
+</table>
+<p>the domain format is required.</p>
+<p>code</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">proc</span> <span class="nb">format</span><span class="p">;</span>
+  <span class="n">value</span> <span class="n">domainfmt</span>
+  <span class="mi">1</span><span class="o">=</span><span class="s2">&quot;Domain 1&quot;</span>
+  <span class="mi">2</span><span class="o">=</span><span class="s2">&quot;Domain 2&quot;</span>
+  <span class="mi">3</span><span class="o">=</span><span class="s2">&quot;Domain 3&quot;</span>
+<span class="p">;</span>
+<span class="n">run</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="syntax">
+<h2>Syntax<a class="headerlink" href="#syntax" title="Permalink to this heading"></a></h2>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ods</span> <span class="n">graphics</span> <span class="o">/</span> <span class="o">&lt;</span> <span class="n">graphics</span> <span class="n">option</span> <span class="o">&gt;</span> <span class="p">;</span>
+<span class="n">ods</span> <span class="n">listing</span> <span class="n">gpath</span><span class="o">=&lt;</span> <span class="n">output</span> <span class="n">path</span> <span class="o">&gt;</span><span class="p">;</span>
+
+<span class="o">%</span><span class="n">macro</span> <span class="n">sankey</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="p">,</span>
+    <span class="n">focus</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+
+    <span class="n">domain</span><span class="o">=</span><span class="p">,</span>
+    <span class="n">domainfmt</span><span class="o">=</span><span class="p">,</span>
+    <span class="n">domaintextattrs</span><span class="o">=</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">black</span> <span class="n">size</span><span class="o">=</span><span class="mi">11</span><span class="p">),</span>
+
+    <span class="n">gap</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">nodefmt</span><span class="o">=</span><span class="n">auto</span><span class="p">,</span>
+    <span class="n">nodewidth</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+    <span class="n">nodeattrs</span><span class="o">=</span><span class="n">auto</span><span class="p">,</span>
+    <span class="n">nodename</span><span class="o">=</span><span class="n">true</span><span class="p">,</span>
+    <span class="n">nodetextattrs</span><span class="o">=</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">black</span> <span class="n">size</span><span class="o">=</span><span class="mi">9</span><span class="p">),</span>
+
+    <span class="n">linktext</span><span class="o">=</span><span class="n">true</span><span class="p">,</span>
+    <span class="n">linktext_offset</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span>
+    <span class="n">linkattrs</span><span class="o">=</span><span class="n">auto</span><span class="p">,</span>
+    <span class="n">linktextattrs</span><span class="o">=</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">black</span> <span class="n">size</span><span class="o">=</span><span class="mi">8</span><span class="p">),</span>
+    <span class="n">stat</span><span class="o">=</span><span class="n">both</span><span class="p">,</span>
+    <span class="n">unit</span><span class="o">=</span><span class="p">,</span>
+    <span class="n">reverse</span><span class="o">=</span><span class="n">false</span><span class="p">,</span>
+
+    <span class="n">legend</span><span class="o">=</span><span class="n">false</span><span class="p">,</span>
+    <span class="n">palette</span><span class="o">=</span><span class="n">sns</span><span class="p">);</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this heading"></a></h2>
+<ul>
+<li><p><strong>data : dataset name (required)</strong></p>
+<blockquote>
+<div><p>input data. keep and rename options are available but keep option is not.
+input data is copied to work library and keep only domain variable set to domain parameter.</p>
+</div></blockquote>
+</li>
+</ul>
+<section id="domain-settings">
+<h3>Domain settings<a class="headerlink" href="#domain-settings" title="Permalink to this heading"></a></h3>
+<ul>
+<li><p><strong>domain : variable name (required)</strong></p>
+<blockquote>
+<div><p>domain variable. domain variables are set in link order.
+for example, if domain parameter is set as “var1 var2 var3”, the var1 and var2, var2 and var3 are connected.</p>
+</div></blockquote>
+</li>
+<li><p><strong>domainfmt : variable name (required)</strong></p>
+<blockquote>
+<div><p>format for domain variable. format catalog should be saved in work library and value should be numeric.
+interval of domains is depends on the values of format. labels of the format are displayed on plot.</p>
+</div></blockquote>
+</li>
+<li><p><strong>domaintextattrs : text appearance (optional)</strong></p></li>
+<li><p>The appearance (font size, font color and font weights) of domain text. it is same as textattrs of GTL. default is “(size=11 color=black).</p></li>
+</ul>
+</section>
+<section id="node-settings">
+<h3>Node settings<a class="headerlink" href="#node-settings" title="Permalink to this heading"></a></h3>
+<ul>
+<li><p><strong>gap : numeric (optional)</strong></p>
+<blockquote>
+<div><p>the gap between nodes. defalt is 5.</p>
+</div></blockquote>
+</li>
+<li><p><strong>nodefmt : keyword or format name (optional)</strong></p>
+<blockquote>
+<div><p>format for nodes. if “auto” is set, format is obtained from domain variable in input data.
+if you want to display the node which is not existed in input data in the legend. the node format should be set to this parameter. format catalog should be saved in work library.
+defalt is “auto”.</p>
+</div></blockquote>
+</li>
+<li><p><strong>nodewidth : numeric (optional)</strong></p>
+<blockquote>
+<div><p>the width of node shapes. the default is 0.2.</p>
+</div></blockquote>
+</li>
+</ul>
+<img alt="_images/nodewidth.png" src="_images/nodewidth.png" />
+<ul>
+<li><p><strong>nodeattrs : keyword or fill appearance  (optional)</strong></p>
+<blockquote>
+<div><p>node appearance (color, transparency). it is same as fillattrs of GTL.
+if “auto” is set, the fill color of nodes are set based on the node category.
+if you want to be set same color to all the nodes.fill attribute is set to this parameter.</p>
+<p>for example, the fill appearance described below is set and the all nodes is set blue.</p>
+<p>nodeattrs=(color=blue)</p>
+<p>defalt is “auto”.</p>
+</div></blockquote>
+</li>
+<li><dl class="simple">
+<dt><strong>nodename : bool (optional)</strong></dt><dd><p>displays the node name (node category name).
+defalt is “true”.</p>
+</dd>
+</dl>
+</li>
+<li><p><strong>nodetextattrs : text appearance  (optional)</strong></p>
+<blockquote>
+<div><p>The node text appearance (font size, font color and font weights).
+It is same as textattrs of GTL.
+default is “(size=9 color=black).</p>
+</div></blockquote>
+</li>
+</ul>
+</section>
+<section id="link-settings">
+<h3>Link settings<a class="headerlink" href="#link-settings" title="Permalink to this heading"></a></h3>
+<ul>
+<li><p><strong>linkattrs : fill appearance (optional)</strong></p>
+<blockquote>
+<div><p>fill appearance of link shapes (color, transparency). it is same as fillattrs of GTL. if the fill appearance is set to this parameter, all the links will be applied.
+defalt is “auto”. fill color is defined as source node type.</p>
+</div></blockquote>
+</li>
+<li><p><strong>linktext : bool (optional)</strong></p>
+<blockquote>
+<div><p>display the link text (frequency or percentage). the text will be displays at the sorce node side of the links.defalt is “true”.-
+defalt is “auto”.</p>
+</div></blockquote>
+</li>
+<li><p><strong>linktext_offset : numeric (optional)</strong></p>
+<blockquote>
+<div><p>the gap between node shape and link text.
+default is 0.15.</p>
+</div></blockquote>
+</li>
+</ul>
+<img alt="_images/linktext_offset.png" src="_images/linktext_offset.png" />
+<ul>
+<li><p><strong>linktextattrs : text appearance  (optional)</strong></p>
+<blockquote>
+<div><p>the appearance (font size, font color and font weights) of link text. It is same as textattrs of GTL.
+default is “(size=8 color=black).</p>
+</div></blockquote>
+</li>
+</ul>
+</section>
+<section id="other-settings">
+<h3>Other settings<a class="headerlink" href="#other-settings" title="Permalink to this heading"></a></h3>
+<ul>
+<li><p><strong>reverse : bool (optional)</strong></p>
+<blockquote>
+<div><p>if True the y-axis will be reversed. defalt is False.</p>
+</div></blockquote>
+</li>
+<li><p><strong>focus : where statement (optional)</strong></p>
+<blockquote>
+<div><p>specify the focused node. the links whose source node except for the node set by focus parameter will be set grey color and link text will be not displayed.
+focused node is specified by subset if.
+for example, if “type A” node of second domain is forcused, set the parameter described below. value of type A node is 1.</p>
+<p>focus=(node=1 and domain=2)</p>
+<p>defalut is “none” (not focused).</p>
+</div></blockquote>
+</li>
+<li><p><strong>stat : keyword (optional)</strong></p>
+<blockquote>
+<div><p>displays the frequency or percentage of nodes and links.
+the keyword described below is available. default is “both”.</p>
+<blockquote>
+<div><blockquote>
+<div><ul class="simple">
+<li><p>FREQ: frequency</p></li>
+<li><p>PCT:  percentage(displays second decimal place)</p></li>
+<li><p>BOTH: frequency and percentage</p></li>
+<li><p>NONE: not displaied</p></li>
+</ul>
+</div></blockquote>
+<p>the percentage is calculated using following equation.</p>
+<p>percentage = frequency of nodes or links / number observation of input data * 100</p>
+</div></blockquote>
+</div></blockquote>
+</li>
+<li><p><strong>unit : text (optional)</strong></p>
+<blockquote>
+<div><p>the units of frequency (suffix). if “FREQ” or “BOTH” keyword is set to the stat parameter,
+the units of frequency is displaied in the node text and link text.</p>
+<p>default is “” (null).</p>
+</div></blockquote>
+</li>
+<li><p><strong>legend : bool (optional)</strong></p>
+<blockquote>
+<div><p>if “True” the legend of node category item is displayed.
+default is “false”.</p>
+</div></blockquote>
+</li>
+<li><p><strong>pallete : keyword (optional)</strong></p>
+<blockquote>
+<div><p>color palette for fill, line and markers. the palletes described below is available.
+see color palette section of introduction page. defalut is “SNS” (Seaborn defalut palette).</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>SAS</p></li>
+<li><p>SNS (Seaborn)</p></li>
+<li><p>STATA</p></li>
+<li><p>TABLEAU</p></li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+</li>
+</ul>
+</section>
+</section>
+<section id="example">
+<h2>example<a class="headerlink" href="#example" title="Permalink to this heading"></a></h2>
+<section id="basic-sankey-diagram">
+<h3>Basic sankey diagram<a class="headerlink" href="#basic-sankey-diagram" title="Permalink to this heading"></a></h3>
+<p>the regimen changes of the patients is displaied as sankey diagram using this macro.
+variables (day0, day30, day60, day120) are selected regimen of the patient at 0 ,30, 60 and 120days.
+these variables is set the regimen types.</p>
+<p>code</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">proc</span> <span class="nb">format</span><span class="p">;</span>
+<span class="n">value</span> <span class="n">domainf</span>
+<span class="mi">1</span><span class="o">=</span><span class="s2">&quot;day0&quot;</span>
+<span class="mi">2</span><span class="o">=</span><span class="s2">&quot;day30&quot;</span>
+<span class="mi">3</span><span class="o">=</span><span class="s2">&quot;day60&quot;</span>
+<span class="mi">4</span><span class="o">=</span><span class="s2">&quot;day120&quot;</span><span class="p">;</span>
+
+<span class="n">value</span> <span class="n">nodef</span>
+<span class="mi">0</span><span class="o">=</span><span class="s2">&quot;Regimen A&quot;</span>
+<span class="mi">1</span><span class="o">=</span><span class="s2">&quot;Regimen B&quot;</span>
+<span class="mi">2</span><span class="o">=</span><span class="s2">&quot;Regimen C&quot;</span>
+<span class="mi">3</span><span class="o">=</span><span class="s2">&quot;Regimen D&quot;</span>
+<span class="mi">4</span><span class="o">=</span><span class="s2">&quot;Regimen E&quot;</span>
+<span class="mi">5</span><span class="o">=</span><span class="s2">&quot;Regimen F&quot;</span>
+<span class="mi">6</span><span class="o">=</span><span class="s2">&quot;Regimen G&quot;</span>
+<span class="mi">7</span><span class="o">=</span><span class="s2">&quot;Regimen H&quot;</span>
+<span class="mi">8</span><span class="o">=</span><span class="s2">&quot;Regimen I&quot;</span>
+<span class="p">;</span>
+<span class="n">run</span><span class="p">;</span>
+
+<span class="n">data</span> <span class="n">graph</span><span class="p">;</span>
+<span class="nb">set</span> <span class="n">raw</span><span class="p">;</span>
+<span class="nb">format</span> <span class="n">day0</span> <span class="n">day30</span> <span class="n">day60</span> <span class="n">day120</span> <span class="n">nodef</span><span class="o">.</span><span class="p">;</span>
+<span class="n">run</span><span class="p">;</span>
+
+<span class="n">ods</span> <span class="n">graphics</span> <span class="o">/</span> <span class="n">height</span><span class="o">=</span><span class="mi">15</span><span class="n">cm</span> <span class="n">width</span><span class="o">=</span><span class="mi">20</span><span class="n">cm</span> <span class="n">imagefmt</span><span class="o">=</span><span class="n">svg</span> <span class="n">imagename</span><span class="o">=</span><span class="s2">&quot;sankey_basic&quot;</span> <span class="n">noborder</span><span class="p">;</span>
+<span class="n">ods</span> <span class="n">listing</span> <span class="n">gpath</span><span class="o">=</span><span class="s2">&quot;&lt;output path&gt;&quot;</span><span class="p">;</span>
+<span class="o">%</span><span class="n">sankey</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">graph</span><span class="p">,</span>
+    <span class="n">domain</span><span class="o">=</span><span class="n">day0</span> <span class="n">day30</span> <span class="n">day60</span><span class="p">,</span>
+    <span class="n">domainfmt</span><span class="o">=</span><span class="n">domainf</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<img alt="_images/sankey_basic.svg" src="_images/sankey_basic.svg" /></section>
+<section id="adjust-the-domain-interval">
+<h3>Adjust the domain interval<a class="headerlink" href="#adjust-the-domain-interval" title="Permalink to this heading"></a></h3>
+<p>The interval of the domain is defined as the values of the domain format.
+when the domain format values are adjusted, then interval of the domain will be changed.</p>
+<p>if the format is changed described below, the plot of the previous section “basic sankey diagram”
+is as follows.</p>
+<p>code</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">proc</span> <span class="nb">format</span><span class="p">;</span>
+<span class="n">value</span> <span class="n">domainf</span>
+<span class="mi">1</span><span class="o">=</span><span class="s2">&quot;day0&quot;</span>
+<span class="mi">2</span><span class="o">=</span><span class="s2">&quot;day30&quot;</span>
+<span class="mi">4</span><span class="o">=</span><span class="s2">&quot;day60&quot;</span>
+<span class="mi">8</span><span class="o">=</span><span class="s2">&quot;day120&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+<img alt="_images/sankey_change_interval.svg" src="_images/sankey_change_interval.svg" /></section>
+<section id="node-format-and-legend">
+<h3>Node format and legend<a class="headerlink" href="#node-format-and-legend" title="Permalink to this heading"></a></h3>
+<p>If the codes of the previous section “basic sankey diagram” is chaged as described below, the color of the “Regimen E”, “Regimen G” and
+“Regimen I” is diffrent from the previous section.</p>
+<p>By defalt, the color of the nodes is defined based on the input data and domain variables.
+when the input dataset is modified, the color of the nodes might be changed even though same node.</p>
+<p>code</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">sankey</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">raw</span><span class="p">,</span>
+    <span class="n">domain</span><span class="o">=</span><span class="n">day0</span> <span class="n">day30</span><span class="p">,</span>
+    <span class="n">domainfmt</span><span class="o">=</span><span class="n">domainf</span><span class="p">,</span>
+    <span class="n">legend</span><span class="o">=</span><span class="n">true</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<img alt="_images/sankey_not_set_nodefmt.svg" src="_images/sankey_not_set_nodefmt.svg" /><p>if nodefmt parameter is set, the color of the nodes defined based on the node format. The node color is independent from dataset.
+All elements of the format is displaied in the legend if legend parameter is true.</p>
+<p>code</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">sankey</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">raw</span><span class="p">,</span>
+    <span class="n">domain</span><span class="o">=</span><span class="n">day0</span> <span class="n">day30</span><span class="p">,</span>
+    <span class="n">domainfmt</span><span class="o">=</span><span class="n">domainf</span><span class="p">,</span>
+    <span class="n">ndoefmt</span><span class="o">=</span><span class="n">nodef</span><span class="p">,</span>
+    <span class="n">legend</span><span class="o">=</span><span class="n">true</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<img alt="_images/sankey_set_nodefmt.svg" src="_images/sankey_set_nodefmt.svg" /></section>
+<section id="change-the-fill-appearance">
+<h3>Change the fill appearance<a class="headerlink" href="#change-the-fill-appearance" title="Permalink to this heading"></a></h3>
+<p>By defalt, the node color and the link color are defined based on the node category.
+If the nodeattrs or linkattrs are set, the fill color of the all the nodes or links will be changed.
+Nodefmt parameter will be ignored.</p>
+<p>code</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">sankey</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">raw</span><span class="p">,</span>
+    <span class="n">domain</span><span class="o">=</span><span class="n">day0</span> <span class="n">day30</span> <span class="n">day60</span> <span class="p">,</span>
+    <span class="n">domainfmt</span><span class="o">=</span><span class="n">domainf</span><span class="p">,</span>
+    <span class="n">nodeattrs</span><span class="o">=</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">grey</span><span class="p">)</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<img alt="_images/sankey_set_nodeattrs.svg" src="_images/sankey_set_nodeattrs.svg" /><p>code</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">sankey</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">raw</span><span class="p">,</span>
+    <span class="n">domain</span><span class="o">=</span><span class="n">day0</span> <span class="n">day30</span> <span class="n">day60</span> <span class="p">,</span>
+    <span class="n">domainfmt</span><span class="o">=</span><span class="n">domainf</span><span class="p">,</span>
+    <span class="n">linkattrs</span><span class="o">=</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">skyblue</span> <span class="n">transparency</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<img alt="_images/sankey_set_linkattrs.svg" src="_images/sankey_set_linkattrs.svg" /></section>
+<section id="change-the-text-appearance">
+<h3>Change the text appearance<a class="headerlink" href="#change-the-text-appearance" title="Permalink to this heading"></a></h3>
+<p>The domaintextattrs, nodetextattrs and linktextattrs parameters are useful for modily text appearance of
+domains, nodes and links.</p>
+<p>code</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">sankey</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">raw</span><span class="p">,</span>
+    <span class="n">domain</span><span class="o">=</span><span class="n">cyl</span> <span class="n">vs</span> <span class="n">gear</span><span class="p">,</span>
+    <span class="n">domainfmt</span><span class="o">=</span><span class="n">domainf</span><span class="p">,</span>
+    <span class="n">nodeattrs</span><span class="o">=</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">grey</span><span class="p">),</span>
+    <span class="n">linkattrs</span><span class="o">=</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">skyblue</span> <span class="n">transparency</span><span class="o">=</span><span class="mf">0.7</span><span class="p">),</span>
+    <span class="n">domaintextattrs</span><span class="o">=</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">red</span> <span class="n">size</span><span class="o">=</span><span class="mi">12</span><span class="p">),</span>
+    <span class="n">nodetextattrs</span><span class="o">=</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">blue</span> <span class="n">size</span><span class="o">=</span><span class="mi">12</span><span class="p">),</span>
+    <span class="n">linktext_offset</span><span class="o">=</span><span class="mf">0.15</span><span class="p">,</span>
+    <span class="n">linktextattrs</span><span class="o">=</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">green</span> <span class="n">size</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<img alt="_images/sankey_set_textattrs.svg" src="_images/sankey_set_textattrs.svg" /></section>
+<section id="focus-parameter">
+<h3>Focus parameter<a class="headerlink" href="#focus-parameter" title="Permalink to this heading"></a></h3>
+<p>The focus parameter is useful for the highlighting specified nodes.
+The not-highlighted nodes and the links whose source node is not highlighted are set grey color and the link texts are not displaied.</p>
+<p>code</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">proc</span> <span class="nb">format</span><span class="p">;</span>
+<span class="n">value</span> <span class="n">domainf</span>
+<span class="mi">1</span><span class="o">=</span><span class="s2">&quot;day 0&quot;</span>
+<span class="mi">2</span><span class="o">=</span><span class="s2">&quot;day 30&quot;</span>
+<span class="mi">3</span><span class="o">=</span><span class="s2">&quot;day 60&quot;</span>
+<span class="mi">4</span><span class="o">=</span><span class="s2">&quot;day 90&quot;</span><span class="p">;</span>
+
+<span class="n">value</span> <span class="n">nodef</span>
+
+<span class="mi">1</span><span class="o">=</span><span class="s2">&quot;Drug A&quot;</span>
+<span class="mi">2</span><span class="o">=</span><span class="s2">&quot;Drug B&quot;</span>
+<span class="mi">3</span><span class="o">=</span><span class="s2">&quot;Drug C&quot;</span>
+<span class="mi">4</span><span class="o">=</span><span class="s2">&quot;Drug D&quot;</span>
+<span class="mi">5</span><span class="o">=</span><span class="s2">&quot;Lost to Follow-up&quot;</span>
+<span class="p">;</span>
+<span class="n">run</span><span class="p">;</span>
+
+<span class="n">data</span> <span class="n">graph</span><span class="p">;</span>
+<span class="nb">set</span> <span class="n">raw</span><span class="p">;</span>
+
+<span class="nb">format</span> <span class="n">var1</span><span class="o">-</span><span class="n">var4</span> <span class="n">nodef</span><span class="o">.</span><span class="p">;</span>
+<span class="n">run</span><span class="p">;</span>
+
+<span class="n">options</span> <span class="n">mprint</span><span class="p">;</span>
+<span class="n">ods</span> <span class="n">graphics</span> <span class="o">/</span> <span class="n">height</span><span class="o">=</span><span class="mi">15</span><span class="n">cm</span> <span class="n">width</span><span class="o">=</span><span class="mi">25</span><span class="n">cm</span> <span class="n">imagefmt</span><span class="o">=</span><span class="n">svg</span> <span class="n">imagename</span><span class="o">=</span><span class="s2">&quot;sankey_focus&quot;</span> <span class="n">noborder</span><span class="p">;</span>
+<span class="n">ods</span> <span class="n">listing</span> <span class="n">gpath</span><span class="o">=</span><span class="s2">&quot;&lt;output path&gt;&quot;</span><span class="p">;</span>
+
+<span class="o">%</span><span class="n">sankey</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">raw</span><span class="p">,</span>
+    <span class="n">focus</span><span class="o">=</span><span class="p">(</span><span class="n">node</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+    <span class="n">domain</span><span class="o">=</span><span class="n">var1</span> <span class="n">var2</span> <span class="n">var3</span> <span class="n">var4</span><span class="p">,</span>
+    <span class="n">domainfmt</span><span class="o">=</span><span class="n">domainf</span><span class="p">,</span>
+    <span class="n">gap</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">reverse</span><span class="o">=</span><span class="n">true</span><span class="p">,</span>
+    <span class="n">nodewidth</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+    <span class="n">nodename</span><span class="o">=</span><span class="n">false</span><span class="p">,</span>
+    <span class="n">stat</span><span class="o">=</span><span class="n">freq</span><span class="p">,</span>
+    <span class="n">legend</span><span class="o">=</span><span class="n">true</span><span class="p">,</span>
+    <span class="n">linktext_offset</span><span class="o">=</span><span class="mf">0.03</span><span class="p">,</span>
+    <span class="n">palette</span><span class="o">=</span><span class="n">sns</span><span class="p">);</span>
+</pre></div>
+</div>
+<img alt="_images/sankey_focus.svg" src="_images/sankey_focus.svg" /></section>
+<section id="reference">
+<h3>Reference<a class="headerlink" href="#reference" title="Permalink to this heading"></a></h3>
+<div class="docutils container" id="id5">
+<aside class="footnote brackets" id="footcite-https-doi-org-10-1002-pds-5529" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Nicolle M. Gatto, Shirley V. Wang, William Murk, Pattra Mattox, M. Alan Brookhart, Andrew Bate, Sebastian Schneeweiss, and Jeremy A. Rassen. Visualizations throughout pharmacoepidemiology study planning, implementation, and reporting. <em>Pharmacoepidemiology and Drug Safety</em>, 31(11):1140–1152, 2022. URL: <a class="reference external" href="https://onlinelibrary.wiley.com/doi/abs/10.1002/pds.5529">https://onlinelibrary.wiley.com/doi/abs/10.1002/pds.5529</a>, <a class="reference external" href="https://arxiv.org/abs/https://onlinelibrary.wiley.com/doi/pdf/10.1002/pds.5529">arXiv:https://onlinelibrary.wiley.com/doi/pdf/10.1002/pds.5529</a>, <a class="reference external" href="https://doi.org/https://doi.org/10.1002/pds.5529">doi:https://doi.org/10.1002/pds.5529</a>.</p>
+</aside>
+<aside class="footnote brackets" id="footcite-barchartsankey" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p>Chapel Hill Shane Rosanbalm. Getting sankey with bar charts. 2015. URL: <a class="reference external" href="https://www.pharmasug.org/proceedings/2015/DV/PharmaSUG-2015-DV07.pdf">https://www.pharmasug.org/proceedings/2015/DV/PharmaSUG-2015-DV07.pdf</a>.</p>
+</aside>
+<aside class="footnote brackets" id="footcite-sasofficialsankey" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">3</a><span class="fn-bracket">]</span></span>
+<p>Sanjay Matange. Sankey diagrams. 2015. URL: <a class="reference external" href="https://blogs.sas.com/content/graphicallyspeaking/2015/03/21/sankey-diagrams/">https://blogs.sas.com/content/graphicallyspeaking/2015/03/21/sankey-diagrams/</a>.</p>
+</aside>
+<aside class="footnote brackets" id="footcite-sankeywithsasandd3js" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">4</a><span class="fn-bracket">]</span></span>
+<p>Tanmay Khole. Using sankey diagram to analyze drug pipeline. 2020. URL: <a class="reference external" href="https://www.lexjansen.com/phuse-us/2020/dv/DV03.pdf">https://www.lexjansen.com/phuse-us/2020/dv/DV03.pdf</a>.</p>
+</aside>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="2D-KDE.html" class="btn btn-neutral float-left" title="2D-KDE" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, SupermanJP.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -7,7 +7,6 @@
 
 %macro sankey(
 	data=,
-	focus=None,
 	
 	domain=,
 	domainfmt=,
@@ -24,9 +23,12 @@
 	linktext_offset=0.05,
 	linkattrs=auto,
 	linktextattrs=(color=black size=8),
+	
+	focus=None,
 	stat=both,
 	unit=,
 	reverse=false,
+	endFollowup=None,
 	
 	legend=false,
 	palette=sns);
@@ -287,30 +289,88 @@ drop tmp;
 
 run;
 
+*-------------------------------;
+* step5: calculate percentage of followup ;
+*-------------------------------;
+%if %upcase("&endfollowup.")^="NONE" %then %do;
+
+	proc sql noprint ;
+	create table followup as
+	
+	select 
+		   domain,
+		   sum(count) as total,
+	       sum(case when node^=&endfollowup. then count else 0 end) as followup,
+	       calculated followup / calculated total * 100 as pct
+
+	from (
+		select domain,
+		       node,
+		       count
+		from domain1
+		
+		union all
+		
+		select next_domain as domain,
+			   next_node as node,
+			   count
+		from next_domain
+	)
+	
+	group by domain;
+	quit;
+
+	data domaintxt;
+	length domaintext $2000;
+	set followup;
+	
+	if upcase("&endfollowup.")^="NONE" then do;
+	  domaintext_x = domain;
+	  domaintext_y = "number in#follow-up";
+	  domaintext= strip(put(followup,8.0)) || "# (" || strip(put(round(pct,0.01),8.2)) || "%)";
+	end;
+	
+	keep domaintext:;
+	run;
+	
+%end;
+
+%else %do;
+	data domaintxt;
+		length domaintext $2000;
+		  domaintext_x = .;
+		  domaintext_y = "";
+		  domaintext= "";
+	run;
+
+%end;
 
 *-------------------------------;
-* step5: calculate link ;
+* step6: calculate link ;
 *-------------------------------;
 
 
 /* calculate cordinate of start posisiton of links */
+/* rename node */
+/* node >> source_node */
+/* next_node >> target_node */
 
 proc freq data=raw_sankey noprint;
-tables domain*node*next_domain*next_node / out=link1;
+tables domain*node*next_domain*next_node / out=link1(rename=(node=source_node next_node=target_node));
 run;
 
 data link2;
 set link1;
 retain bottom top;
-by domain node;
+by domain source_node;
 
 
-if first.domain and first.node then do;
+if first.domain and first.source_node then do;
 	bottom=0;
 	top=count;
 end;
 
-else if first.node then do;
+else if first.source_node then do;
 	bottom=top+&gap.;
 	top+&gap.+count;
 end;
@@ -320,22 +380,22 @@ else do;
 	top+count;
 end;
 
-keep domain node next_domain next_node bottom top;
+keep domain source_node next_domain target_node bottom top;
 run;
 
-proc sort data=link1; by next_domain next_node domain node;run;
+proc sort data=link1; by next_domain target_node domain source_node;run;
 
 data link2_next;
 set link1;
 retain next_bottom next_top;
-by next_domain next_node;
+by next_domain target_node;
 
-if first.next_domain and first.next_node then do;
+if first.next_domain and first.target_node then do;
 	next_bottom=0;
 	next_top=count;
 end;
 
-else if first.next_node then do;
+else if first.target_node then do;
 	next_bottom=next_top+&gap.;
 	next_top+&gap.+count;
 end;
@@ -347,7 +407,7 @@ else do;
 end;
 
 run;
-proc sort; by domain node next_domain next_node;
+proc sort; by domain source_node next_domain target_node;
 run;
 
 
@@ -355,7 +415,7 @@ data link3;
 length link_text link_id $50;
 merge link2
       link2_next;
-by domain node next_domain next_node;
+by domain source_node next_domain target_node;
 retain tmp 0;
 tmp+1;
 
@@ -394,7 +454,7 @@ link_text_y=(top + bottom) / 2;
 run;
 
 *-------------------------------;
-* step6: create attribute map dataset;
+* step7: create attribute map dataset;
 *-------------------------------;
 
 /* node type */
@@ -414,14 +474,15 @@ run;
 	run;
 	
 	data attrmap_nodetype;
-	length value $50;
+	length value fillstyle $50;
 	set nodelist
 	      ;
 	     
 	id="attrmap_nodetype";
 	value=vvalue(node);
 	fillstyle="GraphData" || strip(put(node_attr,best.));
-	keep id value fillstyle ;
+
+	keep id value fillstyle node;
 	run;
 
 %end;
@@ -440,7 +501,7 @@ run;
 	run;
 	
 	data attrmap_nodetype;
-	length value $50;
+	length value fillstyle $50;
 	set nodelist
 	      ;
 	     
@@ -457,7 +518,7 @@ proc sort data=node; by node; run;
 
 
 data attrmap_node;
-length value $50;
+length value fillstyle $50;
 merge node(in=a)
       nodelist
       ;
@@ -466,32 +527,35 @@ by node;
 
 id="attrmap_node";
 value=node_id;
+	
 fillstyle="GraphData" || strip(put(node_attr,best.));
+
 if a;
 
-keep domain node id value fillstyle ;
+keep domain node id value fillstyle  ;
 proc sort nodupkey; by value;
 run;
 
 
 /* link shape id */
 
-proc sort data=link3 out=link_attrmap1(keep=link_id domain node) nodupkey;
-by link_id node;
+proc sort data=link3 out=link_attrmap1(keep=link_id domain source_node target_node next_domain) nodupkey;
+by link_id;
 run;
 
 
-proc sort data=link_attrmap1;by node;run;
+proc sort data=link_attrmap1;by source_node;run;
 
 data attrmap_link;
-length value $50;
-merge link_attrmap1 (in=a) nodelist;
-by node;
+length value fillstyle $50;
+merge link_attrmap1 (in=a) nodelist(rename=(node=source_node));
+by source_node;
 
 id="attrmap_link";
 value=link_id;
 fillstyle="GraphData" || strip(put(node_attr,best.));
-keep domain node id value fillstyle ;
+keep domain next_domain source_node target_node id value fillstyle ;
+
 if a;
 
 run;
@@ -510,23 +574,30 @@ fillcolor="";
 
 %if %upcase("&focus.")^="NONE" %then %do; 
 
-	if  &focus. and id="attrmap_link" then filltransparency=0.4;
+	if  (&focus.) and id="attrmap_link" then filltransparency=0.4;
 
-	if  not &focus. and id="attrmap_link" then do;
+	if  not (&focus.) and id="attrmap_link" then do;
 		fillcolor="grey";
 		filltransparency=0.8;
 	end;
 	
 %end;
 
+%if %upcase("&Endfollowup.")^="NONE" %then %do;
+	if id in ("attrmap_node","attrmap_nodetype") and node=&endfollowup. then 
+		fillcolor="grey";
+	if id ="attrmap_link" and source_node=&endfollowup. then
+		fillcolor="grey";
 
-keep domain node id value fillstyle fillcolor filltransparency;
+%end;
+
+keep domain node source_node target_node id value fillstyle fillcolor filltransparency;
 run;
 
 
 
 *-------------------------------;
-* step7: create link shape(sigmoid curve);
+* step8: create link shape(sigmoid curve);
 *-------------------------------;
 
 data link4;
@@ -555,87 +626,211 @@ end;
 run;
 
 *-------------------------------;
-* step8: Graph data ;
+* step9: Graph data ;
 *-------------------------------;
 
 
 data graph;
 merge node
-    link4;
+    link4
+    domaintxt;
     
 run;
 
 
 *-------------------------------;
-* step9: Graph template ;
+* step10: Graph template ;
 *-------------------------------;
 proc template;
+
+/* sankey only */
 define statgraph sankey;
 begingraph;
 
 discreteattrvar attrmap="attrmap_node" var=node_id attrvar=_grp_node;
 discreteattrvar attrmap="attrmap_link" var=link_id attrvar=_grp_link;
 
-layout overlay /walldisplay=none 
-	yaxisopts=(reverse=&reverse. display=none linearopts=(viewmin=0) offsetmin=0 offsetmax=0)
-	xaxisopts=(display=(tickvalues) offsetmin=0.1 offsetmax=0.1 tickvalueattrs=&domaintextattrs.
-	linearopts=(
 
-		tickvaluelist=(&domainlist.)
-		tickvalueformat=&domainfmt..));
-
-if (upcase("&nodeattrs")="AUTO")
-
-	polygonplot id=node_id x=x y=y / 
-		group=_grp_node
-		display=(fill)
-		;
+	layout overlay /walldisplay=none 
+		x2axisopts=(display=(tickvalues) 
+			  offsetmin=0.05
+			  offsetmax=0.05
+			  tickvalueattrs=&domaintextattrs.
+			  linearopts=(
+	
+				tickvaluelist=(&domainlist.)
+				tickvalueformat=&domainfmt..))
 		
-endif;
+		yaxisopts=(reverse=&reverse. display=none linearopts=(viewmin=0) offsetmin=0.02 offsetmax=0.02);
 
-if (upcase("&nodeattrs.")^="AUTO")
-	polygonplot id=node_id x=x y=y / 
-		group=_grp_node
-		display=(fill)
-		fillattrs=&nodeattrs.
-		;
-endif;
-if (upcase("&linkattrs.")="AUTO")	
-
-	bandplot x=link_x limitlower=link_bottom limitupper=link_top / 
-		group=_grp_link
-		;
-endif;
-
-if (upcase("&linkattrs.")^="AUTO")	
-
-	bandplot x=link_x limitlower=link_bottom limitupper=link_top / 
-		group=_grp_link
-		fillattrs=&linkattrs.
-		;
-endif;
-
-
-	textplot x=node_text_x y=node_text_y text=node_text / 
-		splitchar="#"
-		splitpolicy=splitalways
-		textattrs=&nodetextattrs.;
-
-
-if (upcase("&linktext")="TRUE")	
-textplot x=link_text_x y=link_text_y text=link_text / 
-	textattrs=&linktextattrs.
-	position=right;
+	
+	if (upcase("&nodeattrs")="AUTO")
+	
+		polygonplot id=node_id x=x y=y / 
+			group=_grp_node
+			display=(fill)
+			xaxis=x2
+			;
+			
+	endif;
+	
+	if (upcase("&nodeattrs.")^="AUTO")
+		polygonplot id=node_id x=x y=y / 
+			group=_grp_node
+			display=(fill)
+			fillattrs=&nodeattrs.
+			xaxis=x2
+			;
+	endif;
+	if (upcase("&linkattrs.")="AUTO")	
+	
+		bandplot x=link_x limitlower=link_bottom limitupper=link_top / 
+			group=_grp_link
+			xaxis=x2
+			;
+	endif;
+	
+	if (upcase("&linkattrs.")^="AUTO")	
+	
+		bandplot x=link_x limitlower=link_bottom limitupper=link_top / 
+			group=_grp_link
+			fillattrs=&linkattrs.
+			xaxis=x2
+			;
+	endif;
 	
 	
-endif;
+		textplot x=node_text_x y=node_text_y text=node_text / 
+			splitchar="#"
+			splitpolicy=splitalways
+			textattrs=&nodetextattrs.
+			xaxis=x2;
+	
+	
+	if (upcase("&linktext")="TRUE")	
+	textplot x=link_text_x y=link_text_y text=link_text / 
+		textattrs=&linktextattrs.
+		position=right
+		xaxis=x2;
+		
+		
+	endif;
+	
+	if (upcase("&legend.")="TRUE")
+			discretelegend "attrmap_nodetype" /type=fill;
+	endif;
+	
+endlayout;
+endgraph;
+end;
 
-if (upcase("&legend.")="TRUE")
 
-discretelegend "attrmap_nodetype" /type=fill;
+/* sankey + followup  */
+define statgraph sankey_followup;
+begingraph;
 
-endif;
+discreteattrvar attrmap="attrmap_node" var=node_id attrvar=_grp_node;
+discreteattrvar attrmap="attrmap_link" var=link_id attrvar=_grp_link;
 
+layout lattice / rows=2 rowweights=(0.95 0.05) column2datarange=union;
+
+column2axes;
+columnaxis / display=(tickvalues) 
+			  offsetmin=0.05
+			  offsetmax=0.05
+			  tickvalueattrs=&domaintextattrs.
+			  linearopts=(
+	
+				tickvaluelist=(&domainlist.)
+				tickvalueformat=&domainfmt..);
+endcolumn2axes;
+
+
+/* diagram area */
+	layout overlay /walldisplay=none 
+		yaxisopts=(reverse=&reverse. display=none linearopts=(viewmin=0) offsetmin=0.02 offsetmax=0.02);
+
+	
+	if (upcase("&nodeattrs")="AUTO")
+	
+		polygonplot id=node_id x=x y=y / 
+			group=_grp_node
+			display=(fill)
+			xaxis=x2
+			;
+			
+	endif;
+	
+	if (upcase("&nodeattrs.")^="AUTO")
+		polygonplot id=node_id x=x y=y / 
+			group=_grp_node
+			display=(fill)
+			fillattrs=&nodeattrs.
+			;
+	endif;
+	if (upcase("&linkattrs.")="AUTO")	
+	
+		bandplot x=link_x limitlower=link_bottom limitupper=link_top / 
+			group=_grp_link
+			xaxis=x2
+			;
+	endif;
+	
+	if (upcase("&linkattrs.")^="AUTO")	
+	
+		bandplot x=link_x limitlower=link_bottom limitupper=link_top / 
+			group=_grp_link
+			fillattrs=&linkattrs.
+			xaxis=x2
+			;
+	endif;
+	
+	
+		textplot x=node_text_x y=node_text_y text=node_text / 
+			splitchar="#"
+			splitpolicy=splitalways
+			textattrs=&nodetextattrs.
+			xaxis=x2;
+	
+	
+	if (upcase("&linktext")="TRUE")	
+	textplot x=link_text_x y=link_text_y text=link_text / 
+		textattrs=&linktextattrs.
+		position=right
+		xaxis=x2;
+		
+		
+	endif;
+	
+
+endlayout;
+
+/* domain and percentage of followup area */
+	layout overlay / walldisplay=none
+		yaxisopts=(display=(tickvalues) offsetmin=0 offsetmax=0
+				discreteopts=(tickvaluesplitchar="#" tickvaluefitpolicy=splitalways)
+				);
+		
+		textplot x=domaintext_x 
+		         y=domaintext_y
+		         text=domaintext / 
+		         splitchar="#"
+		         splitpolicy=splitalways
+		         textattrs=(size=9 color=black)
+		         xaxis=x2;
+		         
+	         
+	endlayout;
+	
+	sidebar / align=bottom spacefill=false;
+	
+	if (upcase("&legend.")="TRUE")
+			discretelegend "attrmap_nodetype" /type=fill;
+	endif;
+		
+	endsidebar;
+	
+	
 endlayout;
 endgraph;
 end;
@@ -648,9 +843,15 @@ ods graphics / pop;
 ods listing style=&palette.;
 ods graphics / antialiasmax=999999;
 
-proc sgrender data=graph template=sankey dattrmap=attrmap;
-run;
+%if %upcase("&endFollowup.")^="NONE" %then %do;
+	proc sgrender data=graph template=sankey_followup dattrmap=attrmap;
+	run;
+%end;
 
+%else %do;
+	proc sgrender data=graph template=sankey dattrmap=attrmap;
+	run;
+%end;
 %exit:
 
 %mend sankey;

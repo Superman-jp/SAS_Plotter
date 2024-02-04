@@ -6,7 +6,7 @@
 What's this?
 ***************
 
-Macro for two dementional kernel density estimation (2D-KDE) plot using SAS GRAPH.
+Macro for two dimensional kernel density estimation (2D-KDE) plot using SAS GRAPH.
 
 2D-KDE will show as contour plot with marginal KDE curve
 
@@ -92,7 +92,7 @@ Parameters
 
 - **univar_grid : integer (optional)**
 
-   the number of univariate KDE gridsize.
+   the number of univariate KDE grid size.
    default is 401 (the default of proc kde)
 
 
@@ -123,7 +123,7 @@ Parameters
 
 - **bivar_grid : integer (optional)**
 
-   the number of bivariate KDE gridsize.
+   the number of bivariate KDE grid size.
    default is 60 (the default of proc kde).
 
 - **bivar_nlevel : integer (optional)**
@@ -141,7 +141,7 @@ Parameters
 
 - **thresh : integer (0 to 1, optional)**
 
-   the density threhold of bivariate KDE. The grid that density is under the threhold will removed from the bivariate KDE plot.
+   the density threshold of bivariate KDE. The grid that density is under the threshold will removed from the bivariate KDE plot.
    default is 0.
 
 - **scatter : bool (optional)**
@@ -159,10 +159,10 @@ Parameters
    if "True" , legend of group item is displayed.
    default is "True".
 
-- **pallete : keyword (optional)**
+- **palette : keyword (optional)**
 
-   color palette for fill, line and markers. the palletes described below is available.
-   see color palette section of introduction page. defalut is "SNS" (Seaborn defalut palette).
+   color palette for fill, line and markers. the palettes described below is available.
+   see color palette section of introduction page. default is "SNS" (Seaborn default palette).
 
       * SAS
       * SNS (Seaborn)
@@ -239,8 +239,8 @@ Diaplay individual data
 
 the individual data visualization is available. this macro supports two visualization method, scatter plot and rug plot.
 
-Scatter plot is displayed the  data points for two numeric variable. The data points as dot are overlaied on the bivariate KDE plot.
-Rug plot is is displayed the data points for one numeric variable, The data points as short bar (like barcode) are overlaied on the bottom of univariate KDE plot.
+Scatter plot is displayed the  data points for two numeric variable. The data points as dot are overlaid on the bivariate KDE plot.
+Rug plot is is displayed the data points for one numeric variable, The data points as short bar (like barcode) are overlaid on the bottom of univariate KDE plot.
 
 Because FILL and LINEFILL styles of KDE plot can not be adjust the transparency of the fill, the scatter plot and rug plot with with LINE style is recommended.
 

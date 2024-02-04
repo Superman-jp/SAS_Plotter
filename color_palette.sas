@@ -124,7 +124,16 @@ cxD17800$
 cx47A82A
 ;
 
-
+/* %let sas_graphdata1_grad = cxfafa6e#cxff9d72#cxcd679e#cx445694; */
+/* %let sas_graphdata2_grad = cxfafa6e#cxedb646#cxcf7635#cxa33a2e; */
+/* %let sas_graphdata3_grad = cxfafa6e#cx91cd6f#cx3e9a6f#cx01655d; */
+/* %let sas_graphdata4_grad = cxfafa6e#cxc9ae44#cx8f6a22#cx522f05; */
+/* %let sas_graphdata5_grad = cxfafa6e#cxffa251#cxff3d8e#cx9f3ddb; */
+/* %let sas_graphdata6_grad = cxfaaa70#cxd6a04e#cxac9733#cx7f8e1f; */
+/* %let sas_graphdata7_grad = cxfafa6e#cx27eea9#cx00ccf7#cx2396fb; */
+/* %let sas_graphdata8_grad = cxfafa6e#cxffb865#cxf08278#cxb36184; */
+/* %let sas_graphdata9_grad = cxc1fa70#cxcecf3b#cxd4a30e#cxd17600; */
+/* %let sas_graphdata10_grad = cxfafa6e#cxc1df52#cx87c33b#cx47a72a; */
 
 *-------------------------------------------;
 *Seaborn;
@@ -243,6 +252,18 @@ cx64b5cd$
 cxB7AEF1$
 cxDDD17E
 ;
+
+/* %let sns_graphdata1_grad =cxfafa6e#cx3adfa4#cx00aed0#cx4b71af; */
+/* %let sns_graphdata2_grad =cx9370fa#cxe856b6#cxf56375#cxdc8450; */
+/* %let sns_graphdata3_grad =cxfafa6e#cxbde16b#cx86c66a#cx55aa69; */
+/* %let sns_graphdata4_grad =cxfafa6e#cxfcbc51#cxea824e#cxc44f53; */
+/* %let sns_graphdata5_grad =cxfafa6e#cxffac76#cxee7ca7#cx8170b2; */
+/*  */
+/* %let sns_graphdata6_grad =cx9370fa#cxd4579f#cxc06865#cx947961; */
+/* %let sns_graphdata7_grad =cxfafa6e#cxffc276#cxff99a2#cxda8bc4; */
+/* %let sns_graphdata8_grad =cx8c8c8c#cxb48687#cxd87d81#cxfa707c; */
+/* %let sns_graphdata9_grad =cx9370fa#cxfa61a5#cxf58d6a#cxccb975; */
+/* %let sns_graphdata10_grad =cxfafa6e#cx8fef9e#cx4ad6c9#cx65b5cd; */
 
 *-------------------------------------------;
 *Stata S2;
@@ -366,7 +387,17 @@ cxF4F5F7$
 cx9C8847
 ;
 
-
+/* %let stata_graphdata1_grad = cxfafa6e#cx40cc90#cx008ca1#cx1a4870; */
+/* %let stata_graphdata2_grad = cxfafa6e#cxeeb04c#cxc96e43#cx91363c; */
+/* %let stata_graphdata3_grad = cxfafa6e#cxbccd58#cx85a043#cx55752f; */
+/*  */
+/* %let stata_graphdata4_grad = cxfafa6e#cxf6d243#cxf0a91f#cxe67e00; */
+/* %let stata_graphdata5_grad = cxfafa6e#cxaddc81#cx7db68c#cx6d8d83; */
+/* %let stata_graphdata6_grad = cxfafa6e#cxf7b339#cxe66a2c#cxc20534; */
+/* %let stata_graphdata7_grad = cxfafa6e#cxffb582#cxff91c0#cx948ed2; */
+/* %let stata_graphdata8_grad = cx9370fa#cxfe63a2#cxf69469#cxcac27d; */
+/* %let stata_graphdata9_grad = cxfafa6e#cxe8bd4d#cxc88439#cx9f512d; */
+/* %let stata_graphdata10_grad = cxfafa6e#cx77e6a8#cx4dbfc9#cx7a92a8; */
 *-------------------------------------------;
 *tableau;
 *-------------------------------------------;
@@ -486,6 +517,29 @@ cx7f7f7f$
 cxbcbd22$
 cx17becf
 ;
+
+/* %let tableau_graphdata1_grad = cxfafa6e#cx48de9c#cx00afc8#cx1e75b3; */
+/*  */
+/* %let tableau_graphdata2_grad = cxfafa6e#cxfed442#cxffab1e#cxff7f0f; */
+/* %let tableau_graphdata3_grad = cxfafa6e#cxbbdd51#cx7abf3b#cx2ca02c; */
+/*  */
+/* %let tableau_graphdata4_grad = cxfafa6e#cxf9bb36#cxee7920#cxd72828; */
+/*  */
+/* %let tableau_graphdata5_grad = cxfafa6e#cxffac6c#cxfd739e#cx9367bc; */
+/* %let tableau_graphdata6_grad = cxfafa6e#cxeaba5b#cxc38255#cx8b564b; */
+/* %let tableau_graphdata7_grad = cxfafa6e#cxffbe6b#cxff8b96#cxe378c3; */
+/* %let tableau_graphdata8_grad = cx808080#cx8b7ca8#cx9176d1#cx9370fa; */
+/* %let tableau_graphdata9_grad = cxfa70c1#cxff747b#cxfd993a#cxbfbf22; */
+/* %let tableau_graphdata10_grad =cxfafa6e#cx95ef93#cx35d9bc#cx17bccf; */
+
+/* four color gradient */
+%let gradient4_1 = cxfafa6e#cxff9d72#cxcd679e#cx445694;
+%let gradient4_2 = cxfafa6e#cx3adfa4#cx00aed0#cx4b71af;
+%let gradient4_3 = cxfafa6e#cx91cd6f#cx3e9a6f#cx01655d;
+%let gradient4_4 = cxfafa6e#cxc9ae44#cx8f6a22#cx522f05;
+%let gradient4_5 = cxfafa6e#cxf7b339#cxe66a2c#cxc20534;
+%let gradient4_6 = cx9370fa#cxe856b6#cxf56375#cxdc8450;
+%let gradient4_7 = cx8c8c8c#cxb48687#cxd87d81#cxfa707c;
 
 
 run;

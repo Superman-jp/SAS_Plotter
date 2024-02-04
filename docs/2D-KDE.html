@@ -60,6 +60,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Sankey.html">Sankey diagram</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Multihistogram.html">MultiHistogram</a></li>
 </ul>
 
         </div>
@@ -90,7 +91,7 @@
 <h1>2D-KDE<a class="headerlink" href="#d-kde" title="Permalink to this heading"></a></h1>
 <section id="what-s-this">
 <h2>What’s this?<a class="headerlink" href="#what-s-this" title="Permalink to this heading"></a></h2>
-<p>Macro for two dementional kernel density estimation (2D-KDE) plot using SAS GRAPH.</p>
+<p>Macro for two dimensional kernel density estimation (2D-KDE) plot using SAS GRAPH.</p>
 <p>2D-KDE will show as contour plot with marginal KDE curve</p>
 </section>
 <section id="input-data">
@@ -185,7 +186,7 @@ default is “y”. when the label is not displayed , set like below.</p>
 </li>
 <li><p><strong>univar_grid : integer (optional)</strong></p>
 <blockquote>
-<div><p>the number of univariate KDE gridsize.
+<div><p>the number of univariate KDE grid size.
 default is 401 (the default of proc kde)</p>
 </div></blockquote>
 </li>
@@ -224,7 +225,7 @@ the default is 1.</p>
 </li>
 <li><p><strong>bivar_grid : integer (optional)</strong></p>
 <blockquote>
-<div><p>the number of bivariate KDE gridsize.
+<div><p>the number of bivariate KDE grid size.
 default is 60 (the default of proc kde).</p>
 </div></blockquote>
 </li>
@@ -248,7 +249,7 @@ default is 10.</p>
 </li>
 <li><p><strong>thresh : integer (0 to 1, optional)</strong></p>
 <blockquote>
-<div><p>the density threhold of bivariate KDE. The grid that density is under the threhold will removed from the bivariate KDE plot.
+<div><p>the density threshold of bivariate KDE. The grid that density is under the threshold will removed from the bivariate KDE plot.
 default is 0.</p>
 </div></blockquote>
 </li>
@@ -270,10 +271,10 @@ default is False.</p>
 default is “True”.</p>
 </div></blockquote>
 </li>
-<li><p><strong>pallete : keyword (optional)</strong></p>
+<li><p><strong>palette : keyword (optional)</strong></p>
 <blockquote>
-<div><p>color palette for fill, line and markers. the palletes described below is available.
-see color palette section of introduction page. defalut is “SNS” (Seaborn defalut palette).</p>
+<div><p>color palette for fill, line and markers. the palettes described below is available.
+see color palette section of introduction page. default is “SNS” (Seaborn default palette).</p>
 <blockquote>
 <div><ul class="simple">
 <li><p>SAS</p></li>
@@ -341,8 +342,8 @@ see color palette section of introduction page. defalut is “SNS” (Seaborn de
 <section id="diaplay-individual-data">
 <h3>Diaplay individual data<a class="headerlink" href="#diaplay-individual-data" title="Permalink to this heading"></a></h3>
 <p>the individual data visualization is available. this macro supports two visualization method, scatter plot and rug plot.</p>
-<p>Scatter plot is displayed the  data points for two numeric variable. The data points as dot are overlaied on the bivariate KDE plot.
-Rug plot is is displayed the data points for one numeric variable, The data points as short bar (like barcode) are overlaied on the bottom of univariate KDE plot.</p>
+<p>Scatter plot is displayed the  data points for two numeric variable. The data points as dot are overlaid on the bivariate KDE plot.
+Rug plot is is displayed the data points for one numeric variable, The data points as short bar (like barcode) are overlaid on the bottom of univariate KDE plot.</p>
 <p>Because FILL and LINEFILL styles of KDE plot can not be adjust the transparency of the fill, the scatter plot and rug plot with with LINE style is recommended.</p>
 <p>code</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ods</span> <span class="n">listing</span> <span class="n">gpath</span><span class="o">=</span><span class="s2">&quot;&amp;curdir./img&quot;</span><span class="p">;</span>

@@ -11,40 +11,37 @@ Macro for generate ridgeline plot using SAS GRAPH.
 Ridgeline plot shows the distribution of response variable each groups.
 the distribution is estimated by KDE (Kernel Density Estimation) using proc kde.
 
-rugplot and several discriptive statistics (mean, q1, q2, q3, iqr) can be overlaid on the ridgeline plot.
+rugplot and several descriptive statistics (mean, q1, q2, q3) can be overlaid on the ridgeline plot.
 
 
 *****************
 Input data
 *****************
 
-.. csv-table:: 
-
-   "**key**", "**variable** ", "**type**"
-   "1","category","numeric or string"
-   "2","group", "numeric or string"
-   "","response", "numeric"
-
+ ===== ========== =================== 
+  key   variable   type               
+ ===== ========== =================== 
+  1     category   numeric or string  
+  2     group      numeric or string  
+        response   numeric            
+ ===== ========== =================== 
 
 group variable is optional. 
 
 I recommended that the variable type of category and group are set to numeric with format.
-if the variable type is string, item order is defined as acending character order.
+if the variable type is string, item order is defined as ascending character order.
 
 
 ***************
 Syntax
 ***************
-before use this macro, macro file described below is loaded by %include statement.
 
-- Ridgeline.sas
-
- ::
+::
 
    ods graphics / < graphics option > ;
    ods listing gpath=< output path >;
 
-   %ridgeline(
+   %macro ridgeline(
       data=,
       x=,
       y=,
@@ -52,18 +49,22 @@ before use this macro, macro file described below is loaded by %include statemen
       xlabel=x,
       ylabel=y,
       yticks=,
-      cat_iv=1.2,
-      gridsize=401,
-      bw_method=sjpi,
+      cat_iv = 1.2,
+      gridsize = 401,
+      bw_method = sjpi,
       bw_adjust = 1,
-      legend=False,
-      fill_density=True,
-      stat=None,
-      rug=False,
-      ruglength=1,
-      meancolor=red,
-      qcolor=white,
-      iqrcolor=cx89D0F5,
+      
+      quartile=False,
+      mean=False,
+
+      legend = False,
+      grouplegendtitle=group,
+      
+      rug = False,
+      ruglength = 2,
+      
+      fillstyle=None,
+      qgradient=1,
       palette=sns);
 
 ***************
@@ -87,9 +88,9 @@ Parameters
 
    group variable for grouping data at each category.
 
-   when the parameter is not set, all of graph object is set same color.
+   when the parameter is not set, all of outline color is set black.
 
-   when the parameter is set category variable, the graph object of rach category is 
+   when the parameter is set category variable, the graph object of each category is 
    set  different color.
 
    default is "None".
@@ -98,7 +99,7 @@ Parameters
 - **xlabel : string (optional)**
 
    label string of category axis.
-   default is "x". when the label is not displayed , set like below.
+   default is "Category". when the label is not displayed , set like below.
 
    xlabel=,
 
@@ -106,7 +107,7 @@ Parameters
 - **ylabel : string (optional)**
 
    optional. label string of response axis.
-   default is "y". when the label is not displayed , set like below.
+   default is "Response". when the label is not displayed , set like below.
 
    ylabel=,
 
@@ -129,7 +130,7 @@ Parameters
 
 - **gridsize : integer (optional)**
 
-   the number of KDE gridsize.
+   the number of KDE grid size.
    default is 401 (the default of proc kde)
 
 
@@ -151,34 +152,15 @@ Parameters
    the bandwidth multiplier. Increasing will make the curve smoother.
    the default is 1. 
 
-- **legend : bool (optional)**
+- **quartile : bool (optional)**
 
-   if "True" the legend of group item is displayed.
-   if group parameter is "None", the parameter will be ignored.
-   default is "False".
+   if this parameter is set "True", quartile lines will be displayed as dashed lines each density.
+   the default is "False".
 
-- **fill_density : bool (optional)**
+- **mean : bool (optional)**
 
-   if "True" the fill of the area under the density curve is displayed.
-   default is "True".
-
-- **stat : keyword (optional)** 
-
-   display descriptive statistics.
-   select the keyword described below.
-
-   * mean
-   * q1
-   * q2
-   * q3
-   * iqr
-   * None (any statistics is not displayed)
-
-   when this parameter is set several keywords, each keyword shoud be separated by space.
-   
-   ex. stat = mean iqr,
-
-   the default is "mean".
+   if this parameter is set "True", mean lines will be displayed as solid lines each density.
+   the default is "False".
 
 - **rug : bool (optional)**
 
@@ -187,32 +169,39 @@ Parameters
 
 - **ruglength : numeric (optional)**
 
-   the scale facter of the rugplot.when rug parameter is set "False", this parameter will be ignored.
+   the scale factor of the rugplot.when rug parameter is set "False", this parameter will be ignored.
    the default is 1. if set larger value, the rugplot is prolonged.
 
-- **meancolor  : color keyword (optional)**
+- **legend : bool (optional)**
 
-   the color of mean. when stat parameter is not set "mean", this parameter will be ignored.
-   color can be set as color name (ex. red blue) or RGB code (ex.cxffffff).
-   default is "red".
+   if "True" the legend of group item is displayed.
+   if group parameter is "None", the parameter will be ignored.
+   default is "False".
 
-- **qcolor : color keyword (optional)**
+- **grouplegendtitle : text (optional)**
 
-   the color of quartile(q1 ,q2, and q3). when stat parameter is not set quartile keyword,
-   this parameter will be ignored.
-   color can be set as color name (ex. red blue) or RGB code (ex.cxffffff).
-   default is "white".
+   the title of group legend. if legend parameter is set "True", this parameter will be ignored.
+   default is "Group".
 
-- **iqrcolor : color keyword (optional)**
+- **fillstyle : keyword (optional)**
 
-   the color of IQR. when stat parameter is not set "iqr", this parameter will be ignored.
-   color can be set as color name (ex. red blue) or RGB code (ex.cxffffff).
-   default is "cx89D0F5".
+   the fill style of density plot.
+   the style keyword described below is available.
+   if group parameter is not set, this parameter can be set "None" only.
 
-- **pallete : keyword (optional)**
+      * None: fill is not displayed.
+      * Group: fill color of each density will be defined based on group parameter. 
+      * Quartile: fill color will be defined based on the quartiles of each x variable.
 
-   color palette for fill, line and markers. the palletes described below is available.
-   see color palette section of introduction page. defalut is "SNS" (Seaborn defalut palette).
+- **qgradient : 1 to 7 (optional)**
+
+   the color gradient pattern of quartile. this parameter can be set gradient ID (1 to 7).
+   default is "1".
+
+- **palette : keyword (optional)**
+
+   color palette for fill, line and markers. the palettes described below is available.
+   see color palette section of introduction page. default is "SNS" (Seaborn default palette).
 
       * SAS
       * SNS (Seaborn)
@@ -226,95 +215,147 @@ example
 simple ridgeline plot
 =======================
 
-datasets (ds1)
+datasets (tokyo_naha_temp)
 
-.. csv-table:: 
-
-   "**variable** ", "**detail**"
-   "cat","string, A to J"
-   "response", "numeric"
-
+ ========== ========= =========================== 
+  variable   type      detail                     
+ ========== ========= =========================== 
+  month      numeric   Jan-Dec                    
+  region     numeric   1=Tokyo 2=Naha             
+  max_temp   numeric   maximum daily temperature  
+ ========== ========= =========================== 
 
 code ::
 
-   ods graphics /reset=all height=15cm width=25cm imagename="ridgeline1" imagefmt=svg;
-   ods listing  gpath="/home/user/sasuser.v94/image" style=sns_default ;
+   ods graphics /reset=all height=15cm width=25cm imagename="ridgeline_simple" imagefmt=svg;
+   ods listing gpath="<output path>";
 
    %ridgeline(
-      data=ds1,
-      x=cat,
-      y=response,
-      group=cat,
-      xlabel=,
-      ylabel=response,
-      yticks=60 65 70 75 80,
-      cat_iv=0.7,
-      bw_method=srot, 
-      stat=None);
+      data=tokyo_naha_temp(where=(month in(1:6) and region=1)),
+      x=month,
+      y=max_temp,
+      xlabel=month,
+      ylabel=maximum temperature (℃),
+      yticks=0 5 10 15 20 25 30 35 40
+      );
+
 
 output
 
-.. image:: ./img/ridgeline1.svg
+.. image:: ./img/ridgeline_simple.svg
 
 
 grouped ridgeline plot
 =======================
 
-datasets (ds2)
-
-.. csv-table:: 
-
-   "**variable** ", "**detail**"
-   "month","numeric width format"
-   "max_temp", "numeric, maximum temperature"
-   "region","numeric with format, 1=Tokyo, 2=Naha"
+if group parameter is set,  density outline color will be defined based by group and fill appearance will be available.
 
 code ::
 
-   ods graphics /reset=all height=15cm width=25cm imagename="ridgeline_grouped" imagefmt=svg;
-   ods listing  gpath="/home/user/sasuser.v94/image" style=sns_default ;
+   ods graphics /reset=all height=15cm width=25cm imagename="ridgeline_simple_grouped" imagefmt=svg;
+   ods listing gpath="<output path>";
 
    %ridgeline(
-      data=ds2(where=(month in(1:6))),
+      data=tokyo_naha_temp(where=(month in(1:6))),
       x=month,
       y=max_temp,
       group=region,
       xlabel=month,
-      ylabel=maximum temperature (°C),
+      ylabel=maximum temperature (℃),
       yticks=0 5 10 15 20 25 30 35 40,
-      cat_iv=1.2,
-      legend=true,
-      stat=None
+      grouplegendtitle=Region,
+      legend=true
       );
 
 output
 
-.. image:: ./img/ridgeline_grouped.svg
+.. image:: ./img/ridgeline_simple_grouped.svg
 
-ridgeline plot with rugplot and statistics
+ridgeline plot with statistics
 ===========================================
+
+this macro is supported displaying statistics, mean and quartile.
+Mean and quartile is displayed as line.
 
 code ::
 
-   ods graphics /reset=all height=15cm width=25cm imagename="ridgeline_stat_rug" imagefmt=svg;
-   ods listing  gpath="/home/user/sasuser.v94/image" style=sns_default ;
+   ods graphics /reset=all height=15cm width=25cm imagename="ridgeline_stat" imagefmt=svg;
+   ods listing gpath="<output path>";
 
    %ridgeline(
-      data=ds2(where=(region=1 and month in(1:6))),
+      data=tokyo_naha_temp(where=(month in(1:6) and region=1)),
       x=month,
       y=max_temp,
+      group=region,
       xlabel=month,
-      ylabel=maximum temperature (°C),
+      ylabel=maximum temperature (℃),
       yticks=0 5 10 15 20 25 30 35 40,
-      cat_iv=1.2,
-      fill_density=False,
-      stat=mean q1 q2 q3 iqr,
-      rug=True,
-      ruglength=3,
-      meancolor=red,
-      qcolor=black
+      grouplegendtitle=Region,
+      legend=true,
+      mean=true,
+      quartile=true,
+      rug=true
       );
 
 output
 
-.. image:: ./img/ridgeline_stat_rug.svg
+.. image:: ./img/ridgeline_stat.svg
+
+fill style
+===========================================
+
+This macro is supported three fill appearance, None, Group, and Quartile.
+
+Group appearance and Quartile appearance is available when group parameter is set.
+
+code ::
+
+   ods graphics /reset=all height=15cm width=20cm imagename="ridgeline_fill_group" imagefmt=svg;
+ ods listing gpath="<output path>";
+
+   %ridgeline(
+      data=tokyo_naha_temp(where=(month in(1:6))),
+      x=month,
+      y=max_temp,
+      group=region,
+      xlabel=month,
+      ylabel=maximum temperature (℃),
+      yticks=0 5 10 15 20 25 30 35 40,
+      grouplegendtitle=Region,
+      fillstyle=group,
+      legend=true,
+      mean=false,
+      quartile=true,
+      rug=true
+      );
+
+output
+
+.. image:: ./img/ridgeline_fill_group.svg
+
+code ::
+
+   ods graphics /reset=all height=15cm width=20cm imagename="ridgeline_fill_quartile" imagefmt=svg;
+   ods listing gpath="<output path>";
+
+   %ridgeline(
+      data=tokyo_naha_temp(where=(month in(1:6) and region=1)),
+      x=month,
+      y=max_temp,
+      group=region,
+      xlabel=month,
+      ylabel=maximum temperature (℃),
+      yticks=0 5 10 15 20 25 30 35 40,
+      grouplegendtitle=Region,
+      fillstyle=quartile,
+      legend=true,
+      mean=false,
+      quartile=true,
+      rug=true
+      );
+
+.. image:: ./img/ridgeline_fill_quartile.svg
+
+quartile gradient style are as follows.
+
+.. image:: ./img/ridgeline_qgrad.svg

@@ -60,6 +60,7 @@
 <li class="toctree-l1"><a class="reference internal" href="Mirrored_histogram.html">Mirrored Histogram</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2D-KDE.html">2D-KDE</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Sankey.html">Sankey diagram</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Multihistogram.html">MultiHistogram</a></li>
 </ul>
 
         </div>
@@ -93,7 +94,7 @@
 <p>Macro for generate raincloud plot using SAS GRAPH.</p>
 <p>Raincloud plot is contained density plot (half-violin plot) , box plot and strip plot.</p>
 <p>density plot displays distribution estimated by KDE (kernel density estimation) of input data.</p>
-<p>box plot displays discriptive statistics (mean, q1, q2, q3 outlier).</p>
+<p>box plot displays descriptive statistics (mean, q1, q2, q3 outlier).</p>
 <p>strip plot is jittered scatterplot and displays individual data.</p>
 <p>more information is described in following paper.</p>
 <p>Allen M, Poggiali D, Whitaker K et al. Raincloud plots: a multi-platform tool for robust data visualization [version 2; peer review: 2 approved]. Wellcome Open Res 2021, 4:63 (<a class="reference external" href="https://doi.org/10.12688/wellcomeopenres.15191.2">https://doi.org/10.12688/wellcomeopenres.15191.2</a>)</p>
@@ -122,14 +123,10 @@
 </table>
 <p>group variable is optional.</p>
 <p>I recommended that the variable type of category and group are set to numeric with format.
-if the variable type is string, item order is defined as acending character order.</p>
+if the variable type is string, item order is defined as ascending character order.</p>
 </section>
 <section id="syntax">
 <h2>Syntax<a class="headerlink" href="#syntax" title="Permalink to this heading"></a></h2>
-<p>before use this macro, macro file described below is loaded by %include statement.</p>
-<ul class="simple">
-<li><p>RainCloud.sas</p></li>
-</ul>
 <blockquote>
 <div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ods</span> <span class="n">graphics</span> <span class="o">/</span> <span class="o">&lt;</span> <span class="n">graphics</span> <span class="n">option</span> <span class="o">&gt;</span> <span class="p">;</span>
 <span class="n">ods</span> <span class="n">listing</span> <span class="n">gpath</span><span class="o">=&lt;</span> <span class="n">output</span> <span class="n">path</span> <span class="o">&gt;</span><span class="p">;</span>
@@ -181,7 +178,7 @@ if the variable type is string, item order is defined as acending character orde
 <blockquote>
 <div><p>group variable for grouping data at each category.</p>
 <p>when the parameter is not set, all of graph object is set same color.</p>
-<p>when the parameter is set category variable, the graph object of rach category is
+<p>when the parameter is set category variable, the graph object of each category is
 set  different color.</p>
 <p>default is “None”.</p>
 </div></blockquote>
@@ -246,7 +243,7 @@ the default is “False”.</p>
 </li>
 <li><p><strong>gridsize : integer (optional)</strong></p>
 <blockquote>
-<div><p>the number of KDE gridsize.
+<div><p>the number of KDE grid size.
 default is 401 (the default of proc kde)</p>
 </div></blockquote>
 </li>
@@ -297,10 +294,10 @@ if group parameter is “None”, the parameter will be ignored.</p>
 <p>the default is “1”.</p>
 </div></blockquote>
 </li>
-<li><p><strong>pallete : keyword (optional)</strong></p>
+<li><p><strong>palette : keyword (optional)</strong></p>
 <blockquote>
-<div><p>color palette for fill, line and markers. the palletes described below is available.
-see color palette section of introduction page. defalut is “SNS” (Seaborn defalut palette).</p>
+<div><p>color palette for fill, line and markers. the palettes described below is available.
+see color palette section of introduction page. default is “SNS” (Seaborn default palette).</p>
 <blockquote>
 <div><ul class="simple">
 <li><p>SAS</p></li>
@@ -340,7 +337,7 @@ see color palette section of introduction page. defalut is “SNS” (Seaborn de
 </table>
 <p>code</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ods</span> <span class="n">graphics</span> <span class="o">/</span><span class="n">reset</span><span class="o">=</span><span class="nb">all</span> <span class="n">height</span><span class="o">=</span><span class="mi">15</span><span class="n">cm</span> <span class="n">width</span><span class="o">=</span><span class="mi">25</span><span class="n">cm</span> <span class="n">imagename</span><span class="o">=</span><span class="s2">&quot;rain_simple&quot;</span> <span class="n">imagefmt</span><span class="o">=</span><span class="n">svg</span><span class="p">;</span>
-<span class="n">ods</span> <span class="n">listing</span>  <span class="n">gpath</span><span class="o">=</span><span class="s2">&quot;/home/user/sasuser.v94/image&quot;</span> <span class="n">style</span><span class="o">=</span><span class="n">sns_default</span> <span class="p">;</span>
+<span class="n">ods</span> <span class="n">listing</span> <span class="n">gpath</span><span class="o">=</span><span class="s2">&quot;&lt;output path&gt;&quot;</span><span class="p">;</span>
 
  <span class="o">%</span><span class="n">RainCloud</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">import</span><span class="p">,</span>
              <span class="n">x</span><span class="o">=</span><span class="n">day</span><span class="p">,</span>
@@ -362,7 +359,7 @@ see color palette section of introduction page. defalut is “SNS” (Seaborn de
 <h3>Grouped raincloud plot<a class="headerlink" href="#grouped-raincloud-plot" title="Permalink to this heading"></a></h3>
 <p>code</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ods</span> <span class="n">graphics</span> <span class="o">/</span><span class="n">reset</span><span class="o">=</span><span class="nb">all</span> <span class="n">height</span><span class="o">=</span><span class="mi">15</span><span class="n">cm</span> <span class="n">width</span><span class="o">=</span><span class="mi">25</span><span class="n">cm</span> <span class="n">imagename</span><span class="o">=</span><span class="s2">&quot;rain_simple&quot;</span> <span class="n">imagefmt</span><span class="o">=</span><span class="n">svg</span><span class="p">;</span>
-<span class="n">ods</span> <span class="n">listing</span>  <span class="n">gpath</span><span class="o">=</span><span class="s2">&quot;/home/user/sasuser.v94/image&quot;</span> <span class="n">style</span><span class="o">=</span><span class="n">sns_default</span> <span class="p">;</span>
+<span class="n">ods</span> <span class="n">listing</span> <span class="n">gpath</span><span class="o">=</span><span class="s2">&quot;&lt;output path&gt;&quot;</span><span class="p">;</span>
 
  <span class="o">%</span><span class="n">RainCloud</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">import</span><span class="p">,</span>
              <span class="n">x</span><span class="o">=</span><span class="n">day</span><span class="p">,</span>
@@ -386,10 +383,10 @@ see color palette section of introduction page. defalut is “SNS” (Seaborn de
 <section id="trim-parameter">
 <h3>Trim parameter<a class="headerlink" href="#trim-parameter" title="Permalink to this heading"></a></h3>
 <p>if Trim parameter is set “False”, the density plot is displayed at all range.
-but the density outside of observed data range may be ambiguos.</p>
+but the density outside of observed data range may be ambiguous.</p>
 <p>code</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ods</span> <span class="n">graphics</span> <span class="o">/</span><span class="n">reset</span><span class="o">=</span><span class="nb">all</span> <span class="n">height</span><span class="o">=</span><span class="mi">15</span><span class="n">cm</span> <span class="n">width</span><span class="o">=</span><span class="mi">25</span><span class="n">cm</span> <span class="n">imagename</span><span class="o">=</span><span class="s2">&quot;rain_simple&quot;</span> <span class="n">imagefmt</span><span class="o">=</span><span class="n">svg</span><span class="p">;</span>
-<span class="n">ods</span> <span class="n">listing</span>  <span class="n">gpath</span><span class="o">=</span><span class="s2">&quot;/home/user/sasuser.v94/image&quot;</span> <span class="n">style</span><span class="o">=</span><span class="n">sns_default</span> <span class="p">;</span>
+<span class="n">ods</span> <span class="n">listing</span> <span class="n">gpath</span><span class="o">=</span><span class="s2">&quot;&lt;output path&gt;&quot;</span><span class="p">;</span>
 
  <span class="o">%</span><span class="n">RainCloud</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">import</span><span class="p">,</span>
              <span class="n">x</span><span class="o">=</span><span class="n">day</span><span class="p">,</span>
@@ -416,7 +413,7 @@ In below example, the density plot of the “vesicolor” and “Verginica” is
 density peak is displayed small.</p>
 <p>code</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ods</span> <span class="n">graphics</span> <span class="o">/</span><span class="n">reset</span><span class="o">=</span><span class="nb">all</span> <span class="n">height</span><span class="o">=</span><span class="mi">15</span><span class="n">cm</span> <span class="n">width</span><span class="o">=</span><span class="mi">25</span><span class="n">cm</span> <span class="n">imagename</span><span class="o">=</span><span class="s2">&quot;rain_area&quot;</span> <span class="n">imagefmt</span><span class="o">=</span><span class="n">svg</span><span class="p">;</span>
-<span class="n">ods</span> <span class="n">listing</span>  <span class="n">gpath</span><span class="o">=</span><span class="s2">&quot;/home/user/sasuser.v94/image&quot;</span> <span class="n">style</span><span class="o">=</span><span class="n">sns_default</span> <span class="p">;</span>
+<span class="n">ods</span> <span class="n">listing</span> <span class="n">gpath</span><span class="o">=</span><span class="s2">&quot;&lt;output path&gt;&quot;</span><span class="p">;</span>
 
  <span class="o">%</span><span class="n">RainCloud</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">sashelp</span><span class="o">.</span><span class="n">iris</span><span class="p">,</span>
              <span class="n">x</span><span class="o">=</span><span class="n">species</span><span class="p">,</span>
@@ -441,7 +438,7 @@ it is easy to see density peak.</p>
 density plot is “non-quantitative”. and density plots using “width” keyword can’t be performed relative comparison.</p>
 <p>code</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ods</span> <span class="n">graphics</span> <span class="o">/</span><span class="n">reset</span><span class="o">=</span><span class="nb">all</span> <span class="n">height</span><span class="o">=</span><span class="mi">15</span><span class="n">cm</span> <span class="n">width</span><span class="o">=</span><span class="mi">25</span><span class="n">cm</span> <span class="n">imagename</span><span class="o">=</span><span class="s2">&quot;rain_width&quot;</span> <span class="n">imagefmt</span><span class="o">=</span><span class="n">svg</span><span class="p">;</span>
-<span class="n">ods</span> <span class="n">listing</span>  <span class="n">gpath</span><span class="o">=</span><span class="s2">&quot;/home/user/sasuser.v94/image&quot;</span> <span class="n">style</span><span class="o">=</span><span class="n">sns_default</span> <span class="p">;</span>
+<span class="n">ods</span> <span class="n">listing</span> <span class="n">gpath</span><span class="o">=</span><span class="s2">&quot;&lt;output path&gt;&quot;</span><span class="p">;</span>
 
  <span class="o">%</span><span class="n">RainCloud</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">sashelp</span><span class="o">.</span><span class="n">iris</span><span class="p">,</span>
              <span class="n">x</span><span class="o">=</span><span class="n">species</span><span class="p">,</span>

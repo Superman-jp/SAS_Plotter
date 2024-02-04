@@ -12,7 +12,7 @@ Raincloud plot is contained density plot (half-violin plot) , box plot and strip
 
 density plot displays distribution estimated by KDE (kernel density estimation) of input data.
 
-box plot displays discriptive statistics (mean, q1, q2, q3 outlier).
+box plot displays descriptive statistics (mean, q1, q2, q3 outlier).
 
 strip plot is jittered scatterplot and displays individual data. 
 
@@ -36,15 +36,12 @@ Input data
 group variable is optional. 
 
 I recommended that the variable type of category and group are set to numeric with format.
-if the variable type is string, item order is defined as acending character order.
+if the variable type is string, item order is defined as ascending character order.
 
 
 ***************
 Syntax
 ***************
-before use this macro, macro file described below is loaded by %include statement.
-
-- RainCloud.sas
 
  ::
 
@@ -97,7 +94,7 @@ Parameters
 
    when the parameter is not set, all of graph object is set same color.
 
-   when the parameter is set category variable, the graph object of rach category is 
+   when the parameter is set category variable, the graph object of each category is 
    set  different color.
 
    default is "None".
@@ -165,7 +162,7 @@ Parameters
 
 - **gridsize : integer (optional)**
 
-   the number of KDE gridsize.
+   the number of KDE grid size.
    default is 401 (the default of proc kde)
 
 
@@ -213,10 +210,10 @@ Parameters
 
     the default is "1".
 
-- **pallete : keyword (optional)**
+- **palette : keyword (optional)**
 
-   color palette for fill, line and markers. the palletes described below is available.
-   see color palette section of introduction page. defalut is "SNS" (Seaborn defalut palette).
+   color palette for fill, line and markers. the palettes described below is available.
+   see color palette section of introduction page. default is "SNS" (Seaborn default palette).
 
       * SAS
       * SNS (Seaborn)
@@ -245,7 +242,7 @@ datasets (tips)
 code ::
 
    ods graphics /reset=all height=15cm width=25cm imagename="rain_simple" imagefmt=svg;
-   ods listing  gpath="/home/user/sasuser.v94/image" style=sns_default ;
+   ods listing gpath="<output path>";
 
     %RainCloud(data=import,
                 x=day,
@@ -275,7 +272,7 @@ Grouped raincloud plot
 code ::
 
    ods graphics /reset=all height=15cm width=25cm imagename="rain_simple" imagefmt=svg;
-   ods listing  gpath="/home/user/sasuser.v94/image" style=sns_default ;
+   ods listing gpath="<output path>";
 
     %RainCloud(data=import,
                 x=day,
@@ -306,12 +303,12 @@ Trim parameter
 =======================
 
 if Trim parameter is set "False", the density plot is displayed at all range.
-but the density outside of observed data range may be ambiguos.
+but the density outside of observed data range may be ambiguous.
 
 code ::
 
    ods graphics /reset=all height=15cm width=25cm imagename="rain_simple" imagefmt=svg;
-   ods listing  gpath="/home/user/sasuser.v94/image" style=sns_default ;
+   ods listing gpath="<output path>";
 
     %RainCloud(data=import,
                 x=day,
@@ -342,7 +339,7 @@ density peak is displayed small.
 code ::
 
    ods graphics /reset=all height=15cm width=25cm imagename="rain_area" imagefmt=svg;
-   ods listing  gpath="/home/user/sasuser.v94/image" style=sns_default ;
+   ods listing gpath="<output path>";
 
     %RainCloud(data=sashelp.iris,
                 x=species,
@@ -372,7 +369,7 @@ density plot is "non-quantitative". and density plots using "width" keyword can'
 code ::
 
    ods graphics /reset=all height=15cm width=25cm imagename="rain_width" imagefmt=svg;
-   ods listing  gpath="/home/user/sasuser.v94/image" style=sns_default ;
+   ods listing gpath="<output path>";
 
     %RainCloud(data=sashelp.iris,
                 x=species,
