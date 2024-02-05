@@ -51,7 +51,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#example">example</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#simple-ridgeline-plot">simple ridgeline plot</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#grouped-ridgeline-plot">grouped ridgeline plot</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#ridgeline-plot-with-statistics">ridgeline plot with statistics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ridgeline-plot-with-statistics-and-individual-value">ridgeline plot with statistics and individual value</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#fill-style">fill style</a></li>
 </ul>
 </li>
@@ -381,10 +381,10 @@ ods listing gpath=&quot;&lt;output path&gt;&quot;;
 </div>
 <p>output</p>
 <img alt="_images/ridgeline_simple_grouped.svg" src="_images/ridgeline_simple_grouped.svg" /></section>
-<section id="ridgeline-plot-with-statistics">
-<h3>ridgeline plot with statistics<a class="headerlink" href="#ridgeline-plot-with-statistics" title="Permalink to this heading"></a></h3>
+<section id="ridgeline-plot-with-statistics-and-individual-value">
+<h3>ridgeline plot with statistics and individual value<a class="headerlink" href="#ridgeline-plot-with-statistics-and-individual-value" title="Permalink to this heading"></a></h3>
 <p>this macro is supported displaying statistics, mean and quartile.
-Mean and quartile is displayed as line.</p>
+Mean and quartile is displayed as line. the individual value is displayed as rug plot.</p>
 <p>code</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ods graphics /reset=all height=15cm width=25cm imagename=&quot;ridgeline_stat&quot; imagefmt=svg;
 ods listing gpath=&quot;&lt;output path&gt;&quot;;

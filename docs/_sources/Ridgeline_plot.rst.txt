@@ -271,11 +271,11 @@ output
 
 .. image:: ./img/ridgeline_simple_grouped.svg
 
-ridgeline plot with statistics
-===========================================
+ridgeline plot with statistics and individual value
+=====================================================
 
 this macro is supported displaying statistics, mean and quartile.
-Mean and quartile is displayed as line.
+Mean and quartile is displayed as line. the individual value is displayed as rug plot.
 
 code ::
 
