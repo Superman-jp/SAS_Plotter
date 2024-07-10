@@ -10,12 +10,12 @@
   
 - Package: SASPlotter
 - Version: 1.3
-- Generated: 2024-07-10T12:53:30
+- Generated: 2024-07-10T13:27:48
 - Author(s): SupermanJP (sasplotter@picolabs.jp)
 - Maintainer(s): SupermanJP (sasplotter@picolabs.jp)
 - License: MIT
-- File SHA256: `F*D97BF69573AD9091699A6B829F9F36A10EEF1F0729B8436E31D5CDBF7096E4FA` for this version
-- Content SHA256: `C*63BC9032982D17BE3891B13B8F40D9BEAA35762604BC49393F2F1CB294EF8466` for this version
+- File SHA256: `F*A938FFCD3B57614BD9AABFDA15642A5813175E143364371892A37AF21D16416F` for this version
+- Content SHA256: `C*37D4DCCD041B20177066BCA4A3A1382645D57F385A0810F8EF1185B82AE1ACB5` for this version
   
 ---
  
@@ -32,6 +32,33 @@ In recent years, new data visualization methods that overcome such drawbacks hav
 "SAS Plotter" is modern graph suite for SAS. You can easily create advanced graphs for journals with little knowledge of SAS GTL (Graph Template Language) or sgplot procedures.
 
 the lengthens data format is suitable.
+
+
+### Install ###
+
+This package use SAS Packages Framework. 
+
+for more information:
+
+https://github.com/yabwon/SAS_PACKAGES
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~sas
+filename packages "<your path>";
+
+filename SPFinit url "https://raw.githubusercontent.com/yabwon/SAS_PACKAGES/main/SPF/SPFinit.sas";
+%include SPFinit;
+
+%installPackage(SPFinit);
+
+%installpackage(sasplotter ,
+sourcepath=https://github.com/Superman-jp/SAS_Plotter/raw/v1.3/);
+
+%loadpackage(sasplotter);
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 
 ### Document ###
 
