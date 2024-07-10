@@ -10,12 +10,12 @@
   
 - Package: SASPlotter
 - Version: 1.3
-- Generated: 2024-07-09T14:52:29
+- Generated: 2024-07-10T12:37:48
 - Author(s): SupermanJP (sasplotter@picolabs.jp)
 - Maintainer(s): SupermanJP (sasplotter@picolabs.jp)
 - License: MIT
-- File SHA256: `F*269E5EFAA864BC2332D9B064915EFD200B4B73CF8DE32D8B64F6952206CEF18B` for this version
-- Content SHA256: `C*DE8D41ED9BC345E51BD64E6AB7022E2B199158D0F248A47615CE1FDB2A4B74A3` for this version
+- File SHA256: `F*4113D4A3E3D71B16D384313E6469B24B813231C30D864976BE1A79659D40754F` for this version
+- Content SHA256: `C*BD4463C62CE6C9A9B70A6EB6A462A29EED867F9297D426452489414A55956BA4` for this version
   
 ---
  
@@ -53,197 +53,39 @@ Required SAS Components:
  
 # The `SASPlotter` package content
 The `SASPlotter` package consists of the following content:
-1. [`%axislabel()` macros ](#axislabel-macros-1 )
-2. [`%boolparmcheck()` macros ](#boolparmcheck-macros-2 )
-3. [`%datasetexistcheck()` macros ](#datasetexistcheck-macros-3 )
-4. [`%deletestyles()` macros ](#deletestyles-macros-4 )
-5. [`%formatexistcheck()` macros ](#formatexistcheck-macros-5 )
-6. [`%keywordlistcheck()` macros ](#keywordlistcheck-macros-6 )
-7. [`%loadstyles()` macros ](#loadstyles-macros-7 )
-8. [`%numericlistcheck()` macros ](#numericlistcheck-macros-8 )
-9. [`%numericparmcheck()` macros ](#numericparmcheck-macros-9 )
-10. [`%sankeyplotnodeshape()` macros ](#sankeyplotnodeshape-macros-10 )
-11. [`%varexistcheck()` macros ](#varexistcheck-macros-11 )
-12. [`%varnamecheck()` macros ](#varnamecheck-macros-12 )
-13. [`%vartypecheck()` macros ](#vartypecheck-macros-13 )
-14. [`%kde2d()` macros ](#kde2d-macros-14 )
-15. [`%mirroredhist()` macros ](#mirroredhist-macros-15 )
-16. [`%multihistogram()` macros ](#multihistogram-macros-16 )
-17. [`%raincloud()` macros ](#raincloud-macros-17 )
-18. [`%raincloudpaired()` macros ](#raincloudpaired-macros-18 )
-19. [`%ridgeline()` macros ](#ridgeline-macros-19 )
-20. [`%sankey()` macros ](#sankey-macros-20 )
+13. [`%kde2d()` macro ](#kde2d-macro-13 )
+14. [`%mirroredhist()` macro ](#mirroredhist-macro-14 )
+15. [`%multihistogram()` macro ](#multihistogram-macro-15 )
+16. [`%raincloud()` macro ](#raincloud-macro-16 )
+17. [`%raincloudpaired()` macro ](#raincloudpaired-macro-17 )
+18. [`%ridgeline()` macro ](#ridgeline-macro-18 )
+19. [`%sankey()` macro ](#sankey-macro-19 )
   
  
-21. [License note](#license)
+20. [License note](#license)
   
 ---
  
-## `%axislabel()` macros <a name="axislabel-macros-1"></a> ######
+## `%kde2d()` macro <a name="kde2d-macro-13"></a> ######
 
-*-------------------------------------------;
-*set axis label;
-*-------------------------------------------;
-
-label parameter is not set , axislable will be set to variable label.
-
-  
----
- 
-## `%boolparmcheck()` macros <a name="boolparmcheck-macros-2"></a> ######
-
-*-------------------------------------------;
-*boolean parameter check;
-*-------------------------------------------;
-
-  
----
- 
-## `%datasetexistcheck()` macros <a name="datasetexistcheck-macros-3"></a> ######
-
-*-------------------------------------------;
-* dataset existing check;
-*-------------------------------------------;
-
-
-  
----
- 
-## `%deletestyles()` macros <a name="deletestyles-macros-4"></a> ######
-
-*-------------------------------------------;
-*Color Palette for SAS
-*color scheme and color code list;
-*-------------------------------------------;
-
-delete the definitions of color palette.
-
-https://picolabs.jp(japanese)
-https://superman-jp.github.io/SAS_Plotter/index.html
-
-  
----
- 
-## `%formatexistcheck()` macros <a name="formatexistcheck-macros-5"></a> ######
-
-*-------------------------------------------;
-*format exist check
-*-------------------------------------------;
-
-check existence of format in work.formats catalog.
-
-  
----
- 
-## `%keywordlistcheck()` macros <a name="keywordlistcheck-macros-6"></a> ######
-
-*-------------------------------------------;
-*keyword list check;
-*-------------------------------------------;
-
-the definitions of color palette.
-
-https://picolabs.jp(japanese)
-https://superman-jp.github.io/SAS_Plotter/index.html
-
-  
----
- 
-## `%loadstyles()` macros <a name="loadstyles-macros-7"></a> ######
-
-*-------------------------------------------;
-*Color Palette for SAS
-*color scheme and color code list;
-*-------------------------------------------;
-
-the definitions of color palette.
-
-https://picolabs.jp(japanese)
-https://superman-jp.github.io/SAS_Plotter/index.html
-
-  
----
- 
-## `%numericlistcheck()` macros <a name="numericlistcheck-macros-8"></a> ######
-
-*-------------------------------------------;
-*numeric list (for tickvalue) check;
-*-------------------------------------------;
-
-  
----
- 
-## `%numericparmcheck()` macros <a name="numericparmcheck-macros-9"></a> ######
-
-*-------------------------------------------;
-*Numeric parameter check;
-*-------------------------------------------;
-
-if the parameter is allowed integer only,
-set  the integer parameter is set to TRUE.
-
-if allowance range of numeric parameter, set min and max parameter. 
-
-  
----
- 
-## `%sankeyplotnodeshape()` macros <a name="sankeyplotnodeshape-macros-10"></a> ######
-
-
-*-------------------------------;
-* helper macros for sankey macro;
-*-------------------------------;
-
-generate node shapes.
-
-  
----
- 
-## `%varexistcheck()` macros <a name="varexistcheck-macros-11"></a> ######
-
-*-------------------------------------------;
-*variable exist check;
-*-------------------------------------------;
-
-  
----
- 
-## `%varnamecheck()` macros <a name="varnamecheck-macros-12"></a> ######
-
-*-------------------------------------------;
-*variable name check;
-*-------------------------------------------;
-
-variable which name is same as parameter name is not allowed.
-
-
-  
----
- 
-## `%vartypecheck()` macros <a name="vartypecheck-macros-13"></a> ######
-
-*-------------------------------------------;
-*VarTypeCheck;
-*-------------------------------------------;
-
-variable type(numeric or string) check
-
-  
----
- 
-## `%kde2d()` macros <a name="kde2d-macros-14"></a> ######
-
-*--------------------------------------------------------;
-*2D-KDE macro;
-*--------------------------------------------------------;
+--------------------------------------------------------
+### 2D-KDE macro;
+--------------------------------------------------------
 
 Macro for two dimensional kernel density estimation (2D-KDE) plot using SAS GRAPH.
 
 2D-KDE will show as contour plot with marginal KDE curve
 
-*--------------------------------------------------------;
-*syntax;
-*--------------------------------------------------------;
+### caution!
+
+group name should not be include "$". 
+This character is the delimiter for this macro.
+
+--------------------------------------------------------
+
+### syntax
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~sas
 %macro kde2d(
 	data=,
 	x=,
@@ -269,33 +111,31 @@ Macro for two dimensional kernel density estimation (2D-KDE) plot using SAS GRAP
 	deletedata=true
 
 );
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	
-caution!
-group name should not be include "$". 
-This character is the delimiter for this macro.
-
-the detail of syntax and output example is available at official page
-
-https://picolabs.jp(japanese)
-https://superman-jp.github.io/SAS_Plotter/index.html
-
   
 ---
  
-## `%mirroredhist()` macros <a name="mirroredhist-macros-15"></a> ######
+## `%mirroredhist()` macro <a name="mirroredhist-macro-14"></a> ######
 
-*--------------------------------------------------------;
-*Mirrored histogram macro;
-*--------------------------------------------------------;
+--------------------------------------------------------
+
+### Mirrored histogram macro
+
+*-------------------------------------------------------
 
 Macro for Mirrored histogram using SAS GRAPH.
 
 Mirrored histogram shows the distribution of response variable two groups. 
 Histogram of the group which level is 2 will be inverted.
 
-*--------------------------------------------------------;
-*syntax;
-*--------------------------------------------------------;
+
+--------------------------------------------------------
+
+### syntax;
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~sas
 %macro MirroredHist(
 	data =,
 	group =,
@@ -317,37 +157,34 @@ Histogram of the group which level is 2 will be inverted.
 	deletedata = true
 );
 	
-the detail of syntax and output example is available at official page
-
-https://picolabs.jp(japanese)
-https://superman-jp.github.io/SAS_Plotter/index.html
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   
 ---
  
-## `%multihistogram()` macros <a name="multihistogram-macros-16"></a> ######
+## `%multihistogram()` macro <a name="multihistogram-macro-15"></a> ######
 
-*--------------------------------------------------------;
-*multihistogram macro;
-*--------------------------------------------------------;
+--------------------------------------------------------
+### multihistogram macro
+--------------------------------------------------------
 
-To be more precise, it is called alluvial Diagram.
+multihitogram is histogram created by each category variable and pair variable. Box width of histogram is reflect the response variable. multihistogram is used for frequency comparison of multiple category in small display area.
 
-A Sankey diagram is a visualization used to depict a flow
-from one domain of values to another domain. 
-Sankey graphs is useful for showing flow and relationships
-among multiple categories.
+This macro was designed based on the report of Wierenga, Madison R et al. [1]
 
-In pharmacoepidemiology study, this diagram is used for 
-changes of the state of a patient over time, such as 
-medication switching, disease stage progression, or 
-movement through treatment pathways.
 
-in this macro, statistics display and node focus are available.
+[1]Running CA Wierenga MR, Crawford CR. 
 
-*--------------------------------------------------------;
-*syntax;
-*--------------------------------------------------------;
+Older us adults like sweetened colas, 
+but not other chemesthetic beverages. 2020. 
+
+URL: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8140601/.
+
+--------------------------------------------------------
+
+### syntax
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~sas
 %multihistogram(
 	data=,
 	category=,
@@ -368,19 +205,18 @@ in this macro, statistics display and node focus are available.
 	deletedata=true
 );
 
-the detail of syntax and output example is available at official page
-
-https://picolabs.jp(japanese)
-https://superman-jp.github.io/SAS_Plotter/index.html
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   
 ---
  
-## `%raincloud()` macros <a name="raincloud-macros-17"></a> ######
+## `%raincloud()` macro <a name="raincloud-macro-16"></a> ######
 
-*--------------------------------------------------------;
-*raincloud plot macro;
-*--------------------------------------------------------;
+--------------------------------------------------------
+
+### raincloud plot macro
+
+--------------------------------------------------------
 
 Raincloud plot is contained density plot (half-violin plot) , box plot and strip plot.
 
@@ -390,9 +226,12 @@ box plot displays descriptive statistics (mean, q1, q2, q3 outlier).
 
 strip plot is jittered scatterplot and displays individual data.
 
-*--------------------------------------------------------;
-*syntax;
-*--------------------------------------------------------;
+--------------------------------------------------------
+
+### syntax
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~sas
+
 %macro RainCloud(
 		 data=,
 		 x=,
@@ -420,19 +259,18 @@ strip plot is jittered scatterplot and displays individual data.
 		 deletedata=true);
 	
 
-the detail of syntax and output example is available at official page
-
-https://picolabs.jp(japanese)
-https://superman-jp.github.io/SAS_Plotter/index.html
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   
 ---
  
-## `%raincloudpaired()` macros <a name="raincloudpaired-macros-18"></a> ######
+## `%raincloudpaired()` macro <a name="raincloudpaired-macro-17"></a> ######
 
-*--------------------------------------------------------;
-*raincloud plot (paired) macro;
-*--------------------------------------------------------;
+--------------------------------------------------------
+
+### raincloud plot (paired) macro
+
+--------------------------------------------------------
 
 this macro is useful for display raincloud plot of repeated measure study. 
 number of replicate should be two.
@@ -441,10 +279,12 @@ the density plot of the second replicate is flipped horizontal.
 
 spaghetti plot (individual tracings for each subject ) can be overlaid on the raincloud plot.
 
+-------------------------------------------------------
 
-*--------------------------------------------------------;
-*syntax;
-*--------------------------------------------------------;
+### syntax
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~sas
+
 %macro RainCloudPaired(
 		 data=,
 		 x=,
@@ -472,20 +312,17 @@ spaghetti plot (individual tracings for each subject ) can be overlaid on the ra
 		 footnote=,
 		 deletedata=true);
 	
-
-the detail of syntax and output example is available at official page
-
-https://picolabs.jp(japanese)
-https://superman-jp.github.io/SAS_Plotter/index.html
-
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   
 ---
  
-## `%ridgeline()` macros <a name="ridgeline-macros-19"></a> ######
+## `%ridgeline()` macro <a name="ridgeline-macro-18"></a> ######
 
-*--------------------------------------------------------;
-*ridgeline plot macro;
-*--------------------------------------------------------;
+--------------------------------------------------------
+
+### ridgeline plot macro
+
+--------------------------------------------------------
 
 Ridgeline plot shows the distribution of response variable 
 each groups. The distribution is estimated by KDE 
@@ -494,9 +331,11 @@ each groups. The distribution is estimated by KDE
 rugplot and several descriptive statistics (mean, q1, q2, q3) 
 can be overlaid on the ridgeline plot.
 
-*--------------------------------------------------------;
-*syntax;
-*--------------------------------------------------------;
+--------------------------------------------------------
+
+### syntax;
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~sas
 %macro ridgeline(
 	data=,
 	x=,
@@ -526,19 +365,16 @@ can be overlaid on the ridgeline plot.
 	footnote=,
 	deletedata=true);
 
-the detail of syntax and output example is available at official page
 
-https://picolabs.jp(japanese)
-https://superman-jp.github.io/SAS_Plotter/index.html
-
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   
 ---
  
-## `%sankey()` macros <a name="sankey-macros-20"></a> ######
+## `%sankey()` macro <a name="sankey-macro-19"></a> ######
 
-*--------------------------------------------------------;
-*sankey diagram macro;
-*--------------------------------------------------------;
+--------------------------------------------------------
+### sankey diagram macro;
+--------------------------------------------------------
 
 To be more precise, it is called alluvial Diagram.
 
@@ -554,9 +390,12 @@ movement through treatment pathways.
 
 in this macro, statistics display and node focus are available.
 
-*--------------------------------------------------------;
-*syntax;
-*--------------------------------------------------------;
+--------------------------------------------------------
+
+### syntax:
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~sas
+
 %macro sankey(
 	data=,
 	
@@ -591,11 +430,7 @@ in this macro, statistics display and node focus are available.
 
 	);
 	
-
-the detail of syntax and output example is available at official page
-
-https://picolabs.jp(japanese)
-https://superman-jp.github.io/SAS_Plotter/index.html
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   
 ---
