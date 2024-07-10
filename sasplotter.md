@@ -10,12 +10,12 @@
   
 - Package: SASPlotter
 - Version: 1.3
-- Generated: 2024-07-10T12:37:48
+- Generated: 2024-07-10T12:53:30
 - Author(s): SupermanJP (sasplotter@picolabs.jp)
 - Maintainer(s): SupermanJP (sasplotter@picolabs.jp)
 - License: MIT
-- File SHA256: `F*4113D4A3E3D71B16D384313E6469B24B813231C30D864976BE1A79659D40754F` for this version
-- Content SHA256: `C*BD4463C62CE6C9A9B70A6EB6A462A29EED867F9297D426452489414A55956BA4` for this version
+- File SHA256: `F*D97BF69573AD9091699A6B829F9F36A10EEF1F0729B8436E31D5CDBF7096E4FA` for this version
+- Content SHA256: `C*63BC9032982D17BE3891B13B8F40D9BEAA35762604BC49393F2F1CB294EF8466` for this version
   
 ---
  
@@ -29,9 +29,22 @@ The data visualization method widely used at present lacks information on the di
 
 In recent years, new data visualization methods that overcome such drawbacks have been announced and are already available in open source languages such as R and python. In contrast, the SAS language has made little effort as seen in open source languages.
 
-窶彜AS plotter窶　is modern graph suite for SAS. You can easily create advanced graphs for journals with little knowledge of SAS GTL (Graph Template Language) or sgplot procedures.
+"SAS Plotter" is modern graph suite for SAS. You can easily create advanced graphs for journals with little knowledge of SAS GTL (Graph Template Language) or sgplot procedures.
 
 the lengthens data format is suitable.
+
+### Document ###
+
+If you want to check the details of the parameter, output example and difinitions, please refer to the following documents.
+
+#### japanese website
+
+https://picolabs.jp
+
+#### global website
+
+https://superman-jp.github.io/SAS_Plotter/
+
 
   
 ---
