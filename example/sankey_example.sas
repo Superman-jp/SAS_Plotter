@@ -42,15 +42,17 @@ run;
 *--------------------------------------------------------;
 *basic sankey;
 *--------------------------------------------------------;
-ods graphics / height=15cm width=20cm imagefmt=svg imagename="sankey_basic" noborder;
+ods graphics / height=15cm width=20cm imagefmt=png imagename="sankey_basic" noborder;
 title "Bacic Sankey";
 ods html;
 %sankey(
     data=raw,
     domain=day0 day30 day60 day120,
-    domainfmt=domainf
-);
-
+    domainfmt=domainf,
+	title=%nrstr(entrytitle 'your title here'),
+	footnote=%nrstr(entryfootnote halign=left 'your footnote here';
+				    entryfootnote halign=left 'your footnote here 2';)
+	);
 
 *--------------------------------------------------------;
 *Adjust the domain interval;
@@ -64,7 +66,7 @@ value domain2f
 5="day120";
 run;
 
-ods graphics / height=15cm width=20cm imagefmt=svg imagename="sankey_change_intervals" noborder;
+ods graphics / height=15cm width=20cm imagefmt=png imagename="sankey_change_intervals" noborder;
 title "Adjust the domain interval";
 ods html;
 %sankey(
@@ -83,7 +85,7 @@ value domain3f
 2="day60"
 ;
 run;
-ods graphics / height=15cm width=20cm imagefmt=svg imagename="sankey_not_set_nodefmt" noborder;
+ods graphics / height=15cm width=20cm imagefmt=png imagename="sankey_not_set_nodefmt" noborder;
 title "not set nodefmt parameter";
 ods html;
 %sankey(
@@ -92,7 +94,7 @@ ods html;
     domainfmt=domain3f,
 	legend=true
 );
-ods graphics / height=15cm width=20cm imagefmt=svg imagename="sankey_set_nodefmt" noborder;
+ods graphics / height=15cm width=20cm imagefmt=png imagename="sankey_set_nodefmt" noborder;
 title "set nodefmt parameter";
 ods html;
 %sankey(
@@ -106,7 +108,7 @@ ods html;
 *change the node appearance;
 *--------------------------------------------------------;
 
-ods graphics / height=15cm width=20cm imagefmt=svg imagename="sankey_set_nodeattrs" noborder;
+ods graphics / height=15cm width=20cm imagefmt=png imagename="sankey_set_nodeattrs" noborder;
 title "change_the_node color";
 ods html;
 %sankey(
@@ -120,7 +122,7 @@ ods html;
 *--------------------------------------------------------;
 *change the link appearance;
 *--------------------------------------------------------;
-ods graphics / height=15cm width=20cm imagefmt=svg imagename="sankey_set_linkattrs" noborder;
+ods graphics / height=15cm width=20cm imagefmt=png imagename="sankey_set_linkattrs" noborder;
 title "change the link color";
 ods html;
 %sankey(
@@ -134,7 +136,7 @@ ods html;
 *change the text appearance;
 *--------------------------------------------------------;
 
-ods graphics / height=15cm width=20cm imagefmt=svg imagename="sankey_set_textattrs" noborder;
+ods graphics / height=15cm width=20cm imagefmt=png imagename="sankey_set_textattrs" noborder;
 title "change the text appearance";
 ods html;
 %sankey(
@@ -222,7 +224,7 @@ run;
 
 
 
-ods graphics / height=15cm width=20cm imagefmt=svg imagename="sankey_focus1" noborder;
+ods graphics / height=15cm width=20cm imagefmt=png imagename="sankey_focus1" noborder;
 title "focus parameter example 1";
 %sankey(
    data=drug_switch,
@@ -236,9 +238,10 @@ title "focus parameter example 1";
    stat=freq,
    legend=true,
    linktext_offset=0.03,
-   palette=sns);
+   palette=sns
+);
 
-ods graphics / height=15cm width=20cm imagefmt=svg imagename="sankey_focus2" noborder;
+ods graphics / height=15cm width=20cm imagefmt=png imagename="sankey_focus2" noborder;
 title "focus parameter example 2";
 %sankey(
    data=drug_switch,
@@ -254,7 +257,7 @@ title "focus parameter example 2";
    linktext_offset=0.03,
    palette=sns);
 
-   ods graphics / height=15cm width=20cm imagefmt=svg imagename="sankey_focus3" noborder;
+   ods graphics / height=15cm width=20cm imagefmt=png imagename="sankey_focus3" noborder;
 title "focus parameter example 3";
 %sankey(
    data=drug_switch,
@@ -270,7 +273,7 @@ title "focus parameter example 3";
    linktext_offset=0.03,
    palette=sns);
 
-   ods graphics / height=15cm width=20cm imagefmt=svg imagename="sankey_focus4" noborder;
+   ods graphics / height=15cm width=20cm imagefmt=png imagename="sankey_focus4" noborder;
 title "focus parameter example 4";
 %sankey(
    data=drug_switch,
@@ -290,7 +293,7 @@ title "focus parameter example 4";
 * percentage of Followup;
 *--------------------------------------------------------;   
 
-   ods graphics / height=15cm width=20cm imagefmt=svg imagename="sankey_endfollowup" noborder;
+   ods graphics / height=15cm width=20cm imagefmt=png imagename="sankey_endfollowup" noborder;
 title "percentage of Followup";
 %sankey(
    data=drug_switch,
@@ -303,4 +306,8 @@ title "percentage of Followup";
    endfollowup=99,
    stat=freq,
    legend=true,
-   palette=sns);
+   
+   title=%nrstr(entrytitle 'your title here'),
+   footnote=%nrstr(entryfootnote halign=left 'your footnote here';
+				    entryfootnote halign=left 'your footnote here 2';)
+);

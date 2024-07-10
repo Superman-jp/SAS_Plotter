@@ -1,4 +1,4 @@
-﻿*--------------------------------------------------------;
+*--------------------------------------------------------;
 *raincloud example ;
 *--------------------------------------------------------;
 
@@ -45,7 +45,7 @@ run;
 *simple raincloud plot;
 *--------------------------------------------------------;
 
-ods graphics /reset=all height=15cm width=25cm imagename="rain_simple" imagefmt=svg;
+ods graphics /reset=all height=15cm width=25cm imagename="rain_simple" imagefmt=png;
  %RainCloud(data=tips,
              x=day,
              y=total_bill,
@@ -53,10 +53,13 @@ ods graphics /reset=all height=15cm width=25cm imagename="rain_simple" imagefmt=
 			 element_iv=0.5,
              group=day,
              yticks=0 20 40 60,
-             bw_method=srot
+             bw_method=srot,
+			 title=%nrstr(entrytitle 'your title here'),
+	         footnote=%nrstr(entryfootnote halign=left 'your footnote here';
+				    entryfootnote halign=left 'your footnote here 2';)
              );
 
-ods graphics /reset=all height=25cm width=15cm imagename="rain_simple_h" imagefmt=svg;
+ods graphics /reset=all height=25cm width=15cm imagename="rain_simple_h" imagefmt=png;
  %RainCloud(data=tips,
              x=day,
              y=total_bill,
@@ -65,14 +68,17 @@ ods graphics /reset=all height=25cm width=15cm imagename="rain_simple_h" imagefm
              group=day,
              yticks=0 20 40 60,
 			 orient=h,
-             bw_method=srot
+             bw_method=srot,
+			 title=%nrstr(entrytitle 'your title here'),
+	         footnote=%nrstr(entryfootnote halign=left 'your footnote here';
+				    entryfootnote halign=left 'your footnote here 2';)
              );
 
 *--------------------------------------------------------;
 *grouped raincloud plot;
 *--------------------------------------------------------;
 
-ods graphics /reset=all height=25cm width=15cm imagename="rain_grouped" imagefmt=svg;
+ods graphics /reset=all height=25cm width=15cm imagename="rain_grouped" imagefmt=png;
 
 
  %RainCloud(data=tips,
@@ -87,7 +93,7 @@ ods graphics /reset=all height=25cm width=15cm imagename="rain_grouped" imagefmt
              legend=True
              );
 
-ods graphics /reset=all height=15cm width=25cm imagename="rain_grouped_connect" imagefmt=svg;
+ods graphics /reset=all height=15cm width=25cm imagename="rain_grouped_connect" imagefmt=png;
 
 /*add connect line*/
  %RainCloud(data=tips,
@@ -107,7 +113,7 @@ ods graphics /reset=all height=15cm width=25cm imagename="rain_grouped_connect" 
 *trim parameter;
 *--------------------------------------------------------;
 
-ods graphics /reset=all height=25cm width=15cm imagename="rain_trim" imagefmt=svg;
+ods graphics /reset=all height=25cm width=15cm imagename="rain_trim" imagefmt=png;
 
 
  %RainCloud(data=tips,
@@ -127,7 +133,7 @@ ods graphics /reset=all height=25cm width=15cm imagename="rain_trim" imagefmt=sv
 *--------------------------------------------------------;
 *scale parameter;
 *--------------------------------------------------------;
-ods graphics /reset=all height=15cm width=25cm imagename="rain_area" imagefmt=svg;
+ods graphics /reset=all height=15cm width=25cm imagename="rain_area" imagefmt=png;
 
  %RainCloud(data=sashelp.iris,
              x=species,
@@ -144,7 +150,7 @@ ods graphics /reset=all height=15cm width=25cm imagename="rain_area" imagefmt=sv
              bw_method=srot
              );
 
-ods graphics /reset=all height=15cm width=25cm imagename="rain_width" imagefmt=svg;
+ods graphics /reset=all height=15cm width=25cm imagename="rain_width" imagefmt=png;
 
  %RainCloud(data=sashelp.iris,
              x=species,

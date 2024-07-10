@@ -1,4 +1,4 @@
-﻿
+
 *-------------------------------;
 *multihistogram example;
 *-------------------------------;
@@ -65,7 +65,7 @@ run;
 * basic multiple histogram;
 *--------------------------------------------------------;
 
-ods graphics / height=15cm width=15cm imagefmt=svg imagename="multihisto_basic_v" ;
+ods graphics / height=15cm width=15cm imagefmt=png imagename="multihisto_basic_v" ;
 title "basic multiple histogram(vertical)";
 
 %multihistogram(
@@ -73,10 +73,13 @@ title "basic multiple histogram(vertical)";
     category=eyes,
     level=hair,
     response=count,
-    levelfmt =haircolorf 
+    levelfmt =haircolorf,
+	title=%nrstr(entrytitle 'your title here'),
+	footnote=%nrstr(entryfootnote halign=left 'your footnote here';
+				    entryfootnote halign=left 'your footnote here 2';)
 );
 
-ods graphics / height=15cm width=15cm imagefmt=svg imagename="multihisto_basic_h" ;
+ods graphics / height=15cm width=15cm imagefmt=png imagename="multihisto_basic_h" ;
 title "basic multiple histogram(horizontal)";
 
 %multihistogram(
@@ -91,7 +94,7 @@ title "basic multiple histogram(horizontal)";
 *--------------------------------------------------------;
 * multiple histogram using pair variable;
 *--------------------------------------------------------;
-ods graphics / height=15cm width=15cm imagefmt=svg imagename="multihisto_pair" ;
+ods graphics / height=15cm width=15cm imagefmt=png imagename="multihisto_pair" ;
 title " multiple histogram using pair variable";
 %multihistogram(
     data=freq,
@@ -105,7 +108,7 @@ title " multiple histogram using pair variable";
 *--------------------------------------------------------;
 * split node;
 *--------------------------------------------------------;
-ods graphics / height=15cm width=15cm imagefmt=svg imagename="multihisto_split" ;
+ods graphics / height=15cm width=15cm imagefmt=png imagename="multihisto_split" ;
 title "split mode";
 %multihistogram(
     data=freq,
@@ -119,7 +122,7 @@ title "split mode";
 *--------------------------------------------------------;
 * display response value;
 *--------------------------------------------------------;
-ods graphics / height=15cm width=15cm imagefmt=svg imagename="multihisto_restxt" ;
+ods graphics / height=15cm width=15cm imagefmt=png imagename="multihisto_restxt" ;
 title "basic multiple histogram";
 
 %multihistogram(

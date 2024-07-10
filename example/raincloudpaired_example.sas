@@ -1,4 +1,4 @@
-Ôªø
+
 *--------------------------------------------------------;
 *raincloud paired example;
 *--------------------------------------------------------;
@@ -15,8 +15,8 @@ value repeatf
 
 value seqf
 
-1="sequence A (placebo‚Üídrug A)"
-2="sequence B (drug A‚Üíplacebo)"
+1="sequence A (placeboÅ®drug A)"
+2="sequence B (drug AÅ®placebo)"
 ;
 
 value trtf
@@ -54,7 +54,7 @@ end;
 end;
 end;
 run;
-ods graphics / reset=all imagefmt=svg imagename="rainpair_simple_v" width=20cm height=20cm;
+ods graphics / reset=all imagefmt=png imagename="rainpair_simple_v" width=20cm height=20cm;
 options mprint;
 %RainCloudPaired(
 		 data=raincloudtest,
@@ -64,10 +64,13 @@ options mprint;
 		 repeat=repno,
 		 subject=usubjid,
 		 orient=v,
-		 yticks= 0 20 40 60 80
+		 yticks= 0 20 40 60 80,
+		 title=%nrstr(entrytitle 'your title here'),
+         footnote=%nrstr(entryfootnote halign=left 'your footnote here';
+				    entryfootnote halign=left 'your footnote here 2';)
 );
 
-ods graphics / reset=all imagefmt=svg imagename="rainpair_simple_h" width=20cm height=20cm;
+ods graphics / reset=all imagefmt=png imagename="rainpair_simple_h" width=20cm height=20cm;
 options mprint;
 %RainCloudPaired(
 		 data=raincloudtest,
@@ -78,7 +81,10 @@ options mprint;
 		 subject=usubjid,
 		 orient=h,
 		 scale=width,
-		 yticks= 0 20 40 60 80
+		 yticks= 0 20 40 60 80,
+		 title=%nrstr(entrytitle 'your title here'),
+	     footnote=%nrstr(entryfootnote halign=left 'your footnote here';
+				    entryfootnote halign=left 'your footnote here 2';)
 );
 
 *--------------------------------------------------------;
@@ -113,7 +119,7 @@ proc means data=raincloudtest2;
 var response;
 run;
 
-ods graphics / reset=all imagefmt=svg imagename="rainpaird_group" width=20cm height=15cm;
+ods graphics / reset=all imagefmt=png imagename="rainpaird_group" width=20cm height=15cm;
 
 %RainCloudPaired(
 		 data=raincloudtest2,
@@ -132,7 +138,7 @@ ods graphics / reset=all imagefmt=svg imagename="rainpaird_group" width=20cm hei
 *--------------------------------------------------------;
 
 
-ods graphics / reset=all imagefmt=svg imagename="rainpaird_group_connect" width=20cm height=15cm;
+ods graphics / reset=all imagefmt=png imagename="rainpaird_group_connect" width=20cm height=15cm;
 
 %RainCloudPaired(
 		 data=raincloudtest2,

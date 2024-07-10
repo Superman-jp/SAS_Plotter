@@ -1,4 +1,4 @@
-Ôªø
+
 *-------------------------------------------;
 /*ridgeline example*/
 *-------------------------------------------;
@@ -243,7 +243,7 @@ run;
 data max_temp;
 set raw;
 format region regionf.;
-label max_temp="maximum temperature (‚ÑÉ)"
+label max_temp="maximum temperature (Åé)"
       month="Month"
 	  region="Region";
 
@@ -257,14 +257,17 @@ run;
 
 
 options mprint;
-ods graphics / height=15cm width=15cm imagefmt=svg imagename="ridge_simple" ;
+ods graphics / height=15cm width=15cm imagefmt=png imagename="ridge_simple" ;
 %ridgeline(
 	data=max_temp(where=(region=1)),
 	x=month,
 	y=max_temp,
 	
 	yticks=0 5 10 15 20 25 30 35 40,
-	deletedata=false
+	title=%nrstr(entrytitle 'your title here'),
+	footnote=%nrstr(entryfootnote halign=left 'your footnote here';
+				    entryfootnote halign=left 'your footnote here 2';)
+
 	);
 
 
@@ -274,7 +277,7 @@ ods graphics / height=15cm width=15cm imagefmt=svg imagename="ridge_simple" ;
 *-------------------------------------------;
 
 options mprint;
-ods graphics / height=15cm width=25cm imagefmt=svg imagename="ridge_group" ;
+ods graphics / height=15cm width=25cm imagefmt=png imagename="ridge_group" ;
 %ridgeline(
 	data=max_temp,
 	x=month,
@@ -287,7 +290,7 @@ ods graphics / height=15cm width=25cm imagefmt=svg imagename="ridge_group" ;
 *-------------------------------------------;
 /*ridgeline plot with statistics and individual value*/
 *-------------------------------------------;
-ods graphics /reset=all height=15cm width=25cm imagename="ridgeline_stat" imagefmt=svg;
+ods graphics /reset=all height=15cm width=25cm imagename="ridgeline_stat" imagefmt=png;
 
 
 %ridgeline(
@@ -306,7 +309,7 @@ ods graphics /reset=all height=15cm width=25cm imagename="ridgeline_stat" imagef
 /*fill style*/
 *-------------------------------------------;
 
-ods graphics /reset=all height=15cm width=25cm imagename="ridgeline_fill" imagefmt=svg;
+ods graphics /reset=all height=15cm width=25cm imagename="ridgeline_fill" imagefmt=png;
 
 
 %ridgeline(
@@ -322,7 +325,7 @@ ods graphics /reset=all height=15cm width=25cm imagename="ridgeline_fill" imagef
 	rug=true
    );
 
-ods graphics /reset=all height=15cm width=25cm imagename="ridgeline_qtr" imagefmt=svg;
+ods graphics /reset=all height=15cm width=25cm imagename="ridgeline_qtr" imagefmt=png;
 
 
 %ridgeline(
@@ -344,7 +347,7 @@ ods graphics /reset=all height=15cm width=25cm imagename="ridgeline_qtr" imagefm
 
  %do i = 1 %to 7;
  ods graphics /reset=all height=15cm width=25cm 
-	imagename="ridgeline_qgradient&i." imagefmt=svg;
+	imagename="ridgeline_qgradient&i." imagefmt=png;
 
 %ridgeline(
 	data=max_temp (where=(region=1 and month=&i)),

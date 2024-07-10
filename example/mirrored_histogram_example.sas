@@ -32,7 +32,7 @@ run;
 /*vertical histogram*/
 *-------------------------------------------;
 
-ods graphics / height=15cm width=25cm imagefmt=svg imagename="mirroredhist_v";
+ods graphics / height=15cm width=25cm imagefmt=png imagename="mirroredhist_v";
 %MirroredHist(
 	data=graph_data,
 	group=cat,
@@ -40,15 +40,18 @@ ods graphics / height=15cm width=25cm imagefmt=svg imagename="mirroredhist_v";
 	y=_obspct_,
 	xaxistype=linear,
 	xticks=50 100 150 200 250 300,
-	yticks=5 10 15 20 ,
-	xlabel=Blood pressure (mmHg)
+	yticks=5 10 15 20 25,
+	xlabel=Blood pressure (mmHg),
+	title=%nrstr(entrytitle 'your title here'),
+	footnote=%nrstr(entryfootnote halign=left 'your footnote here';
+				    entryfootnote halign=left 'your footnote here 2';)
 );
 
 *-------------------------------------------;
 /*adjust y-tick format*/
 *-------------------------------------------;
 
-ods graphics / height=15cm width=25cm imagefmt=svg imagename="mirroredhist_v_fmt";
+ods graphics / height=15cm width=25cm imagefmt=png imagename="mirroredhist_v_fmt";
 %MirroredHist(
 	data=graph_data,
 	group=cat,
@@ -57,7 +60,7 @@ ods graphics / height=15cm width=25cm imagefmt=svg imagename="mirroredhist_v_fmt
 	xaxistype=linear,
 	ytickfmt=09.00,
 	xticks=50 100 150 200 250 300,
-	yticks=5 10 15 20 ,
+	yticks=5 10 15 20 25 ,
 	xlabel=Blood pressure (mmHg)
 );
 
@@ -65,17 +68,20 @@ ods graphics / height=15cm width=25cm imagefmt=svg imagename="mirroredhist_v_fmt
 /*horizontal histogram (linear) */
 *-------------------------------------------;
 
-ods graphics / height=15cm width=25cm imagefmt=svg imagename="mirroredhist_h_linear";
+ods graphics / height=15cm width=25cm imagefmt=png imagename="mirroredhist_h_linear";
 %MirroredHist(
 	data=graph_data,
 	group=cat,
 	x=_midpt_,
 	y=_obspct_,
 	xaxistype=linear,
-	ytickfmt=09.00,
 	xticks=50 100 150 200 250 300,
-	yticks=5 10 15 20 ,
-	xlabel=Blood pressure (mmHg)
+	yticks=5 10 15 20 25,
+	orient=h,
+	xlabel=Blood pressure (mmHg),
+	title=%nrstr(entrytitle 'your title here'),
+	footnote=%nrstr(entryfootnote halign=left 'your footnote here';
+				    entryfootnote halign=left 'your footnote here 2';)
 );
 
 *-------------------------------------------;
@@ -158,7 +164,7 @@ Female,>100,116
 ;
 run;
 
-ods graphics / height=15cm width=25cm imagefmt=svg imagename="mirroredhist_h_discrete";
+ods graphics / height=15cm width=25cm imagefmt=png imagename="mirroredhist_h_discrete";
 %MirroredHist(
 	data=covid19_tokyo_2021,
 	group=sex,

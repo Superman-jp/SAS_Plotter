@@ -1,4 +1,4 @@
-﻿*-------------------------------------------;
+*-------------------------------------------;
 /*2D-KDE example*/
 *-------------------------------------------;
 
@@ -15,7 +15,7 @@ RUN;
 /* grouped KDE plot */
 *-------------------------------------------;
 
-ods graphics /  height=24cm width=24cm imagename="groupedKDE" imagefmt=svg;
+ods graphics /  height=24cm width=24cm imagename="groupedKDE" imagefmt=png;
 %kde2d(
    data=penguines,
    x=bill_length_mm,
@@ -26,8 +26,11 @@ ods graphics /  height=24cm width=24cm imagename="groupedKDE" imagefmt=svg;
    bivar_style=line,
    xlabel=bill_length (mm),
    ylabel=bill_depth (mm),
-   legend=true
-
+   legend=true,
+   title=%nrstr(entrytitle 'your title here'),
+   footnote=%nrstr(entryfootnote halign=left 'your footnote here';
+				    entryfootnote halign=left 'your footnote here 2';)
+ 
 );
 
 
@@ -35,7 +38,7 @@ ods graphics /  height=24cm width=24cm imagename="groupedKDE" imagefmt=svg;
 /* style of KDE plot */
 *-------------------------------------------;
 
-ods graphics /  height=24cm width=24cm imagename="linefillKDE" imagefmt=svg;
+ods graphics /  height=24cm width=24cm imagename="linefillKDE" imagefmt=png;
 
 %kde2d(
    data=penguines(where=(species='Chinstrap')),
@@ -58,7 +61,7 @@ ods graphics /  height=24cm width=24cm imagename="linefillKDE" imagefmt=svg;
 *-------------------------------------------;
 
 
-ods graphics /  height=24cm width=24cm imagename="rugscatterKDE" imagefmt=svg;
+ods graphics /  height=24cm width=24cm imagename="rugscatterKDE" imagefmt=png;
 
 %kde2d(
    data=penguines(where=(species='Chinstrap')),
@@ -80,7 +83,7 @@ ods graphics /  height=24cm width=24cm imagename="rugscatterKDE" imagefmt=svg;
 /* Thresh parameter*/
 *-------------------------------------------;
 
-ods graphics /  height=24cm width=24cm imagename="threshKDE" imagefmt=svg;
+ods graphics /  height=24cm width=24cm imagename="threshKDE" imagefmt=png;
 
 %kde2d(
        data=penguines(where=(species='Chinstrap')),
