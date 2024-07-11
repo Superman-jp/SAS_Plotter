@@ -49,9 +49,9 @@ ods html;
     data=raw,
     domain=day0 day30 day60 day120,
     domainfmt=domainf,
-	title=%nrstr(entrytitle 'your title here'),
-	footnote=%nrstr(entryfootnote halign=left 'your footnote here';
-				    entryfootnote halign=left 'your footnote here 2';)
+	note=%nrstr(entrytitle 'your title here';
+			    entryfootnote halign=left 'your footnote here';
+				entryfootnote halign=left 'your footnote here 2';)
 	);
 
 *--------------------------------------------------------;
@@ -307,7 +307,7 @@ title "percentage of Followup";
    stat=freq,
    legend=true,
    
-   title=%nrstr(entrytitle 'your title here'),
-   footnote=%nrstr(entryfootnote halign=left 'your footnote here';
-				    entryfootnote halign=left 'your footnote here 2';)
+   note=%nrstr(entrytitle 'your title here';
+   			   entryfootnote halign=left 'your footnote here';
+			   entryfootnote halign=left 'your footnote here 2';)
 );
