@@ -74,9 +74,9 @@ title "basic multiple histogram(vertical)";
     level=hair,
     response=count,
     levelfmt =haircolorf,
-	title=%nrstr(entrytitle 'your title here'),
-	footnote=%nrstr(entryfootnote halign=left 'your footnote here';
-				    entryfootnote halign=left 'your footnote here 2';)
+	note=%nrstr(entrytitle 'your title here';
+				entryfootnote halign=left 'your footnote here';
+				entryfootnote halign=left 'your footnote here 2';)
 );
 
 ods graphics / height=15cm width=15cm imagefmt=png imagename="multihisto_basic_h" ;
@@ -109,7 +109,7 @@ title " multiple histogram using pair variable";
 * split node;
 *--------------------------------------------------------;
 ods graphics / height=15cm width=15cm imagefmt=png imagename="multihisto_split" ;
-title "split mode";
+title "multiple histogram (split mode)";
 %multihistogram(
     data=freq,
     category=eyes,
@@ -123,7 +123,7 @@ title "split mode";
 * display response value;
 *--------------------------------------------------------;
 ods graphics / height=15cm width=15cm imagefmt=png imagename="multihisto_restxt" ;
-title "basic multiple histogram";
+title "basic multiple histogram with response value";
 
 %multihistogram(
     data=freq,

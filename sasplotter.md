@@ -10,12 +10,12 @@
   
 - Package: SASPlotter
 - Version: 1.3
-- Generated: 2024-07-10T13:27:48
+- Generated: 2024-07-11T20:06:11
 - Author(s): SupermanJP (sasplotter@picolabs.jp)
 - Maintainer(s): SupermanJP (sasplotter@picolabs.jp)
 - License: MIT
-- File SHA256: `F*A938FFCD3B57614BD9AABFDA15642A5813175E143364371892A37AF21D16416F` for this version
-- Content SHA256: `C*37D4DCCD041B20177066BCA4A3A1382645D57F385A0810F8EF1185B82AE1ACB5` for this version
+- File SHA256: `F*806F94DFA2C8D66F7CBC348D9B7F95E288B119C1C5EB479DD4ECF5C4812C1A78` for this version
+- Content SHA256: `C*B00890024D1DD01233676C996981ABF7CEE971D9CE28757C82F780BD560FBF96` for this version
   
 ---
  
@@ -25,11 +25,22 @@
  
 ### SAS plotter --modern graph suite for SAS ###
 
-The data visualization method widely used at present lacks information on the distribution pattern hidden in the raw data, and has a drawback that it is difficult to judge whether the sample distribution assumption, which is the premise of the hypothesis test, is correct.
+The data visualization method widely used at present lacks 
+information on the distribution pattern hidden in the raw data, 
+and has a drawback that it is difficult to judge whether the 
+sample distribution assumption, which is the premise of the 
+hypothesis test, is correct.
 
-In recent years, new data visualization methods that overcome such drawbacks have been announced and are already available in open source languages such as R and python. In contrast, the SAS language has made little effort as seen in open source languages.
+In recent years, new data visualization methods that overcome 
+such drawbacks have been announced and are already available 
+in open source languages such as R and python. 
 
-"SAS Plotter" is modern graph suite for SAS. You can easily create advanced graphs for journals with little knowledge of SAS GTL (Graph Template Language) or sgplot procedures.
+In contrast, the SAS language has made little effort as seen 
+in open source languages.
+
+"SAS Plotter" is modern graph suite for SAS. You can easily 
+create advanced graphs for journals with little knowledge of 
+SAS GTL (Graph Template Language) or sgplot procedures.
 
 the lengthens data format is suitable.
 
@@ -46,7 +57,8 @@ https://github.com/yabwon/SAS_PACKAGES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~sas
 filename packages "<your path>";
 
-filename SPFinit url "https://raw.githubusercontent.com/yabwon/SAS_PACKAGES/main/SPF/SPFinit.sas";
+filename SPFinit 
+	url "https://raw.githubusercontent.com/yabwon/SAS_PACKAGES/main/SPF/SPFinit.sas";
 %include SPFinit;
 
 %installPackage(SPFinit);
@@ -62,7 +74,8 @@ sourcepath=https://github.com/Superman-jp/SAS_Plotter/raw/v1.3/);
 
 ### Document ###
 
-If you want to check the details of the parameter, output example and difinitions, please refer to the following documents.
+If you want to check the details of the parameter, 
+output example and difinitions, please refer to the following documents.
 
 #### japanese website
 
@@ -146,8 +159,7 @@ This character is the delimiter for this macro.
 	scatter=false,
 	rug=false,
 	palette=sns,
-	title=,
-	footnote=,
+	note=,
 	deletedata=true
 
 );
@@ -163,7 +175,7 @@ This character is the delimiter for this macro.
 
 ### Mirrored histogram macro
 
-*-------------------------------------------------------
+-------------------------------------------------------
 
 Macro for Mirrored histogram using SAS GRAPH.
 
@@ -192,8 +204,7 @@ Histogram of the group which level is 2 will be inverted.
 	barwidth = 1,
 	outline = true,
 	palette = sns,
-	title =,
-	footnote=,
+	note=,
 	deletedata = true
 );
 	
@@ -208,7 +219,9 @@ Histogram of the group which level is 2 will be inverted.
 ### multihistogram macro
 --------------------------------------------------------
 
-multihitogram is histogram created by each category variable and pair variable. Box width of histogram is reflect the response variable. multihistogram is used for frequency comparison of multiple category in small display area.
+multihitogram is histogram created by each category variable and pair variable.
+Box width of histogram is reflect the response variable. 
+multihistogram is used for frequency comparison of multiple category in small display area.
 
 This macro was designed based on the report of Wierenga, Madison R et al. [1]
 
@@ -240,8 +253,7 @@ URL: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8140601/.
 	pairsplit=false,
 	legend=true,
 	palette=sns,
-	title=,
-	footnote=,
+	note=,
 	deletedata=true
 );
 
@@ -294,8 +306,7 @@ strip plot is jittered scatterplot and displays individual data.
 		 jitterwidth=0.1,
 		 outlinewidth=1,
 		 palette=sns,
-		 title=,
-		 footnote=,
+		 note=,
 		 deletedata=true);
 	
 
@@ -348,8 +359,7 @@ spaghetti plot (individual tracings for each subject ) can be overlaid on the ra
 		 jitterwidth=0.05,
 		 outlinewidth=1,
 		 palette=sns,
-		 title=,
-		 footnote=,
+		 note=,
 		 deletedata=true);
 	
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -401,8 +411,7 @@ can be overlaid on the ridgeline plot.
 	fillstyle=None,
 	qgradient=1,
 	palette=sns,
-	title=,
-	footnote=,
+	note=,
 	deletedata=true);
 
 
@@ -464,8 +473,7 @@ in this macro, statistics display and node focus are available.
 	
 	legend=false,
 	palette=sns,
-	title=.
-	footnote=,
+	note=,
 	deletedata=true
 
 	);

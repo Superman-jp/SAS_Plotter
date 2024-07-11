@@ -243,7 +243,7 @@ run;
 data max_temp;
 set raw;
 format region regionf.;
-label max_temp="maximum temperature (Åé)"
+label max_temp="maximum temperature (‚ÑÉ)"
       month="Month"
 	  region="Region";
 
@@ -254,9 +254,7 @@ region=2; max_temp=naha; output;
 keep year month  date region max_temp;
 run;
 
-
-
-options mprint;
+title "basic ridgeline plot";
 ods graphics / height=15cm width=15cm imagefmt=png imagename="ridge_simple" ;
 %ridgeline(
 	data=max_temp(where=(region=1)),
@@ -264,9 +262,9 @@ ods graphics / height=15cm width=15cm imagefmt=png imagename="ridge_simple" ;
 	y=max_temp,
 	
 	yticks=0 5 10 15 20 25 30 35 40,
-	title=%nrstr(entrytitle 'your title here'),
-	footnote=%nrstr(entryfootnote halign=left 'your footnote here';
-				    entryfootnote halign=left 'your footnote here 2';)
+	note=%nrstr(entrytitle 'your title here';
+		        entryfootnote halign=left 'your footnote here';
+				entryfootnote halign=left 'your footnote here 2';)
 
 	);
 
@@ -276,7 +274,7 @@ ods graphics / height=15cm width=15cm imagefmt=png imagename="ridge_simple" ;
 /*grouped ridgeline*/
 *-------------------------------------------;
 
-options mprint;
+title "grouped ridgeline plot";
 ods graphics / height=15cm width=25cm imagefmt=png imagename="ridge_group" ;
 %ridgeline(
 	data=max_temp,
@@ -290,6 +288,8 @@ ods graphics / height=15cm width=25cm imagefmt=png imagename="ridge_group" ;
 *-------------------------------------------;
 /*ridgeline plot with statistics and individual value*/
 *-------------------------------------------;
+
+title "ridgeline plot with statistics";
 ods graphics /reset=all height=15cm width=25cm imagename="ridgeline_stat" imagefmt=png;
 
 
@@ -309,6 +309,7 @@ ods graphics /reset=all height=15cm width=25cm imagename="ridgeline_stat" imagef
 /*fill style*/
 *-------------------------------------------;
 
+title "ridgeline plot with fill style";
 ods graphics /reset=all height=15cm width=25cm imagename="ridgeline_fill" imagefmt=png;
 
 
@@ -325,6 +326,8 @@ ods graphics /reset=all height=15cm width=25cm imagename="ridgeline_fill" imagef
 	rug=true
    );
 
+
+title "ridgeline plot with quartile style";
 ods graphics /reset=all height=15cm width=25cm imagename="ridgeline_qtr" imagefmt=png;
 
 
@@ -346,6 +349,7 @@ ods graphics /reset=all height=15cm width=25cm imagename="ridgeline_qtr" imagefm
  %macro qgrad;
 
  %do i = 1 %to 7;
+ title "Quartile Gradient Style &i.";
  ods graphics /reset=all height=15cm width=25cm 
 	imagename="ridgeline_qgradient&i." imagefmt=png;
 

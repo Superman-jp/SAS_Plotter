@@ -44,7 +44,7 @@ run;
 *--------------------------------------------------------;
 *simple raincloud plot;
 *--------------------------------------------------------;
-
+title "simple vertical raincloud plot";
 ods graphics /reset=all height=15cm width=25cm imagename="rain_simple" imagefmt=png;
  %RainCloud(data=tips,
              x=day,
@@ -54,11 +54,12 @@ ods graphics /reset=all height=15cm width=25cm imagename="rain_simple" imagefmt=
              group=day,
              yticks=0 20 40 60,
              bw_method=srot,
-			 title=%nrstr(entrytitle 'your title here'),
-	         footnote=%nrstr(entryfootnote halign=left 'your footnote here';
-				    entryfootnote halign=left 'your footnote here 2';)
+			 note=%nrstr(entrytitle 'your title here';
+			 		     entryfootnote halign=left 'your footnote here';
+				   	     entryfootnote halign=left 'your footnote here 2';)
              );
 
+title "simple horizontal raincloud plot";
 ods graphics /reset=all height=25cm width=15cm imagename="rain_simple_h" imagefmt=png;
  %RainCloud(data=tips,
              x=day,
@@ -69,15 +70,15 @@ ods graphics /reset=all height=25cm width=15cm imagename="rain_simple_h" imagefm
              yticks=0 20 40 60,
 			 orient=h,
              bw_method=srot,
-			 title=%nrstr(entrytitle 'your title here'),
-	         footnote=%nrstr(entryfootnote halign=left 'your footnote here';
-				    entryfootnote halign=left 'your footnote here 2';)
+			 note=%nrstr(entrytitle 'your title here';
+			 		     entryfootnote halign=left 'your footnote here';
+				         entryfootnote halign=left 'your footnote here 2';)
              );
 
 *--------------------------------------------------------;
 *grouped raincloud plot;
 *--------------------------------------------------------;
-
+title "grouped raincloud plot";
 ods graphics /reset=all height=25cm width=15cm imagename="rain_grouped" imagefmt=png;
 
 
@@ -93,6 +94,7 @@ ods graphics /reset=all height=25cm width=15cm imagename="rain_grouped" imagefmt
              legend=True
              );
 
+title "raincloud plot with connect line";
 ods graphics /reset=all height=15cm width=25cm imagename="rain_grouped_connect" imagefmt=png;
 
 /*add connect line*/
@@ -112,7 +114,7 @@ ods graphics /reset=all height=15cm width=25cm imagename="rain_grouped_connect" 
 *--------------------------------------------------------;
 *trim parameter;
 *--------------------------------------------------------;
-
+title "raincloud plot with trim parameter";
 ods graphics /reset=all height=25cm width=15cm imagename="rain_trim" imagefmt=png;
 
 
@@ -133,6 +135,7 @@ ods graphics /reset=all height=25cm width=15cm imagename="rain_trim" imagefmt=pn
 *--------------------------------------------------------;
 *scale parameter;
 *--------------------------------------------------------;
+title "raincloud plot with scale parameter (area)";
 ods graphics /reset=all height=15cm width=25cm imagename="rain_area" imagefmt=png;
 
  %RainCloud(data=sashelp.iris,
@@ -150,6 +153,7 @@ ods graphics /reset=all height=15cm width=25cm imagename="rain_area" imagefmt=pn
              bw_method=srot
              );
 
+title "raincloud plot with scale parameter (width)";
 ods graphics /reset=all height=15cm width=25cm imagename="rain_width" imagefmt=png;
 
  %RainCloud(data=sashelp.iris,

@@ -2,18 +2,15 @@
 /*Mirrored histogram example*/
 *-------------------------------------------;
 
-
-
-
-ods select histogram;
 proc univariate data=sashelp.heart;
 var diastolic systolic;
 histogram   diastolic systolic /
   outhistogram=histo
   vscale=percent
+  noplot
   midpoints=50 to 400 by 5;
 run;
-options mprint;
+
 proc format;
 value catf
 1="Diastolic"
@@ -31,6 +28,7 @@ run;
 *-------------------------------------------;
 /*vertical histogram*/
 *-------------------------------------------;
+title "vertical mirrored histogram";
 
 ods graphics / height=15cm width=25cm imagefmt=png imagename="mirroredhist_v";
 %MirroredHist(
@@ -42,14 +40,15 @@ ods graphics / height=15cm width=25cm imagefmt=png imagename="mirroredhist_v";
 	xticks=50 100 150 200 250 300,
 	yticks=5 10 15 20 25,
 	xlabel=Blood pressure (mmHg),
-	title=%nrstr(entrytitle 'your title here'),
-	footnote=%nrstr(entryfootnote halign=left 'your footnote here';
-				    entryfootnote halign=left 'your footnote here 2';)
+	note=%nrstr(entrytitle 'your title here';
+			    entryfootnote halign=left 'your footnote here';
+				entryfootnote halign=left 'your footnote here 2';)
 );
 
 *-------------------------------------------;
 /*adjust y-tick format*/
 *-------------------------------------------;
+title "mirrored histogram with y-tick format";
 
 ods graphics / height=15cm width=25cm imagefmt=png imagename="mirroredhist_v_fmt";
 %MirroredHist(
@@ -67,6 +66,7 @@ ods graphics / height=15cm width=25cm imagefmt=png imagename="mirroredhist_v_fmt
 *-------------------------------------------;
 /*horizontal histogram (linear) */
 *-------------------------------------------;
+title "horizontal mirrored histogram (linear)";
 
 ods graphics / height=15cm width=25cm imagefmt=png imagename="mirroredhist_h_linear";
 %MirroredHist(
@@ -79,9 +79,9 @@ ods graphics / height=15cm width=25cm imagefmt=png imagename="mirroredhist_h_lin
 	yticks=5 10 15 20 25,
 	orient=h,
 	xlabel=Blood pressure (mmHg),
-	title=%nrstr(entrytitle 'your title here'),
-	footnote=%nrstr(entryfootnote halign=left 'your footnote here';
-				    entryfootnote halign=left 'your footnote here 2';)
+	note=%nrstr(entrytitle 'your title here';
+			    entryfootnote halign=left 'your footnote here';
+				entryfootnote halign=left 'your footnote here 2';)
 );
 
 *-------------------------------------------;
@@ -163,6 +163,9 @@ Female,90s,1765
 Female,>100,116
 ;
 run;
+
+
+title "horizontal mirrored histogram (discrete)";
 
 ods graphics / height=15cm width=25cm imagefmt=png imagename="mirroredhist_h_discrete";
 %MirroredHist(

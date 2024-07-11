@@ -15,8 +15,8 @@ value repeatf
 
 value seqf
 
-1="sequence A (placeboÅ®drug A)"
-2="sequence B (drug AÅ®placebo)"
+1="sequence A (placebo‚Üídrug A)"
+2="sequence B (drug A‚Üíplacebo)"
 ;
 
 value trtf
@@ -54,8 +54,10 @@ end;
 end;
 end;
 run;
+
+title " paired raincloud plot (vertical)";
 ods graphics / reset=all imagefmt=png imagename="rainpair_simple_v" width=20cm height=20cm;
-options mprint;
+
 %RainCloudPaired(
 		 data=raincloudtest,
 		 x=trt,
@@ -65,13 +67,14 @@ options mprint;
 		 subject=usubjid,
 		 orient=v,
 		 yticks= 0 20 40 60 80,
-		 title=%nrstr(entrytitle 'your title here'),
-         footnote=%nrstr(entryfootnote halign=left 'your footnote here';
-				    entryfootnote halign=left 'your footnote here 2';)
+		 note=%nrstr(entrytitle 'your title here';
+		 			 entryfootnote halign=left 'your footnote here';
+				     entryfootnote halign=left 'your footnote here 2';)
 );
 
+title "paired raincloud plot (horizontal)";
 ods graphics / reset=all imagefmt=png imagename="rainpair_simple_h" width=20cm height=20cm;
-options mprint;
+
 %RainCloudPaired(
 		 data=raincloudtest,
 		 x=trt,
@@ -82,9 +85,9 @@ options mprint;
 		 orient=h,
 		 scale=width,
 		 yticks= 0 20 40 60 80,
-		 title=%nrstr(entrytitle 'your title here'),
-	     footnote=%nrstr(entryfootnote halign=left 'your footnote here';
-				    entryfootnote halign=left 'your footnote here 2';)
+		 note=%nrstr(entrytitle 'your title here';
+		 			 entryfootnote halign=left 'your footnote here';
+				     entryfootnote halign=left 'your footnote here 2';)
 );
 
 *--------------------------------------------------------;
@@ -115,10 +118,7 @@ end;
 end;
 run;
 
-proc means data=raincloudtest2;
-var response;
-run;
-
+title "paired raincloud plot (grouped)";
 ods graphics / reset=all imagefmt=png imagename="rainpaird_group" width=20cm height=15cm;
 
 %RainCloudPaired(
@@ -136,7 +136,7 @@ ods graphics / reset=all imagefmt=png imagename="rainpaird_group" width=20cm hei
 *--------------------------------------------------------;
 *connect line;
 *--------------------------------------------------------;
-
+title "paired raincloud plot with connect line";
 
 ods graphics / reset=all imagefmt=png imagename="rainpaird_group_connect" width=20cm height=15cm;
 

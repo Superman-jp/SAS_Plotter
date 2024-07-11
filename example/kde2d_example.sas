@@ -15,6 +15,7 @@ RUN;
 /* grouped KDE plot */
 *-------------------------------------------;
 
+title "grouped KDE plot";
 ods graphics /  height=24cm width=24cm imagename="groupedKDE" imagefmt=png;
 %kde2d(
    data=penguines,
@@ -27,9 +28,9 @@ ods graphics /  height=24cm width=24cm imagename="groupedKDE" imagefmt=png;
    xlabel=bill_length (mm),
    ylabel=bill_depth (mm),
    legend=true,
-   title=%nrstr(entrytitle 'your title here'),
-   footnote=%nrstr(entryfootnote halign=left 'your footnote here';
-				    entryfootnote halign=left 'your footnote here 2';)
+   note=%nrstr(entrytitle 'your title here';
+   			   entryfootnote halign=left 'your footnote here';
+			   entryfootnote halign=left 'your footnote here 2';)
  
 );
 
@@ -37,7 +38,7 @@ ods graphics /  height=24cm width=24cm imagename="groupedKDE" imagefmt=png;
 *-------------------------------------------;
 /* style of KDE plot */
 *-------------------------------------------;
-
+title "KDE plot with linefill style";
 ods graphics /  height=24cm width=24cm imagename="linefillKDE" imagefmt=png;
 
 %kde2d(
@@ -60,7 +61,7 @@ ods graphics /  height=24cm width=24cm imagename="linefillKDE" imagefmt=png;
 /* Diaplay individual data?*/
 *-------------------------------------------;
 
-
+title "KDE plot with individual data";
 ods graphics /  height=24cm width=24cm imagename="rugscatterKDE" imagefmt=png;
 
 %kde2d(
@@ -83,6 +84,7 @@ ods graphics /  height=24cm width=24cm imagename="rugscatterKDE" imagefmt=png;
 /* Thresh parameter*/
 *-------------------------------------------;
 
+title "KDE plot using thresh parameter";
 ods graphics /  height=24cm width=24cm imagename="threshKDE" imagefmt=png;
 
 %kde2d(
