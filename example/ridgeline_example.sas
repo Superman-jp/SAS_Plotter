@@ -1,4 +1,4 @@
-
+﻿
 *-------------------------------------------;
 /*ridgeline example*/
 *-------------------------------------------;
@@ -243,7 +243,7 @@ run;
 data max_temp;
 set raw;
 format region regionf.;
-label max_temp="maximum temperature (℃)"
+label max_temp="maximum temperature (degree Celsius)"
       month="Month"
 	  region="Region";
 
