@@ -15,8 +15,8 @@ value repeatf
 
 value seqf
 
-1="sequence A (placebo→drug A)"
-2="sequence B (drug A→placebo)"
+1="sequence A (placebo to drug A)"
+2="sequence B (drug A to lacebo)"
 ;
 
 value trtf
