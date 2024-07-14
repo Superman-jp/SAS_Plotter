@@ -481,8 +481,6 @@ raw data ::
    keep year month  date region max_temp;
    run;
 
-code 
-
 code ::
 
    title "basic ridgeline plot";
