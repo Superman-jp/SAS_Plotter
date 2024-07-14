@@ -1,0 +1,419 @@
+#######################################
+Raincloud plot (paired)
+#######################################
+
+***************
+What's this?
+***************
+
+Macro for generate paired raincloud plot using SAS GRAPH.
+
+this macro is useful for display raincloud plot of repeated measure study.
+number of replicate should be two.
+
+the density plot of the second replicate is flipped horizontal.
+
+spaghetti plot (individual tracings for each subject ) can be overlaid on the raincloud plot.
+
+
+
+*****************
+Input data
+*****************
+
+.. csv-table:: 
+
+   "**key**", "**variable** ", "**type**"
+   "1","category","numeric or string"
+   "2", "repeat", "repeat ID, numeric or string"
+   "3","group", "numeric or string"
+   "", "subject", "subject ID "
+   "","response", "numeric"
+
+
+group variable is optional. 
+
+I recommended that the variable type of category , "replicate" and group are set to numeric with format.
+if the variable type is string, item order is defined as ascending character order.
+
+
+***************
+Syntax
+***************
+
+ ::
+
+   ods graphics / < graphics option > ;
+   ods listing gpath=< output path >;
+
+    %RainCloudPaired(
+		 data=,
+		 x=,
+		 y=,
+		 repeat=,
+		 subject=,
+		 group=None,
+		 yticks=, 
+		 ylabel=y,
+		 cat_iv=1.6,
+		 element_iv=0.4,
+		 scale=area,
+		 trim=True,
+		 connect=False,
+		 spaghetti=True,
+		 gridsize=401,
+		 bw_method=sjpi,
+		 bw_adjust=1,
+		 orient=v, 
+		 legend=false,
+		 jitterwidth=0.05,
+		 outlinewidth=1,
+       palette=sns,
+       note=,
+       deletedata=True);
+		 
+
+***************
+Parameters
+***************
+- **data : dataset name (required)**
+
+   input data. keep, rename and  where options are available.
+
+- **x : variable name (required)**
+
+   category variable
+
+
+- **y : variable name (required)**
+
+   response variable
+
+- **repeat : variable name (required)**
+
+    repeat ID , the number of repeat should be two.
+    if other, this macro will be stopped.
+
+- **subject : variable name (required)**
+
+    subject ID 
+
+- **group : variable name (optional)**
+
+   group variable for grouping data at each category.
+
+   when the parameter is not set, all of graph object is set same color.
+
+   when the parameter is set category variable, the graph object of each category is 
+   set  different color.
+
+   default is "None".
+
+- **ylabel : string (optional)**
+
+   label string of response axis.
+   default is "y". when the label is not displayed , set like below.
+
+   ylabel=,
+
+
+- **yticks : numeric list (required)**
+
+   tickvalue list of response axis.
+   the list is set as the numeric list separated by space .
+   the item of the list should be set ascending order.
+
+   ex. yticks = 10 20 30 40,
+
+
+- **cat_iv : numeric (optional)**
+
+   the interval of category.
+   the default is 1.6
+
+- **element_iv : numeric (optional)**
+
+   the interval of density plot, boxplot and strip plot.
+   the default is 0.4.
+
+- **scale: area or width (optional)**
+
+    The method used to scale the width of each density plot.
+
+    If area, each plot will have the same area. 
+    If width, each plot will have the same width.
+
+    when the density plots are far different each other, width keyword may be useful.
+    the default is "area".
+
+- **trim: bool (optional)**
+
+    if True the density outside of observed data range will be trimmed.
+    the default is "True".
+
+    If area, each plot will have the same area. 
+    If width, each plot will have the same width.
+
+    when the density plots are far different each other, width keyword may be useful.
+
+- **connect: bool (optional)**
+
+    if True the mean values in same group are connected by solid line.
+    the default is "False". 
+
+- **spaghetti: bool (optional)**
+
+    if True spaghetti plot is displayed. values each subject is connected by solid line.
+    the default is "True". 
+
+- **gridsize : integer (optional)**
+
+   the number of KDE grid size.
+   default is 401 (the default of proc kde)
+
+
+- **bw_method : keyword (optional)**
+
+   the bandwidth estimation method of KDE.
+   default is "sjpi" (the default of proc kde).
+
+   method keyword described below is available.
+
+      * sjpi (Sheather-Jones plug-in)
+      * snr (simple normal reference)
+      * snrq (simple normal reference that uses the interquartile range)
+      * srot (Silverman's rule of thumb)
+      * os (oversmoothed)
+
+- **bw_adjust : numeric (optional)**
+
+   the bandwidth multiplier. Increasing will make the curve smoother.
+
+   the default is 1. 
+
+- **legend : bool (optional)**
+
+   if "True" the legend of group item is displayed.
+   if group parameter is "None", the parameter will be ignored.
+
+   default is "False".
+
+- **orient : v or h (optional)**
+
+    Orientation of the plot (vertical or horizontal). 
+
+    the default is "v".
+
+- **jitterwidth : numeric(between 0 and 1) (optional)**
+
+    jitter width of strip plot. Increasing this parameter may be made the data point overlapped on boxplot.
+
+    the default is "0.05".
+
+- **outlinewidth : numeric (optional)**
+
+    outline width of density plot and boxplot.
+
+    the default is "1".
+
+- **palette : keyword (optional)**
+
+   color palette for fill, line and markers. the palettes described below is available.
+   see color palette section of introduction page. default is "SNS" (Seaborn default palette).
+
+      * SAS
+      * SNS (Seaborn)
+      * STATA
+      * TABLEAU
+
+- **note : statement (optional)**
+
+   insert the text entry statement into the graph template and display the title or footnote in the output image.
+   default is "" (not displayed)
+
+- **deletedata : bool (optional)**
+   if True, the temporary datasets and catalogs generated by macros will be deleted at the end of execution.
+   default is True.
+   
+***************
+example
+***************
+
+output example can be executed using following code after loading SAS plotter.
+
+code ::
+   ods listing gpath=<your output path>;
+   filename exam url "https://github.com/Superman-jp/SAS_Plotter/raw/main/example/raincloudpaired_example.sas" encoding='UTF-8';
+   %include exam;
+
+Simple paired raincloud plot
+==============================
+
+raw data ::
+
+   proc format;
+      value repeatf
+      1="period 1"
+      2="period 2";
+   
+      value seqf
+      1="sequence A (placebo to drug A)"
+      2="sequence B (drug A to lacebo)"
+   ;
+   
+   value trtf
+   1="Placebo"
+   2="Drug A"
+   ;
+   
+   value groupf
+   1="Factor XXX (-)"
+   2="Factor XXX (+)";
+   run;
+   
+   data raincloudtest;
+   call streaminit(1234);
+   format repno repeatf. trt seqf.; 
+   label response="activity";
+   
+   do trt=1 to 2;
+   do i=1 to 100;
+   do repno=1 to 2;
+      usubjid="A" || strip(put(i,z3.0));
+      
+      if trt=1 and repno=1 then response=rand("lognormal",3,0.2);
+      else if trt=1 and repno=2 then response=rand("lognormal",3.5,0.23);
+      else if trt=2 and repno=1 then response=rand("lognormal",3.4,0.21);
+      else if trt=2 and repno=2 then response=rand("lognormal",2.8,0.17); 
+      
+      if response < 0 then response=0;
+      output;
+   end;
+   end;
+   end;
+   run;
+
+code ::
+
+   title " paired raincloud plot (vertical)";
+   ods graphics / reset=all imagefmt=png imagename="rainpair_simple_v" width=20cm height=20cm;
+   
+   %RainCloudPaired(
+         data=raincloudtest,
+         x=trt,
+         y=response,
+         group=trt,
+         repeat=repno,
+         subject=usubjid,
+         orient=v,
+         yticks= 0 20 40 60 80,
+         note=%nrstr(entrytitle 'your title here';
+                  entryfootnote halign=left 'your footnote here';
+                  entryfootnote halign=left 'your footnote here 2';)
+   );
+
+output
+
+.. image:: ./img/rainpair_simple_v1.svg
+
+when orient parameter is set "h", the orientation of plot is changed horizontal (x=response, y=category)
+
+code ::
+
+   title "paired raincloud plot (horizontal)";
+   ods graphics / reset=all imagefmt=png imagename="rainpair_simple_h" width=20cm height=20cm;
+   
+   %RainCloudPaired(
+         data=raincloudtest,
+         x=trt,
+         y=response,
+         group=trt,
+         repeat=repno,
+         subject=usubjid,
+         orient=h,
+         scale=width,
+         yticks= 0 20 40 60 80,
+         note=%nrstr(entrytitle 'your title here';
+                  entryfootnote halign=left 'your footnote here';
+                  entryfootnote halign=left 'your footnote here 2';)
+   );
+
+.. image:: ./img/rainpair_simple_h1.svg
+
+Grouped raincloud plot
+=======================
+
+raw data ::
+
+   data raincloudtest2;
+   
+   call streaminit(1234);
+   format trt trtf. type groupf.; 
+   label response="log(AUC)" cat="population";
+   
+   cat="FAS";
+   do type=1 to 2;
+   do i=1 to 100;
+   do trt=1 to 2;
+   
+      usubjid="A" || strip(put(i,z3.0));
+      
+      if type=1 and trt=1 then response=rand("normal",0.8,0.15);
+      else if type=1 and trt=2 then response=rand("normal",1.3,0.25);
+      else if type=2 and trt=1 then response=rand("normal",1.0,0.17);
+      else if type=2 and trt=2 then response=rand("normal",2.1 ,0.22); 
+      output;
+   end;
+   end;
+   end;
+   run; 
+
+code ::
+
+   title "paired raincloud plot (grouped)";
+   ods graphics / reset=all imagefmt=png imagename="rainpaird_group" width=20cm height=15cm;
+   
+   %RainCloudPaired(
+         data=raincloudtest2,
+         x=cat,
+         y=response,
+         group=type,
+         repeat=trt,
+         subject=usubjid,
+         orient=v,
+         legend=true,
+         yticks=0 0.5 1 1.5 2 2.5 3.0
+   );
+
+
+output
+
+.. image:: ./img/rainpaird_group1.svg
+
+
+Connect parameter
+=======================
+
+If connect parameter is set "True", means of each group will be connected.
+
+code ::
+
+   title "paired raincloud plot with connect line";
+   ods graphics / reset=all imagefmt=png imagename="rainpaird_group_connect" width=20cm height=15cm;
+   
+   %RainCloudPaired(
+         data=raincloudtest2,
+         x=cat,
+         y=response,
+         group=type,
+         repeat=trt,
+         subject=usubjid,
+         orient=v,
+         legend=true,
+         connect=true,
+         yticks=0 0.5 1 1.5 2 2.5 3.0
+   );
+
+output
+
+.. image:: ./img/rainpaird_group_connect1.svg

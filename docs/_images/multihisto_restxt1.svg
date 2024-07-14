@@ -1,0 +1,878 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" baseProfile="full" version="1.1" id="SVGMain" onload='SVGMain_Init("SVGMain")' viewBox="-1 -1 568 568">
+<desc id="desc_SVGMain">SGRender プロシジャ</desc>
+<defs>
+<clipPath id="SVGMain_clipPage1">
+<rect x="-1" y="-1" width="568" height="568"></rect>
+</clipPath>
+</defs>
+<g id="SVGMain_Page1" clip-path="url(#SVGMain_clipPage1)">
+<g transform=" scale(1.0, 1.0)">
+<rect x="0.0" y="0.0" width="566.0" height="566.0" style="fill: #FFFFFF; "></rect>
+<rect x="0.0" y="0.0" width="566.0" height="566.0" style="fill: #FFFFFF; "></rect>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 12.0, 12.0)">
+<defs>
+<clipPath id="SVGMain_ClipPath0">
+<rect x="-1.0" y="-1.0" width="544.0" height="544.0" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVGMain_ClipPath0)">
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 131.0, 514.0)">
+<defs>
+<clipPath id="SVGMain_ClipPath1">
+<rect x="-1.0" y="-1.0" width="282.0" height="29.0" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVGMain_ClipPath1)">
+<rect x="0.0" y="12.0" width="280.0" height="15.0" style="fill: #FFFFFF; "></rect>
+<rect x="0.0" y="12.0" width="280.0" height="15.0" style="stroke: #D1D1D1; stroke-width: 1; fill: none; "></rect>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 278.0, 13.0)">
+<defs>
+<clipPath id="SVGMain_ClipPath2">
+<rect x="-1.0" y="-1.0" width="3.0" height="15.0" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVGMain_ClipPath2)">
+</g>
+</g>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 202.0, 13.0)">
+<defs>
+<clipPath id="SVGMain_ClipPath3">
+<rect x="-1.0" y="-1.0" width="6.0" height="15.0" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVGMain_ClipPath3)">
+</g>
+</g>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 111.0, 13.0)">
+<defs>
+<clipPath id="SVGMain_ClipPath4">
+<rect x="-1.0" y="-1.0" width="21.0" height="15.0" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVGMain_ClipPath4)">
+</g>
+</g>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 1.0, 13.0)">
+<defs>
+<clipPath id="SVGMain_ClipPath5">
+<rect x="-1.0" y="-1.0" width="6.0" height="15.0" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVGMain_ClipPath5)">
+</g>
+</g>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 225.0, 13.0)">
+<defs>
+<clipPath id="SVGMain_ClipPath6">
+<rect x="-1.0" y="-1.0" width="54.0" height="14.0" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVGMain_ClipPath6)">
+<text textLength="45.0" lengthAdjust="spacingAndGlyphs" x="4.0" y="11.0" style="fill: #000000; font-family: 'SVGMain_MS PGothic Font3', 'MS PGothic', sans-serif; font-size: 12px; white-space: pre; ">&#x000052;&#x000065;&#x000067;&#x000069;&#x00006F;&#x00006E;&#x000020;&#x000032;</text>
+</g>
+</g>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 207.0, 15.0)">
+<defs>
+<clipPath id="SVGMain_ClipPath7">
+<rect x="-1.0" y="-1.0" width="19.0" height="11.0" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVGMain_ClipPath7)">
+<rect x="4.0" y="0.0" width="9.0" height="9.0" style="fill: #DD8452; "></rect>
+<rect x="4.0" y="0.0" width="9.0" height="9.0" style="stroke: #000000; stroke-width: 1; fill: none; stroke-linecap: square; "></rect>
+</g>
+</g>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 149.0, 13.0)">
+<defs>
+<clipPath id="SVGMain_ClipPath8">
+<rect x="-1.0" y="-1.0" width="54.0" height="14.0" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVGMain_ClipPath8)">
+<text textLength="45.0" lengthAdjust="spacingAndGlyphs" x="4.0" y="11.0" style="fill: #000000; font-family: 'SVGMain_MS PGothic Font3', 'MS PGothic', sans-serif; font-size: 12px; white-space: pre; ">&#x000052;&#x000065;&#x000067;&#x000069;&#x00006F;&#x00006E;&#x000020;&#x000031;</text>
+</g>
+</g>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 131.0, 15.0)">
+<defs>
+<clipPath id="SVGMain_ClipPath9">
+<rect x="-1.0" y="-1.0" width="19.0" height="11.0" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVGMain_ClipPath9)">
+<rect x="4.0" y="0.0" width="9.0" height="9.0" style="fill: #4C72B0; "></rect>
+<rect x="4.0" y="0.0" width="9.0" height="9.0" style="stroke: #000000; stroke-width: 1; fill: none; stroke-linecap: square; "></rect>
+</g>
+</g>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 6.0, 13.0)">
+<defs>
+<clipPath id="SVGMain_ClipPath10">
+<rect x="-1.0" y="-1.0" width="106.0" height="15.0" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVGMain_ClipPath10)">
+<text textLength="105.0" lengthAdjust="spacingAndGlyphs" x="0.0" y="12.0" style="fill: #000000; font-family: 'SVGMain_MS PGothic Font3', 'MS PGothic', sans-serif; font-size: 13px; white-space: pre; ">&#x000047;&#x000065;&#x00006F;&#x000067;&#x000072;&#x000061;&#x000070;&#x000068;&#x000069;&#x000063;&#x000020;&#x000052;&#x000065;&#x000067;&#x000069;&#x00006F;&#x00006E;</text>
+</g>
+</g>
+</g>
+</g>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 448.0)">
+<defs>
+<clipPath id="SVGMain_ClipPath11">
+<rect x="-1.0" y="-1.0" width="544.0" height="50.0" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVGMain_ClipPath11)">
+<defs>
+<clipPath id="SVGMain_ClipPath12">
+<rect x="-1.0" y="-1.0" width="544.0" height="50.0" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVGMain_ClipPath12)">
+<defs>
+<clipPath id="SVGMain_ClipPath13">
+<rect x="74.0" y="-1.0" width="469.0" height="50.0" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVGMain_ClipPath13)">
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 153.42752, 29.00999)">
+<text textLength="23.0" lengthAdjust="spacingAndGlyphs" x="0.0" y="0.5" style="fill: #000000; font-family: 'SVGMain_MS PGothic Font3', 'MS PGothic', sans-serif; font-size: 13px; white-space: pre; ">&#x000062;&#x00006C;&#x000075;&#x000065;</text>
+</g>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 277.69695, 29.00999)">
+<text textLength="33.0" lengthAdjust="spacingAndGlyphs" x="0.0" y="0.5" style="fill: #000000; font-family: 'SVGMain_MS PGothic Font3', 'MS PGothic', sans-serif; font-size: 13px; white-space: pre; ">&#x000062;&#x000072;&#x00006F;&#x000077;&#x00006E;</text>
+</g>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 407.46638, 29.00999)">
+<text textLength="32.0" lengthAdjust="spacingAndGlyphs" x="0.0" y="0.5" style="fill: #000000; font-family: 'SVGMain_MS PGothic Font3', 'MS PGothic', sans-serif; font-size: 13px; white-space: pre; ">&#x000067;&#x000072;&#x000065;&#x000065;&#x00006E;</text>
+</g>
+</g>
+<defs>
+<clipPath id="SVGMain_ClipPath14">
+<rect x="-1.0" y="-1.0" width="544.0" height="50.0" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVGMain_ClipPath14)">
+</g>
+</g>
+</g>
+<defs>
+<clipPath id="SVGMain_ClipPath15">
+<rect x="74.0" y="-1.0" width="469.0" height="50.0" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVGMain_ClipPath15)">
+</g>
+<defs>
+<clipPath id="SVGMain_ClipPath16">
+<rect x="-1.0" y="-1.0" width="544.0" height="50.0" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVGMain_ClipPath16)">
+</g>
+</g>
+<defs>
+<clipPath id="SVGMain_ClipPath17">
+<rect x="-1.0" y="-1.0" width="544.0" height="449.0" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVGMain_ClipPath17)">
+<defs>
+<clipPath id="SVGMain_ClipPath18">
+<rect x="-1.0" y="-1.0" width="544.0" height="449.0" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVGMain_ClipPath18)">
+<rect x="74.86213" y="0.0" width="467.1397" height="447.00222" style="fill: #FFFFFF; "></rect>
+<defs>
+<clipPath id="SVGMain_ClipPath19">
+<rect x="74.0" y="-1.0" width="469.0" height="449.0" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVGMain_ClipPath19)">
+<path d="M143.38262 106.01336L143.38262 27.68819" style="stroke: #4C72B0; stroke-width: 1; fill: none; "></path>
+<path d="M143.38262 106.01336L143.38262 27.68819" style="stroke: #000000; stroke-width: 1; fill: none; "></path>
+<rect x="139.15058" y="106.01336" width="8.46406" height="78.32516" style="fill: #4C72B0; "></rect>
+<rect x="139.15058" y="106.01336" width="8.46406" height="78.32516" style="stroke: #000000; stroke-width: 1; fill: none; "></rect>
+<rect x="134.53382" y="184.33853" width="17.6976" height="78.32516" style="fill: #4C72B0; "></rect>
+<rect x="134.53382" y="184.33853" width="17.6976" height="78.32516" style="stroke: #000000; stroke-width: 1; fill: none; "></rect>
+<rect x="134.14909" y="262.66369" width="18.46706" height="78.32516" style="fill: #4C72B0; "></rect>
+<rect x="134.14909" y="262.66369" width="18.46706" height="78.32516" style="stroke: #000000; stroke-width: 1; fill: none; "></rect>
+<rect x="140.68951" y="340.98886" width="5.38622" height="78.32516" style="fill: #4C72B0; "></rect>
+<rect x="140.68951" y="340.98886" width="5.38622" height="78.32516" style="stroke: #000000; stroke-width: 1; fill: none; "></rect>
+<rect x="184.16405" y="27.68819" width="4.61676" height="78.32516" style="fill: #DD8452; "></rect>
+<rect x="184.16405" y="27.68819" width="4.61676" height="78.32516" style="stroke: #000000; stroke-width: 1; fill: none; "></rect>
+<rect x="171.08321" y="106.01336" width="30.77843" height="78.32516" style="fill: #DD8452; "></rect>
+<rect x="171.08321" y="106.01336" width="30.77843" height="78.32516" style="stroke: #000000; stroke-width: 1; fill: none; "></rect>
+<rect x="168.77483" y="184.33853" width="35.3952" height="78.32516" style="fill: #DD8452; "></rect>
+<rect x="168.77483" y="184.33853" width="35.3952" height="78.32516" style="stroke: #000000; stroke-width: 1; fill: none; "></rect>
+<rect x="169.54429" y="262.66369" width="33.85627" height="78.32516" style="fill: #DD8452; "></rect>
+<rect x="169.54429" y="262.66369" width="33.85627" height="78.32516" style="stroke: #000000; stroke-width: 1; fill: none; "></rect>
+<rect x="178.39309" y="340.98886" width="16.15867" height="78.32516" style="fill: #DD8452; "></rect>
+<rect x="178.39309" y="340.98886" width="16.15867" height="78.32516" style="stroke: #000000; stroke-width: 1; fill: none; "></rect>
+<rect x="271.49786" y="27.68819" width="2.30838" height="78.32516" style="fill: #4C72B0; "></rect>
+<rect x="271.49786" y="27.68819" width="2.30838" height="78.32516" style="stroke: #000000; stroke-width: 1; fill: none; "></rect>
+<rect x="257.26283" y="106.01336" width="30.77843" height="78.32516" style="fill: #4C72B0; "></rect>
+<rect x="257.26283" y="106.01336" width="30.77843" height="78.32516" style="stroke: #000000; stroke-width: 1; fill: none; "></rect>
+<rect x="259.57121" y="184.33853" width="26.16167" height="78.32516" style="fill: #4C72B0; "></rect>
+<rect x="259.57121" y="184.33853" width="26.16167" height="78.32516" style="stroke: #000000; stroke-width: 1; fill: none; "></rect>
+<rect x="256.8781" y="262.66369" width="31.54789" height="78.32516" style="fill: #4C72B0; "></rect>
+<rect x="256.8781" y="262.66369" width="31.54789" height="78.32516" style="stroke: #000000; stroke-width: 1; fill: none; "></rect>
+<rect x="270.7284" y="340.98886" width="3.8473" height="78.32516" style="fill: #4C72B0; "></rect>
+<rect x="270.7284" y="340.98886" width="3.8473" height="78.32516" style="stroke: #000000; stroke-width: 1; fill: none; "></rect>
+<rect x="310.74036" y="27.68819" width="10.00299" height="78.32516" style="fill: #DD8452; "></rect>
+<rect x="310.74036" y="27.68819" width="10.00299" height="78.32516" style="stroke: #000000; stroke-width: 1; fill: none; "></rect>
+<rect x="294.96641" y="106.01336" width="41.55088" height="78.32516" style="fill: #DD8452; "></rect>
+<rect x="294.96641" y="106.01336" width="41.55088" height="78.32516" style="stroke: #000000; stroke-width: 1; fill: none; "></rect>
+<rect x="294.19695" y="184.33853" width="43.0898" height="78.32516" style="fill: #DD8452; "></rect>
+<rect x="294.19695" y="184.33853" width="43.0898" height="78.32516" style="stroke: #000000; stroke-width: 1; fill: none; "></rect>
+<rect x="295.35114" y="262.66369" width="40.78142" height="78.32516" style="fill: #DD8452; "></rect>
+<rect x="295.35114" y="262.66369" width="40.78142" height="78.32516" style="stroke: #000000; stroke-width: 1; fill: none; "></rect>
+<rect x="299.58318" y="340.98886" width="32.31735" height="78.32516" style="fill: #DD8452; "></rect>
+<rect x="299.58318" y="340.98886" width="32.31735" height="78.32516" style="stroke: #000000; stroke-width: 1; fill: none; "></rect>
+<path d="M401.92148 106.01336L401.92148 27.68819" style="stroke: #4C72B0; stroke-width: 1; fill: none; "></path>
+<path d="M401.92148 106.01336L401.92148 27.68819" style="stroke: #000000; stroke-width: 1; fill: none; "></path>
+<rect x="396.53525" y="106.01336" width="10.77245" height="78.32516" style="fill: #4C72B0; "></rect>
+<rect x="396.53525" y="106.01336" width="10.77245" height="78.32516" style="stroke: #000000; stroke-width: 1; fill: none; "></rect>
+<rect x="394.6116" y="184.33853" width="14.61975" height="78.32516" style="fill: #4C72B0; "></rect>
+<rect x="394.6116" y="184.33853" width="14.61975" height="78.32516" style="stroke: #000000; stroke-width: 1; fill: none; "></rect>
+<rect x="394.99633" y="262.66369" width="13.85029" height="78.32516" style="fill: #4C72B0; "></rect>
+<rect x="394.99633" y="262.66369" width="13.85029" height="78.32516" style="stroke: #000000; stroke-width: 1; fill: none; "></rect>
+<rect x="399.22836" y="340.98886" width="5.38622" height="78.32516" style="fill: #4C72B0; "></rect>
+<rect x="399.22836" y="340.98886" width="5.38622" height="78.32516" style="stroke: #000000; stroke-width: 1; fill: none; "></rect>
+<path d="M445.01129 106.01336L445.01129 27.68819" style="stroke: #DD8452; stroke-width: 1; fill: none; "></path>
+<path d="M445.01129 106.01336L445.01129 27.68819" style="stroke: #000000; stroke-width: 1; fill: none; "></path>
+<rect x="436.16249" y="106.01336" width="17.6976" height="78.32516" style="fill: #DD8452; "></rect>
+<rect x="436.16249" y="106.01336" width="17.6976" height="78.32516" style="stroke: #000000; stroke-width: 1; fill: none; "></rect>
+<rect x="425.77477" y="184.33853" width="38.47304" height="78.32516" style="fill: #DD8452; "></rect>
+<rect x="425.77477" y="184.33853" width="38.47304" height="78.32516" style="stroke: #000000; stroke-width: 1; fill: none; "></rect>
+<rect x="430.77626" y="262.66369" width="28.47005" height="78.32516" style="fill: #DD8452; "></rect>
+<rect x="430.77626" y="262.66369" width="28.47005" height="78.32516" style="stroke: #000000; stroke-width: 1; fill: none; "></rect>
+<rect x="433.08464" y="340.98886" width="23.85328" height="78.32516" style="fill: #DD8452; "></rect>
+<rect x="433.08464" y="340.98886" width="23.85328" height="78.32516" style="stroke: #000000; stroke-width: 1; fill: none; "></rect>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 194.16704, 70.35077)">
+<text textLength="5.0" lengthAdjust="spacingAndGlyphs" x="0.0" y="0.5" style="fill: #000000; font-family: 'SVGMain_MS PGothic Font3', 'MS PGothic', sans-serif; font-size: 10px; white-space: pre; ">&#x000036;</text>
+</g>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 207.24787, 148.67594)">
+<text textLength="10.0" lengthAdjust="spacingAndGlyphs" x="0.0" y="0.5" style="fill: #000000; font-family: 'SVGMain_MS PGothic Font3', 'MS PGothic', sans-serif; font-size: 10px; white-space: pre; ">&#x000034;&#x000030;</text>
+</g>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 209.55626, 227.00111)">
+<text textLength="10.0" lengthAdjust="spacingAndGlyphs" x="0.0" y="0.5" style="fill: #000000; font-family: 'SVGMain_MS PGothic Font3', 'MS PGothic', sans-serif; font-size: 10px; white-space: pre; ">&#x000034;&#x000036;</text>
+</g>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 208.7868, 305.32628)">
+<text textLength="10.0" lengthAdjust="spacingAndGlyphs" x="0.0" y="0.5" style="fill: #000000; font-family: 'SVGMain_MS PGothic Font3', 'MS PGothic', sans-serif; font-size: 10px; white-space: pre; ">&#x000034;&#x000034;</text>
+</g>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 199.93799, 383.65144)">
+<text textLength="10.0" lengthAdjust="spacingAndGlyphs" x="0.0" y="0.5" style="fill: #000000; font-family: 'SVGMain_MS PGothic Font3', 'MS PGothic', sans-serif; font-size: 10px; white-space: pre; ">&#x000032;&#x000031;</text>
+</g>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 326.12958, 70.35077)">
+<text textLength="10.0" lengthAdjust="spacingAndGlyphs" x="0.0" y="0.5" style="fill: #000000; font-family: 'SVGMain_MS PGothic Font3', 'MS PGothic', sans-serif; font-size: 10px; white-space: pre; ">&#x000031;&#x000033;</text>
+</g>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 341.90353, 148.67594)">
+<text textLength="10.0" lengthAdjust="spacingAndGlyphs" x="0.0" y="0.5" style="fill: #000000; font-family: 'SVGMain_MS PGothic Font3', 'MS PGothic', sans-serif; font-size: 10px; white-space: pre; ">&#x000035;&#x000034;</text>
+</g>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 342.67299, 227.00111)">
+<text textLength="10.0" lengthAdjust="spacingAndGlyphs" x="0.0" y="0.5" style="fill: #000000; font-family: 'SVGMain_MS PGothic Font3', 'MS PGothic', sans-serif; font-size: 10px; white-space: pre; ">&#x000035;&#x000036;</text>
+</g>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 341.5188, 305.32628)">
+<text textLength="10.0" lengthAdjust="spacingAndGlyphs" x="0.0" y="0.5" style="fill: #000000; font-family: 'SVGMain_MS PGothic Font3', 'MS PGothic', sans-serif; font-size: 10px; white-space: pre; ">&#x000035;&#x000033;</text>
+</g>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 337.28676, 383.65144)">
+<text textLength="10.0" lengthAdjust="spacingAndGlyphs" x="0.0" y="0.5" style="fill: #000000; font-family: 'SVGMain_MS PGothic Font3', 'MS PGothic', sans-serif; font-size: 10px; white-space: pre; ">&#x000034;&#x000032;</text>
+</g>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 450.39751, 70.35077)">
+<text textLength="5.0" lengthAdjust="spacingAndGlyphs" x="0.0" y="0.5" style="fill: #000000; font-family: 'SVGMain_MS PGothic Font3', 'MS PGothic', sans-serif; font-size: 10px; white-space: pre; ">&#x000030;</text>
+</g>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 459.24631, 148.67594)">
+<text textLength="10.0" lengthAdjust="spacingAndGlyphs" x="0.0" y="0.5" style="fill: #000000; font-family: 'SVGMain_MS PGothic Font3', 'MS PGothic', sans-serif; font-size: 10px; white-space: pre; ">&#x000032;&#x000033;</text>
+</g>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 469.63404, 227.00111)">
+<text textLength="10.0" lengthAdjust="spacingAndGlyphs" x="0.0" y="0.5" style="fill: #000000; font-family: 'SVGMain_MS PGothic Font3', 'MS PGothic', sans-serif; font-size: 10px; white-space: pre; ">&#x000035;&#x000030;</text>
+</g>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 464.63254, 305.32628)">
+<text textLength="10.0" lengthAdjust="spacingAndGlyphs" x="0.0" y="0.5" style="fill: #000000; font-family: 'SVGMain_MS PGothic Font3', 'MS PGothic', sans-serif; font-size: 10px; white-space: pre; ">&#x000033;&#x000037;</text>
+</g>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 462.32416, 383.65144)">
+<text textLength="10.0" lengthAdjust="spacingAndGlyphs" x="0.0" y="0.5" style="fill: #000000; font-family: 'SVGMain_MS PGothic Font3', 'MS PGothic', sans-serif; font-size: 10px; white-space: pre; ">&#x000033;&#x000031;</text>
+</g>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 132.99639, 70.35077)">
+<text textLength="5.0" lengthAdjust="spacingAndGlyphs" x="0.0" y="0.5" style="fill: #000000; font-family: 'SVGMain_MS PGothic Font3', 'MS PGothic', sans-serif; font-size: 10px; white-space: pre; ">&#x000030;</text>
+</g>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 123.76436, 148.67594)">
+<text textLength="10.0" lengthAdjust="spacingAndGlyphs" x="0.0" y="0.5" style="fill: #000000; font-family: 'SVGMain_MS PGothic Font3', 'MS PGothic', sans-serif; font-size: 10px; white-space: pre; ">&#x000031;&#x000031;</text>
+</g>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 119.14759, 227.00111)">
+<text textLength="10.0" lengthAdjust="spacingAndGlyphs" x="0.0" y="0.5" style="fill: #000000; font-family: 'SVGMain_MS PGothic Font3', 'MS PGothic', sans-serif; font-size: 10px; white-space: pre; ">&#x000032;&#x000033;</text>
+</g>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 118.76286, 305.32628)">
+<text textLength="10.0" lengthAdjust="spacingAndGlyphs" x="0.0" y="0.5" style="fill: #000000; font-family: 'SVGMain_MS PGothic Font3', 'MS PGothic', sans-serif; font-size: 10px; white-space: pre; ">&#x000032;&#x000034;</text>
+</g>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 130.30328, 383.65144)">
+<text textLength="5.0" lengthAdjust="spacingAndGlyphs" x="0.0" y="0.5" style="fill: #000000; font-family: 'SVGMain_MS PGothic Font3', 'MS PGothic', sans-serif; font-size: 10px; white-space: pre; ">&#x000037;</text>
+</g>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 261.11163, 70.35077)">
+<text textLength="5.0" lengthAdjust="spacingAndGlyphs" x="0.0" y="0.5" style="fill: #000000; font-family: 'SVGMain_MS PGothic Font3', 'MS PGothic', sans-serif; font-size: 10px; white-space: pre; ">&#x000033;</text>
+</g>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 241.8766, 148.67594)">
+<text textLength="10.0" lengthAdjust="spacingAndGlyphs" x="0.0" y="0.5" style="fill: #000000; font-family: 'SVGMain_MS PGothic Font3', 'MS PGothic', sans-serif; font-size: 10px; white-space: pre; ">&#x000034;&#x000030;</text>
+</g>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 244.18499, 227.00111)">
+<text textLength="10.0" lengthAdjust="spacingAndGlyphs" x="0.0" y="0.5" style="fill: #000000; font-family: 'SVGMain_MS PGothic Font3', 'MS PGothic', sans-serif; font-size: 10px; white-space: pre; ">&#x000033;&#x000034;</text>
+</g>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 241.49187, 305.32628)">
+<text textLength="10.0" lengthAdjust="spacingAndGlyphs" x="0.0" y="0.5" style="fill: #000000; font-family: 'SVGMain_MS PGothic Font3', 'MS PGothic', sans-serif; font-size: 10px; white-space: pre; ">&#x000034;&#x000031;</text>
+</g>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 260.34217, 383.65144)">
+<text textLength="5.0" lengthAdjust="spacingAndGlyphs" x="0.0" y="0.5" style="fill: #000000; font-family: 'SVGMain_MS PGothic Font3', 'MS PGothic', sans-serif; font-size: 10px; white-space: pre; ">&#x000035;</text>
+</g>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 391.53525, 70.35077)">
+<text textLength="5.0" lengthAdjust="spacingAndGlyphs" x="0.0" y="0.5" style="fill: #000000; font-family: 'SVGMain_MS PGothic Font3', 'MS PGothic', sans-serif; font-size: 10px; white-space: pre; ">&#x000030;</text>
+</g>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 381.14903, 148.67594)">
+<text textLength="10.0" lengthAdjust="spacingAndGlyphs" x="0.0" y="0.5" style="fill: #000000; font-family: 'SVGMain_MS PGothic Font3', 'MS PGothic', sans-serif; font-size: 10px; white-space: pre; ">&#x000031;&#x000034;</text>
+</g>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 379.22537, 227.00111)">
+<text textLength="10.0" lengthAdjust="spacingAndGlyphs" x="0.0" y="0.5" style="fill: #000000; font-family: 'SVGMain_MS PGothic Font3', 'MS PGothic', sans-serif; font-size: 10px; white-space: pre; ">&#x000031;&#x000039;</text>
+</g>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 379.6101, 305.32628)">
+<text textLength="10.0" lengthAdjust="spacingAndGlyphs" x="0.0" y="0.5" style="fill: #000000; font-family: 'SVGMain_MS PGothic Font3', 'MS PGothic', sans-serif; font-size: 10px; white-space: pre; ">&#x000031;&#x000038;</text>
+</g>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 388.84214, 383.65144)">
+<text textLength="5.0" lengthAdjust="spacingAndGlyphs" x="0.0" y="0.5" style="fill: #000000; font-family: 'SVGMain_MS PGothic Font3', 'MS PGothic', sans-serif; font-size: 10px; white-space: pre; ">&#x000037;</text>
+</g>
+</g>
+<defs>
+<clipPath id="SVGMain_ClipPath20">
+<rect x="-1.0" y="-1.0" width="544.0" height="449.0" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVGMain_ClipPath20)">
+<path d="M74.86213 447.00222L542.00183 447.00222" style="stroke: #989EA1; stroke-width: 1; fill: none; "></path>
+<path d="M542.00183 447.00222L542.00183 0.0" style="stroke: #989EA1; stroke-width: 1; fill: none; "></path>
+<path d="M74.86213 0.0L542.00183 0.0" style="stroke: #989EA1; stroke-width: 1; fill: none; "></path>
+<path d="M74.86213 447.00222L74.86213 0.0" style="stroke: #989EA1; stroke-width: 1; fill: none; "></path>
+<path d="M74.86213 447.00222L74.86213 0.0" style="stroke: #989EA1; stroke-width: 1; fill: none; "></path>
+<path d="M74.86213 380.15144L69.6601 380.15144" style="stroke: #989EA1; stroke-width: 1; fill: none; "></path>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 50.40883, 384.65144)">
+<text textLength="16.0" lengthAdjust="spacingAndGlyphs" x="0.0" y="0.5" style="fill: #000000; font-family: 'SVGMain_MS PGothic Font3', 'MS PGothic', sans-serif; font-size: 12px; white-space: pre; ">&#x000072;&#x000065;&#x000064;</text>
+</g>
+<path d="M74.86213 301.82628L69.6601 301.82628" style="stroke: #989EA1; stroke-width: 1; fill: none; "></path>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 27.40883, 306.32628)">
+<text textLength="39.0" lengthAdjust="spacingAndGlyphs" x="0.0" y="0.5" style="fill: #000000; font-family: 'SVGMain_MS PGothic Font3', 'MS PGothic', sans-serif; font-size: 12px; white-space: pre; ">&#x00006D;&#x000065;&#x000064;&#x000069;&#x000075;&#x00006D;</text>
+</g>
+<path d="M74.86213 223.50111L69.6601 223.50111" style="stroke: #989EA1; stroke-width: 1; fill: none; "></path>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 49.40883, 228.00111)">
+<text textLength="17.0" lengthAdjust="spacingAndGlyphs" x="0.0" y="0.5" style="fill: #000000; font-family: 'SVGMain_MS PGothic Font3', 'MS PGothic', sans-serif; font-size: 12px; white-space: pre; ">&#x000066;&#x000061;&#x000069;&#x000072;</text>
+</g>
+<path d="M74.86213 145.17594L69.6601 145.17594" style="stroke: #989EA1; stroke-width: 1; fill: none; "></path>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 44.40883, 149.67594)">
+<text textLength="22.0" lengthAdjust="spacingAndGlyphs" x="0.0" y="0.5" style="fill: #000000; font-family: 'SVGMain_MS PGothic Font3', 'MS PGothic', sans-serif; font-size: 12px; white-space: pre; ">&#x000064;&#x000061;&#x000072;&#x00006B;</text>
+</g>
+<path d="M74.86213 66.85077L69.6601 66.85077" style="stroke: #989EA1; stroke-width: 1; fill: none; "></path>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 39.40883, 71.35077)">
+<text textLength="27.0" lengthAdjust="spacingAndGlyphs" x="0.0" y="0.5" style="fill: #000000; font-family: 'SVGMain_MS PGothic Font3', 'MS PGothic', sans-serif; font-size: 12px; white-space: pre; ">&#x000062;&#x00006C;&#x000061;&#x000063;&#x00006B;</text>
+</g>
+<g transform="matrix(0.0, -1.0, 1.0, 0.0, 12.40377, 252.00111)">
+<text textLength="57.0" lengthAdjust="spacingAndGlyphs" x="0.0" y="0.5" style="fill: #000000; font-family: 'SVGMain_MS PGothic Font3', 'MS PGothic', sans-serif; font-size: 13px; white-space: pre; ">&#x000048;&#x000061;&#x000069;&#x000072;&#x000020;&#x000043;&#x00006F;&#x00006C;&#x00006F;&#x000072;</text>
+</g>
+</g>
+</g>
+</g>
+<defs>
+<clipPath id="SVGMain_ClipPath21">
+<rect x="74.0" y="-1.0" width="469.0" height="449.0" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVGMain_ClipPath21)">
+</g>
+<defs>
+<clipPath id="SVGMain_ClipPath22">
+<rect x="-1.0" y="-1.0" width="544.0" height="449.0" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVGMain_ClipPath22)">
+</g>
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 497.0)">
+<defs>
+<clipPath id="SVGMain_ClipPath23">
+<rect x="-1.0" y="-1.0" width="544.0" height="17.0" ></rect>
+</clipPath>
+</defs>
+<g clip-path="url(#SVGMain_ClipPath23)">
+<g transform="matrix(1.0, 0.0, 0.0, 1.0, 281.43106, 13.3)">
+<text textLength="55.0" lengthAdjust="spacingAndGlyphs" x="0.0" y="0.5" style="fill: #000000; font-family: 'SVGMain_MS PGothic Font3', 'MS PGothic', sans-serif; font-size: 13px; white-space: pre; ">&#x000045;&#x000079;&#x000065;&#x000020;&#x000043;&#x00006F;&#x00006C;&#x00006F;&#x000072;</text>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+<rect x="0" y="0" width="567" height="567" fill="#FFFFFF" fill-opacity="0" aria-hidden="true">
+<desc>SGRender プロシジャ</desc>
+</rect>
+</g>
+<g id="SVGMain_singleTip1" visibility="hidden" pointer-events="none">
+   <rect id="SVGMain_singleBox1" x="0" y="0" width="88" height="20" rx="2" ry="2" fill="white" stroke="black" stroke-width="0.94499" opacity="0.8"></rect>
+   <text id="SVGMain_singleText1" x="5" y="9" font-family="'Albany AMT', sans-serif" font-size="7"><tspan id="SVGMain_tiptspan1" x="4" class="tiptext"><![CDATA[ ]]></tspan></text>
+</g>
+<defs>
+<style type="text/css"><![CDATA[
+    tspan.tiptext { white-space: pre }
+]]></style>
+</defs>
+<defs>
+<style type="text/css"><![CDATA[
+  @font-face {
+      font-family: "SVGMain_MS PGothic Font3";
+      src: url("#SVGMain_Font3") format("svg")
+      }
+]]></style>
+<font id="SVGMain_Font3" horiz-adv-x="3072" >
+   <font-face      font-family="SVGMain_MS PGothic Font3"
+    units-per-em="2048" ascent="220" descent="-36" >
+      <font-face-src>
+         <font-face-name name="SVGMain_MS PGothic Font3"></font-face-name>
+      </font-face-src>
+   </font-face>
+<missing-glyph><path d="M0 0v4512h4608v-4512h-4608" fill="none"></path>
+</missing-glyph>
+<glyph unicode="&#40;" horiz-adv-x="637" 
+d="M472 -160Q72 216 72 712 Q72 1208 472 1584 L560 1496Q192 1152 192 712 Q192 272 560 -72 Z" ></glyph>
+<glyph unicode="&#47;" horiz-adv-x="1020" 
+d="M48 -16L896 1496L976 1448L128 -64L48 -16Z" ></glyph>
+<glyph unicode="&#104;" horiz-adv-x="1020" 
+d="M110 1392L280 1392L280 760Q416 936 576 936 Q744 936 824 856 Q904 776 904 664 L904 24L734 
+24L734 624Q734 712 688 768 Q648 808 576 808 Q488 808 416 736 Q328 648 280 488 L280 24L
+110 24L110 1392Z" ></glyph>
+<glyph unicode="&#65;" horiz-adv-x="1275" 
+d="M24 24L568 1408L728 1408L1272 24L1080 24L912 422L384 422L216 24L24 24ZM648 1144L440 
+592L856 592L648 1144Z" ></glyph>
+<glyph unicode="&#103;" horiz-adv-x="935" 
+d="M136 624Q136 760 224 848 Q312 936 448 936 Q576 936 672 856 Q752 936 864 936 L936 936L936 
+784Q840 824 720 792 Q776 720 776 624 Q776 480 688 392 Q608 312 456 312 Q376 312 288 352 Q
+248 320 248 288 Q248 264 264 248 Q304 208 448 200 Q576 192 720 184 Q800 168 840 128 Q904 
+64 904 -24 Q904 -120 840 -184 Q752 -272 456 -272 Q208 -272 120 -184 Q64 -128 64 -48 Q64 8 
+104 48 Q136 80 200 112 Q176 128 144 160 Q104 200 104 264 Q104 344 224 416 Q136 504 136 
+624 ZM448 800Q392 800 352 760 Q296 704 296 624 Q296 544 344 496 Q392 448 456 448 Q528 448 
+568 488 Q616 536 616 624 Q616 704 560 760 Q520 800 448 800 ZM616 48Q424 56 320 72 Q264 
+56 240 32 Q208 0 208 -40 Q208 -80 240 -112 Q288 -160 448 -160 Q664 -160 720 -104 Q752 -72 
+752 -40 Q752 -8 728 16 Q696 48 616 48 Z" ></glyph>
+<glyph unicode="&#82;" horiz-adv-x="1275" 
+d="M139 1400L840 1400Q1000 1400 1104 1296 Q1208 1192 1208 1008 Q1208 824 1104 720 Q1048 664 944 648 L1256 
+32L1056 32L768 606L352 606L352 32L139 32L139 1400ZM352 1230L352 776L824 776Q904 776 960 
+832 Q1016 888 1016 1008 Q1016 1120 952 1184 Q888 1230 800 1230 Z" ></glyph>
+<glyph unicode="&#101;" horiz-adv-x="1020" 
+d="M96 472Q96 688 232 824 Q344 936 520 936 Q688 936 808 816 Q920 704 920 472 L272 472Q272 
+304 352 224 Q424 152 536 152 Q648 152 696 200 Q752 256 752 328 L928 328Q896 184 824 112 Q
+720 8 536 8 Q344 8 224 128 Q96 256 96 472 ZM512 800Q416 800 352 736 Q296 680 280 
+600 L707 600Q707 680 672 744 Q616 800 512 800 Z" ></glyph>
+<glyph unicode="&#105;" horiz-adv-x="425" 
+d="M126 1384L296 1384L296 1176L126 1176L126 1384ZM126 920L296 920L296 24L126 24L126 920Z" ></glyph>
+<glyph unicode="&#111;" horiz-adv-x="1020" 
+d="M88 472Q88 680 224 816 Q344 936 520 936 Q696 936 816 816 Q952 680 952 472 Q952 264 816 
+128 Q696 8 520 8 Q344 8 224 128 Q88 264 88 472 ZM520 792Q424 792 360 728 Q264 632 
+264 472 Q264 312 352 224 Q424 152 520 152 Q616 152 688 224 Q776 312 776 472 Q776 632 680 
+728 Q616 792 520 792 Z" ></glyph>
+<glyph unicode="&#110;" horiz-adv-x="1020" 
+d="M280 24L110 24L110 920L280 920L280 760Q424 936 584 936 Q744 936 840 840 Q904 776 904 
+688 L904 24L734 24L734 640Q734 712 696 760 Q648 808 560 808 Q480 808 400 728 Q280 608 
+280 472 Z" ></glyph>
+<glyph unicode="&#32;" horiz-adv-x="637" 
+></glyph>
+<glyph unicode="&#50;" horiz-adv-x="1020" 
+d="M136 928Q136 1176 264 1304 Q368 1408 512 1408 Q688 1408 792 1304 Q896 1200 896 1048 Q896 856 776 
+712 Q664 576 544 448 Q480 376 416 304 Q360 240 320 176 L920 176L920 6L104 6L104 160Q
+120 240 240 384 Q440 600 568 744 Q704 888 704 1048 Q704 1144 640 1208 Q592 1256 520 1256 Q456 
+1256 408 1208 Q320 1120 320 928 Z" ></glyph>
+<glyph unicode="&#49;" horiz-adv-x="1020" 
+d="M464 1256Q536 1328 544 1416 L640 1416L640 32L427 32L427 1107L216 1107L216 1192L288 1192Q400 
+1192 464 1256 Z" ></glyph>
+<glyph unicode="&#71;" horiz-adv-x="1402" 
+d="M128 704Q128 1056 312 1240 Q480 1408 720 1408 Q960 1408 1112 1256 Q1240 1128 1248 944 L1056 944Q1048 
+1080 960 1168 Q872 1256 720 1256 Q568 1256 464 1152 Q320 1008 320 704 Q320 416 472 264 Q576 160 
+760 160 Q896 160 984 248 Q1048 336 1059 432 L1059 542L856 542L856 712L1272 712L1272 8L1136 
+8L1088 144Q952 8 744 8 Q488 8 328 168 Q128 368 128 704 Z" ></glyph>
+<glyph unicode="&#114;" horiz-adv-x="722" 
+d="M360 808Q488 936 704 936 L704 760Q672 768 616 768 Q496 768 392 664 Q304 576 272 480 L272 
+24L102 24L102 920L272 920L272 696Q312 760 360 808 Z" ></glyph>
+<glyph unicode="&#97;" horiz-adv-x="977" 
+d="M112 656Q136 768 216 848 Q304 936 472 936 Q672 936 760 848 Q840 768 840 664 L840 160Q840 
+72 904 24 L712 24Q680 56 680 128 Q560 8 376 8 Q224 8 144 88 Q72 160 72 256 Q
+72 368 144 440 Q224 520 368 544 Q464 560 536 584 Q640 608 680 632 Q680 696 632 744 Q584 
+792 496 792 Q384 792 336 744 Q304 712 288 656 L112 656L112 656ZM670 480Q627 464 592 456 Q
+456 424 384 408 Q320 392 288 360 Q248 320 248 272 Q248 216 288 176 Q312 152 392 152 Q528 
+152 616 240 Q663 296 670 320 Z" ></glyph>
+<glyph unicode="&#112;" horiz-adv-x="1020" 
+d="M264 -272L94 -272L94 920L264 920L264 816Q360 936 512 936 Q680 936 784 832 Q912 704 912 
+472 Q912 232 784 104 Q680 0 512 0 Q344 0 264 128 ZM512 792Q416 792 344 720 Q264 640 
+264 528 L264 416Q264 304 352 216 Q424 144 512 144 Q592 144 648 200 Q736 288 736 472 Q736 
+648 656 728 Q592 792 512 792 Z" ></glyph>
+<glyph unicode="&#99;" horiz-adv-x="1020" 
+d="M96 464Q96 680 224 808 Q344 928 520 928 Q712 928 808 832 Q896 744 912 616 L736 616Q728 
+680 672 736 Q624 784 528 784 Q432 784 368 720 Q272 624 272 456 Q272 296 360 208 Q424 144 
+520 144 Q632 144 696 208 Q760 272 760 376 L936 376Q928 208 824 104 Q720 0 520 0 Q352 
+0 240 112 Q96 256 96 464 Z" ></glyph>
+<glyph unicode="&#98;" horiz-adv-x="1020" 
+d="M94 1392L264 1392L264 816Q368 944 520 944 Q680 944 784 840 Q912 712 912 472 Q912 240 784 
+112 Q680 8 512 8 Q336 8 264 136 L264 24L94 24L94 1392ZM512 800Q416 800 336 720 Q
+264 648 264 520 L264 424Q264 304 344 224 Q416 152 512 152 Q592 152 648 208 Q736 296 736 
+472 Q736 656 656 736 Q592 800 512 800 Z" ></glyph>
+<glyph unicode="&#108;" horiz-adv-x="425" 
+d="M126 1392L296 1392L296 24L126 24L126 1392Z" ></glyph>
+<glyph unicode="&#117;" horiz-adv-x="1020" 
+d="M110 920L280 920L280 320Q280 224 328 176 Q368 136 440 136 Q544 136 624 216 Q734 336 734 
+464 L734 920L904 920L904 24L734 24L734 184Q610 8 432 8 Q264 8 192 80 Q110 152 
+110 264 Z" ></glyph>
+<glyph unicode="&#119;" horiz-adv-x="1317" 
+d="M32 920L200 920L384 248L576 920L752 920L944 248L1128 920L1296 920L1024 8L872 8L664 
+736L456 8L304 8L32 920Z" ></glyph>
+<glyph unicode="&#54;" horiz-adv-x="1020" 
+d="M112 680Q112 1120 304 1312 Q400 1408 544 1408 Q696 1408 792 1312 Q896 1208 896 1048 L712 1048Q712 
+1160 664 1208 Q616 1256 544 1256 Q472 1256 424 1208 Q296 1080 296 760 Q328 816 376 864 Q448 936 
+552 936 Q696 936 792 840 Q912 720 912 480 Q912 232 784 104 Q688 8 520 8 Q376 8 256 
+128 Q112 272 112 680 ZM536 792Q456 792 400 736 Q312 648 312 496 Q312 304 408 208 Q464 152 
+528 152 Q600 152 648 200 Q720 272 720 480 Q720 664 648 736 Q592 792 536 792 Z" ></glyph>
+<glyph unicode="&#52;" horiz-adv-x="1020" 
+d="M608 1408L792 1408L792 528L960 528L960 358L792 358L792 24L579 24L579 358L72 358L72 
+536L608 1408ZM579 1112L248 528L579 528L579 1112Z" ></glyph>
+<glyph unicode="&#48;" horiz-adv-x="1020" 
+d="M72 792Q72 1144 232 1304 Q344 1416 512 1416 Q680 1416 792 1304 Q952 1144 952 792 L952 632Q952 
+288 792 128 Q680 16 512 16 Q344 16 232 128 Q72 288 72 632 ZM512 1264Q432 1264 368 1200 Q
+264 1096 264 808 L264 624Q264 344 376 232 Q440 168 512 168 Q592 168 656 232 Q760 336 760 
+624 L760 808Q760 1096 656 1200 Q592 1264 512 1264 Z" ></glyph>
+<glyph unicode="&#51;" horiz-adv-x="1020" 
+d="M136 1000Q136 1184 256 1304 Q360 1408 512 1408 Q688 1408 792 1304 Q888 1208 888 1048 Q888 888 808 
+808 Q752 752 688 744 Q768 720 824 664 Q920 568 920 408 Q920 232 808 120 Q696 8 496 8 Q
+328 8 216 120 Q75 232 75 384 L75 448L288 448L288 392Q288 288 360 216 Q416 160 496 
+160 Q600 160 664 224 Q728 288 728 424 Q728 536 664 600 Q600 664 520 664 L456 664L456 800L
+504 800Q576 800 640 864 Q704 928 704 1048 Q704 1152 640 1216 Q592 1264 512 1264 Q440 1264 384 
+1208 Q320 1144 312 1000 Z" ></glyph>
+<glyph unicode="&#53;" horiz-adv-x="1020" 
+d="M200 1392L888 1392L888 1222L352 1222L352 1216Q344 1064 328 920 Q320 896 320 872 Q424 968 544 
+968 Q704 968 808 864 Q920 752 920 536 Q920 264 776 120 Q664 8 496 8 Q336 8 232 112 Q
+128 216 104 424 L288 424Q304 272 368 208 Q416 160 488 160 Q584 160 640 216 Q728 304 728 
+512 Q728 712 656 784 Q608 832 544 832 Q448 832 376 760 Q328 712 312 688 L152 688Q160 720 
+160 744 L200 1360L200 1392Z" ></glyph>
+<glyph unicode="&#55;" horiz-adv-x="1020" 
+d="M136 1392L896 1392L896 1216L512 24L336 24L720 1222L136 1222L136 1392Z" ></glyph>
+<glyph unicode="&#57;" horiz-adv-x="1020" 
+d="M112 936Q112 1176 256 1320 Q344 1408 496 1408 Q640 1408 744 1304 Q912 1136 912 720 Q912 296 736 
+120 Q624 8 472 8 Q320 8 232 96 Q128 200 128 368 L312 368Q304 264 376 192 Q408 160 
+472 160 Q544 160 600 216 Q728 344 728 688 Q696 640 656 600 Q568 512 440 512 Q320 512 240 
+592 Q112 720 112 936 ZM496 1264Q432 1264 384 1216 Q304 1136 304 936 Q304 776 368 712 Q424 656 
+480 656 Q576 656 624 704 Q712 792 712 920 Q712 1120 624 1208 Q568 1264 496 1264 Z" ></glyph>
+<glyph unicode="&#56;" horiz-adv-x="1020" 
+d="M136 1024Q136 1200 248 1312 Q344 1408 512 1408 Q680 1408 784 1304 Q888 1200 888 1024 Q888 888 792 
+792 Q752 752 696 736 L696 720Q768 704 832 640 Q928 544 928 384 Q928 224 816 112 Q712 8 
+512 8 Q312 8 208 112 Q96 224 96 384 Q96 544 192 640 Q256 704 328 720 L328 736Q280 
+752 224 808 Q136 896 136 1024 ZM512 1264Q432 1264 376 1208 Q312 1144 312 1024 Q312 912 376 848 Q
+432 792 504 792 Q600 792 648 840 Q712 904 712 1024 Q712 1144 648 1208 Q592 1264 512 1264 ZM512 
+656Q408 656 344 592 Q280 528 280 408 Q280 288 352 216 Q416 152 512 152 Q608 152 672 216 Q
+744 288 744 408 Q744 528 672 600 Q616 656 512 656 Z" ></glyph>
+<glyph unicode="&#100;" horiz-adv-x="1020" 
+d="M742 1392L912 1392L912 24L742 24L742 136Q658 8 512 8 Q344 8 248 104 Q104 248 104 
+472 Q104 712 232 840 Q336 944 480 944 Q649 944 742 808 ZM504 800Q424 800 360 736 Q280 656 
+280 472 Q280 296 368 208 Q424 152 504 152 Q600 152 664 216 Q752 304 752 472 Q752 640 656 
+736 Q592 800 504 800 Z" ></glyph>
+<glyph unicode="&#109;" horiz-adv-x="1487" 
+d="M280 24L110 24L110 920L280 920L280 784Q384 936 520 936 Q672 936 752 856 Q792 816 816 
+768 Q920 936 1104 936 Q1232 936 1304 864 Q1384 784 1384 688 L1384 24L1214 24L1214 656Q1214 704 
+1192 736 Q1144 784 1080 784 Q968 784 896 712 Q832 648 832 592 L832 24L662 24L662 648Q662 
+696 624 744 Q584 784 504 784 Q416 784 352 720 Q280 648 280 584 Z" ></glyph>
+<glyph unicode="&#102;" horiz-adv-x="637" 
+d="M352 920L624 920L624 792L352 792L352 24L182 24L182 792L0 792L0 920L182 920L182 
+1144Q182 1256 264 1328 Q344 1408 480 1408 Q584 1408 696 1368 L696 1208Q584 1264 512 1264 Q424 1264 
+384 1224 Q352 1192 352 1144 Z" ></glyph>
+<glyph unicode="&#107;" horiz-adv-x="935" 
+d="M94 1392L264 1392L264 528L656 920L856 920L552 616L920 24L752 24L448 512L264 328L264 
+24L94 24L94 1392Z" ></glyph>
+<glyph unicode="&#72;" horiz-adv-x="1317" 
+d="M115 1392L328 1392L328 816L955 816L955 1392L1168 1392L1168 24L955 24L955 646L328 646L328 
+24L115 24L115 1392Z" ></glyph>
+<glyph unicode="&#67;" horiz-adv-x="1360" 
+d="M112 704Q112 1056 312 1256 Q464 1408 704 1408 Q944 1408 1080 1272 Q1224 1128 1232 904 L1040 904Q1024 
+1072 936 1160 Q840 1256 704 1256 Q560 1256 448 1144 Q304 1000 304 704 Q304 408 448 264 Q552 160 
+704 160 Q864 160 952 248 Q1064 360 1064 568 L1256 568Q1248 296 1096 144 Q960 8 704 8 Q464 
+8 312 160 Q112 360 112 704 Z" ></glyph>
+<glyph unicode="&#69;" horiz-adv-x="1147" 
+d="M107 1392L1016 1392L1016 1222L320 1222L320 816L968 816L968 646L320 646L320 176L1056 176L1056 
+6L107 6L107 1392Z" ></glyph>
+<glyph unicode="&#121;" horiz-adv-x="977" 
+d="M16 928L192 928L480 216L768 928L944 928L544 -32Q496 -152 448 -200 Q384 -264 288 -264 Q176 
+-264 144 -232 L144 -80Q208 -112 280 -112 Q320 -112 352 -80 Q384 -48 400 8 Z" ></glyph>
+</font>
+</defs>
+<script type="text/ecmascript"><![CDATA[
+var SVGMain_SVGRoot = null;
+var SVGMain_viewBox = null;
+var SVGMain_TrueCoords = null;
+var SVGMain_singleTip = null;
+var SVGMain_singleBox = null;
+var SVGMain_singleText = null;
+var SVGMain_tiptspan = null;
+var SVGMain_attrScale = 1;
+var SVGMain_rightEdge = null;
+var SVGMain_SVGHeight = null;
+var SVGMain_SVGWidth = null;
+function SVGMain_Init(anchor) {
+   SVGMain_SVGRoot = document.getElementById(anchor);
+   SVGMain_TrueCoords = SVGMain_SVGRoot.createSVGPoint();
+   SVGMain_singleTip = document.getElementById(anchor + '_singleTip1');
+   SVGMain_singleBox = document.getElementById(anchor + '_singleBox1');
+   SVGMain_singleText = document.getElementById(anchor + '_singleText1');
+   SVGMain_tiptspan = document.getElementById(anchor + '_tiptspan1');
+   SVGMain_tiptspan.firstChild.nodeValue = null;
+   SVGMain_SVGRoot.addEventListener('mousemove', SVGMain_ShowTooltip, false);
+   SVGMain_SVGRoot.addEventListener('mouseout', SVGMain_HideTooltip, false);
+   SVGMain_SVGHeight = SVGMain_SVGRoot.getAttributeNS(null, "height");
+   SVGMain_SVGWidth = SVGMain_SVGRoot.getAttributeNS(null, "width");
+   if (!isNaN(parseFloat(SVGMain_SVGHeight)) && !isNaN(parseFloat(SVGMain_SVGWidth)))
+      SVGMain_GetHW();
+   SVGMain_viewBox  = new ViewBox(SVGMain_SVGRoot);
+}
+function SVGMain_GetHW()
+{
+    if (SVGMain_SVGWidth != null && SVGMain_SVGWidth != "") {
+       if (SVGMain_SVGWidth.match(/%/)) {
+          var factor = parseFloat(SVGMain_SVGWidth.replace(/%/,""))/100;
+          SVGMain_SVGWidth = window.innerWidth * factor;
+       }
+       else if (SVGMain_SVGWidth.match(/in/))
+          SVGMain_SVGWidth = parseFloat(SVGMain_SVGWidth.replace(/in/,""))*96;
+       else if (SVGMain_SVGWidth.match(/cm/))
+          SVGMain_SVGWidth = parseFloat(SVGMain_SVGWidth.replace(/in/,""))*96/2.54;
+       else
+           SVGMain_SVGWidth = parseFloat(SVGMain_SVGWidth);
+    }
+    if (SVGMain_SVGHeight != null && SVGMain_SVGHeight != "") {
+       if (SVGMain_SVGHeight.match(/%/)) {
+          var factor = parseFloat(SVGMain_SVGHeight.replace(/%/,""))/100;
+          SVGMain_SVGHeight = window.innerHeight * factor;
+       }
+       else if (SVGMain_SVGHeight.match(/in/))
+          SVGMain_SVGHeight = parseFloat(SVGMain_SVGHeight.replace(/in/,""))*96;
+       else if (SVGMain_SVGHeight.match(/cm/))
+          SVGMain_SVGHeight = parseFloat(SVGMain_SVGHeight.replace(/in/,""))*96/2.54;
+       else
+           SVGMain_SVGHeight = parseFloat(SVGMain_SVGHeight);
+    }
+}
+function SVGMain_GetScaleFactors(evt)
+{
+   var zoomFactor = 1;
+   windowWidth  = (top.innerWidth==undefined)  ? window.innerWidth  : top.innerWidth;
+   windowHeight = (top.innerHeight==undefined) ? window.innerHeight : top.innerHeight;
+   SVGMain_rightEdge = (SVGMain_SVGWidth) ? SVGMain_SVGWidth - window.pageXOffset : windowWidth;
+   if (parseFloat(SVGMain_SVGWidth) > 0 || parseFloat(SVGMain_SVGHeight) > 0)
+      var tipScale = 1.5873;
+   else {
+      var tipXScale  = (screen.width/windowWidth) / SVGMain_SVGRoot.currentScale;
+      var tipYScale  = (screen.height/windowHeight) / SVGMain_SVGRoot.currentScale;
+      var tipScale   = (tipXScale + tipYScale)/2.0;
+   }
+   SVGMain_attrScale = tipScale;
+   if (navigator.appName == 'Adobe SVG Viewer') {
+      if (screen.deviceXDPI != null && screen.logicalXDPI != null)
+         zoomFactor = screen.deviceXDPI/screen.logicalXDPI;
+      SVGMain_attrScale = zoomFactor*tipScale;
+   }
+   else if (navigator.userAgent != null && navigator.userAgent != '') {
+      var ua = navigator.userAgent.toLowerCase();
+      if (ua.indexOf("msie") != -1 || ua.indexOf("trident") != -1) {
+         zoomFactor = screen.deviceXDPI/screen.logicalXDPI;
+         SVGMain_attrScale = tipScale/zoomFactor;
+         SVGMain_rightEdge /= zoomFactor;
+      }
+      else if (ua.indexOf("ipad") != -1) {
+         zoomFactor = SVGMain_SVGRoot.clientWidth / window.innerWidth;
+         SVGMain_attrScale = 1.5 / zoomFactor;
+         SVGMain_rightEdge /= zoomFactor;
+      }
+      else if (ua.indexOf("opera") != -1)
+         SVGMain_attrScale = tipScale;
+      else if (ua.indexOf("firefox") != -1)
+         SVGMain_attrScale = tipScale;
+      else {
+         if (SVGMain_SVGWidth > 0 || SVGMain_SVGHeight > 0)
+            zoomFactor = 1;
+         else
+            zoomFactor = parseInt(document.defaultView.getComputedStyle(SVGMain_SVGRoot, null).width,10)/
+                                  SVGMain_SVGRoot.clientWidth;
+         SVGMain_attrScale = tipScale/zoomFactor;
+         SVGMain_rightEdge *= zoomFactor;
+      }
+   }
+}
+function SVGMain_GetTrueCoords(evt)
+{
+   var trans = SVGMain_SVGRoot.currentTranslate;
+   var scale = SVGMain_SVGRoot.currentScale;
+   SVGMain_GetScaleFactors();
+   var p1    = SVGMain_SVGRoot.createSVGPoint();
+   var p2;
+   if (!SVGMain_SVGRoot.getScreenCTM) {
+      var m = SVGMain_viewBox.getTM();
+      m = m.scale( 1/scale );
+      m = m.translate(-trans.x, -trans.y);
+      p1.x = evt.clientX;
+      p1.y = evt.clientY;
+      p2 = p1.matrixTransform(m);
+   }
+   else {
+      var m = SVGMain_SVGRoot.getScreenCTM();
+      if (navigator.userAgent.toLowerCase().indexOf("ipad") != -1) {
+         p1.x = evt.clientX + window.pageXOffset;
+         p1.y = evt.clientY + window.pageYOffset;
+      }
+      else {
+      p1.x = evt.clientX;
+      p1.y = evt.clientY;
+      }
+      p2 = p1.matrixTransform(m.inverse());
+   }
+   SVGMain_TrueCoords.x = Math.round(p2.x*100) / 100;
+   SVGMain_TrueCoords.y = Math.round(p2.y*100) / 100;
+}
+function SVGMain_HideTooltip( evt )
+{
+   SVGMain_tiptspan.firstChild.nodeValue = null;
+   SVGMain_singleTip.setAttributeNS(null, 'visibility', 'hidden');
+}
+function SVGMain_ShowTooltip( evt )
+{
+   SVGMain_GetTrueCoords( evt );
+   var targetElement = evt.target;
+   var tspanCount = targetElement.getElementsByTagName('desc').length;
+   if (tspanCount == 1) {
+      var targetTspan = targetElement.getElementsByTagName('desc').item(0);
+      if ( targetTspan) {
+         if (targetTspan.firstChild != null)
+            SVGMain_tiptspan.firstChild.nodeValue = targetTspan.firstChild.nodeValue; }
+   }
+   if ( '' != SVGMain_tiptspan.firstChild.nodeValue )
+   {
+      var outline = SVGMain_singleText.getBBox();
+      SVGMain_singleBox.setAttributeNS(null, 'transform', 'scale(' + SVGMain_attrScale + ',' + SVGMain_attrScale + ')' );
+      SVGMain_singleText.setAttributeNS(null, 'transform', 'scale(' + SVGMain_attrScale + ',' + SVGMain_attrScale + ')' );
+      SVGMain_singleTip.setAttributeNS(null, 'visibility', 'visible');
+      if (evt.clientX + ((outline.width + 9)/0.94499) * SVGMain_attrScale > SVGMain_rightEdge) {
+         var xPos = SVGMain_TrueCoords.x - parseInt((outline.width + 9)*SVGMain_attrScale);
+         if (xPos < 0)
+            xPos = 0;
+      }
+      else
+         var xPos = SVGMain_TrueCoords.x;
+      if (SVGMain_TrueCoords.y < 18) {
+         var yPos = SVGMain_TrueCoords.y + ((outline.height + 18)/0.94499)*SVGMain_attrScale;
+         if (yPos > windowHeight)
+            yPos = SVGMain_TrueCoords.y - parseInt((outline.height + 9)*SVGMain_attrScale);
+      }
+      else
+         var yPos = SVGMain_TrueCoords.y - parseInt((outline.height + 9)*SVGMain_attrScale);
+      if (Number(outline.width == 0))
+         SVGMain_singleBox.setAttributeNS(null, 'width', outline.width);
+      else
+         SVGMain_singleBox.setAttributeNS(null, 'width', outline.width + 9);
+      SVGMain_singleBox.setAttributeNS(null, 'height', outline.height + 9);
+      SVGMain_singleTip.setAttributeNS(null, 'transform', 'translate(' + xPos + ',' + yPos + ')');
+   }
+}
+/*****
+*   ViewBox.js
+*   copyright 2002, Kevin Lindsey
+*****/
+ViewBox.VERSION = "1.0";
+/*****
+*   constructor
+*****/
+function ViewBox(svgNode) {
+    if ( arguments.length > 0 ) {
+        this.init(svgNode);
+    }
+}
+/*****
+*   init
+*****/
+ViewBox.prototype.init = function(svgNode) {
+    var viewBox = svgNode.getAttributeNS(null, "viewBox");
+    var preserveAspectRatio = svgNode.getAttributeNS(null, "preserveAspectRatio");
+      if ( viewBox != null && viewBox != "" ) {
+        var params = viewBox.split(/\s*,\s*|\s+/);
+        this.x      = parseFloat( params[0] );
+        this.y      = parseFloat( params[1] );
+        this.width  = parseFloat( params[2] );
+        this.height = parseFloat( params[3] );
+    }
+    else {
+        this.x      = 0;
+        this.y      = 0;
+        this.width  = window.innerWidth;
+        this.height = window.innerHeight;
+    }
+    if (preserveAspectRatio != null && preserveAspectRatio != "" )
+    {
+        var params = preserveAspectRatio.split(/\s+/);
+        var align  = params[0];
+        if ( align == "none" ) {
+            this.alignX = "none";
+            this.alignY = "none";
+        } else {
+            this.alignX = align.substring(1,4);
+            this.alignY = align.substring(5,9);
+        }
+        if ( params.length == 2 ) {
+            this.meetOrSlice = params[1];
+        } else {
+            this.meetOrSlice = "meet";
+        }
+    } else {
+        this.align  = "xMidYMid";
+        this.alignX = "Mid";
+        this.alignY = "Mid";
+        this.meetOrSlice = "meet";
+    }
+}
+ViewBox.prototype.getTM = function() {
+    var matrix       = SVGMain_SVGRoot.createSVGMatrix();
+    if (isNaN(parseFloat(SVGMain_SVGWidth)))
+       var width = window.innerWidth;
+    else
+       var width = SVGMain_SVGWidth;
+    if (isNaN(parseFloat(SVGMain_SVGHeight)))
+       var height = window.innerHeight
+    else
+       var height = SVGMain_SVGHeight;
+    var x_ratio = this.width  / width;
+    var y_ratio = this.height / height;
+    matrix = matrix.translate(this.x, this.y);
+    if ( this.alignX == "none" ) {
+        matrix = matrix.scaleNonUniform( x_ratio, y_ratio );
+    } else {
+        if ( x_ratio < y_ratio && this.meetOrSlice == "meet" ||
+             x_ratio > y_ratio && this.meetOrSlice == "slice")
+        {
+           var x_trans = 0;
+           var x_diff  = width*y_ratio - this.width;
+           if ( this.alignX == "Mid" )
+              x_trans = -x_diff/2;
+           else if ( this.alignX == "Max" )
+              x_trans = -x_diff;
+           matrix = matrix.translate(x_trans, 0);
+           matrix = matrix.scale( y_ratio );
+        }
+        else if ( x_ratio > y_ratio && this.meetOrSlice == "meet" ||
+                  x_ratio < y_ratio && this.meetOrSlice == "slice"   )
+        {
+            var y_trans = 0;
+            var y_diff  = height*x_ratio - this.height;
+            if ( this.alignY == "Mid" )
+               y_trans = -y_diff/2;
+            else if ( this.alignY == "Max" )
+                y_trans = -y_diff;
+            matrix = matrix.translate(0, y_trans);
+            matrix = matrix.scale( x_ratio );
+        }
+        else
+            matrix = matrix.scale( x_ratio );
+    }
+    return matrix;
+}
+]]></script>
+</svg>

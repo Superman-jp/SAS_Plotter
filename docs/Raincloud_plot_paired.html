@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Raincloud plot (paired) &mdash; SAS Plotter 1.3 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/clipboard.min.js"></script>
+        <script src="_static/copybutton.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Ridgeline plot" href="Ridgeline_plot.html" />
+    <link rel="prev" title="Raincloud plot" href="Raincloud_plot.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            SAS Plotter
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Raincloud_plot.html">Raincloud plot</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Raincloud plot (paired)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#what-s-this">What’s this?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#input-data">Input data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#syntax">Syntax</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#parameters">Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#example">example</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#simple-paired-raincloud-plot">Simple paired raincloud plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#grouped-raincloud-plot">Grouped raincloud plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#connect-parameter">Connect parameter</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Ridgeline_plot.html">Ridgeline plot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Mirrored_histogram.html">Mirrored Histogram</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2D-KDE.html">2D-KDE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Sankey.html">Sankey diagram (Alluvial Diagram)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Multihistogram.html">MultiHistogram</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">SAS Plotter</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Raincloud plot (paired)</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Raincloud_plot_paired.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="raincloud-plot-paired">
+<h1>Raincloud plot (paired)<a class="headerlink" href="#raincloud-plot-paired" title="Permalink to this heading"></a></h1>
+<div class="section" id="what-s-this">
+<h2>What’s this?<a class="headerlink" href="#what-s-this" title="Permalink to this heading"></a></h2>
+<p>Macro for generate paired raincloud plot using SAS GRAPH.</p>
+<p>this macro is useful for display raincloud plot of repeated measure study.
+number of replicate should be two.</p>
+<p>the density plot of the second replicate is flipped horizontal.</p>
+<p>spaghetti plot (individual tracings for each subject ) can be overlaid on the raincloud plot.</p>
+</div>
+<div class="section" id="input-data">
+<h2>Input data<a class="headerlink" href="#input-data" title="Permalink to this heading"></a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>key</strong></p></td>
+<td><p><strong>variable</strong></p></td>
+<td><p><strong>type</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>category</p></td>
+<td><p>numeric or string</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>repeat</p></td>
+<td><p>repeat ID, numeric or string</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>group</p></td>
+<td><p>numeric or string</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>subject</p></td>
+<td><p>subject ID</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>response</p></td>
+<td><p>numeric</p></td>
+</tr>
+</tbody>
+</table>
+<p>group variable is optional.</p>
+<p>I recommended that the variable type of category , “replicate” and group are set to numeric with format.
+if the variable type is string, item order is defined as ascending character order.</p>
+</div>
+<div class="section" id="syntax">
+<h2>Syntax<a class="headerlink" href="#syntax" title="Permalink to this heading"></a></h2>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ods</span> <span class="n">graphics</span> <span class="o">/</span> <span class="o">&lt;</span> <span class="n">graphics</span> <span class="n">option</span> <span class="o">&gt;</span> <span class="p">;</span>
+<span class="n">ods</span> <span class="n">listing</span> <span class="n">gpath</span><span class="o">=&lt;</span> <span class="n">output</span> <span class="n">path</span> <span class="o">&gt;</span><span class="p">;</span>
+
+ <span class="o">%</span><span class="n">RainCloudPaired</span><span class="p">(</span>
+              <span class="n">data</span><span class="o">=</span><span class="p">,</span>
+              <span class="n">x</span><span class="o">=</span><span class="p">,</span>
+              <span class="n">y</span><span class="o">=</span><span class="p">,</span>
+              <span class="n">repeat</span><span class="o">=</span><span class="p">,</span>
+              <span class="n">subject</span><span class="o">=</span><span class="p">,</span>
+              <span class="n">group</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+              <span class="n">yticks</span><span class="o">=</span><span class="p">,</span>
+              <span class="n">ylabel</span><span class="o">=</span><span class="n">y</span><span class="p">,</span>
+              <span class="n">cat_iv</span><span class="o">=</span><span class="mf">1.6</span><span class="p">,</span>
+              <span class="n">element_iv</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span>
+              <span class="n">scale</span><span class="o">=</span><span class="n">area</span><span class="p">,</span>
+              <span class="n">trim</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+              <span class="n">connect</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+              <span class="n">spaghetti</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+              <span class="n">gridsize</span><span class="o">=</span><span class="mi">401</span><span class="p">,</span>
+              <span class="n">bw_method</span><span class="o">=</span><span class="n">sjpi</span><span class="p">,</span>
+              <span class="n">bw_adjust</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+              <span class="n">orient</span><span class="o">=</span><span class="n">v</span><span class="p">,</span>
+              <span class="n">legend</span><span class="o">=</span><span class="n">false</span><span class="p">,</span>
+              <span class="n">jitterwidth</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span>
+              <span class="n">outlinewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">palette</span><span class="o">=</span><span class="n">sns</span><span class="p">,</span>
+    <span class="n">note</span><span class="o">=</span><span class="p">,</span>
+    <span class="n">deletedata</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this heading"></a></h2>
+<ul>
+<li><p><strong>data : dataset name (required)</strong></p>
+<blockquote>
+<div><p>input data. keep, rename and  where options are available.</p>
+</div></blockquote>
+</li>
+<li><p><strong>x : variable name (required)</strong></p>
+<blockquote>
+<div><p>category variable</p>
+</div></blockquote>
+</li>
+<li><p><strong>y : variable name (required)</strong></p>
+<blockquote>
+<div><p>response variable</p>
+</div></blockquote>
+</li>
+<li><p><strong>repeat : variable name (required)</strong></p>
+<blockquote>
+<div><p>repeat ID , the number of repeat should be two.
+if other, this macro will be stopped.</p>
+</div></blockquote>
+</li>
+<li><p><strong>subject : variable name (required)</strong></p>
+<blockquote>
+<div><p>subject ID</p>
+</div></blockquote>
+</li>
+<li><p><strong>group : variable name (optional)</strong></p>
+<blockquote>
+<div><p>group variable for grouping data at each category.</p>
+<p>when the parameter is not set, all of graph object is set same color.</p>
+<p>when the parameter is set category variable, the graph object of each category is
+set  different color.</p>
+<p>default is “None”.</p>
+</div></blockquote>
+</li>
+<li><p><strong>ylabel : string (optional)</strong></p>
+<blockquote>
+<div><p>label string of response axis.
+default is “y”. when the label is not displayed , set like below.</p>
+<p>ylabel=,</p>
+</div></blockquote>
+</li>
+<li><p><strong>yticks : numeric list (required)</strong></p>
+<blockquote>
+<div><p>tickvalue list of response axis.
+the list is set as the numeric list separated by space .
+the item of the list should be set ascending order.</p>
+<p>ex. yticks = 10 20 30 40,</p>
+</div></blockquote>
+</li>
+<li><p><strong>cat_iv : numeric (optional)</strong></p>
+<blockquote>
+<div><p>the interval of category.
+the default is 1.6</p>
+</div></blockquote>
+</li>
+<li><p><strong>element_iv : numeric (optional)</strong></p>
+<blockquote>
+<div><p>the interval of density plot, boxplot and strip plot.
+the default is 0.4.</p>
+</div></blockquote>
+</li>
+<li><p><strong>scale: area or width (optional)</strong></p>
+<blockquote>
+<div><p>The method used to scale the width of each density plot.</p>
+<p>If area, each plot will have the same area.
+If width, each plot will have the same width.</p>
+<p>when the density plots are far different each other, width keyword may be useful.
+the default is “area”.</p>
+</div></blockquote>
+</li>
+<li><p><strong>trim: bool (optional)</strong></p>
+<blockquote>
+<div><p>if True the density outside of observed data range will be trimmed.
+the default is “True”.</p>
+<p>If area, each plot will have the same area.
+If width, each plot will have the same width.</p>
+<p>when the density plots are far different each other, width keyword may be useful.</p>
+</div></blockquote>
+</li>
+<li><p><strong>connect: bool (optional)</strong></p>
+<blockquote>
+<div><p>if True the mean values in same group are connected by solid line.
+the default is “False”.</p>
+</div></blockquote>
+</li>
+<li><p><strong>spaghetti: bool (optional)</strong></p>
+<blockquote>
+<div><p>if True spaghetti plot is displayed. values each subject is connected by solid line.
+the default is “True”.</p>
+</div></blockquote>
+</li>
+<li><p><strong>gridsize : integer (optional)</strong></p>
+<blockquote>
+<div><p>the number of KDE grid size.
+default is 401 (the default of proc kde)</p>
+</div></blockquote>
+</li>
+<li><p><strong>bw_method : keyword (optional)</strong></p>
+<blockquote>
+<div><p>the bandwidth estimation method of KDE.
+default is “sjpi” (the default of proc kde).</p>
+<p>method keyword described below is available.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>sjpi (Sheather-Jones plug-in)</p></li>
+<li><p>snr (simple normal reference)</p></li>
+<li><p>snrq (simple normal reference that uses the interquartile range)</p></li>
+<li><p>srot (Silverman’s rule of thumb)</p></li>
+<li><p>os (oversmoothed)</p></li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+</li>
+<li><p><strong>bw_adjust : numeric (optional)</strong></p>
+<blockquote>
+<div><p>the bandwidth multiplier. Increasing will make the curve smoother.</p>
+<p>the default is 1.</p>
+</div></blockquote>
+</li>
+<li><p><strong>legend : bool (optional)</strong></p>
+<blockquote>
+<div><p>if “True” the legend of group item is displayed.
+if group parameter is “None”, the parameter will be ignored.</p>
+<p>default is “False”.</p>
+</div></blockquote>
+</li>
+<li><p><strong>orient : v or h (optional)</strong></p>
+<blockquote>
+<div><p>Orientation of the plot (vertical or horizontal).</p>
+<p>the default is “v”.</p>
+</div></blockquote>
+</li>
+<li><p><strong>jitterwidth : numeric(between 0 and 1) (optional)</strong></p>
+<blockquote>
+<div><p>jitter width of strip plot. Increasing this parameter may be made the data point overlapped on boxplot.</p>
+<p>the default is “0.05”.</p>
+</div></blockquote>
+</li>
+<li><p><strong>outlinewidth : numeric (optional)</strong></p>
+<blockquote>
+<div><p>outline width of density plot and boxplot.</p>
+<p>the default is “1”.</p>
+</div></blockquote>
+</li>
+<li><p><strong>palette : keyword (optional)</strong></p>
+<blockquote>
+<div><p>color palette for fill, line and markers. the palettes described below is available.
+see color palette section of introduction page. default is “SNS” (Seaborn default palette).</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>SAS</p></li>
+<li><p>SNS (Seaborn)</p></li>
+<li><p>STATA</p></li>
+<li><p>TABLEAU</p></li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+</li>
+<li><p><strong>note : statement (optional)</strong></p>
+<blockquote>
+<div><p>insert the text entry statement into the graph template and display the title or footnote in the output image.
+default is “” (not displayed)</p>
+</div></blockquote>
+</li>
+<li><dl class="simple">
+<dt><strong>deletedata : bool (optional)</strong></dt><dd><p>if True, the temporary datasets and catalogs generated by macros will be deleted at the end of execution.
+default is True.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="example">
+<h2>example<a class="headerlink" href="#example" title="Permalink to this heading"></a></h2>
+<p>output example can be executed using following code after loading SAS plotter.</p>
+<dl class="simple">
+<dt>code ::</dt><dd><p>ods listing gpath=&lt;your output path&gt;;
+filename exam url “<a class="reference external" href="https://github.com/Superman-jp/SAS_Plotter/raw/main/example/raincloudpaired_example.sas">https://github.com/Superman-jp/SAS_Plotter/raw/main/example/raincloudpaired_example.sas</a>” encoding=’UTF-8’;
+%include exam;</p>
+</dd>
+</dl>
+<div class="section" id="simple-paired-raincloud-plot">
+<h3>Simple paired raincloud plot<a class="headerlink" href="#simple-paired-raincloud-plot" title="Permalink to this heading"></a></h3>
+<p>raw data</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">proc</span> <span class="nb">format</span><span class="p">;</span>
+   <span class="n">value</span> <span class="n">repeatf</span>
+   <span class="mi">1</span><span class="o">=</span><span class="s2">&quot;period 1&quot;</span>
+   <span class="mi">2</span><span class="o">=</span><span class="s2">&quot;period 2&quot;</span><span class="p">;</span>
+
+   <span class="n">value</span> <span class="n">seqf</span>
+   <span class="mi">1</span><span class="o">=</span><span class="s2">&quot;sequence A (placebo to drug A)&quot;</span>
+   <span class="mi">2</span><span class="o">=</span><span class="s2">&quot;sequence B (drug A to lacebo)&quot;</span>
+<span class="p">;</span>
+
+<span class="n">value</span> <span class="n">trtf</span>
+<span class="mi">1</span><span class="o">=</span><span class="s2">&quot;Placebo&quot;</span>
+<span class="mi">2</span><span class="o">=</span><span class="s2">&quot;Drug A&quot;</span>
+<span class="p">;</span>
+
+<span class="n">value</span> <span class="n">groupf</span>
+<span class="mi">1</span><span class="o">=</span><span class="s2">&quot;Factor XXX (-)&quot;</span>
+<span class="mi">2</span><span class="o">=</span><span class="s2">&quot;Factor XXX (+)&quot;</span><span class="p">;</span>
+<span class="n">run</span><span class="p">;</span>
+
+<span class="n">data</span> <span class="n">raincloudtest</span><span class="p">;</span>
+<span class="n">call</span> <span class="n">streaminit</span><span class="p">(</span><span class="mi">1234</span><span class="p">);</span>
+<span class="nb">format</span> <span class="n">repno</span> <span class="n">repeatf</span><span class="o">.</span> <span class="n">trt</span> <span class="n">seqf</span><span class="o">.</span><span class="p">;</span>
+<span class="n">label</span> <span class="n">response</span><span class="o">=</span><span class="s2">&quot;activity&quot;</span><span class="p">;</span>
+
+<span class="n">do</span> <span class="n">trt</span><span class="o">=</span><span class="mi">1</span> <span class="n">to</span> <span class="mi">2</span><span class="p">;</span>
+<span class="n">do</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span> <span class="n">to</span> <span class="mi">100</span><span class="p">;</span>
+<span class="n">do</span> <span class="n">repno</span><span class="o">=</span><span class="mi">1</span> <span class="n">to</span> <span class="mi">2</span><span class="p">;</span>
+   <span class="n">usubjid</span><span class="o">=</span><span class="s2">&quot;A&quot;</span> <span class="o">||</span> <span class="n">strip</span><span class="p">(</span><span class="n">put</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">z3</span><span class="mf">.0</span><span class="p">));</span>
+
+   <span class="k">if</span> <span class="n">trt</span><span class="o">=</span><span class="mi">1</span> <span class="ow">and</span> <span class="n">repno</span><span class="o">=</span><span class="mi">1</span> <span class="n">then</span> <span class="n">response</span><span class="o">=</span><span class="n">rand</span><span class="p">(</span><span class="s2">&quot;lognormal&quot;</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mf">0.2</span><span class="p">);</span>
+   <span class="k">else</span> <span class="k">if</span> <span class="n">trt</span><span class="o">=</span><span class="mi">1</span> <span class="ow">and</span> <span class="n">repno</span><span class="o">=</span><span class="mi">2</span> <span class="n">then</span> <span class="n">response</span><span class="o">=</span><span class="n">rand</span><span class="p">(</span><span class="s2">&quot;lognormal&quot;</span><span class="p">,</span><span class="mf">3.5</span><span class="p">,</span><span class="mf">0.23</span><span class="p">);</span>
+   <span class="k">else</span> <span class="k">if</span> <span class="n">trt</span><span class="o">=</span><span class="mi">2</span> <span class="ow">and</span> <span class="n">repno</span><span class="o">=</span><span class="mi">1</span> <span class="n">then</span> <span class="n">response</span><span class="o">=</span><span class="n">rand</span><span class="p">(</span><span class="s2">&quot;lognormal&quot;</span><span class="p">,</span><span class="mf">3.4</span><span class="p">,</span><span class="mf">0.21</span><span class="p">);</span>
+   <span class="k">else</span> <span class="k">if</span> <span class="n">trt</span><span class="o">=</span><span class="mi">2</span> <span class="ow">and</span> <span class="n">repno</span><span class="o">=</span><span class="mi">2</span> <span class="n">then</span> <span class="n">response</span><span class="o">=</span><span class="n">rand</span><span class="p">(</span><span class="s2">&quot;lognormal&quot;</span><span class="p">,</span><span class="mf">2.8</span><span class="p">,</span><span class="mf">0.17</span><span class="p">);</span>
+
+   <span class="k">if</span> <span class="n">response</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="n">then</span> <span class="n">response</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+   <span class="n">output</span><span class="p">;</span>
+<span class="n">end</span><span class="p">;</span>
+<span class="n">end</span><span class="p">;</span>
+<span class="n">end</span><span class="p">;</span>
+<span class="n">run</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>code</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">title</span> <span class="s2">&quot; paired raincloud plot (vertical)&quot;</span><span class="p">;</span>
+<span class="n">ods</span> <span class="n">graphics</span> <span class="o">/</span> <span class="n">reset</span><span class="o">=</span><span class="nb">all</span> <span class="n">imagefmt</span><span class="o">=</span><span class="n">png</span> <span class="n">imagename</span><span class="o">=</span><span class="s2">&quot;rainpair_simple_v&quot;</span> <span class="n">width</span><span class="o">=</span><span class="mi">20</span><span class="n">cm</span> <span class="n">height</span><span class="o">=</span><span class="mi">20</span><span class="n">cm</span><span class="p">;</span>
+
+<span class="o">%</span><span class="n">RainCloudPaired</span><span class="p">(</span>
+      <span class="n">data</span><span class="o">=</span><span class="n">raincloudtest</span><span class="p">,</span>
+      <span class="n">x</span><span class="o">=</span><span class="n">trt</span><span class="p">,</span>
+      <span class="n">y</span><span class="o">=</span><span class="n">response</span><span class="p">,</span>
+      <span class="n">group</span><span class="o">=</span><span class="n">trt</span><span class="p">,</span>
+      <span class="n">repeat</span><span class="o">=</span><span class="n">repno</span><span class="p">,</span>
+      <span class="n">subject</span><span class="o">=</span><span class="n">usubjid</span><span class="p">,</span>
+      <span class="n">orient</span><span class="o">=</span><span class="n">v</span><span class="p">,</span>
+      <span class="n">yticks</span><span class="o">=</span> <span class="mi">0</span> <span class="mi">20</span> <span class="mi">40</span> <span class="mi">60</span> <span class="mi">80</span><span class="p">,</span>
+      <span class="n">note</span><span class="o">=%</span><span class="n">nrstr</span><span class="p">(</span><span class="n">entrytitle</span> <span class="s1">&#39;your title here&#39;</span><span class="p">;</span>
+               <span class="n">entryfootnote</span> <span class="n">halign</span><span class="o">=</span><span class="n">left</span> <span class="s1">&#39;your footnote here&#39;</span><span class="p">;</span>
+               <span class="n">entryfootnote</span> <span class="n">halign</span><span class="o">=</span><span class="n">left</span> <span class="s1">&#39;your footnote here 2&#39;</span><span class="p">;)</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>output</p>
+<img alt="_images/rainpair_simple_v1.svg" src="_images/rainpair_simple_v1.svg" /><p>when orient parameter is set “h”, the orientation of plot is changed horizontal (x=response, y=category)</p>
+<p>code</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">title</span> <span class="s2">&quot;paired raincloud plot (horizontal)&quot;</span><span class="p">;</span>
+<span class="n">ods</span> <span class="n">graphics</span> <span class="o">/</span> <span class="n">reset</span><span class="o">=</span><span class="nb">all</span> <span class="n">imagefmt</span><span class="o">=</span><span class="n">png</span> <span class="n">imagename</span><span class="o">=</span><span class="s2">&quot;rainpair_simple_h&quot;</span> <span class="n">width</span><span class="o">=</span><span class="mi">20</span><span class="n">cm</span> <span class="n">height</span><span class="o">=</span><span class="mi">20</span><span class="n">cm</span><span class="p">;</span>
+
+<span class="o">%</span><span class="n">RainCloudPaired</span><span class="p">(</span>
+      <span class="n">data</span><span class="o">=</span><span class="n">raincloudtest</span><span class="p">,</span>
+      <span class="n">x</span><span class="o">=</span><span class="n">trt</span><span class="p">,</span>
+      <span class="n">y</span><span class="o">=</span><span class="n">response</span><span class="p">,</span>
+      <span class="n">group</span><span class="o">=</span><span class="n">trt</span><span class="p">,</span>
+      <span class="n">repeat</span><span class="o">=</span><span class="n">repno</span><span class="p">,</span>
+      <span class="n">subject</span><span class="o">=</span><span class="n">usubjid</span><span class="p">,</span>
+      <span class="n">orient</span><span class="o">=</span><span class="n">h</span><span class="p">,</span>
+      <span class="n">scale</span><span class="o">=</span><span class="n">width</span><span class="p">,</span>
+      <span class="n">yticks</span><span class="o">=</span> <span class="mi">0</span> <span class="mi">20</span> <span class="mi">40</span> <span class="mi">60</span> <span class="mi">80</span><span class="p">,</span>
+      <span class="n">note</span><span class="o">=%</span><span class="n">nrstr</span><span class="p">(</span><span class="n">entrytitle</span> <span class="s1">&#39;your title here&#39;</span><span class="p">;</span>
+               <span class="n">entryfootnote</span> <span class="n">halign</span><span class="o">=</span><span class="n">left</span> <span class="s1">&#39;your footnote here&#39;</span><span class="p">;</span>
+               <span class="n">entryfootnote</span> <span class="n">halign</span><span class="o">=</span><span class="n">left</span> <span class="s1">&#39;your footnote here 2&#39;</span><span class="p">;)</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<img alt="_images/rainpair_simple_h1.svg" src="_images/rainpair_simple_h1.svg" /></div>
+<div class="section" id="grouped-raincloud-plot">
+<h3>Grouped raincloud plot<a class="headerlink" href="#grouped-raincloud-plot" title="Permalink to this heading"></a></h3>
+<p>raw data</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="n">raincloudtest2</span><span class="p">;</span>
+
+<span class="n">call</span> <span class="n">streaminit</span><span class="p">(</span><span class="mi">1234</span><span class="p">);</span>
+<span class="nb">format</span> <span class="n">trt</span> <span class="n">trtf</span><span class="o">.</span> <span class="nb">type</span> <span class="n">groupf</span><span class="o">.</span><span class="p">;</span>
+<span class="n">label</span> <span class="n">response</span><span class="o">=</span><span class="s2">&quot;log(AUC)&quot;</span> <span class="n">cat</span><span class="o">=</span><span class="s2">&quot;population&quot;</span><span class="p">;</span>
+
+<span class="n">cat</span><span class="o">=</span><span class="s2">&quot;FAS&quot;</span><span class="p">;</span>
+<span class="n">do</span> <span class="nb">type</span><span class="o">=</span><span class="mi">1</span> <span class="n">to</span> <span class="mi">2</span><span class="p">;</span>
+<span class="n">do</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span> <span class="n">to</span> <span class="mi">100</span><span class="p">;</span>
+<span class="n">do</span> <span class="n">trt</span><span class="o">=</span><span class="mi">1</span> <span class="n">to</span> <span class="mi">2</span><span class="p">;</span>
+
+   <span class="n">usubjid</span><span class="o">=</span><span class="s2">&quot;A&quot;</span> <span class="o">||</span> <span class="n">strip</span><span class="p">(</span><span class="n">put</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">z3</span><span class="mf">.0</span><span class="p">));</span>
+
+   <span class="k">if</span> <span class="nb">type</span><span class="o">=</span><span class="mi">1</span> <span class="ow">and</span> <span class="n">trt</span><span class="o">=</span><span class="mi">1</span> <span class="n">then</span> <span class="n">response</span><span class="o">=</span><span class="n">rand</span><span class="p">(</span><span class="s2">&quot;normal&quot;</span><span class="p">,</span><span class="mf">0.8</span><span class="p">,</span><span class="mf">0.15</span><span class="p">);</span>
+   <span class="k">else</span> <span class="k">if</span> <span class="nb">type</span><span class="o">=</span><span class="mi">1</span> <span class="ow">and</span> <span class="n">trt</span><span class="o">=</span><span class="mi">2</span> <span class="n">then</span> <span class="n">response</span><span class="o">=</span><span class="n">rand</span><span class="p">(</span><span class="s2">&quot;normal&quot;</span><span class="p">,</span><span class="mf">1.3</span><span class="p">,</span><span class="mf">0.25</span><span class="p">);</span>
+   <span class="k">else</span> <span class="k">if</span> <span class="nb">type</span><span class="o">=</span><span class="mi">2</span> <span class="ow">and</span> <span class="n">trt</span><span class="o">=</span><span class="mi">1</span> <span class="n">then</span> <span class="n">response</span><span class="o">=</span><span class="n">rand</span><span class="p">(</span><span class="s2">&quot;normal&quot;</span><span class="p">,</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">0.17</span><span class="p">);</span>
+   <span class="k">else</span> <span class="k">if</span> <span class="nb">type</span><span class="o">=</span><span class="mi">2</span> <span class="ow">and</span> <span class="n">trt</span><span class="o">=</span><span class="mi">2</span> <span class="n">then</span> <span class="n">response</span><span class="o">=</span><span class="n">rand</span><span class="p">(</span><span class="s2">&quot;normal&quot;</span><span class="p">,</span><span class="mf">2.1</span> <span class="p">,</span><span class="mf">0.22</span><span class="p">);</span>
+   <span class="n">output</span><span class="p">;</span>
+<span class="n">end</span><span class="p">;</span>
+<span class="n">end</span><span class="p">;</span>
+<span class="n">end</span><span class="p">;</span>
+<span class="n">run</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>code</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">title</span> <span class="s2">&quot;paired raincloud plot (grouped)&quot;</span><span class="p">;</span>
+<span class="n">ods</span> <span class="n">graphics</span> <span class="o">/</span> <span class="n">reset</span><span class="o">=</span><span class="nb">all</span> <span class="n">imagefmt</span><span class="o">=</span><span class="n">png</span> <span class="n">imagename</span><span class="o">=</span><span class="s2">&quot;rainpaird_group&quot;</span> <span class="n">width</span><span class="o">=</span><span class="mi">20</span><span class="n">cm</span> <span class="n">height</span><span class="o">=</span><span class="mi">15</span><span class="n">cm</span><span class="p">;</span>
+
+<span class="o">%</span><span class="n">RainCloudPaired</span><span class="p">(</span>
+      <span class="n">data</span><span class="o">=</span><span class="n">raincloudtest2</span><span class="p">,</span>
+      <span class="n">x</span><span class="o">=</span><span class="n">cat</span><span class="p">,</span>
+      <span class="n">y</span><span class="o">=</span><span class="n">response</span><span class="p">,</span>
+      <span class="n">group</span><span class="o">=</span><span class="nb">type</span><span class="p">,</span>
+      <span class="n">repeat</span><span class="o">=</span><span class="n">trt</span><span class="p">,</span>
+      <span class="n">subject</span><span class="o">=</span><span class="n">usubjid</span><span class="p">,</span>
+      <span class="n">orient</span><span class="o">=</span><span class="n">v</span><span class="p">,</span>
+      <span class="n">legend</span><span class="o">=</span><span class="n">true</span><span class="p">,</span>
+      <span class="n">yticks</span><span class="o">=</span><span class="mi">0</span> <span class="mf">0.5</span> <span class="mi">1</span> <span class="mf">1.5</span> <span class="mi">2</span> <span class="mf">2.5</span> <span class="mf">3.0</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>output</p>
+<img alt="_images/rainpaird_group1.svg" src="_images/rainpaird_group1.svg" /></div>
+<div class="section" id="connect-parameter">
+<h3>Connect parameter<a class="headerlink" href="#connect-parameter" title="Permalink to this heading"></a></h3>
+<p>If connect parameter is set “True”, means of each group will be connected.</p>
+<p>code</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">title</span> <span class="s2">&quot;paired raincloud plot with connect line&quot;</span><span class="p">;</span>
+<span class="n">ods</span> <span class="n">graphics</span> <span class="o">/</span> <span class="n">reset</span><span class="o">=</span><span class="nb">all</span> <span class="n">imagefmt</span><span class="o">=</span><span class="n">png</span> <span class="n">imagename</span><span class="o">=</span><span class="s2">&quot;rainpaird_group_connect&quot;</span> <span class="n">width</span><span class="o">=</span><span class="mi">20</span><span class="n">cm</span> <span class="n">height</span><span class="o">=</span><span class="mi">15</span><span class="n">cm</span><span class="p">;</span>
+
+<span class="o">%</span><span class="n">RainCloudPaired</span><span class="p">(</span>
+      <span class="n">data</span><span class="o">=</span><span class="n">raincloudtest2</span><span class="p">,</span>
+      <span class="n">x</span><span class="o">=</span><span class="n">cat</span><span class="p">,</span>
+      <span class="n">y</span><span class="o">=</span><span class="n">response</span><span class="p">,</span>
+      <span class="n">group</span><span class="o">=</span><span class="nb">type</span><span class="p">,</span>
+      <span class="n">repeat</span><span class="o">=</span><span class="n">trt</span><span class="p">,</span>
+      <span class="n">subject</span><span class="o">=</span><span class="n">usubjid</span><span class="p">,</span>
+      <span class="n">orient</span><span class="o">=</span><span class="n">v</span><span class="p">,</span>
+      <span class="n">legend</span><span class="o">=</span><span class="n">true</span><span class="p">,</span>
+      <span class="n">connect</span><span class="o">=</span><span class="n">true</span><span class="p">,</span>
+      <span class="n">yticks</span><span class="o">=</span><span class="mi">0</span> <span class="mf">0.5</span> <span class="mi">1</span> <span class="mf">1.5</span> <span class="mi">2</span> <span class="mf">2.5</span> <span class="mf">3.0</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>output</p>
+<img alt="_images/rainpaird_group_connect1.svg" src="_images/rainpaird_group_connect1.svg" /></div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Raincloud_plot.html" class="btn btn-neutral float-left" title="Raincloud plot" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Ridgeline_plot.html" class="btn btn-neutral float-right" title="Ridgeline plot" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, SupermanJP.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

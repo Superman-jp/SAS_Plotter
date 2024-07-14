@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ridgeline plot &mdash; SAS Plotter 1.3 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/clipboard.min.js"></script>
+        <script src="_static/copybutton.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Mirrored Histogram" href="Mirrored_histogram.html" />
+    <link rel="prev" title="Raincloud plot (paired)" href="Raincloud_plot_paired.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            SAS Plotter
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Raincloud_plot.html">Raincloud plot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Raincloud_plot_paired.html">Raincloud plot (paired)</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Ridgeline plot</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#what-s-this">What’s this?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#input-data">Input data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#syntax">Syntax</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#parameters">Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#example">example</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#simple-ridgeline-plot">simple ridgeline plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#grouped-ridgeline-plot">grouped ridgeline plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ridgeline-plot-with-statistics-and-individual-value">ridgeline plot with statistics and individual value</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fill-style">fill style</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Mirrored_histogram.html">Mirrored Histogram</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2D-KDE.html">2D-KDE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Sankey.html">Sankey diagram (Alluvial Diagram)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Multihistogram.html">MultiHistogram</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">SAS Plotter</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Ridgeline plot</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Ridgeline_plot.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="ridgeline-plot">
+<h1>Ridgeline plot<a class="headerlink" href="#ridgeline-plot" title="Permalink to this heading"></a></h1>
+<div class="section" id="what-s-this">
+<h2>What’s this?<a class="headerlink" href="#what-s-this" title="Permalink to this heading"></a></h2>
+<p>Macro for generate ridgeline plot using SAS GRAPH.</p>
+<p>Ridgeline plot shows the distribution of response variable each groups.
+the distribution is estimated by KDE (Kernel Density Estimation) using proc kde.</p>
+<p>rugplot and several descriptive statistics (mean, q1, q2, q3) can be overlaid on the ridgeline plot.</p>
+</div>
+<div class="section" id="input-data">
+<h2>Input data<a class="headerlink" href="#input-data" title="Permalink to this heading"></a></h2>
+<blockquote>
+<div><table class="docutils align-default">
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 29%" />
+<col style="width: 56%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>key</p></th>
+<th class="head"><p>variable</p></th>
+<th class="head"><p>type</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>category</p></td>
+<td><p>numeric or string</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>group
+response</p></td>
+<td><p>numeric or string
+numeric</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p>group variable is optional.</p>
+<p>I recommended that the variable type of category and group are set to numeric with format.
+if the variable type is string, item order is defined as ascending character order.</p>
+</div>
+<div class="section" id="syntax">
+<h2>Syntax<a class="headerlink" href="#syntax" title="Permalink to this heading"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ods</span> <span class="n">graphics</span> <span class="o">/</span> <span class="o">&lt;</span> <span class="n">graphics</span> <span class="n">option</span> <span class="o">&gt;</span> <span class="p">;</span>
+<span class="n">ods</span> <span class="n">listing</span> <span class="n">gpath</span><span class="o">=&lt;</span> <span class="n">output</span> <span class="n">path</span> <span class="o">&gt;</span><span class="p">;</span>
+
+<span class="o">%</span><span class="n">macro</span> <span class="n">ridgeline</span><span class="p">(</span>
+   <span class="n">data</span><span class="o">=</span><span class="p">,</span>
+   <span class="n">x</span><span class="o">=</span><span class="p">,</span>
+   <span class="n">y</span><span class="o">=</span><span class="p">,</span>
+   <span class="n">group</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+   <span class="n">xlabel</span><span class="o">=</span><span class="n">x</span><span class="p">,</span>
+   <span class="n">ylabel</span><span class="o">=</span><span class="n">y</span><span class="p">,</span>
+   <span class="n">yticks</span><span class="o">=</span><span class="p">,</span>
+   <span class="n">cat_iv</span> <span class="o">=</span> <span class="mf">1.2</span><span class="p">,</span>
+   <span class="n">gridsize</span> <span class="o">=</span> <span class="mi">401</span><span class="p">,</span>
+   <span class="n">bw_method</span> <span class="o">=</span> <span class="n">sjpi</span><span class="p">,</span>
+   <span class="n">bw_adjust</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+
+   <span class="n">quartile</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+   <span class="n">mean</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+
+   <span class="n">legend</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+   <span class="n">grouplegendtitle</span><span class="o">=</span><span class="n">group</span><span class="p">,</span>
+
+   <span class="n">rug</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+   <span class="n">ruglength</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+
+   <span class="n">fillstyle</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+   <span class="n">qgradient</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+   <span class="n">palette</span><span class="o">=</span><span class="n">sns</span><span class="p">,</span>
+   <span class="n">note</span><span class="o">=</span><span class="p">,</span>
+   <span class="n">deletedata</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this heading"></a></h2>
+<ul>
+<li><p><strong>data : dataset name (required)</strong></p>
+<blockquote>
+<div><p>input data. keep, rename and  where options are available.</p>
+</div></blockquote>
+</li>
+<li><p><strong>x : variable name (required)</strong></p>
+<blockquote>
+<div><p>category variable</p>
+</div></blockquote>
+</li>
+<li><p><strong>y : variable name (required)</strong></p>
+<blockquote>
+<div><p>response variable</p>
+</div></blockquote>
+</li>
+<li><p><strong>group : variable name (optional)</strong></p>
+<blockquote>
+<div><p>group variable for grouping data at each category.</p>
+<p>when the parameter is not set, all of outline color is set black.</p>
+<p>when the parameter is set category variable, the graph object of each category is
+set  different color.</p>
+<p>default is “None”.</p>
+</div></blockquote>
+</li>
+<li><p><strong>xlabel : string (optional)</strong></p>
+<blockquote>
+<div><p>label string of category axis.
+default is the label of x variable. when the label is not displayed , set like below.</p>
+<p>xlabel=,</p>
+</div></blockquote>
+</li>
+<li><p><strong>ylabel : string (optional)</strong></p>
+<blockquote>
+<div><p>optional. label string of response axis.
+default is the label of y variable. when the label is not displayed , set like below.</p>
+<p>ylabel=,</p>
+</div></blockquote>
+</li>
+<li><p><strong>yticks : numeric list (required)</strong></p>
+<blockquote>
+<div><p>tickvalue list of response axis.
+the list is set as the numeric list separated by space .
+the item of the list should be set ascending order.</p>
+<p>ex. yticks = 10 20 30 40,</p>
+</div></blockquote>
+</li>
+<li><p><strong>cat_iv : numeric (optional)</strong></p>
+<blockquote>
+<div><p>the interval of category.
+the default is 1.2.
+when this parameter is set below 1, each density may be overlapped.</p>
+</div></blockquote>
+</li>
+<li><p><strong>gridsize : integer (optional)</strong></p>
+<blockquote>
+<div><p>the number of KDE grid size.
+default is 401 (the default of proc kde)</p>
+</div></blockquote>
+</li>
+<li><p><strong>bw_method : keyword (optional)</strong></p>
+<blockquote>
+<div><p>the bandwidth estimation method of KDE.
+default is “sjpi” (the default of proc kde).</p>
+<p>method keyword described below is available.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>sjpi (Sheather-Jones plug-in)</p></li>
+<li><p>snr (simple normal reference)</p></li>
+<li><p>snrq (simple normal reference that uses the interquartile range)</p></li>
+<li><p>srot (Silverman’s rule of thumb)</p></li>
+<li><p>os (oversmoothed)</p></li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+</li>
+<li><p><strong>bw_adjust : numeric (optional)</strong></p>
+<blockquote>
+<div><p>the bandwidth multiplier. Increasing will make the curve smoother.
+the default is 1.</p>
+</div></blockquote>
+</li>
+<li><p><strong>quartile : bool (optional)</strong></p>
+<blockquote>
+<div><p>if this parameter is set “True”, quartile lines will be displayed as dashed lines each density.
+the default is “False”.</p>
+</div></blockquote>
+</li>
+<li><p><strong>mean : bool (optional)</strong></p>
+<blockquote>
+<div><p>if this parameter is set “True”, mean lines will be displayed as solid lines each density.
+the default is “False”.</p>
+</div></blockquote>
+</li>
+<li><p><strong>rug : bool (optional)</strong></p>
+<blockquote>
+<div><p>if “True” the rugplot is displayed.
+the default is “False”</p>
+</div></blockquote>
+</li>
+<li><p><strong>ruglength : numeric (optional)</strong></p>
+<blockquote>
+<div><p>the scale factor of the rugplot.when rug parameter is set “False”, this parameter will be ignored.
+the default is 1. if set larger value, the rugplot is prolonged.</p>
+</div></blockquote>
+</li>
+<li><p><strong>legend : bool (optional)</strong></p>
+<blockquote>
+<div><p>if “True” the legend of group item is displayed.
+if group parameter is “None”, the parameter will be ignored.
+default is “False”.</p>
+</div></blockquote>
+</li>
+<li><p><strong>grouplegendtitle : text (optional)</strong></p>
+<blockquote>
+<div><p>the title of group legend. if legend parameter is set “True”, this parameter will be ignored.
+default is the label of group variable.</p>
+</div></blockquote>
+</li>
+<li><p><strong>fillstyle : keyword (optional)</strong></p>
+<blockquote>
+<div><p>the fill style of density plot.
+the style keyword described below is available.
+if group parameter is not set, this parameter can be set “None” only.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>None: fill is not displayed.</p></li>
+<li><p>Group: fill color of each density will be defined based on group parameter.</p></li>
+<li><p>Quartile: fill color will be defined based on the quartiles of each x variable.</p></li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+</li>
+<li><p><strong>qgradient : 1 to 7 (optional)</strong></p>
+<blockquote>
+<div><p>the color gradient pattern of quartile. this parameter can be set gradient ID (1 to 7).
+default is “1”.</p>
+</div></blockquote>
+</li>
+<li><p><strong>palette : keyword (optional)</strong></p>
+<blockquote>
+<div><p>color palette for fill, line and markers. the palettes described below is available.
+see color palette section of introduction page. default is “SNS” (Seaborn default palette).</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>SAS</p></li>
+<li><p>SNS (Seaborn)</p></li>
+<li><p>STATA</p></li>
+<li><p>TABLEAU</p></li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+</li>
+<li><p><strong>note : statement (optional)</strong></p>
+<blockquote>
+<div><p>insert the text entry statement into the graph template and display the title or footnote in the output image.
+default is “” (not displayed)</p>
+</div></blockquote>
+</li>
+<li><dl class="simple">
+<dt><strong>deletedata : bool (optional)</strong></dt><dd><p>if True, the temporary datasets and catalogs generated by macros will be deleted at the end of execution.
+default is True.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="example">
+<h2>example<a class="headerlink" href="#example" title="Permalink to this heading"></a></h2>
+<p>output example can be executed using following code after loading SAS plotter.</p>
+<p>code</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ods</span> <span class="n">listing</span> <span class="n">gpath</span><span class="o">=&lt;</span><span class="n">your</span> <span class="n">output</span> <span class="n">path</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="n">filename</span> <span class="n">exam</span> <span class="n">url</span> <span class="s2">&quot;https://github.com/Superman-jp/SAS_Plotter/raw/main/example/ridgeline_example.sas&quot;</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;UTF-8&#39;</span><span class="p">;</span>
+<span class="o">%</span><span class="n">include</span> <span class="n">exam</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="section" id="simple-ridgeline-plot">
+<h3>simple ridgeline plot<a class="headerlink" href="#simple-ridgeline-plot" title="Permalink to this heading"></a></h3>
+<p>raw data</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>data raw;
+infile datalines delimiter=&#39;,&#39;;
+length col1 $10;
+format date yymmdd10.;
+input col1 $  tokyo  naha ;
+date = input(col1,yymmdd10.);
+drop col1;
+
+datalines;
+2023/1/1,13,19.8
+2023/1/2,12.1,19.4
+2023/1/3,11,21.4
+2023/1/4,11,19.5
+2023/1/5,10.6,20.4
+2023/1/6,9.9,21.7
+2023/1/7,10.4,19.4
+2023/1/8,12.5,21.2
+2023/1/9,13.9,22.5
+2023/1/10,9.9,22.8
+2023/1/11,10.7,23.3
+2023/1/12,12.6,24.3
+2023/1/13,14,25.4
+2023/1/14,14.2,25.3
+2023/1/15,12,22.6
+2023/1/16,7.7,17.9
+2023/1/17,7.6,19.1
+2023/1/18,12.4,17.9
+2023/1/19,9.1,18.6
+2023/1/20,12.3,18.7
+2023/1/21,9,20.7
+2023/1/22,8.9,24.1
+2023/1/23,6.1,22.7
+2023/1/24,11.8,20.2
+2023/1/25,3.7,15.5
+2023/1/26,8.5,20.6
+2023/1/27,6.6,17.5
+2023/1/28,8.3,14.8
+2023/1/29,8.8,16.1
+2023/1/30,10,16.6
+2023/1/31,9,19.5
+2023/2/1,13.1,23.2
+2023/2/2,9.2,21.6
+2023/2/3,6.2,19.8
+2023/2/4,11.2,18.6
+2023/2/5,12,21.3
+2023/2/6,13.6,22.7
+2023/2/7,15.4,22.9
+2023/2/8,11.7,22.9
+2023/2/9,10.6,23
+2023/2/10,3.5,23.6
+2023/2/11,14.1,22.8
+2023/2/12,16.9,25
+2023/2/13,10.3,25.6
+2023/2/14,10.7,19.9
+2023/2/15,7.8,17.2
+2023/2/16,9.6,21.2
+2023/2/17,10.8,22.5
+2023/2/18,15,23.6
+2023/2/19,18.5,24.2
+2023/2/20,14.7,19
+2023/2/21,9.2,19.1
+2023/2/22,10.4,22.1
+2023/2/23,14.4,23.2
+2023/2/24,12.1,23.5
+2023/2/25,12.7,19.4
+2023/2/26,10.7,17.9
+2023/2/27,15,18.3
+2023/2/28,19.4,21.8
+2023/3/1,19.4,23.5
+2023/3/2,20,19.2
+2023/3/3,13.4,18.1
+2023/3/4,17.4,20.9
+2023/3/5,13.1,21.1
+2023/3/6,15,21.1
+2023/3/7,18.8,22
+2023/3/8,21.3,23.9
+2023/3/9,22.2,24
+2023/3/10,22.9,22.9
+2023/3/11,20.8,24.3
+2023/3/12,18.8,24
+2023/3/13,16.7,19.3
+2023/3/14,14.6,20.7
+2023/3/15,17.9,24.1
+2023/3/16,20.9,24.5
+2023/3/17,15.1,24.8
+2023/3/18,9.5,22.8
+2023/3/19,15.5,22.9
+2023/3/20,19.2,21.7
+2023/3/21,18.5,25.9
+2023/3/22,23.8,26.3
+2023/3/23,19.7,26.9
+2023/3/24,25,27.3
+2023/3/25,14.1,22.9
+2023/3/26,12.5,20.3
+2023/3/27,16.9,21.7
+2023/3/28,13.4,23.9
+2023/3/29,18.6,23.1
+2023/3/30,19.7,23.2
+2023/3/31,20.1,24.4
+2023/4/1,23.3,24.3
+2023/4/2,19,23.8
+2023/4/3,18.4,25.2
+2023/4/4,21,25
+2023/4/5,21.8,24.7
+2023/4/6,23.4,25.9
+2023/4/7,21.3,23.8
+2023/4/8,21.1,20.8
+2023/4/9,17.7,21.9
+2023/4/10,21.6,23.7
+2023/4/11,25,26.3
+2023/4/12,24.5,26.4
+2023/4/13,21.3,24.9
+2023/4/14,22.5,26.5
+2023/4/15,18,26
+2023/4/16,24.5,27.2
+2023/4/17,20.3,28.7
+2023/4/18,21,27.1
+2023/4/19,24.9,26.5
+2023/4/20,26,25.8
+2023/4/21,26.8,26.2
+2023/4/22,18.4,25.2
+2023/4/23,20.5,25.8
+2023/4/24,16,26.2
+2023/4/25,19.1,27.1
+2023/4/26,19.7,22.3
+2023/4/27,23.8,24.4
+2023/4/28,24.1,27
+2023/4/29,23.8,28.4
+2023/4/30,22,25.3
+2023/5/1,22.5,24.6
+2023/5/2,23,25.4
+2023/5/3,23.4,25.8
+2023/5/4,25.7,27.4
+2023/5/5,26.6,27.5
+2023/5/6,27.9,28.1
+2023/5/7,22.3,26.6
+2023/5/8,16.6,23.4
+2023/5/9,20.6,25
+2023/5/10,25,25.4
+2023/5/11,23.4,25.7
+2023/5/12,21.9,26.1
+2023/5/13,18.1,26.6
+2023/5/14,21.2,23.5
+2023/5/15,18.1,25.3
+2023/5/16,27.5,28.2
+2023/5/17,31.6,27.6
+2023/5/18,32.2,27.8
+2023/5/19,24.5,27
+2023/5/20,22.8,27
+2023/5/21,26.3,27.4
+2023/5/22,29.4,28.5
+2023/5/23,17.2,25.2
+2023/5/24,23.9,26.4
+2023/5/25,23.8,28
+2023/5/26,24.9,27.6
+2023/5/27,26.7,27.3
+2023/5/28,25.8,27.8
+2023/5/29,21.3,30
+2023/5/30,26.3,29.4
+2023/5/31,22.2,29.6
+2023/6/1,26.2,26.6
+2023/6/2,23.8,26.5
+2023/6/3,24,27.7
+2023/6/4,27.5,29.3
+2023/6/5,29.8,30.5
+2023/6/6,25.1,29.1
+2023/6/7,29.6,30.1
+2023/6/8,28.7,29.9
+2023/6/9,22.2,31.2
+2023/6/10,26,30.2
+2023/6/11,22.8,30.9
+2023/6/12,22.5,29.4
+2023/6/13,29.4,28
+2023/6/14,25.8,25.8
+2023/6/15,24.1,28
+2023/6/16,30.7,28.5
+2023/6/17,30.9,27.6
+2023/6/18,31.1,30.3
+2023/6/19,27.7,28.1
+2023/6/20,27,30
+2023/6/21,27.2,30.5
+2023/6/22,22.6,29.9
+2023/6/23,24.9,30.2
+2023/6/24,29.5,31.9
+2023/6/25,30.9,31.4
+2023/6/26,30.4,31.5
+2023/6/27,29.6,31.7
+2023/6/28,32.3,30.7
+2023/6/29,33.8,32.8
+2023/6/30,30.5,32.3
+2023/7/1,27.8,32
+2023/7/2,31.7,32.5
+2023/7/3,32.2,32.7
+2023/7/4,30.6,32
+2023/7/5,28.7,32.3
+2023/7/6,33.4,32.6
+2023/7/7,34.2,33.3
+2023/7/8,30.9,32.8
+2023/7/9,33,33.5
+2023/7/10,36.5,34.1
+2023/7/11,34.3,33.8
+2023/7/12,37.5,34.2
+2023/7/13,30.3,33.9
+2023/7/14,30.5,33.7
+2023/7/15,32.9,32.8
+2023/7/16,35.3,32.7
+2023/7/17,36.2,31.5
+2023/7/18,37.5,32.8
+2023/7/19,33.9,33.1
+2023/7/20,32.6,33
+2023/7/21,31.6,33.9
+2023/7/22,33.4,33.9
+2023/7/23,33.4,34.3
+2023/7/24,35.7,33.2
+2023/7/25,36.6,32.9
+2023/7/26,37.7,31.3
+2023/7/27,36.9,29.6
+2023/7/28,36.2,32
+2023/7/29,35.7,32.3
+2023/7/30,36.6,32.6
+2023/7/31,36.1,30.9
+;
+run;
+
+proc format ;
+value regionf
+1=&quot;Tokyo&quot;
+2=&quot;Naha&quot;;
+run;
+
+data max_temp;
+set raw;
+format region regionf.;
+label max_temp=&quot;maximum temperature (degree Celsius)&quot;
+      month=&quot;Month&quot;
+   region=&quot;Region&quot;;
+
+month=month(date);
+year=year(date);
+region=1; max_temp=tokyo;output;
+region=2; max_temp=naha; output;
+keep year month  date region max_temp;
+run;
+</pre></div>
+</div>
+<p>code</p>
+<p>code</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">title</span> <span class="s2">&quot;basic ridgeline plot&quot;</span><span class="p">;</span>
+<span class="n">ods</span> <span class="n">graphics</span> <span class="o">/</span> <span class="n">height</span><span class="o">=</span><span class="mi">15</span><span class="n">cm</span> <span class="n">width</span><span class="o">=</span><span class="mi">15</span><span class="n">cm</span> <span class="n">imagefmt</span><span class="o">=</span><span class="n">png</span> <span class="n">imagename</span><span class="o">=</span><span class="s2">&quot;ridge_simple&quot;</span> <span class="p">;</span>
+<span class="o">%</span><span class="n">ridgeline</span><span class="p">(</span>
+   <span class="n">data</span><span class="o">=</span><span class="n">max_temp</span><span class="p">(</span><span class="n">where</span><span class="o">=</span><span class="p">(</span><span class="n">region</span><span class="o">=</span><span class="mi">1</span><span class="p">)),</span>
+   <span class="n">x</span><span class="o">=</span><span class="n">month</span><span class="p">,</span>
+   <span class="n">y</span><span class="o">=</span><span class="n">max_temp</span><span class="p">,</span>
+
+   <span class="n">yticks</span><span class="o">=</span><span class="mi">0</span> <span class="mi">5</span> <span class="mi">10</span> <span class="mi">15</span> <span class="mi">20</span> <span class="mi">25</span> <span class="mi">30</span> <span class="mi">35</span> <span class="mi">40</span><span class="p">,</span>
+   <span class="n">note</span><span class="o">=%</span><span class="n">nrstr</span><span class="p">(</span><span class="n">entrytitle</span> <span class="s1">&#39;your title here&#39;</span><span class="p">;</span>
+            <span class="n">entryfootnote</span> <span class="n">halign</span><span class="o">=</span><span class="n">left</span> <span class="s1">&#39;your footnote here&#39;</span><span class="p">;</span>
+            <span class="n">entryfootnote</span> <span class="n">halign</span><span class="o">=</span><span class="n">left</span> <span class="s1">&#39;your footnote here 2&#39;</span><span class="p">;)</span>
+               <span class="p">);</span>
+</pre></div>
+</div>
+<p>output</p>
+<img alt="_images/ridge_simple1.svg" src="_images/ridge_simple1.svg" /></div>
+<div class="section" id="grouped-ridgeline-plot">
+<h3>grouped ridgeline plot<a class="headerlink" href="#grouped-ridgeline-plot" title="Permalink to this heading"></a></h3>
+<p>if group parameter is set,  density outline color will be defined based by group and fill appearance will be available.</p>
+<p>code</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">title</span> <span class="s2">&quot;grouped ridgeline plot&quot;</span><span class="p">;</span>
+<span class="n">ods</span> <span class="n">graphics</span> <span class="o">/</span> <span class="n">height</span><span class="o">=</span><span class="mi">15</span><span class="n">cm</span> <span class="n">width</span><span class="o">=</span><span class="mi">25</span><span class="n">cm</span> <span class="n">imagefmt</span><span class="o">=</span><span class="n">png</span> <span class="n">imagename</span><span class="o">=</span><span class="s2">&quot;ridge_group&quot;</span> <span class="p">;</span>
+<span class="o">%</span><span class="n">ridgeline</span><span class="p">(</span>
+   <span class="n">data</span><span class="o">=</span><span class="n">max_temp</span><span class="p">,</span>
+   <span class="n">x</span><span class="o">=</span><span class="n">month</span><span class="p">,</span>
+   <span class="n">y</span><span class="o">=</span><span class="n">max_temp</span><span class="p">,</span>
+   <span class="n">group</span><span class="o">=</span><span class="n">region</span><span class="p">,</span>
+   <span class="n">yticks</span><span class="o">=</span><span class="mi">0</span> <span class="mi">5</span> <span class="mi">10</span> <span class="mi">15</span> <span class="mi">20</span> <span class="mi">25</span> <span class="mi">30</span> <span class="mi">35</span> <span class="mi">40</span><span class="p">,</span>
+   <span class="n">legend</span><span class="o">=</span><span class="n">true</span>
+   <span class="p">);</span>
+</pre></div>
+</div>
+<p>output</p>
+<img alt="_images/ridge_group1.svg" src="_images/ridge_group1.svg" /></div>
+<div class="section" id="ridgeline-plot-with-statistics-and-individual-value">
+<h3>ridgeline plot with statistics and individual value<a class="headerlink" href="#ridgeline-plot-with-statistics-and-individual-value" title="Permalink to this heading"></a></h3>
+<p>this macro is supported displaying statistics, mean and quartile.
+Mean and quartile is displayed as line. the individual value is displayed as rug plot.</p>
+<p>code</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">title</span> <span class="s2">&quot;ridgeline plot with statistics&quot;</span><span class="p">;</span>
+<span class="n">ods</span> <span class="n">graphics</span> <span class="o">/</span><span class="n">reset</span><span class="o">=</span><span class="nb">all</span> <span class="n">height</span><span class="o">=</span><span class="mi">15</span><span class="n">cm</span> <span class="n">width</span><span class="o">=</span><span class="mi">25</span><span class="n">cm</span> <span class="n">imagename</span><span class="o">=</span><span class="s2">&quot;ridgeline_stat&quot;</span> <span class="n">imagefmt</span><span class="o">=</span><span class="n">png</span><span class="p">;</span>
+
+<span class="o">%</span><span class="n">ridgeline</span><span class="p">(</span>
+   <span class="n">data</span><span class="o">=</span><span class="n">max_temp</span><span class="p">(</span><span class="n">where</span><span class="o">=</span><span class="p">(</span><span class="n">region</span><span class="o">=</span><span class="mi">1</span><span class="p">)),</span>
+   <span class="n">x</span><span class="o">=</span><span class="n">month</span><span class="p">,</span>
+   <span class="n">y</span><span class="o">=</span><span class="n">max_temp</span><span class="p">,</span>
+   <span class="n">group</span><span class="o">=</span><span class="n">region</span><span class="p">,</span>
+   <span class="n">yticks</span><span class="o">=</span><span class="mi">0</span> <span class="mi">5</span> <span class="mi">10</span> <span class="mi">15</span> <span class="mi">20</span> <span class="mi">25</span> <span class="mi">30</span> <span class="mi">35</span> <span class="mi">40</span><span class="p">,</span>
+   <span class="n">legend</span><span class="o">=</span><span class="n">true</span><span class="p">,</span>
+   <span class="n">mean</span><span class="o">=</span><span class="n">true</span><span class="p">,</span>
+   <span class="n">quartile</span><span class="o">=</span><span class="n">true</span><span class="p">,</span>
+   <span class="n">rug</span><span class="o">=</span><span class="n">true</span><span class="p">,</span>
+   <span class="n">deletedata</span><span class="o">=</span><span class="n">false</span>
+   <span class="p">);</span>
+</pre></div>
+</div>
+<p>output</p>
+<img alt="_images/ridgeline_stat1.svg" src="_images/ridgeline_stat1.svg" /></div>
+<div class="section" id="fill-style">
+<h3>fill style<a class="headerlink" href="#fill-style" title="Permalink to this heading"></a></h3>
+<p>This macro is supported three fill appearance, None, Group, and Quartile.</p>
+<p>Group appearance and Quartile appearance is available when group parameter is set.</p>
+<p>group fill style</p>
+<p>code</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">title</span> <span class="s2">&quot;ridgeline plot with fill style&quot;</span><span class="p">;</span>
+<span class="n">ods</span> <span class="n">graphics</span> <span class="o">/</span><span class="n">reset</span><span class="o">=</span><span class="nb">all</span> <span class="n">height</span><span class="o">=</span><span class="mi">15</span><span class="n">cm</span> <span class="n">width</span><span class="o">=</span><span class="mi">25</span><span class="n">cm</span> <span class="n">imagename</span><span class="o">=</span><span class="s2">&quot;ridgeline_fill&quot;</span> <span class="n">imagefmt</span><span class="o">=</span><span class="n">png</span><span class="p">;</span>
+
+<span class="o">%</span><span class="n">ridgeline</span><span class="p">(</span>
+   <span class="n">data</span><span class="o">=</span><span class="n">max_temp</span><span class="p">,</span>
+   <span class="n">x</span><span class="o">=</span><span class="n">month</span><span class="p">,</span>
+   <span class="n">y</span><span class="o">=</span><span class="n">max_temp</span><span class="p">,</span>
+   <span class="n">group</span><span class="o">=</span><span class="n">region</span><span class="p">,</span>
+   <span class="n">yticks</span><span class="o">=</span><span class="mi">0</span> <span class="mi">5</span> <span class="mi">10</span> <span class="mi">15</span> <span class="mi">20</span> <span class="mi">25</span> <span class="mi">30</span> <span class="mi">35</span> <span class="mi">40</span><span class="p">,</span>
+   <span class="n">fillstyle</span><span class="o">=</span><span class="n">group</span><span class="p">,</span>
+   <span class="n">legend</span><span class="o">=</span><span class="n">true</span><span class="p">,</span>
+   <span class="n">mean</span><span class="o">=</span><span class="n">false</span><span class="p">,</span>
+   <span class="n">quartile</span><span class="o">=</span><span class="n">true</span><span class="p">,</span>
+   <span class="n">rug</span><span class="o">=</span><span class="n">true</span>
+   <span class="p">);</span>
+</pre></div>
+</div>
+<p>output</p>
+<img alt="_images/ridgeline_fill1.svg" src="_images/ridgeline_fill1.svg" /><p>quartile fill style</p>
+<p>code</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">title</span> <span class="s2">&quot;ridgeline plot with quartile style&quot;</span><span class="p">;</span>
+<span class="n">ods</span> <span class="n">graphics</span> <span class="o">/</span><span class="n">reset</span><span class="o">=</span><span class="nb">all</span> <span class="n">height</span><span class="o">=</span><span class="mi">15</span><span class="n">cm</span> <span class="n">width</span><span class="o">=</span><span class="mi">25</span><span class="n">cm</span> <span class="n">imagename</span><span class="o">=</span><span class="s2">&quot;ridgeline_qtr&quot;</span> <span class="n">imagefmt</span><span class="o">=</span><span class="n">png</span><span class="p">;</span>
+
+<span class="o">%</span><span class="n">ridgeline</span><span class="p">(</span>
+   <span class="n">data</span><span class="o">=</span><span class="n">max_temp</span> <span class="p">(</span><span class="n">where</span><span class="o">=</span><span class="p">(</span><span class="n">region</span><span class="o">=</span><span class="mi">1</span><span class="p">)),</span>
+   <span class="n">x</span><span class="o">=</span><span class="n">month</span><span class="p">,</span>
+   <span class="n">y</span><span class="o">=</span><span class="n">max_temp</span><span class="p">,</span>
+   <span class="n">group</span><span class="o">=</span><span class="n">region</span><span class="p">,</span>
+   <span class="n">yticks</span><span class="o">=</span><span class="mi">0</span> <span class="mi">5</span> <span class="mi">10</span> <span class="mi">15</span> <span class="mi">20</span> <span class="mi">25</span> <span class="mi">30</span> <span class="mi">35</span> <span class="mi">40</span><span class="p">,</span>
+   <span class="n">fillstyle</span><span class="o">=</span><span class="n">quartile</span><span class="p">,</span>
+   <span class="n">legend</span><span class="o">=</span><span class="n">true</span><span class="p">,</span>
+   <span class="n">mean</span><span class="o">=</span><span class="n">false</span><span class="p">,</span>
+   <span class="n">quartile</span><span class="o">=</span><span class="n">true</span><span class="p">,</span>
+   <span class="n">rug</span><span class="o">=</span><span class="n">true</span>
+   <span class="p">);</span>
+</pre></div>
+</div>
+<img alt="_images/ridgeline_qtr1.svg" src="_images/ridgeline_qtr1.svg" /><p>quartile gradient style are as follows.</p>
+<img alt="_images/ridgeline_qgradient11.svg" src="_images/ridgeline_qgradient11.svg" /><img alt="_images/ridgeline_qgradient21.svg" src="_images/ridgeline_qgradient21.svg" /><img alt="_images/ridgeline_qgradient31.svg" src="_images/ridgeline_qgradient31.svg" /><img alt="_images/ridgeline_qgradient41.svg" src="_images/ridgeline_qgradient41.svg" /><img alt="_images/ridgeline_qgradient51.svg" src="_images/ridgeline_qgradient51.svg" /><img alt="_images/ridgeline_qgradient61.svg" src="_images/ridgeline_qgradient61.svg" /><img alt="_images/ridgeline_qgradient71.svg" src="_images/ridgeline_qgradient71.svg" /></div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Raincloud_plot_paired.html" class="btn btn-neutral float-left" title="Raincloud plot (paired)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Mirrored_histogram.html" class="btn btn-neutral float-right" title="Mirrored Histogram" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, SupermanJP.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
