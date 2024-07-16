@@ -102,7 +102,7 @@
 <p>Macro for multihistogram using SAS GRAPH.</p>
 <p>multihitogram is histogram created by each category variable and pair variable. Box width of histogram is reflect the response variable.
 multihistogram is used for frequency comparison of multiple category in small display area.</p>
-<p>This macro was designed based on the report of Wierenga, Madison R et al. <a class="footnote-reference brackets" href="#footcite-multiplehistogram" id="id1">1</a></p>
+<p>This macro was designed based on the report of Wierenga, Madison R et al. <a class="footnote-reference brackets" href="#footcite-madison2020older" id="id1">1</a></p>
 </div>
 <div class="section" id="input-data">
 <h2>Input data<a class="headerlink" href="#input-data" title="Permalink to this heading"></a></h2>
@@ -154,7 +154,6 @@ the format of category, pair, and level variable is required.</p>
    <span class="n">cattitle</span><span class="o">=</span><span class="c1">#,</span>
    <span class="n">leveltitle</span><span class="o">=</span><span class="c1">#,</span>
    <span class="n">pairtitle</span><span class="o">=</span><span class="c1">#,</span>
-   <span class="n">leveltitle</span><span class="o">=</span><span class="n">level</span><span class="p">,</span>
    <span class="n">responsetxt</span><span class="o">=</span><span class="n">false</span><span class="p">,</span>
    <span class="n">orient</span><span class="o">=</span><span class="n">v</span><span class="p">,</span>
    <span class="n">pairsplit</span><span class="o">=</span><span class="n">false</span><span class="p">,</span>
@@ -228,12 +227,6 @@ the format of category, pair, and level variable is required.</p>
 <li><p><strong>pairsplit : bool (optional)</strong></p>
 <blockquote>
 <div><p>if True the histogram will be split by pair variable. default is “False”.</p>
-</div></blockquote>
-</li>
-<li><p><strong>pairtitle : text  (optional)</strong></p>
-<blockquote>
-<div><p>title of pair variable legend. if legend parameter is set “False”, this parameter will be ignored.
-default is “Pair”.</p>
 </div></blockquote>
 </li>
 <li><p><strong>legend : bool (optional)</strong></p>
@@ -418,8 +411,8 @@ but if responsetxt parameter is set “true”. the response value will be displ
 <h2>Reference<a class="headerlink" href="#reference" title="Permalink to this heading"></a></h2>
 <div class="docutils container" id="id2">
 <dl class="footnote brackets">
-<dt class="label" id="footcite-multiplehistogram"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
-<dd><p>Running CA Wierenga MR, Crawford CR. Older us adults like sweetened colas, but not other chemesthetic beverages. 2020. URL: <a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8140601/">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8140601/</a>.</p>
+<dt class="label" id="footcite-madison2020older"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>Madison R. Wierenga, Ciera R. Crawford, and Cordelia A. Running. Older us adults like sweetened colas, but not other chemesthetic beverages. <em>Journal of texture studies</em>, 51(5):722–732, 2020. URL: <a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8140601/">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8140601/</a>.</p>
 </dd>
 </dl>
 </div>

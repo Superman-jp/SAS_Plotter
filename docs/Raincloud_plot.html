@@ -61,6 +61,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#scale-parameter">Scale parameter</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#reference">Reference</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Raincloud_plot_paired.html">Raincloud plot (paired)</a></li>
@@ -100,13 +101,10 @@
 <div class="section" id="what-s-this">
 <h2>What’s this?<a class="headerlink" href="#what-s-this" title="Permalink to this heading"></a></h2>
 <p>Macro for generate raincloud plot using SAS GRAPH.</p>
-<p>Raincloud plot is contained density plot (half-violin plot) , box plot and strip plot.</p>
+<p>Raincloud plot is contained density plot (half-violin plot) , box plot and strip plot. <a class="footnote-reference brackets" href="#footcite-allen2019raincloud" id="id1">1</a></p>
 <p>density plot displays distribution estimated by KDE (kernel density estimation) of input data.</p>
 <p>box plot displays descriptive statistics (mean, q1, q2, q3 outlier).</p>
 <p>strip plot is jittered scatterplot and displays individual data.</p>
-<p>more information is described in following paper.</p>
-<p>Allen M, Poggiali D, Whitaker K et al. Raincloud plots: a multi-platform tool for robust data visualization
-[version 2; peer review: 2 approved]. Wellcome Open Res 2021, 4:63 (<a class="reference external" href="https://doi.org/10.12688/wellcomeopenres.15191.2">https://doi.org/10.12688/wellcomeopenres.15191.2</a>)</p>
 </div>
 <div class="section" id="input-data">
 <h2>Input data<a class="headerlink" href="#input-data" title="Permalink to this heading"></a></h2>
@@ -548,6 +546,16 @@ ods graphics /<span class="k">reset</span>=all height=15cm width=25cm imagename=
 </pre></div>
 </div>
 <img alt="_images/rain_width1.svg" src="_images/rain_width1.svg" /></div>
+</div>
+<div class="section" id="reference">
+<h2>Reference<a class="headerlink" href="#reference" title="Permalink to this heading"></a></h2>
+<div class="docutils container" id="id2">
+<dl class="footnote brackets">
+<dt class="label" id="footcite-allen2019raincloud"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>Micah Allen, Davide Poggiali, Kirstie Whitaker, Tom Rhys Marshall, Jordy van Langen, and Rogier A Kievit. Raincloud plots: a multi-platform tool for robust data visualization, version 2. <em>Wellcome open research</em>, 2021. URL: <a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6480976/">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6480976/</a>.</p>
+</dd>
+</dl>
+</div>
 </div>
 </div>
 

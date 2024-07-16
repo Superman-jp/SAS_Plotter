@@ -8,18 +8,13 @@ What's this?
 
 Macro for generate raincloud plot using SAS GRAPH.
 
-Raincloud plot is contained density plot (half-violin plot) , box plot and strip plot.
+Raincloud plot is contained density plot (half-violin plot) , box plot and strip plot. :footcite:p:`allen2019raincloud`
 
 density plot displays distribution estimated by KDE (kernel density estimation) of input data.
 
 box plot displays descriptive statistics (mean, q1, q2, q3 outlier).
 
 strip plot is jittered scatterplot and displays individual data. 
-
-more information is described in following paper.
-
-Allen M, Poggiali D, Whitaker K et al. Raincloud plots: a multi-platform tool for robust data visualization 
-[version 2; peer review: 2 approved]. Wellcome Open Res 2021, 4:63 (https://doi.org/10.12688/wellcomeopenres.15191.2)
 
 
 *****************
@@ -477,3 +472,8 @@ code ::
                );
 
 .. image:: ./img/rain_width1.svg
+
+***************
+Reference
+***************
+.. footbibliography::

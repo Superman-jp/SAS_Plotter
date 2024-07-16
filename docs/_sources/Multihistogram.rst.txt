@@ -11,7 +11,7 @@ Macro for multihistogram using SAS GRAPH.
 multihitogram is histogram created by each category variable and pair variable. Box width of histogram is reflect the response variable.
 multihistogram is used for frequency comparison of multiple category in small display area.
 
-This macro was designed based on the report of Wierenga, Madison R et al. :footcite:p:`multiplehistogram`
+This macro was designed based on the report of Wierenga, Madison R et al. :footcite:p:`madison2020older`
 
 
 
@@ -49,7 +49,6 @@ Syntax
       cattitle=#,
       leveltitle=#,
       pairtitle=#,
-      leveltitle=level,
       responsetxt=false,
       orient=v,
       pairsplit=false,
@@ -111,10 +110,6 @@ Parameters
 
    if True the histogram will be split by pair variable. default is "False".
 
-- **pairtitle : text  (optional)**
-
-   title of pair variable legend. if legend parameter is set "False", this parameter will be ignored.
-   default is "Pair".
 
 - **legend : bool (optional)**
 
