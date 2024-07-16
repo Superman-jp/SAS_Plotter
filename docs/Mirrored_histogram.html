@@ -6,6 +6,7 @@
   <title>Mirrored Histogram &mdash; SAS Plotter 1.3 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
 
   
   <!--[if lt IE 9]>
@@ -17,6 +18,8 @@
         <script src="_static/underscore.js"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/clipboard.min.js"></script>
+        <script src="_static/copybutton.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -150,7 +153,6 @@ required variable is described below.</p>
    <span class="n">orient</span><span class="o">=</span><span class="n">v</span><span class="p">,</span>
    <span class="n">legend</span><span class="o">=</span><span class="n">true</span><span class="p">,</span>
    <span class="n">barwidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-   <span class="n">ymargin</span><span class="o">=</span><span class="mf">1.1</span><span class="p">,</span>
    <span class="n">outline</span><span class="o">=</span><span class="n">true</span><span class="p">,</span>
    <span class="n">palette</span><span class="o">=</span><span class="n">sns</span><span class="p">,</span>
    <span class="n">note</span><span class="o">=</span><span class="p">,</span>
@@ -246,12 +248,6 @@ default is “True”.</p>
 default is “1”.</p>
 </div></blockquote>
 </li>
-<li><p><strong>ymargin : numeric (greater than 1) (optional)</strong></p>
-<blockquote>
-<div><p>margin factor of response axis.
-default is “1.1”.</p>
-</div></blockquote>
-</li>
 <li><p><strong>outline : bool (optional)</strong></p>
 <blockquote>
 <div><p>display setting of bar outline.
@@ -289,71 +285,71 @@ default is True.</p>
 <div class="section" id="example">
 <h2>example<a class="headerlink" href="#example" title="Permalink to this heading"></a></h2>
 <p>output example can be executed using following code after loading SAS plotter.</p>
-<dl class="simple">
-<dt>code ::</dt><dd><p>ods listing gpath=&lt;your output path&gt;;
-filename exam url “<a class="reference external" href="https://github.com/Superman-jp/SAS_Plotter/raw/main/example/mirrored_histogram_example.sas">https://github.com/Superman-jp/SAS_Plotter/raw/main/example/mirrored_histogram_example.sas</a>” encoding=’UTF-8’;
-%include exam;</p>
-</dd>
-</dl>
+<p>code</p>
+<div class="highlight-SAS notranslate"><div class="highlight"><pre><span></span>ods listing gpath=<span class="s">&quot;your output path&quot;</span>;
+<span class="k">filename</span> exam url <span class="s">&quot;https://github.com/Superman-jp/SAS_Plotter/raw/main/example/mirrored_histogram_example.sas&quot;</span> encoding=<span class="s">&#39;UTF-8&#39;</span>;
+<span class="nf">%include</span> exam;
+</pre></div>
+</div>
 <div class="section" id="vertical-histogram">
 <h3>vertical histogram<a class="headerlink" href="#vertical-histogram" title="Permalink to this heading"></a></h3>
 <p>raw data</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">proc</span> <span class="n">univariate</span> <span class="n">data</span><span class="o">=</span><span class="n">sashelp</span><span class="o">.</span><span class="n">heart</span><span class="p">;</span>
-<span class="n">var</span> <span class="n">diastolic</span> <span class="n">systolic</span><span class="p">;</span>
-<span class="n">histogram</span>   <span class="n">diastolic</span> <span class="n">systolic</span> <span class="o">/</span>
-<span class="n">outhistogram</span><span class="o">=</span><span class="n">histo</span>
-<span class="n">vscale</span><span class="o">=</span><span class="n">percent</span>
-<span class="n">noplot</span>
-<span class="n">midpoints</span><span class="o">=</span><span class="mi">50</span> <span class="n">to</span> <span class="mi">400</span> <span class="n">by</span> <span class="mi">5</span><span class="p">;</span>
-<span class="n">run</span><span class="p">;</span>
-<span class="n">proc</span> <span class="nb">format</span><span class="p">;</span>
-<span class="n">value</span> <span class="n">catf</span>
-<span class="mi">1</span><span class="o">=</span><span class="s2">&quot;Diastolic&quot;</span>
-<span class="mi">2</span><span class="o">=</span><span class="s2">&quot;Systolic&quot;</span><span class="p">;</span>
-<span class="n">run</span><span class="p">;</span>
-<span class="n">data</span> <span class="n">graph_data</span><span class="p">;</span>
-<span class="nb">set</span> <span class="n">histo</span><span class="p">;</span>
-<span class="k">if</span> <span class="n">_VAR_</span><span class="o">=</span><span class="s2">&quot;Diastolic&quot;</span> <span class="n">then</span> <span class="n">cat</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
-<span class="k">if</span> <span class="n">_VAR_</span><span class="o">=</span><span class="s2">&quot;Systolic&quot;</span> <span class="n">then</span> <span class="n">cat</span><span class="o">=</span><span class="mi">2</span><span class="p">;</span>
-<span class="nb">format</span> <span class="n">cat</span> <span class="n">catf</span><span class="o">.</span><span class="p">;</span>
-<span class="n">keep</span> <span class="n">cat</span> <span class="n">_midpt_</span> <span class="n">_obspct_</span><span class="p">;</span>
-<span class="n">run</span><span class="p">;</span>
+<div class="highlight-SAS notranslate"><div class="highlight"><pre><span></span><span class="kr">proc univariate </span>data=sashelp<span class="m">.</span>heart;
+var diastolic systolic;
+histogram   diastolic systolic /
+outhistogram=histo
+vscale=percent
+noplot
+midpoints=<span class="m">50</span> to <span class="m">400</span> <span class="k">by</span> <span class="m">5</span><span class="kr">;</span>
+<span class="kr">run;</span>
+<span class="kr">proc format;</span>
+value catf
+<span class="m">1</span>=<span class="s">&quot;Diastolic&quot;</span>
+<span class="m">2</span>=<span class="s">&quot;Systolic&quot;</span><span class="kr">;</span>
+<span class="kr">run;</span>
+<span class="kr">data </span>graph_data;
+<span class="k">set</span> histo;
+<span class="k">if</span> _VAR_=<span class="s">&quot;Diastolic&quot;</span> <span class="k">then</span> cat=<span class="m">1</span>;
+<span class="k">if</span> _VAR_=<span class="s">&quot;Systolic&quot;</span> <span class="k">then</span> cat=<span class="m">2</span>;
+<span class="k">format</span> cat catf.;
+<span class="k">keep</span> cat _midpt_ _obspct_<span class="kr">;</span>
+<span class="kr">run;</span>
 </pre></div>
 </div>
 <p>code</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">title</span> <span class="s2">&quot;vertical mirrored histogram&quot;</span><span class="p">;</span>
-<span class="n">ods</span> <span class="n">graphics</span> <span class="o">/</span> <span class="n">height</span><span class="o">=</span><span class="mi">15</span><span class="n">cm</span> <span class="n">width</span><span class="o">=</span><span class="mi">25</span><span class="n">cm</span> <span class="n">imagefmt</span><span class="o">=</span><span class="n">png</span> <span class="n">imagename</span><span class="o">=</span><span class="s2">&quot;mirroredhist_v&quot;</span><span class="p">;</span>
-<span class="o">%</span><span class="n">MirroredHist</span><span class="p">(</span>
-   <span class="n">data</span><span class="o">=</span><span class="n">graph_data</span><span class="p">,</span>
-   <span class="n">group</span><span class="o">=</span><span class="n">cat</span><span class="p">,</span>
-   <span class="n">x</span><span class="o">=</span><span class="n">_midpt_</span><span class="p">,</span>
-   <span class="n">y</span><span class="o">=</span><span class="n">_obspct_</span><span class="p">,</span>
-   <span class="n">xaxistype</span><span class="o">=</span><span class="n">linear</span><span class="p">,</span>
-   <span class="n">xticks</span><span class="o">=</span><span class="mi">50</span> <span class="mi">100</span> <span class="mi">150</span> <span class="mi">200</span> <span class="mi">250</span> <span class="mi">300</span><span class="p">,</span>
-   <span class="n">yticks</span><span class="o">=</span><span class="mi">5</span> <span class="mi">10</span> <span class="mi">15</span> <span class="mi">20</span> <span class="mi">25</span><span class="p">,</span>
-   <span class="n">xlabel</span><span class="o">=</span><span class="n">Blood</span> <span class="n">pressure</span> <span class="p">(</span><span class="n">mmHg</span><span class="p">),</span>
-   <span class="n">note</span><span class="o">=%</span><span class="n">nrstr</span><span class="p">(</span><span class="n">entrytitle</span> <span class="s1">&#39;your title here&#39;</span><span class="p">;</span>
-            <span class="n">entryfootnote</span> <span class="n">halign</span><span class="o">=</span><span class="n">left</span> <span class="s1">&#39;your footnote here&#39;</span><span class="p">;</span>
-            <span class="n">entryfootnote</span> <span class="n">halign</span><span class="o">=</span><span class="n">left</span> <span class="s1">&#39;your footnote here 2&#39;</span><span class="p">;)</span>
-<span class="p">);</span>
+<div class="highlight-SAS notranslate"><div class="highlight"><pre><span></span><span class="k">title</span> <span class="s">&quot;vertical mirrored histogram&quot;</span>;
+ods graphics / height=15cm width=25cm imagefmt=png imagename=<span class="s">&quot;mirroredhist_v&quot;</span>;
+<span class="nf">%MirroredHist</span>(
+   data=graph_data,
+   <span class="k">group</span>=cat,
+   <span class="k">x</span>=_midpt_,
+   y=_obspct_,
+   xaxistype=linear,
+   xticks=<span class="m">50</span> <span class="m">100</span> <span class="m">150</span> <span class="m">200</span> <span class="m">250</span> <span class="m">300</span>,
+   yticks=<span class="m">5</span> <span class="m">10</span> <span class="m">15</span> <span class="m">20</span> <span class="m">25</span>,
+   xlabel=Blood pressure (mmHg),
+   note=<span class="nb">%nrstr</span>(entrytitle <span class="s">&#39;your title here&#39;</span>;
+            entryfootnote halign=left <span class="s">&#39;your footnote here&#39;</span>;
+            entryfootnote halign=left <span class="s">&#39;your footnote here 2&#39;</span>;)
+);
 </pre></div>
 </div>
 <img alt="_images/mirroredhist_v1.svg" src="_images/mirroredhist_v1.svg" /><p>when ytickfmt paramater is set “09.99”, percent ticks will be displayed at second decimal place.
 The format generated by picture statement is available.</p>
 <p>code</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>   <span class="n">title</span> <span class="s2">&quot;mirrored histogram with y-tick format&quot;</span><span class="p">;</span>
-<span class="n">ods</span> <span class="n">graphics</span> <span class="o">/</span> <span class="n">height</span><span class="o">=</span><span class="mi">15</span><span class="n">cm</span> <span class="n">width</span><span class="o">=</span><span class="mi">25</span><span class="n">cm</span> <span class="n">imagefmt</span><span class="o">=</span><span class="n">png</span> <span class="n">imagename</span><span class="o">=</span><span class="s2">&quot;mirroredhist_v_fmt&quot;</span><span class="p">;</span>
-<span class="o">%</span><span class="n">MirroredHist</span><span class="p">(</span>
-   <span class="n">data</span><span class="o">=</span><span class="n">graph_data</span><span class="p">,</span>
-   <span class="n">group</span><span class="o">=</span><span class="n">cat</span><span class="p">,</span>
-   <span class="n">x</span><span class="o">=</span><span class="n">_midpt_</span><span class="p">,</span>
-   <span class="n">y</span><span class="o">=</span><span class="n">_obspct_</span><span class="p">,</span>
-   <span class="n">xaxistype</span><span class="o">=</span><span class="n">linear</span><span class="p">,</span>
-   <span class="n">ytickfmt</span><span class="o">=</span><span class="mf">09.00</span><span class="p">,</span>
-   <span class="n">xticks</span><span class="o">=</span><span class="mi">50</span> <span class="mi">100</span> <span class="mi">150</span> <span class="mi">200</span> <span class="mi">250</span> <span class="mi">300</span><span class="p">,</span>
-   <span class="n">yticks</span><span class="o">=</span><span class="mi">5</span> <span class="mi">10</span> <span class="mi">15</span> <span class="mi">20</span> <span class="mi">25</span> <span class="p">,</span>
-   <span class="n">xlabel</span><span class="o">=</span><span class="n">Blood</span> <span class="n">pressure</span> <span class="p">(</span><span class="n">mmHg</span><span class="p">)</span>
-<span class="p">);</span>
+<div class="highlight-SAS notranslate"><div class="highlight"><pre><span></span>   <span class="k">title</span> <span class="s">&quot;mirrored histogram with y-tick format&quot;</span>;
+ods graphics / height=15cm width=25cm imagefmt=png imagename=<span class="s">&quot;mirroredhist_v_fmt&quot;</span>;
+<span class="nf">%MirroredHist</span>(
+   data=graph_data,
+   <span class="k">group</span>=cat,
+   <span class="k">x</span>=_midpt_,
+   y=_obspct_,
+   xaxistype=linear,
+   ytickfmt=<span class="m">09.00</span>,
+   xticks=<span class="m">50</span> <span class="m">100</span> <span class="m">150</span> <span class="m">200</span> <span class="m">250</span> <span class="m">300</span>,
+   yticks=<span class="m">5</span> <span class="m">10</span> <span class="m">15</span> <span class="m">20</span> <span class="m">25</span> ,
+   xlabel=Blood pressure (mmHg)
+);
 </pre></div>
 </div>
 <img alt="_images/mirroredhist_v_fmt1.svg" src="_images/mirroredhist_v_fmt1.svg" /></div>
@@ -362,115 +358,115 @@ The format generated by picture statement is available.</p>
 <p>when orient parameter is set “h”, histogram is displayed in horizontal Orientation.The plot is also called “Butterfly chart”.
 (x: response, y=level)</p>
 <p>code</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">title</span> <span class="s2">&quot;horizontal mirrored histogram (linear)&quot;</span><span class="p">;</span>
+<div class="highlight-SAS notranslate"><div class="highlight"><pre><span></span><span class="k">title</span> <span class="s">&quot;horizontal mirrored histogram (linear)&quot;</span>;
 
-<span class="n">ods</span> <span class="n">graphics</span> <span class="o">/</span> <span class="n">height</span><span class="o">=</span><span class="mi">15</span><span class="n">cm</span> <span class="n">width</span><span class="o">=</span><span class="mi">25</span><span class="n">cm</span> <span class="n">imagefmt</span><span class="o">=</span><span class="n">png</span> <span class="n">imagename</span><span class="o">=</span><span class="s2">&quot;mirroredhist_h_linear&quot;</span><span class="p">;</span>
-<span class="o">%</span><span class="n">MirroredHist</span><span class="p">(</span>
-   <span class="n">data</span><span class="o">=</span><span class="n">graph_data</span><span class="p">,</span>
-   <span class="n">group</span><span class="o">=</span><span class="n">cat</span><span class="p">,</span>
-   <span class="n">x</span><span class="o">=</span><span class="n">_midpt_</span><span class="p">,</span>
-   <span class="n">y</span><span class="o">=</span><span class="n">_obspct_</span><span class="p">,</span>
-   <span class="n">xaxistype</span><span class="o">=</span><span class="n">linear</span><span class="p">,</span>
-   <span class="n">xticks</span><span class="o">=</span><span class="mi">50</span> <span class="mi">100</span> <span class="mi">150</span> <span class="mi">200</span> <span class="mi">250</span> <span class="mi">300</span><span class="p">,</span>
-   <span class="n">yticks</span><span class="o">=</span><span class="mi">5</span> <span class="mi">10</span> <span class="mi">15</span> <span class="mi">20</span> <span class="mi">25</span><span class="p">,</span>
-   <span class="n">orient</span><span class="o">=</span><span class="n">h</span><span class="p">,</span>
-   <span class="n">xlabel</span><span class="o">=</span><span class="n">Blood</span> <span class="n">pressure</span> <span class="p">(</span><span class="n">mmHg</span><span class="p">),</span>
-   <span class="n">note</span><span class="o">=%</span><span class="n">nrstr</span><span class="p">(</span><span class="n">entrytitle</span> <span class="s1">&#39;your title here&#39;</span><span class="p">;</span>
-            <span class="n">entryfootnote</span> <span class="n">halign</span><span class="o">=</span><span class="n">left</span> <span class="s1">&#39;your footnote here&#39;</span><span class="p">;</span>
-            <span class="n">entryfootnote</span> <span class="n">halign</span><span class="o">=</span><span class="n">left</span> <span class="s1">&#39;your footnote here 2&#39;</span><span class="p">;)</span>
-<span class="p">);</span>
+ods graphics / height=15cm width=25cm imagefmt=png imagename=<span class="s">&quot;mirroredhist_h_linear&quot;</span>;
+<span class="nf">%MirroredHist</span>(
+   data=graph_data,
+   <span class="k">group</span>=cat,
+   <span class="k">x</span>=_midpt_,
+   y=_obspct_,
+   xaxistype=linear,
+   xticks=<span class="m">50</span> <span class="m">100</span> <span class="m">150</span> <span class="m">200</span> <span class="m">250</span> <span class="m">300</span>,
+   yticks=<span class="m">5</span> <span class="m">10</span> <span class="m">15</span> <span class="m">20</span> <span class="m">25</span>,
+   orient=h,
+   xlabel=Blood pressure (mmHg),
+   note=<span class="nb">%nrstr</span>(entrytitle <span class="s">&#39;your title here&#39;</span>;
+            entryfootnote halign=left <span class="s">&#39;your footnote here&#39;</span>;
+            entryfootnote halign=left <span class="s">&#39;your footnote here 2&#39;</span>;)
+);
 </pre></div>
 </div>
 <img alt="_images/mirroredhist_h_linear1.svg" src="_images/mirroredhist_h_linear1.svg" /><p>if xaxistype parameter is “discrete” and orient parameter is “h”, y-axis will be reversed.</p>
 <p>raw data</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>proc format;
+<div class="highlight-SAS notranslate"><div class="highlight"><pre><span></span><span class="kr">proc format;</span>
 value sexf
-1=&quot;Male&quot;
-2=&quot;Female&quot;;
+<span class="m">1</span>=<span class="s">&quot;Male&quot;</span>
+<span class="m">2</span>=<span class="s">&quot;Female&quot;</span>;
 value agegrpf
-1=&quot;&lt;10&quot;
-2=&quot;10s&quot;
-3=&quot;20s&quot;
-4=&quot;30s&quot;
-5=&quot;40s&quot;
-6=&quot;50s&quot;
-7=&quot;60s&quot;
-8=&quot;70s&quot;
-9=&quot;80s&quot;
-10=&quot;90s&quot;
-11=&quot;&gt;100&quot;
-99=&quot;unknown&quot;
-;
-run;
+<span class="m">1</span>=<span class="s">&quot;&lt;10&quot;</span>
+<span class="m">2</span>=<span class="s">&quot;10s&quot;</span>
+<span class="m">3</span>=<span class="s">&quot;20s&quot;</span>
+<span class="m">4</span>=<span class="s">&quot;30s&quot;</span>
+<span class="m">5</span>=<span class="s">&quot;40s&quot;</span>
+<span class="m">6</span>=<span class="s">&quot;50s&quot;</span>
+<span class="m">7</span>=<span class="s">&quot;60s&quot;</span>
+<span class="m">8</span>=<span class="s">&quot;70s&quot;</span>
+<span class="m">9</span>=<span class="s">&quot;80s&quot;</span>
+<span class="m">10</span>=<span class="s">&quot;90s&quot;</span>
+<span class="m">11</span>=<span class="s">&quot;&gt;100&quot;</span>
+<span class="m">99</span>=<span class="s">&quot;unknown&quot;</span>
+<span class="kr">;</span>
+<span class="kr">run;</span>
 
-data covid19_tokyo_2021;
+<span class="kr">data </span>covid19_tokyo_2021;
 
-infile datalines delimiter=&quot;,&quot;;
-length sexc $10 agec $20 patients 8;
-format sex sexf. agegrp agegrpf.;
-input sexc $ agec $ patients;
-select (sexc);
-   when (&quot;Male&quot;) sex=1;
-   when(&quot;Female&quot;)sex=2;
-end;
-select(agec);
-   when(&quot;&lt;10&quot;) agegrp=1;
-   when(&quot;10s&quot;) agegrp=2;
-   when(&quot;20s&quot;) agegrp=3;
-   when(&quot;30s&quot;) agegrp=4;
-   when(&quot;40s&quot;) agegrp=5;
-   when(&quot;50s&quot;) agegrp=6;
-   when(&quot;60s&quot;) agegrp=7;
-   when(&quot;70s&quot;) agegrp=8;
-   when(&quot;80s&quot;) agegrp=9;
-   when(&quot;90s&quot;) agegrp=10;
-   when(&quot;&gt;100&quot;) agegrp=11;
-   when(&quot;unknown&quot;)agegrp=99;
-end;
-datalines;
-Male,&lt;10,8011
-Male,10s,13821
-Male,20s,49695
-Male,30s,37503
-Male,40s,30862
-Male,50s,21952
-Male,60s,8544
-Male,70s,5202
-Male,80s,2930
-Male,90s,654
-Male,&gt;100,22
-Male,unknown,4
-Female,&lt;10,7519
-Female,10s,12359
-Female,20s,43162
-Female,30s,25594
-Female,40s,20121
-Female,50s,15931
-Female,60s,6238
-Female,70s,4872
-Female,80s,4196
-Female,90s,1765
-Female,&gt;100,116
-;
-run;
+<span class="k">infile</span> <span class="k">datalines</span> <span class="k">delimiter</span>=<span class="s">&quot;,&quot;</span>;
+<span class="k">length</span> sexc $<span class="m">10</span> agec $<span class="m">20</span> patients <span class="m">8</span>;
+<span class="k">format</span> sex sexf. agegrp agegrpf.;
+<span class="k">input</span> sexc $ agec $ patients;
+<span class="k">select</span> (sexc);
+   when (<span class="s">&quot;Male&quot;</span>) sex=<span class="m">1</span>;
+   when(<span class="s">&quot;Female&quot;</span>)sex=<span class="m">2</span>;
+<span class="k">end</span>;
+<span class="k">select</span>(agec);
+   when(<span class="s">&quot;&lt;10&quot;</span>) agegrp=<span class="m">1</span>;
+   when(<span class="s">&quot;10s&quot;</span>) agegrp=<span class="m">2</span>;
+   when(<span class="s">&quot;20s&quot;</span>) agegrp=<span class="m">3</span>;
+   when(<span class="s">&quot;30s&quot;</span>) agegrp=<span class="m">4</span>;
+   when(<span class="s">&quot;40s&quot;</span>) agegrp=<span class="m">5</span>;
+   when(<span class="s">&quot;50s&quot;</span>) agegrp=<span class="m">6</span>;
+   when(<span class="s">&quot;60s&quot;</span>) agegrp=<span class="m">7</span>;
+   when(<span class="s">&quot;70s&quot;</span>) agegrp=<span class="m">8</span>;
+   when(<span class="s">&quot;80s&quot;</span>) agegrp=<span class="m">9</span>;
+   when(<span class="s">&quot;90s&quot;</span>) agegrp=<span class="m">10</span>;
+   when(<span class="s">&quot;&gt;100&quot;</span>) agegrp=<span class="m">11</span>;
+   when(<span class="s">&quot;unknown&quot;</span>)agegrp=<span class="m">99</span>;
+<span class="k">end</span>;
+<span class="k">datalines;</span>
+<span class="x">Male,&lt;10,8011</span>
+<span class="x">Male,10s,13821</span>
+<span class="x">Male,20s,49695</span>
+<span class="x">Male,30s,37503</span>
+<span class="x">Male,40s,30862</span>
+<span class="x">Male,50s,21952</span>
+<span class="x">Male,60s,8544</span>
+<span class="x">Male,70s,5202</span>
+<span class="x">Male,80s,2930</span>
+<span class="x">Male,90s,654</span>
+<span class="x">Male,&gt;100,22</span>
+<span class="x">Male,unknown,4</span>
+<span class="x">Female,&lt;10,7519</span>
+<span class="x">Female,10s,12359</span>
+<span class="x">Female,20s,43162</span>
+<span class="x">Female,30s,25594</span>
+<span class="x">Female,40s,20121</span>
+<span class="x">Female,50s,15931</span>
+<span class="x">Female,60s,6238</span>
+<span class="x">Female,70s,4872</span>
+<span class="x">Female,80s,4196</span>
+<span class="x">Female,90s,1765</span>
+<span class="x">Female,&gt;100,116</span>
+<span class="x">;</span>
+<span class="kr">run;</span>
 </pre></div>
 </div>
 <p>code</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">title</span> <span class="s2">&quot;horizontal mirrored histogram (discrete)&quot;</span><span class="p">;</span>
+<div class="highlight-SAS notranslate"><div class="highlight"><pre><span></span><span class="k">title</span> <span class="s">&quot;horizontal mirrored histogram (discrete)&quot;</span>;
 
-<span class="n">ods</span> <span class="n">graphics</span> <span class="o">/</span> <span class="n">height</span><span class="o">=</span><span class="mi">15</span><span class="n">cm</span> <span class="n">width</span><span class="o">=</span><span class="mi">25</span><span class="n">cm</span> <span class="n">imagefmt</span><span class="o">=</span><span class="n">png</span> <span class="n">imagename</span><span class="o">=</span><span class="s2">&quot;mirroredhist_h_discrete&quot;</span><span class="p">;</span>
-<span class="o">%</span><span class="n">MirroredHist</span><span class="p">(</span>
-   <span class="n">data</span><span class="o">=</span><span class="n">covid19_tokyo_2021</span><span class="p">,</span>
-   <span class="n">group</span><span class="o">=</span><span class="n">sex</span><span class="p">,</span>
-   <span class="n">x</span><span class="o">=</span><span class="n">agegrp</span><span class="p">,</span>
-   <span class="n">y</span><span class="o">=</span><span class="n">patients</span><span class="p">,</span>
-   <span class="n">xaxistype</span><span class="o">=</span><span class="n">discrete</span><span class="p">,</span>
-   <span class="n">yticks</span><span class="o">=</span><span class="mi">0</span> <span class="mi">10000</span> <span class="mi">20000</span> <span class="mi">30000</span> <span class="mi">40000</span> <span class="mi">50000</span><span class="p">,</span>
-   <span class="n">ytickfmt</span><span class="o">=%</span><span class="nb">str</span><span class="p">(</span><span class="mi">00</span><span class="p">,</span><span class="mi">009</span><span class="p">),</span>
-   <span class="n">xlabel</span><span class="o">=</span><span class="n">age</span><span class="p">,</span>
-   <span class="n">ylabel</span><span class="o">=</span><span class="n">number</span> <span class="n">of</span> <span class="n">patients</span><span class="p">,</span>
-   <span class="n">orient</span><span class="o">=</span><span class="n">h</span>
-<span class="p">);</span>
+ods graphics / height=15cm width=25cm imagefmt=png imagename=<span class="s">&quot;mirroredhist_h_discrete&quot;</span>;
+<span class="nf">%MirroredHist</span>(
+   data=covid19_tokyo_2021,
+   <span class="k">group</span>=sex,
+   <span class="k">x</span>=agegrp,
+   y=patients,
+   xaxistype=discrete,
+   yticks=<span class="m">0</span> <span class="m">10000</span> <span class="m">20000</span> <span class="m">30000</span> <span class="m">40000</span> <span class="m">50000</span>,
+   ytickfmt=<span class="nb">%str</span>(<span class="m">00</span>,<span class="m">009</span>),
+   xlabel=age,
+   ylabel=number of patients,
+   orient=h
+);
 </pre></div>
 </div>
 <img alt="_images/mirroredhist_h_discrete1.svg" src="_images/mirroredhist_h_discrete1.svg" /></div>

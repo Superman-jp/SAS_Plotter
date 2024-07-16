@@ -6,6 +6,7 @@
   <title>MultiHistogram &mdash; SAS Plotter 1.3 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
 
   
   <!--[if lt IE 9]>
@@ -17,6 +18,8 @@
         <script src="_static/underscore.js"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/clipboard.min.js"></script>
+        <script src="_static/copybutton.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -155,7 +158,6 @@ the format of category, pair, and level variable is required.</p>
    <span class="n">responsetxt</span><span class="o">=</span><span class="n">false</span><span class="p">,</span>
    <span class="n">orient</span><span class="o">=</span><span class="n">v</span><span class="p">,</span>
    <span class="n">pairsplit</span><span class="o">=</span><span class="n">false</span><span class="p">,</span>
-   <span class="n">pairtitle</span><span class="o">=</span><span class="n">pair</span><span class="p">,</span>
    <span class="n">legend</span><span class="o">=</span><span class="n">true</span><span class="p">,</span>
    <span class="n">palette</span><span class="o">=</span><span class="n">sns</span><span class="p">,</span>
    <span class="n">note</span><span class="o">=</span><span class="p">,</span>
@@ -272,85 +274,85 @@ default is True.</p>
 <h2>example<a class="headerlink" href="#example" title="Permalink to this heading"></a></h2>
 <p>output example can be executed using following code after loading SAS plotter.</p>
 <p>code</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ods</span> <span class="n">listing</span> <span class="n">gpath</span><span class="o">=&lt;</span><span class="n">your</span> <span class="n">output</span> <span class="n">path</span><span class="o">&gt;</span><span class="p">;</span>
-<span class="n">filename</span> <span class="n">exam</span> <span class="n">url</span> <span class="s2">&quot;https://github.com/Superman-jp/SAS_Plotter/raw/main/example/multihistogram_example.sas&quot;</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;UTF-8&#39;</span><span class="p">;</span>
-<span class="o">%</span><span class="n">include</span> <span class="n">exam</span><span class="p">;</span>
+<div class="highlight-SAS notranslate"><div class="highlight"><pre><span></span>ods listing gpath=<span class="s">&quot;your output path&quot;</span>;
+<span class="k">filename</span> exam url <span class="s">&quot;https://github.com/Superman-jp/SAS_Plotter/raw/main/example/multihistogram_example.sas&quot;</span> encoding=<span class="s">&#39;UTF-8&#39;</span>;
+<span class="nf">%include</span> exam;
 </pre></div>
 </div>
 <div class="section" id="basic-multiple-histogram">
 <h3>Basic multiple histogram<a class="headerlink" href="#basic-multiple-histogram" title="Permalink to this heading"></a></h3>
 <p>before use, the aggregation of data is required.</p>
 <p>raw data</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">proc</span> <span class="nb">format</span><span class="p">;</span>
-<span class="n">value</span> <span class="n">regionf</span>
-   <span class="mi">1</span><span class="o">=</span><span class="s2">&quot;Region 1&quot;</span>
-   <span class="mi">2</span><span class="o">=</span><span class="s2">&quot;Region 2&quot;</span>
-   <span class="p">;</span>
-<span class="n">value</span> <span class="n">eyecolorf</span>
-   <span class="mi">1</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span>
-   <span class="mi">2</span><span class="o">=</span><span class="s2">&quot;brown&quot;</span>
-   <span class="mi">3</span><span class="o">=</span><span class="s2">&quot;green&quot;</span>
-   <span class="p">;</span>
-<span class="n">value</span> <span class="n">haircolorf</span>
-   <span class="mi">1</span><span class="o">=</span><span class="s2">&quot;black&quot;</span>
-   <span class="mi">2</span><span class="o">=</span><span class="s2">&quot;dark&quot;</span>
-   <span class="mi">3</span><span class="o">=</span><span class="s2">&quot;fair&quot;</span>
-   <span class="mi">4</span><span class="o">=</span><span class="s2">&quot;medium&quot;</span>
-   <span class="mi">5</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">;</span>
-<span class="n">run</span><span class="p">;</span>
+<div class="highlight-SAS notranslate"><div class="highlight"><pre><span></span><span class="kr">proc format;</span>
+value regionf
+   <span class="m">1</span>=<span class="s">&quot;Region 1&quot;</span>
+   <span class="m">2</span>=<span class="s">&quot;Region 2&quot;</span>
+   ;
+value eyecolorf
+   <span class="m">1</span>=<span class="s">&quot;blue&quot;</span>
+   <span class="m">2</span>=<span class="s">&quot;brown&quot;</span>
+   <span class="m">3</span>=<span class="s">&quot;green&quot;</span>
+   ;
+value haircolorf
+   <span class="m">1</span>=<span class="s">&quot;black&quot;</span>
+   <span class="m">2</span>=<span class="s">&quot;dark&quot;</span>
+   <span class="m">3</span>=<span class="s">&quot;fair&quot;</span>
+   <span class="m">4</span>=<span class="s">&quot;medium&quot;</span>
+   <span class="m">5</span>=<span class="s">&quot;red&quot;</span><span class="kr">;</span>
+<span class="kr">run;</span>
 
-<span class="n">data</span> <span class="n">Color</span><span class="p">;</span>
-<span class="nb">format</span> <span class="n">region</span> <span class="n">regionf</span><span class="o">.</span> <span class="n">eyes</span> <span class="n">eyecolorf</span><span class="o">.</span> <span class="n">hair</span> <span class="n">haircolorf</span><span class="o">.</span><span class="p">;</span>
-<span class="nb">input</span> <span class="n">Region</span> <span class="n">Eyes</span> <span class="n">Hair</span> <span class="n">Count</span> <span class="o">@@</span><span class="p">;</span>
-<span class="n">label</span> <span class="n">Eyes</span>  <span class="o">=</span><span class="s1">&#39;Eye Color&#39;</span>
-      <span class="n">Hair</span>  <span class="o">=</span><span class="s1">&#39;Hair Color&#39;</span>
-      <span class="n">Region</span><span class="o">=</span><span class="s1">&#39;Geographic Region&#39;</span><span class="p">;</span>
+<span class="kr">data </span>Color;
+<span class="k">format</span> region regionf. eyes eyecolorf. hair haircolorf.;
+<span class="k">input</span> Region Eyes Hair Count @@;
+<span class="k">label</span> Eyes  =<span class="s">&#39;Eye Color&#39;</span>
+      Hair  =<span class="s">&#39;Hair Color&#39;</span>
+      Region=<span class="s">&#39;Geographic Region&#39;</span>;
 
-<span class="n">datalines</span><span class="p">;</span>
-<span class="mi">1</span> <span class="mi">1</span> <span class="mi">3</span> <span class="mi">23</span>  <span class="mi">1</span> <span class="mi">1</span> <span class="mi">5</span> <span class="mi">7</span>   <span class="mi">1</span> <span class="mi">1</span> <span class="mi">4</span> <span class="mi">24</span>
-<span class="mi">1</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">11</span>  <span class="mi">1</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">19</span>  <span class="mi">1</span> <span class="mi">3</span> <span class="mi">5</span> <span class="mi">7</span>
-<span class="mi">1</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">18</span>  <span class="mi">1</span> <span class="mi">3</span> <span class="mi">2</span> <span class="mi">14</span>  <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">34</span>
-<span class="mi">1</span> <span class="mi">2</span> <span class="mi">5</span> <span class="mi">5</span>   <span class="mi">1</span> <span class="mi">2</span> <span class="mi">4</span> <span class="mi">41</span>  <span class="mi">1</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">40</span>
-<span class="mi">1</span> <span class="mi">2</span> <span class="mi">1</span> <span class="mi">3</span>   <span class="mi">2</span> <span class="mi">1</span> <span class="mi">3</span> <span class="mi">46</span>  <span class="mi">2</span> <span class="mi">1</span> <span class="mi">5</span> <span class="mi">21</span>
-<span class="mi">2</span> <span class="mi">1</span> <span class="mi">4</span> <span class="mi">44</span>  <span class="mi">2</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">40</span>  <span class="mi">2</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">6</span>
-<span class="mi">2</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">50</span>  <span class="mi">2</span> <span class="mi">3</span> <span class="mi">5</span> <span class="mi">31</span>  <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">37</span>
-<span class="mi">2</span> <span class="mi">3</span> <span class="mi">2</span> <span class="mi">23</span>  <span class="mi">2</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">56</span>  <span class="mi">2</span> <span class="mi">2</span> <span class="mi">5</span> <span class="mi">42</span>
-<span class="mi">2</span> <span class="mi">2</span> <span class="mi">4</span> <span class="mi">53</span>  <span class="mi">2</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">54</span>  <span class="mi">2</span> <span class="mi">2</span> <span class="mi">1</span> <span class="mi">13</span>
-<span class="p">;</span>
-<span class="n">proc</span> <span class="n">sort</span><span class="p">;</span> <span class="n">by</span> <span class="n">region</span> <span class="n">eyes</span> <span class="n">hair</span><span class="p">;</span>
-<span class="n">run</span><span class="p">;</span>
+<span class="k">datalines;</span>
+<span class="x">1 1 3 23  1 1 5 7   1 1 4 24</span>
+<span class="x">1 1 2 11  1 3 3 19  1 3 5 7</span>
+<span class="x">1 3 4 18  1 3 2 14  1 2 3 34</span>
+<span class="x">1 2 5 5   1 2 4 41  1 2 2 40</span>
+<span class="x">1 2 1 3   2 1 3 46  2 1 5 21</span>
+<span class="x">2 1 4 44  2 1 2 40  2 1 1 6</span>
+<span class="x">2 3 3 50  2 3 5 31  2 3 4 37</span>
+<span class="x">2 3 2 23  2 2 3 56  2 2 5 42</span>
+<span class="x">2 2 4 53  2 2 2 54  2 2 1 13</span>
+<span class="x">;</span>
+<span class="kr">proc sort;</span> <span class="k">by</span> region eyes hair<span class="kr">;</span>
+<span class="kr">run;</span>
 
-<span class="n">data</span> <span class="n">dummy</span><span class="p">;</span>
-<span class="n">do</span> <span class="n">region</span> <span class="o">=</span><span class="mi">1</span> <span class="n">to</span> <span class="mi">2</span><span class="p">;</span>
-<span class="n">do</span> <span class="n">eyes</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">to</span> <span class="mi">3</span><span class="p">;</span>
-<span class="n">do</span> <span class="n">hair</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">to</span> <span class="mi">5</span><span class="p">;</span>
-<span class="n">output</span><span class="p">;</span>
-<span class="n">end</span><span class="p">;</span>
-<span class="n">end</span><span class="p">;</span>
-<span class="n">end</span><span class="p">;</span>
-<span class="n">run</span><span class="p">;</span>
+<span class="kr">data </span>dummy;
+<span class="k">do</span> region =<span class="m">1</span> to <span class="m">2</span>;
+<span class="k">do</span> eyes = <span class="m">1</span> to <span class="m">3</span>;
+<span class="k">do</span> hair = <span class="m">1</span> to <span class="m">5</span>;
+<span class="k">output</span>;
+<span class="k">end</span>;
+<span class="k">end</span>;
+<span class="k">end</span><span class="kr">;</span>
+<span class="kr">run;</span>
 
-<span class="n">data</span> <span class="n">freq</span><span class="p">;</span>
-<span class="n">merge</span> <span class="n">dummy</span> <span class="n">color</span><span class="p">;</span>
-<span class="n">by</span> <span class="n">region</span> <span class="n">eyes</span> <span class="n">hair</span><span class="p">;</span>
-<span class="k">if</span> <span class="n">count</span><span class="o">=.</span> <span class="n">then</span> <span class="n">count</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
-<span class="n">run</span><span class="p">;</span>
+<span class="kr">data </span>freq;
+<span class="k">merge</span> dummy color;
+<span class="k">by</span> region eyes hair;
+<span class="k">if</span> count=. <span class="k">then</span> count=<span class="m">0</span><span class="kr">;</span>
+<span class="kr">run;</span>
 </pre></div>
 </div>
 <p>code</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ods</span> <span class="n">graphics</span> <span class="o">/</span> <span class="n">height</span><span class="o">=</span><span class="mi">15</span><span class="n">cm</span> <span class="n">width</span><span class="o">=</span><span class="mi">15</span><span class="n">cm</span> <span class="n">imagefmt</span><span class="o">=</span><span class="n">png</span> <span class="n">imagename</span><span class="o">=</span><span class="s2">&quot;multihisto_basic_v&quot;</span> <span class="p">;</span>
-<span class="n">title</span> <span class="s2">&quot;basic multiple histogram(vertical)&quot;</span><span class="p">;</span>
+<div class="highlight-SAS notranslate"><div class="highlight"><pre><span></span>ods graphics / height=15cm width=15cm imagefmt=png imagename=<span class="s">&quot;multihisto_basic_v&quot;</span> ;
+<span class="k">title</span> <span class="s">&quot;basic multiple histogram(vertical)&quot;</span>;
 
-<span class="o">%</span><span class="n">multihistogram</span><span class="p">(</span>
-   <span class="n">data</span><span class="o">=</span><span class="n">freq</span><span class="p">(</span><span class="n">where</span><span class="o">=</span><span class="p">(</span><span class="n">region</span><span class="o">=</span><span class="mi">1</span><span class="p">)),</span>
-   <span class="n">category</span><span class="o">=</span><span class="n">eyes</span><span class="p">,</span>
-   <span class="n">level</span><span class="o">=</span><span class="n">hair</span><span class="p">,</span>
-   <span class="n">response</span><span class="o">=</span><span class="n">count</span><span class="p">,</span>
-   <span class="n">levelfmt</span> <span class="o">=</span><span class="n">haircolorf</span><span class="p">,</span>
-   <span class="n">note</span><span class="o">=%</span><span class="n">nrstr</span><span class="p">(</span><span class="n">entrytitle</span> <span class="s1">&#39;your title here&#39;</span><span class="p">;</span>
-            <span class="n">entryfootnote</span> <span class="n">halign</span><span class="o">=</span><span class="n">left</span> <span class="s1">&#39;your footnote here&#39;</span><span class="p">;</span>
-            <span class="n">entryfootnote</span> <span class="n">halign</span><span class="o">=</span><span class="n">left</span> <span class="s1">&#39;your footnote here 2&#39;</span><span class="p">;)</span>
-<span class="p">);</span>
+<span class="nf">%multihistogram</span>(
+   data=freq(<span class="k">where</span>=(region=<span class="m">1</span>)),
+   category=eyes,
+   level=hair,
+   response=count,
+   levelfmt =haircolorf,
+   note=<span class="nb">%nrstr</span>(entrytitle <span class="s">&#39;your title here&#39;</span>;
+            entryfootnote halign=left <span class="s">&#39;your footnote here&#39;</span>;
+            entryfootnote halign=left <span class="s">&#39;your footnote here 2&#39;</span>;)
+);
 </pre></div>
 </div>
 <img alt="_images/multihisto_basic_v1.svg" src="_images/multihisto_basic_v1.svg" /></div>
@@ -358,17 +360,17 @@ default is True.</p>
 <h3>orientation<a class="headerlink" href="#orientation" title="Permalink to this heading"></a></h3>
 <p>when orient parameter is set “h”, histogram is displayed in horizontal Orientation.</p>
 <p>code</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ods</span> <span class="n">graphics</span> <span class="o">/</span> <span class="n">height</span><span class="o">=</span><span class="mi">15</span><span class="n">cm</span> <span class="n">width</span><span class="o">=</span><span class="mi">15</span><span class="n">cm</span> <span class="n">imagefmt</span><span class="o">=</span><span class="n">png</span> <span class="n">imagename</span><span class="o">=</span><span class="s2">&quot;multihisto_basic_h&quot;</span> <span class="p">;</span>
-<span class="n">title</span> <span class="s2">&quot;basic multiple histogram(horizontal)&quot;</span><span class="p">;</span>
+<div class="highlight-SAS notranslate"><div class="highlight"><pre><span></span>ods graphics / height=15cm width=15cm imagefmt=png imagename=<span class="s">&quot;multihisto_basic_h&quot;</span> ;
+<span class="k">title</span> <span class="s">&quot;basic multiple histogram(horizontal)&quot;</span>;
 
-<span class="o">%</span><span class="n">multihistogram</span><span class="p">(</span>
-   <span class="n">data</span><span class="o">=</span><span class="n">freq</span><span class="p">(</span><span class="n">where</span><span class="o">=</span><span class="p">(</span><span class="n">region</span><span class="o">=</span><span class="mi">1</span><span class="p">)),</span>
-   <span class="n">category</span><span class="o">=</span><span class="n">eyes</span><span class="p">,</span>
-   <span class="n">level</span><span class="o">=</span><span class="n">hair</span><span class="p">,</span>
-   <span class="n">response</span><span class="o">=</span><span class="n">count</span><span class="p">,</span>
-   <span class="n">orient</span><span class="o">=</span><span class="n">h</span><span class="p">,</span>
-   <span class="n">levelfmt</span> <span class="o">=</span><span class="n">haircolorf</span>
-<span class="p">);</span>
+<span class="nf">%multihistogram</span>(
+   data=freq(<span class="k">where</span>=(region=<span class="m">1</span>)),
+   category=eyes,
+   level=hair,
+   response=count,
+   orient=h,
+   levelfmt =haircolorf
+);
 </pre></div>
 </div>
 <img alt="_images/multihisto_basic_h1.svg" src="_images/multihisto_basic_h1.svg" /></div>
@@ -378,17 +380,17 @@ default is True.</p>
 when normal mode (pairsplit=false),  the bar of histogram will be extended side by side symmetrically like violin plot.
 whereas when split mode (pairsplit=true), the symmetrical histogram will be separated based on pair variable.</p>
 <p>code</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ods</span> <span class="n">graphics</span> <span class="o">/</span> <span class="n">height</span><span class="o">=</span><span class="mi">15</span><span class="n">cm</span> <span class="n">width</span><span class="o">=</span><span class="mi">15</span><span class="n">cm</span> <span class="n">imagefmt</span><span class="o">=</span><span class="n">png</span> <span class="n">imagename</span><span class="o">=</span><span class="s2">&quot;multihisto_pair&quot;</span> <span class="p">;</span>
-<span class="n">title</span> <span class="s2">&quot; multiple histogram using pair variable&quot;</span><span class="p">;</span>
+<div class="highlight-SAS notranslate"><div class="highlight"><pre><span></span>ods graphics / height=15cm width=15cm imagefmt=png imagename=<span class="s">&quot;multihisto_pair&quot;</span> ;
+<span class="k">title</span> <span class="s">&quot; multiple histogram using pair variable&quot;</span>;
 
-<span class="o">%</span><span class="n">multihistogram</span><span class="p">(</span>
-   <span class="n">data</span><span class="o">=</span><span class="n">freq</span><span class="p">,</span>
-   <span class="n">category</span><span class="o">=</span><span class="n">eyes</span><span class="p">,</span>
-   <span class="n">pair</span><span class="o">=</span><span class="n">region</span><span class="p">,</span>
-   <span class="n">level</span><span class="o">=</span><span class="n">hair</span><span class="p">,</span>
-   <span class="n">response</span><span class="o">=</span><span class="n">count</span><span class="p">,</span>
-   <span class="n">levelfmt</span> <span class="o">=</span><span class="n">haircolorf</span>
-<span class="p">);</span>
+<span class="nf">%multihistogram</span>(
+   data=freq,
+   category=eyes,
+   pair=region,
+   level=hair,
+   response=count,
+   levelfmt =haircolorf
+);
 </pre></div>
 </div>
 <img alt="_images/multihisto_pair1.svg" src="_images/multihisto_pair1.svg" /></div>
@@ -397,17 +399,17 @@ whereas when split mode (pairsplit=true), the symmetrical histogram will be sepa
 <p>Basic multiple histogram is difficult to read the response value from the plot because there is not response variable axis.
 but if responsetxt parameter is set “true”. the response value will be displayed.</p>
 <p>code</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ods</span> <span class="n">graphics</span> <span class="o">/</span> <span class="n">height</span><span class="o">=</span><span class="mi">15</span><span class="n">cm</span> <span class="n">width</span><span class="o">=</span><span class="mi">15</span><span class="n">cm</span> <span class="n">imagefmt</span><span class="o">=</span><span class="n">png</span> <span class="n">imagename</span><span class="o">=</span><span class="s2">&quot;multihisto_restxt&quot;</span> <span class="p">;</span>
-<span class="n">title</span> <span class="s2">&quot;basic multiple histogram with response value&quot;</span><span class="p">;</span>
-<span class="o">%</span><span class="n">multihistogram</span><span class="p">(</span>
-   <span class="n">data</span><span class="o">=</span><span class="n">freq</span><span class="p">,</span>
-   <span class="n">category</span><span class="o">=</span><span class="n">eyes</span><span class="p">,</span>
-   <span class="n">pair</span><span class="o">=</span><span class="n">region</span><span class="p">,</span>
-   <span class="n">level</span><span class="o">=</span><span class="n">hair</span><span class="p">,</span>
-   <span class="n">response</span><span class="o">=</span><span class="n">count</span><span class="p">,</span>
-   <span class="n">responsetxt</span><span class="o">=</span><span class="n">true</span><span class="p">,</span>
-   <span class="n">levelfmt</span> <span class="o">=</span><span class="n">haircolorf</span>
-<span class="p">);</span>
+<div class="highlight-SAS notranslate"><div class="highlight"><pre><span></span>ods graphics / height=15cm width=15cm imagefmt=png imagename=<span class="s">&quot;multihisto_restxt&quot;</span> ;
+<span class="k">title</span> <span class="s">&quot;basic multiple histogram with response value&quot;</span>;
+<span class="nf">%multihistogram</span>(
+   data=freq,
+   category=eyes,
+   pair=region,
+   level=hair,
+   response=count,
+   responsetxt=true,
+   levelfmt =haircolorf
+);
 </pre></div>
 </div>
 <img alt="_images/multihisto_restxt1.svg" src="_images/multihisto_restxt1.svg" /></div>

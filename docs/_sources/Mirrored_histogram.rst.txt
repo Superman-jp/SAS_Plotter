@@ -54,7 +54,6 @@ Syntax
       orient=v,
       legend=true,
       barwidth=1,
-      ymargin=1.1,
       outline=true,
       palette=sns,
       note=,
@@ -144,11 +143,6 @@ Parameters
    width of bar. if "1", no gaps between the bars.
    default is "1".
 
-- **ymargin : numeric (greater than 1) (optional)**
-
-   margin factor of response axis. 
-   default is "1.1".
-
 - **outline : bool (optional)**
 
    display setting of bar outline.
@@ -177,10 +171,13 @@ Parameters
 example
 ***************
 
+.. highlight:: SAS
+
 output example can be executed using following code after loading SAS plotter.
 
 code ::
-   ods listing gpath=<your output path>;
+
+   ods listing gpath="your output path";
    filename exam url "https://github.com/Superman-jp/SAS_Plotter/raw/main/example/mirrored_histogram_example.sas" encoding='UTF-8';
    %include exam;
 

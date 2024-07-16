@@ -6,6 +6,7 @@
   <title>Raincloud plot &mdash; SAS Plotter 1.3 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
 
   
   <!--[if lt IE 9]>
@@ -17,6 +18,8 @@
         <script src="_static/underscore.js"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/clipboard.min.js"></script>
+        <script src="_static/copybutton.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -345,86 +348,86 @@ default is True.</p>
 <h2>example<a class="headerlink" href="#example" title="Permalink to this heading"></a></h2>
 <p>output example can be executed using following code after loading SAS plotter.</p>
 <p>code</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ods</span> <span class="n">listing</span> <span class="n">gpath</span><span class="o">=&lt;</span><span class="n">your</span> <span class="n">output</span> <span class="n">path</span><span class="o">&gt;</span><span class="p">;</span>
-<span class="n">filename</span> <span class="n">exam</span> <span class="n">url</span> <span class="s2">&quot;https://github.com/Superman-jp/SAS_Plotter/raw/main/example/raincloud_example.sas&quot;</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;UTF-8&#39;</span><span class="p">;</span>
-<span class="o">%</span><span class="n">include</span> <span class="n">exam</span><span class="p">;</span>
+<div class="highlight-SAS notranslate"><div class="highlight"><pre><span></span>ods listing gpath=<span class="s">&quot;your output path&quot;</span>;
+<span class="k">filename</span> exam url <span class="s">&quot;https://github.com/Superman-jp/SAS_Plotter/raw/main/example/raincloud_example.sas&quot;</span> encoding=<span class="s">&#39;UTF-8&#39;</span>;
+<span class="nf">%include</span> exam;
 </pre></div>
 </div>
 <div class="section" id="simple-raincloud-plot">
 <h3>Simple raincloud plot<a class="headerlink" href="#simple-raincloud-plot" title="Permalink to this heading"></a></h3>
 <p>raw data</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">filename</span> <span class="n">raw</span> <span class="n">url</span> <span class="s2">&quot;https://raw.githubusercontent.com/mwaskom/seaborn-data/master/tips.csv&quot;</span><span class="p">;</span>
-<span class="n">PROC</span> <span class="n">IMPORT</span> <span class="n">OUT</span><span class="o">=</span> <span class="n">WORK</span><span class="o">.</span><span class="n">raw</span>
-            <span class="n">DATAFILE</span><span class="o">=</span> <span class="n">raw</span>
-            <span class="n">DBMS</span><span class="o">=</span><span class="n">CSV</span> <span class="n">REPLACE</span><span class="p">;</span>
-   <span class="n">GETNAMES</span><span class="o">=</span><span class="n">YES</span><span class="p">;</span>
-   <span class="n">DATAROW</span><span class="o">=</span><span class="mi">2</span><span class="p">;</span>
-   <span class="n">guessingrows</span><span class="o">=</span><span class="nb">max</span><span class="p">;</span>
-<span class="n">RUN</span><span class="p">;</span>
+<div class="highlight-SAS notranslate"><div class="highlight"><pre><span></span><span class="k">filename</span> raw url <span class="s">&quot;https://raw.githubusercontent.com/mwaskom/seaborn-data/master/tips.csv&quot;</span><span class="kr">;</span>
+<span class="kr">PROC IMPORT </span><span class="k">OUT</span>= WORK<span class="m">.</span>raw
+            DATAFILE= raw
+            DBMS=CSV <span class="k">REPLACE</span>;
+   GETNAMES=YES;
+   DATAROW=<span class="m">2</span>;
+   guessingrows=max<span class="kr">;</span>
+<span class="kr">RUN;</span>
 
-<span class="n">proc</span> <span class="nb">format</span><span class="p">;</span>
-<span class="n">value</span> <span class="n">dayf</span>
-<span class="mi">1</span><span class="o">=</span><span class="s2">&quot;Mon&quot;</span>
-<span class="mi">2</span><span class="o">=</span><span class="s2">&quot;Tue&quot;</span>
-<span class="mi">3</span><span class="o">=</span><span class="s2">&quot;Wed&quot;</span>
-<span class="mi">4</span><span class="o">=</span><span class="s2">&quot;Thu&quot;</span>
-<span class="mi">5</span><span class="o">=</span><span class="s2">&quot;Fri&quot;</span>
-<span class="mi">6</span><span class="o">=</span><span class="s2">&quot;Sat&quot;</span>
-<span class="mi">7</span><span class="o">=</span><span class="s2">&quot;Sun&quot;</span>
-<span class="p">;</span>
-<span class="n">run</span><span class="p">;</span>
-<span class="n">data</span> <span class="n">tips</span><span class="p">;</span>
-<span class="nb">set</span> <span class="n">raw</span><span class="p">(</span><span class="n">rename</span><span class="o">=</span><span class="p">(</span><span class="n">day</span><span class="o">=</span><span class="n">day_old</span><span class="p">));</span>
-<span class="nb">format</span> <span class="n">day</span> <span class="n">dayf</span><span class="o">.</span><span class="p">;</span>
-<span class="n">label</span> <span class="n">total_bill</span><span class="o">=</span><span class="s2">&quot;Total bill (USD)&quot;</span>
-      <span class="n">day</span><span class="o">=</span><span class="s2">&quot;day of week&quot;</span><span class="p">;</span>
+<span class="kr">proc format;</span>
+value dayf
+<span class="m">1</span>=<span class="s">&quot;Mon&quot;</span>
+<span class="m">2</span>=<span class="s">&quot;Tue&quot;</span>
+<span class="m">3</span>=<span class="s">&quot;Wed&quot;</span>
+<span class="m">4</span>=<span class="s">&quot;Thu&quot;</span>
+<span class="m">5</span>=<span class="s">&quot;Fri&quot;</span>
+<span class="m">6</span>=<span class="s">&quot;Sat&quot;</span>
+<span class="m">7</span>=<span class="s">&quot;Sun&quot;</span>
+<span class="kr">;</span>
+<span class="kr">run;</span>
+<span class="kr">data </span>tips;
+<span class="k">set</span> raw(<span class="k">rename</span>=(day=day_old));
+<span class="k">format</span> day dayf.;
+<span class="k">label</span> total_bill=<span class="s">&quot;Total bill (USD)&quot;</span>
+      day=<span class="s">&quot;day of week&quot;</span>;
 
-<span class="n">select</span> <span class="p">(</span><span class="n">day_old</span><span class="p">);</span>
-   <span class="n">when</span> <span class="p">(</span><span class="s2">&quot;Thur&quot;</span><span class="p">)</span> <span class="n">day</span><span class="o">=</span><span class="mi">4</span><span class="p">;</span>
-   <span class="n">when</span> <span class="p">(</span><span class="s2">&quot;Fri&quot;</span><span class="p">)</span> <span class="n">day</span><span class="o">=</span><span class="mi">5</span><span class="p">;</span>
-   <span class="n">when</span><span class="p">(</span><span class="s2">&quot;Sat&quot;</span><span class="p">)</span> <span class="n">day</span><span class="o">=</span><span class="mi">6</span><span class="p">;</span>
-   <span class="n">when</span><span class="p">(</span><span class="s2">&quot;Sun&quot;</span><span class="p">)</span> <span class="n">day</span><span class="o">=</span><span class="mi">7</span><span class="p">;</span>
-   <span class="n">otherwise</span> <span class="n">put</span> <span class="s2">&quot;WAR&quot;</span> <span class="s2">&quot;NING: irregular string&quot;</span> <span class="n">day_old</span><span class="p">;</span>
-<span class="n">end</span><span class="p">;</span>
-<span class="n">drop</span> <span class="n">day_old</span><span class="p">;</span>
-<span class="n">run</span><span class="p">;</span>
+<span class="k">select</span> (day_old);
+   when (<span class="s">&quot;Thur&quot;</span>) day=<span class="m">4</span>;
+   when (<span class="s">&quot;Fri&quot;</span>) day=<span class="m">5</span>;
+   when(<span class="s">&quot;Sat&quot;</span>) day=<span class="m">6</span>;
+   when(<span class="s">&quot;Sun&quot;</span>) day=<span class="m">7</span>;
+   otherwise <span class="k">put</span> <span class="s">&quot;WAR&quot;</span> <span class="s">&quot;NING: irregular string&quot;</span> day_old;
+<span class="k">end</span>;
+<span class="k">drop</span> day_old<span class="kr">;</span>
+<span class="kr">run;</span>
 </pre></div>
 </div>
 <p>code</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">title</span> <span class="s2">&quot;simple vertical raincloud plot&quot;</span><span class="p">;</span>
-<span class="n">ods</span> <span class="n">graphics</span> <span class="o">/</span><span class="n">reset</span><span class="o">=</span><span class="nb">all</span> <span class="n">height</span><span class="o">=</span><span class="mi">15</span><span class="n">cm</span> <span class="n">width</span><span class="o">=</span><span class="mi">25</span><span class="n">cm</span> <span class="n">imagename</span><span class="o">=</span><span class="s2">&quot;rain_simple&quot;</span> <span class="n">imagefmt</span><span class="o">=</span><span class="n">png</span><span class="p">;</span>
-<span class="o">%</span><span class="n">RainCloud</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">tips</span><span class="p">,</span>
-            <span class="n">x</span><span class="o">=</span><span class="n">day</span><span class="p">,</span>
-            <span class="n">y</span><span class="o">=</span><span class="n">total_bill</span><span class="p">,</span>
-            <span class="n">cat_iv</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span>
-            <span class="n">element_iv</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
-            <span class="n">group</span><span class="o">=</span><span class="n">day</span><span class="p">,</span>
-            <span class="n">yticks</span><span class="o">=</span><span class="mi">0</span> <span class="mi">20</span> <span class="mi">40</span> <span class="mi">60</span><span class="p">,</span>
-            <span class="n">bw_method</span><span class="o">=</span><span class="n">srot</span><span class="p">,</span>
-            <span class="n">note</span><span class="o">=%</span><span class="n">nrstr</span><span class="p">(</span><span class="n">entrytitle</span> <span class="s1">&#39;your title here&#39;</span><span class="p">;</span>
-                  <span class="n">entryfootnote</span> <span class="n">halign</span><span class="o">=</span><span class="n">left</span> <span class="s1">&#39;your footnote here&#39;</span><span class="p">;</span>
-                  <span class="n">entryfootnote</span> <span class="n">halign</span><span class="o">=</span><span class="n">left</span> <span class="s1">&#39;your footnote here 2&#39;</span><span class="p">;)</span>
-            <span class="p">);</span>
+<div class="highlight-SAS notranslate"><div class="highlight"><pre><span></span><span class="k">title</span> <span class="s">&quot;simple vertical raincloud plot&quot;</span>;
+ods graphics /<span class="k">reset</span>=all height=15cm width=25cm imagename=<span class="s">&quot;rain_simple&quot;</span> imagefmt=png;
+<span class="nf">%RainCloud</span>(data=tips,
+            <span class="k">x</span>=day,
+            y=total_bill,
+            cat_iv=<span class="m">2.5</span>,
+            element_iv=<span class="m">0.5</span>,
+            <span class="k">group</span>=day,
+            yticks=<span class="m">0</span> <span class="m">20</span> <span class="m">40</span> <span class="m">60</span>,
+            bw_method=srot,
+            note=<span class="nb">%nrstr</span>(entrytitle <span class="s">&#39;your title here&#39;</span>;
+                  entryfootnote halign=left <span class="s">&#39;your footnote here&#39;</span>;
+                  entryfootnote halign=left <span class="s">&#39;your footnote here 2&#39;</span>;)
+            );
 </pre></div>
 </div>
 <p>output</p>
 <img alt="_images/rain_simple1.svg" src="_images/rain_simple1.svg" /><p>when orient parameter is set “h”, the orientation of plot is changed horizontal (x=response, y=category)</p>
 <p>code</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">title</span> <span class="s2">&quot;simple horizontal raincloud plot&quot;</span><span class="p">;</span>
-<span class="n">ods</span> <span class="n">graphics</span> <span class="o">/</span><span class="n">reset</span><span class="o">=</span><span class="nb">all</span> <span class="n">height</span><span class="o">=</span><span class="mi">25</span><span class="n">cm</span> <span class="n">width</span><span class="o">=</span><span class="mi">15</span><span class="n">cm</span> <span class="n">imagename</span><span class="o">=</span><span class="s2">&quot;rain_simple_h&quot;</span> <span class="n">imagefmt</span><span class="o">=</span><span class="n">png</span><span class="p">;</span>
-<span class="o">%</span><span class="n">RainCloud</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">tips</span><span class="p">,</span>
-            <span class="n">x</span><span class="o">=</span><span class="n">day</span><span class="p">,</span>
-            <span class="n">y</span><span class="o">=</span><span class="n">total_bill</span><span class="p">,</span>
-            <span class="n">cat_iv</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span>
-            <span class="n">element_iv</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
-            <span class="n">group</span><span class="o">=</span><span class="n">day</span><span class="p">,</span>
-            <span class="n">yticks</span><span class="o">=</span><span class="mi">0</span> <span class="mi">20</span> <span class="mi">40</span> <span class="mi">60</span><span class="p">,</span>
-            <span class="n">orient</span><span class="o">=</span><span class="n">h</span><span class="p">,</span>
-            <span class="n">bw_method</span><span class="o">=</span><span class="n">srot</span><span class="p">,</span>
-            <span class="n">note</span><span class="o">=%</span><span class="n">nrstr</span><span class="p">(</span><span class="n">entrytitle</span> <span class="s1">&#39;your title here&#39;</span><span class="p">;</span>
-                  <span class="n">entryfootnote</span> <span class="n">halign</span><span class="o">=</span><span class="n">left</span> <span class="s1">&#39;your footnote here&#39;</span><span class="p">;</span>
-                     <span class="n">entryfootnote</span> <span class="n">halign</span><span class="o">=</span><span class="n">left</span> <span class="s1">&#39;your footnote here 2&#39;</span><span class="p">;)</span>
-            <span class="p">);</span>
+<div class="highlight-SAS notranslate"><div class="highlight"><pre><span></span><span class="k">title</span> <span class="s">&quot;simple horizontal raincloud plot&quot;</span>;
+ods graphics /<span class="k">reset</span>=all height=25cm width=15cm imagename=<span class="s">&quot;rain_simple_h&quot;</span> imagefmt=png;
+<span class="nf">%RainCloud</span>(data=tips,
+            <span class="k">x</span>=day,
+            y=total_bill,
+            cat_iv=<span class="m">2.5</span>,
+            element_iv=<span class="m">0.5</span>,
+            <span class="k">group</span>=day,
+            yticks=<span class="m">0</span> <span class="m">20</span> <span class="m">40</span> <span class="m">60</span>,
+            orient=h,
+            bw_method=srot,
+            note=<span class="nb">%nrstr</span>(entrytitle <span class="s">&#39;your title here&#39;</span>;
+                  entryfootnote halign=left <span class="s">&#39;your footnote here&#39;</span>;
+                     entryfootnote halign=left <span class="s">&#39;your footnote here 2&#39;</span>;)
+            );
 </pre></div>
 </div>
 <img alt="_images/rain_simple_h1.svg" src="_images/rain_simple_h1.svg" /></div>
@@ -433,39 +436,39 @@ default is True.</p>
 <p>when group parameter is group variable, the kde estimation is performed every x variable and group variable.
 legend title will be displayed as label of group variable.</p>
 <p>code</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">title</span> <span class="s2">&quot;grouped raincloud plot&quot;</span><span class="p">;</span>
-<span class="n">ods</span> <span class="n">graphics</span> <span class="o">/</span><span class="n">reset</span><span class="o">=</span><span class="nb">all</span> <span class="n">height</span><span class="o">=</span><span class="mi">25</span><span class="n">cm</span> <span class="n">width</span><span class="o">=</span><span class="mi">15</span><span class="n">cm</span> <span class="n">imagename</span><span class="o">=</span><span class="s2">&quot;rain_grouped&quot;</span> <span class="n">imagefmt</span><span class="o">=</span><span class="n">png</span><span class="p">;</span>
+<div class="highlight-SAS notranslate"><div class="highlight"><pre><span></span><span class="k">title</span> <span class="s">&quot;grouped raincloud plot&quot;</span>;
+ods graphics /<span class="k">reset</span>=all height=25cm width=15cm imagename=<span class="s">&quot;rain_grouped&quot;</span> imagefmt=png;
 
-<span class="o">%</span><span class="n">RainCloud</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">tips</span><span class="p">,</span>
-            <span class="n">x</span><span class="o">=</span><span class="n">day</span><span class="p">,</span>
-            <span class="n">y</span><span class="o">=</span><span class="n">total_bill</span><span class="p">,</span>
-            <span class="n">group</span><span class="o">=</span><span class="n">smoker</span><span class="p">,</span>
-            <span class="n">cat_iv</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span>
-            <span class="n">element_iv</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
-            <span class="n">yticks</span><span class="o">=%</span><span class="nb">str</span><span class="p">(</span><span class="mi">0</span> <span class="mi">20</span> <span class="mi">40</span> <span class="mi">60</span><span class="p">),</span>
-            <span class="n">bw_method</span><span class="o">=</span><span class="n">srot</span><span class="p">,</span>
-            <span class="n">orient</span><span class="o">=</span><span class="n">h</span><span class="p">,</span>
-            <span class="n">legend</span><span class="o">=</span><span class="kc">True</span>
-            <span class="p">);</span>
+<span class="nf">%RainCloud</span>(data=tips,
+            <span class="k">x</span>=day,
+            y=total_bill,
+            <span class="k">group</span>=smoker,
+            cat_iv=<span class="m">2.5</span>,
+            element_iv=<span class="m">0.5</span>,
+            yticks=<span class="nb">%str</span>(<span class="m">0</span> <span class="m">20</span> <span class="m">40</span> <span class="m">60</span>),
+            bw_method=srot,
+            orient=h,
+            legend=True
+            );
 </pre></div>
 </div>
 <p>output</p>
 <img alt="_images/rain_grouped1.svg" src="_images/rain_grouped1.svg" /><p>when connect parameter is set “True”, mean of each group is connected.</p>
 <p>code</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ods</span> <span class="n">graphics</span> <span class="o">/</span><span class="n">reset</span><span class="o">=</span><span class="nb">all</span> <span class="n">height</span><span class="o">=</span><span class="mi">15</span><span class="n">cm</span> <span class="n">width</span><span class="o">=</span><span class="mi">25</span><span class="n">cm</span> <span class="n">imagename</span><span class="o">=</span><span class="s2">&quot;rain_grouped_connect&quot;</span> <span class="n">imagefmt</span><span class="o">=</span><span class="n">png</span><span class="p">;</span>
+<div class="highlight-SAS notranslate"><div class="highlight"><pre><span></span>ods graphics /<span class="k">reset</span>=all height=15cm width=25cm imagename=<span class="s">&quot;rain_grouped_connect&quot;</span> imagefmt=png;
 
-<span class="o">%</span><span class="n">RainCloud</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">tips</span><span class="p">,</span>
-            <span class="n">x</span><span class="o">=</span><span class="n">day</span><span class="p">,</span>
-            <span class="n">y</span><span class="o">=</span><span class="n">total_bill</span><span class="p">,</span>
-            <span class="n">group</span><span class="o">=</span><span class="n">smoker</span><span class="p">,</span>
-            <span class="n">cat_iv</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span>
-            <span class="n">element_iv</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
-            <span class="n">yticks</span><span class="o">=%</span><span class="nb">str</span><span class="p">(</span><span class="mi">0</span> <span class="mi">20</span> <span class="mi">40</span> <span class="mi">60</span><span class="p">),</span>
-            <span class="n">bw_method</span><span class="o">=</span><span class="n">srot</span><span class="p">,</span>
-            <span class="n">orient</span><span class="o">=</span><span class="n">v</span><span class="p">,</span>
-            <span class="n">connect</span><span class="o">=</span><span class="n">true</span><span class="p">,</span>
-            <span class="n">legend</span><span class="o">=</span><span class="kc">True</span>
-            <span class="p">);</span>
+<span class="nf">%RainCloud</span>(data=tips,
+            <span class="k">x</span>=day,
+            y=total_bill,
+            <span class="k">group</span>=smoker,
+            cat_iv=<span class="m">2.5</span>,
+            element_iv=<span class="m">0.5</span>,
+            yticks=<span class="nb">%str</span>(<span class="m">0</span> <span class="m">20</span> <span class="m">40</span> <span class="m">60</span>),
+            bw_method=srot,
+            orient=v,
+            connect=true,
+            legend=True
+            );
 </pre></div>
 </div>
 <img alt="_images/rain_grouped_connect1.svg" src="_images/rain_grouped_connect1.svg" /></div>
@@ -474,21 +477,21 @@ legend title will be displayed as label of group variable.</p>
 <p>if Trim parameter is set “False”, the density plot is displayed at all range.
 but the density outside of observed data range may be ambiguous.</p>
 <p>code</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">title</span> <span class="s2">&quot;raincloud plot with trim parameter&quot;</span><span class="p">;</span>
-<span class="n">ods</span> <span class="n">graphics</span> <span class="o">/</span><span class="n">reset</span><span class="o">=</span><span class="nb">all</span> <span class="n">height</span><span class="o">=</span><span class="mi">25</span><span class="n">cm</span> <span class="n">width</span><span class="o">=</span><span class="mi">15</span><span class="n">cm</span> <span class="n">imagename</span><span class="o">=</span><span class="s2">&quot;rain_trim&quot;</span> <span class="n">imagefmt</span><span class="o">=</span><span class="n">png</span><span class="p">;</span>
+<div class="highlight-SAS notranslate"><div class="highlight"><pre><span></span><span class="k">title</span> <span class="s">&quot;raincloud plot with trim parameter&quot;</span>;
+ods graphics /<span class="k">reset</span>=all height=25cm width=15cm imagename=<span class="s">&quot;rain_trim&quot;</span> imagefmt=png;
 
-<span class="o">%</span><span class="n">RainCloud</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">tips</span><span class="p">,</span>
-            <span class="n">x</span><span class="o">=</span><span class="n">day</span><span class="p">,</span>
-            <span class="n">y</span><span class="o">=</span><span class="n">total_bill</span><span class="p">,</span>
-            <span class="n">group</span><span class="o">=</span><span class="n">smoker</span><span class="p">,</span>
-            <span class="n">cat_iv</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span>
-            <span class="n">element_iv</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
-            <span class="n">yticks</span><span class="o">=-</span><span class="mi">20</span> <span class="mi">0</span> <span class="mi">20</span> <span class="mi">40</span> <span class="mi">60</span><span class="p">,</span>
-            <span class="n">bw_method</span><span class="o">=</span><span class="n">srot</span><span class="p">,</span>
-            <span class="n">trim</span><span class="o">=</span><span class="n">false</span><span class="p">,</span>
-            <span class="n">orient</span><span class="o">=</span><span class="n">h</span><span class="p">,</span>
-            <span class="n">legend</span><span class="o">=</span><span class="kc">True</span>
-            <span class="p">);</span>
+<span class="nf">%RainCloud</span>(data=tips,
+            <span class="k">x</span>=day,
+            y=total_bill,
+            <span class="k">group</span>=smoker,
+            cat_iv=<span class="m">2.5</span>,
+            element_iv=<span class="m">0.5</span>,
+            yticks=-<span class="m">20</span> <span class="m">0</span> <span class="m">20</span> <span class="m">40</span> <span class="m">60</span>,
+            bw_method=srot,
+            trim=false,
+            orient=h,
+            legend=True
+            );
 </pre></div>
 </div>
 <p>output</p>
@@ -499,23 +502,23 @@ but the density outside of observed data range may be ambiguous.</p>
 In below example, the density plot of the “vesicolor” and “Verginica” is broad so
 density peak is displayed small.</p>
 <p>code</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">title</span> <span class="s2">&quot;raincloud plot with scale parameter (area)&quot;</span><span class="p">;</span>
-<span class="n">ods</span> <span class="n">graphics</span> <span class="o">/</span><span class="n">reset</span><span class="o">=</span><span class="nb">all</span> <span class="n">height</span><span class="o">=</span><span class="mi">15</span><span class="n">cm</span> <span class="n">width</span><span class="o">=</span><span class="mi">25</span><span class="n">cm</span> <span class="n">imagename</span><span class="o">=</span><span class="s2">&quot;rain_area&quot;</span> <span class="n">imagefmt</span><span class="o">=</span><span class="n">png</span><span class="p">;</span>
+<div class="highlight-SAS notranslate"><div class="highlight"><pre><span></span><span class="k">title</span> <span class="s">&quot;raincloud plot with scale parameter (area)&quot;</span>;
+ods graphics /<span class="k">reset</span>=all height=15cm width=25cm imagename=<span class="s">&quot;rain_area&quot;</span> imagefmt=png;
 
-<span class="o">%</span><span class="n">RainCloud</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">sashelp</span><span class="o">.</span><span class="n">iris</span><span class="p">,</span>
-   <span class="n">x</span><span class="o">=</span><span class="n">species</span><span class="p">,</span>
-   <span class="n">y</span><span class="o">=</span><span class="n">petalwidth</span><span class="p">,</span>
-   <span class="n">group</span><span class="o">=</span><span class="n">species</span><span class="p">,</span>
-   <span class="n">xlabel</span><span class="o">=</span><span class="n">Species</span><span class="p">,</span>
-   <span class="n">ylabel</span><span class="o">=</span><span class="n">Petal</span> <span class="n">Width</span> <span class="p">(</span><span class="n">cm</span><span class="p">),</span>
-   <span class="n">yticks</span><span class="o">=</span><span class="mi">0</span> <span class="mi">10</span> <span class="mi">20</span> <span class="mi">30</span> <span class="mi">40</span><span class="p">,</span>
-   <span class="n">cat_iv</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span>
-   <span class="n">orient</span><span class="o">=</span><span class="n">h</span><span class="p">,</span>
-   <span class="n">element_iv</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span>
-   <span class="n">trim</span><span class="o">=</span><span class="n">false</span><span class="p">,</span>
-   <span class="n">scale</span><span class="o">=</span><span class="n">area</span><span class="p">,</span>
-   <span class="n">bw_method</span><span class="o">=</span><span class="n">srot</span>
-   <span class="p">);</span>
+<span class="nf">%RainCloud</span>(data=sashelp<span class="m">.</span>iris,
+   <span class="k">x</span>=species,
+   y=petalwidth,
+   <span class="k">group</span>=species,
+   xlabel=Species,
+   ylabel=Petal Width (cm),
+   yticks=<span class="m">0</span> <span class="m">10</span> <span class="m">20</span> <span class="m">30</span> <span class="m">40</span>,
+   cat_iv=<span class="m">1.5</span>,
+   orient=h,
+   element_iv=<span class="m">0.3</span>,
+   trim=false,
+   scale=area,
+   bw_method=srot
+   );
 </pre></div>
 </div>
 <p>output</p>
@@ -525,23 +528,23 @@ it is easy to see density peak.</p>
 <p>note:
 density plot is “non-quantitative”. and density plots using “width” keyword can’t be performed relative comparison.</p>
 <p>code</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">title</span> <span class="s2">&quot;raincloud plot with scale parameter (width)&quot;</span><span class="p">;</span>
-<span class="n">ods</span> <span class="n">graphics</span> <span class="o">/</span><span class="n">reset</span><span class="o">=</span><span class="nb">all</span> <span class="n">height</span><span class="o">=</span><span class="mi">15</span><span class="n">cm</span> <span class="n">width</span><span class="o">=</span><span class="mi">25</span><span class="n">cm</span> <span class="n">imagename</span><span class="o">=</span><span class="s2">&quot;rain_width&quot;</span> <span class="n">imagefmt</span><span class="o">=</span><span class="n">png</span><span class="p">;</span>
+<div class="highlight-SAS notranslate"><div class="highlight"><pre><span></span><span class="k">title</span> <span class="s">&quot;raincloud plot with scale parameter (width)&quot;</span>;
+ods graphics /<span class="k">reset</span>=all height=15cm width=25cm imagename=<span class="s">&quot;rain_width&quot;</span> imagefmt=png;
 
-<span class="o">%</span><span class="n">RainCloud</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">sashelp</span><span class="o">.</span><span class="n">iris</span><span class="p">,</span>
-            <span class="n">x</span><span class="o">=</span><span class="n">species</span><span class="p">,</span>
-            <span class="n">y</span><span class="o">=</span><span class="n">petalwidth</span><span class="p">,</span>
-            <span class="n">group</span><span class="o">=</span><span class="n">species</span><span class="p">,</span>
-            <span class="n">xlabel</span><span class="o">=</span><span class="n">Species</span><span class="p">,</span>
-            <span class="n">ylabel</span><span class="o">=</span><span class="n">Petal</span> <span class="n">Width</span> <span class="p">(</span><span class="n">cm</span><span class="p">),</span>
-            <span class="n">yticks</span><span class="o">=</span><span class="mi">0</span> <span class="mi">10</span> <span class="mi">20</span> <span class="mi">30</span> <span class="mi">40</span><span class="p">,</span>
-            <span class="n">cat_iv</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span>
-            <span class="n">orient</span><span class="o">=</span><span class="n">h</span><span class="p">,</span>
-            <span class="n">element_iv</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span>
-            <span class="n">trim</span><span class="o">=</span><span class="n">false</span><span class="p">,</span>
-            <span class="n">scale</span><span class="o">=</span><span class="n">width</span><span class="p">,</span>
-            <span class="n">bw_method</span><span class="o">=</span><span class="n">srot</span>
-            <span class="p">);</span>
+<span class="nf">%RainCloud</span>(data=sashelp<span class="m">.</span>iris,
+            <span class="k">x</span>=species,
+            y=petalwidth,
+            <span class="k">group</span>=species,
+            xlabel=Species,
+            ylabel=Petal Width (cm),
+            yticks=<span class="m">0</span> <span class="m">10</span> <span class="m">20</span> <span class="m">30</span> <span class="m">40</span>,
+            cat_iv=<span class="m">1.5</span>,
+            orient=h,
+            element_iv=<span class="m">0.3</span>,
+            trim=false,
+            scale=width,
+            bw_method=srot
+            );
 </pre></div>
 </div>
 <img alt="_images/rain_width1.svg" src="_images/rain_width1.svg" /></div>

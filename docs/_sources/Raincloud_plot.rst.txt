@@ -240,11 +240,13 @@ Parameters
 ***************
 example
 ***************
+.. highlight:: SAS
+
 output example can be executed using following code after loading SAS plotter.
 
 code ::
 
-   ods listing gpath=<your output path>;
+   ods listing gpath="your output path";
    filename exam url "https://github.com/Superman-jp/SAS_Plotter/raw/main/example/raincloud_example.sas" encoding='UTF-8';
    %include exam;
 

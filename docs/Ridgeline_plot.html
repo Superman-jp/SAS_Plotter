@@ -6,6 +6,7 @@
   <title>Ridgeline plot &mdash; SAS Plotter 1.3 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
 
   
   <!--[if lt IE 9]>
@@ -17,6 +18,8 @@
         <script src="_static/underscore.js"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/clipboard.min.js"></script>
+        <script src="_static/copybutton.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -342,272 +345,272 @@ default is True.</p>
 <h2>example<a class="headerlink" href="#example" title="Permalink to this heading"></a></h2>
 <p>output example can be executed using following code after loading SAS plotter.</p>
 <p>code</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ods</span> <span class="n">listing</span> <span class="n">gpath</span><span class="o">=&lt;</span><span class="n">your</span> <span class="n">output</span> <span class="n">path</span><span class="o">&gt;</span><span class="p">;</span>
-<span class="n">filename</span> <span class="n">exam</span> <span class="n">url</span> <span class="s2">&quot;https://github.com/Superman-jp/SAS_Plotter/raw/main/example/ridgeline_example.sas&quot;</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;UTF-8&#39;</span><span class="p">;</span>
-<span class="o">%</span><span class="n">include</span> <span class="n">exam</span><span class="p">;</span>
+<div class="highlight-SAS notranslate"><div class="highlight"><pre><span></span>ods listing gpath=<span class="s">&quot;your output path&quot;</span>;
+<span class="k">filename</span> exam url <span class="s">&quot;https://github.com/Superman-jp/SAS_Plotter/raw/main/example/ridgeline_example.sas&quot;</span> encoding=<span class="s">&#39;UTF-8&#39;</span>;
+<span class="nf">%include</span> exam;
 </pre></div>
 </div>
 <div class="section" id="simple-ridgeline-plot">
 <h3>simple ridgeline plot<a class="headerlink" href="#simple-ridgeline-plot" title="Permalink to this heading"></a></h3>
 <p>raw data</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>data raw;
-infile datalines delimiter=&#39;,&#39;;
-length col1 $10;
-format date yymmdd10.;
-input col1 $  tokyo  naha ;
-date = input(col1,yymmdd10.);
-drop col1;
+<div class="highlight-SAS notranslate"><div class="highlight"><pre><span></span><span class="kr">data </span>raw;
+<span class="k">infile</span> <span class="k">datalines</span> <span class="k">delimiter</span>=<span class="s">&#39;,&#39;</span>;
+<span class="k">length</span> col1 $<span class="m">10</span>;
+<span class="k">format</span> date yymmdd10.;
+<span class="k">input</span> col1 $  tokyo  naha ;
+date = <span class="k">input</span>(col1,yymmdd10.);
+<span class="k">drop</span> col1;
 
-datalines;
-2023/1/1,13,19.8
-2023/1/2,12.1,19.4
-2023/1/3,11,21.4
-2023/1/4,11,19.5
-2023/1/5,10.6,20.4
-2023/1/6,9.9,21.7
-2023/1/7,10.4,19.4
-2023/1/8,12.5,21.2
-2023/1/9,13.9,22.5
-2023/1/10,9.9,22.8
-2023/1/11,10.7,23.3
-2023/1/12,12.6,24.3
-2023/1/13,14,25.4
-2023/1/14,14.2,25.3
-2023/1/15,12,22.6
-2023/1/16,7.7,17.9
-2023/1/17,7.6,19.1
-2023/1/18,12.4,17.9
-2023/1/19,9.1,18.6
-2023/1/20,12.3,18.7
-2023/1/21,9,20.7
-2023/1/22,8.9,24.1
-2023/1/23,6.1,22.7
-2023/1/24,11.8,20.2
-2023/1/25,3.7,15.5
-2023/1/26,8.5,20.6
-2023/1/27,6.6,17.5
-2023/1/28,8.3,14.8
-2023/1/29,8.8,16.1
-2023/1/30,10,16.6
-2023/1/31,9,19.5
-2023/2/1,13.1,23.2
-2023/2/2,9.2,21.6
-2023/2/3,6.2,19.8
-2023/2/4,11.2,18.6
-2023/2/5,12,21.3
-2023/2/6,13.6,22.7
-2023/2/7,15.4,22.9
-2023/2/8,11.7,22.9
-2023/2/9,10.6,23
-2023/2/10,3.5,23.6
-2023/2/11,14.1,22.8
-2023/2/12,16.9,25
-2023/2/13,10.3,25.6
-2023/2/14,10.7,19.9
-2023/2/15,7.8,17.2
-2023/2/16,9.6,21.2
-2023/2/17,10.8,22.5
-2023/2/18,15,23.6
-2023/2/19,18.5,24.2
-2023/2/20,14.7,19
-2023/2/21,9.2,19.1
-2023/2/22,10.4,22.1
-2023/2/23,14.4,23.2
-2023/2/24,12.1,23.5
-2023/2/25,12.7,19.4
-2023/2/26,10.7,17.9
-2023/2/27,15,18.3
-2023/2/28,19.4,21.8
-2023/3/1,19.4,23.5
-2023/3/2,20,19.2
-2023/3/3,13.4,18.1
-2023/3/4,17.4,20.9
-2023/3/5,13.1,21.1
-2023/3/6,15,21.1
-2023/3/7,18.8,22
-2023/3/8,21.3,23.9
-2023/3/9,22.2,24
-2023/3/10,22.9,22.9
-2023/3/11,20.8,24.3
-2023/3/12,18.8,24
-2023/3/13,16.7,19.3
-2023/3/14,14.6,20.7
-2023/3/15,17.9,24.1
-2023/3/16,20.9,24.5
-2023/3/17,15.1,24.8
-2023/3/18,9.5,22.8
-2023/3/19,15.5,22.9
-2023/3/20,19.2,21.7
-2023/3/21,18.5,25.9
-2023/3/22,23.8,26.3
-2023/3/23,19.7,26.9
-2023/3/24,25,27.3
-2023/3/25,14.1,22.9
-2023/3/26,12.5,20.3
-2023/3/27,16.9,21.7
-2023/3/28,13.4,23.9
-2023/3/29,18.6,23.1
-2023/3/30,19.7,23.2
-2023/3/31,20.1,24.4
-2023/4/1,23.3,24.3
-2023/4/2,19,23.8
-2023/4/3,18.4,25.2
-2023/4/4,21,25
-2023/4/5,21.8,24.7
-2023/4/6,23.4,25.9
-2023/4/7,21.3,23.8
-2023/4/8,21.1,20.8
-2023/4/9,17.7,21.9
-2023/4/10,21.6,23.7
-2023/4/11,25,26.3
-2023/4/12,24.5,26.4
-2023/4/13,21.3,24.9
-2023/4/14,22.5,26.5
-2023/4/15,18,26
-2023/4/16,24.5,27.2
-2023/4/17,20.3,28.7
-2023/4/18,21,27.1
-2023/4/19,24.9,26.5
-2023/4/20,26,25.8
-2023/4/21,26.8,26.2
-2023/4/22,18.4,25.2
-2023/4/23,20.5,25.8
-2023/4/24,16,26.2
-2023/4/25,19.1,27.1
-2023/4/26,19.7,22.3
-2023/4/27,23.8,24.4
-2023/4/28,24.1,27
-2023/4/29,23.8,28.4
-2023/4/30,22,25.3
-2023/5/1,22.5,24.6
-2023/5/2,23,25.4
-2023/5/3,23.4,25.8
-2023/5/4,25.7,27.4
-2023/5/5,26.6,27.5
-2023/5/6,27.9,28.1
-2023/5/7,22.3,26.6
-2023/5/8,16.6,23.4
-2023/5/9,20.6,25
-2023/5/10,25,25.4
-2023/5/11,23.4,25.7
-2023/5/12,21.9,26.1
-2023/5/13,18.1,26.6
-2023/5/14,21.2,23.5
-2023/5/15,18.1,25.3
-2023/5/16,27.5,28.2
-2023/5/17,31.6,27.6
-2023/5/18,32.2,27.8
-2023/5/19,24.5,27
-2023/5/20,22.8,27
-2023/5/21,26.3,27.4
-2023/5/22,29.4,28.5
-2023/5/23,17.2,25.2
-2023/5/24,23.9,26.4
-2023/5/25,23.8,28
-2023/5/26,24.9,27.6
-2023/5/27,26.7,27.3
-2023/5/28,25.8,27.8
-2023/5/29,21.3,30
-2023/5/30,26.3,29.4
-2023/5/31,22.2,29.6
-2023/6/1,26.2,26.6
-2023/6/2,23.8,26.5
-2023/6/3,24,27.7
-2023/6/4,27.5,29.3
-2023/6/5,29.8,30.5
-2023/6/6,25.1,29.1
-2023/6/7,29.6,30.1
-2023/6/8,28.7,29.9
-2023/6/9,22.2,31.2
-2023/6/10,26,30.2
-2023/6/11,22.8,30.9
-2023/6/12,22.5,29.4
-2023/6/13,29.4,28
-2023/6/14,25.8,25.8
-2023/6/15,24.1,28
-2023/6/16,30.7,28.5
-2023/6/17,30.9,27.6
-2023/6/18,31.1,30.3
-2023/6/19,27.7,28.1
-2023/6/20,27,30
-2023/6/21,27.2,30.5
-2023/6/22,22.6,29.9
-2023/6/23,24.9,30.2
-2023/6/24,29.5,31.9
-2023/6/25,30.9,31.4
-2023/6/26,30.4,31.5
-2023/6/27,29.6,31.7
-2023/6/28,32.3,30.7
-2023/6/29,33.8,32.8
-2023/6/30,30.5,32.3
-2023/7/1,27.8,32
-2023/7/2,31.7,32.5
-2023/7/3,32.2,32.7
-2023/7/4,30.6,32
-2023/7/5,28.7,32.3
-2023/7/6,33.4,32.6
-2023/7/7,34.2,33.3
-2023/7/8,30.9,32.8
-2023/7/9,33,33.5
-2023/7/10,36.5,34.1
-2023/7/11,34.3,33.8
-2023/7/12,37.5,34.2
-2023/7/13,30.3,33.9
-2023/7/14,30.5,33.7
-2023/7/15,32.9,32.8
-2023/7/16,35.3,32.7
-2023/7/17,36.2,31.5
-2023/7/18,37.5,32.8
-2023/7/19,33.9,33.1
-2023/7/20,32.6,33
-2023/7/21,31.6,33.9
-2023/7/22,33.4,33.9
-2023/7/23,33.4,34.3
-2023/7/24,35.7,33.2
-2023/7/25,36.6,32.9
-2023/7/26,37.7,31.3
-2023/7/27,36.9,29.6
-2023/7/28,36.2,32
-2023/7/29,35.7,32.3
-2023/7/30,36.6,32.6
-2023/7/31,36.1,30.9
-;
-run;
+<span class="k">datalines;</span>
+<span class="x">2023/1/1,13,19.8</span>
+<span class="x">2023/1/2,12.1,19.4</span>
+<span class="x">2023/1/3,11,21.4</span>
+<span class="x">2023/1/4,11,19.5</span>
+<span class="x">2023/1/5,10.6,20.4</span>
+<span class="x">2023/1/6,9.9,21.7</span>
+<span class="x">2023/1/7,10.4,19.4</span>
+<span class="x">2023/1/8,12.5,21.2</span>
+<span class="x">2023/1/9,13.9,22.5</span>
+<span class="x">2023/1/10,9.9,22.8</span>
+<span class="x">2023/1/11,10.7,23.3</span>
+<span class="x">2023/1/12,12.6,24.3</span>
+<span class="x">2023/1/13,14,25.4</span>
+<span class="x">2023/1/14,14.2,25.3</span>
+<span class="x">2023/1/15,12,22.6</span>
+<span class="x">2023/1/16,7.7,17.9</span>
+<span class="x">2023/1/17,7.6,19.1</span>
+<span class="x">2023/1/18,12.4,17.9</span>
+<span class="x">2023/1/19,9.1,18.6</span>
+<span class="x">2023/1/20,12.3,18.7</span>
+<span class="x">2023/1/21,9,20.7</span>
+<span class="x">2023/1/22,8.9,24.1</span>
+<span class="x">2023/1/23,6.1,22.7</span>
+<span class="x">2023/1/24,11.8,20.2</span>
+<span class="x">2023/1/25,3.7,15.5</span>
+<span class="x">2023/1/26,8.5,20.6</span>
+<span class="x">2023/1/27,6.6,17.5</span>
+<span class="x">2023/1/28,8.3,14.8</span>
+<span class="x">2023/1/29,8.8,16.1</span>
+<span class="x">2023/1/30,10,16.6</span>
+<span class="x">2023/1/31,9,19.5</span>
+<span class="x">2023/2/1,13.1,23.2</span>
+<span class="x">2023/2/2,9.2,21.6</span>
+<span class="x">2023/2/3,6.2,19.8</span>
+<span class="x">2023/2/4,11.2,18.6</span>
+<span class="x">2023/2/5,12,21.3</span>
+<span class="x">2023/2/6,13.6,22.7</span>
+<span class="x">2023/2/7,15.4,22.9</span>
+<span class="x">2023/2/8,11.7,22.9</span>
+<span class="x">2023/2/9,10.6,23</span>
+<span class="x">2023/2/10,3.5,23.6</span>
+<span class="x">2023/2/11,14.1,22.8</span>
+<span class="x">2023/2/12,16.9,25</span>
+<span class="x">2023/2/13,10.3,25.6</span>
+<span class="x">2023/2/14,10.7,19.9</span>
+<span class="x">2023/2/15,7.8,17.2</span>
+<span class="x">2023/2/16,9.6,21.2</span>
+<span class="x">2023/2/17,10.8,22.5</span>
+<span class="x">2023/2/18,15,23.6</span>
+<span class="x">2023/2/19,18.5,24.2</span>
+<span class="x">2023/2/20,14.7,19</span>
+<span class="x">2023/2/21,9.2,19.1</span>
+<span class="x">2023/2/22,10.4,22.1</span>
+<span class="x">2023/2/23,14.4,23.2</span>
+<span class="x">2023/2/24,12.1,23.5</span>
+<span class="x">2023/2/25,12.7,19.4</span>
+<span class="x">2023/2/26,10.7,17.9</span>
+<span class="x">2023/2/27,15,18.3</span>
+<span class="x">2023/2/28,19.4,21.8</span>
+<span class="x">2023/3/1,19.4,23.5</span>
+<span class="x">2023/3/2,20,19.2</span>
+<span class="x">2023/3/3,13.4,18.1</span>
+<span class="x">2023/3/4,17.4,20.9</span>
+<span class="x">2023/3/5,13.1,21.1</span>
+<span class="x">2023/3/6,15,21.1</span>
+<span class="x">2023/3/7,18.8,22</span>
+<span class="x">2023/3/8,21.3,23.9</span>
+<span class="x">2023/3/9,22.2,24</span>
+<span class="x">2023/3/10,22.9,22.9</span>
+<span class="x">2023/3/11,20.8,24.3</span>
+<span class="x">2023/3/12,18.8,24</span>
+<span class="x">2023/3/13,16.7,19.3</span>
+<span class="x">2023/3/14,14.6,20.7</span>
+<span class="x">2023/3/15,17.9,24.1</span>
+<span class="x">2023/3/16,20.9,24.5</span>
+<span class="x">2023/3/17,15.1,24.8</span>
+<span class="x">2023/3/18,9.5,22.8</span>
+<span class="x">2023/3/19,15.5,22.9</span>
+<span class="x">2023/3/20,19.2,21.7</span>
+<span class="x">2023/3/21,18.5,25.9</span>
+<span class="x">2023/3/22,23.8,26.3</span>
+<span class="x">2023/3/23,19.7,26.9</span>
+<span class="x">2023/3/24,25,27.3</span>
+<span class="x">2023/3/25,14.1,22.9</span>
+<span class="x">2023/3/26,12.5,20.3</span>
+<span class="x">2023/3/27,16.9,21.7</span>
+<span class="x">2023/3/28,13.4,23.9</span>
+<span class="x">2023/3/29,18.6,23.1</span>
+<span class="x">2023/3/30,19.7,23.2</span>
+<span class="x">2023/3/31,20.1,24.4</span>
+<span class="x">2023/4/1,23.3,24.3</span>
+<span class="x">2023/4/2,19,23.8</span>
+<span class="x">2023/4/3,18.4,25.2</span>
+<span class="x">2023/4/4,21,25</span>
+<span class="x">2023/4/5,21.8,24.7</span>
+<span class="x">2023/4/6,23.4,25.9</span>
+<span class="x">2023/4/7,21.3,23.8</span>
+<span class="x">2023/4/8,21.1,20.8</span>
+<span class="x">2023/4/9,17.7,21.9</span>
+<span class="x">2023/4/10,21.6,23.7</span>
+<span class="x">2023/4/11,25,26.3</span>
+<span class="x">2023/4/12,24.5,26.4</span>
+<span class="x">2023/4/13,21.3,24.9</span>
+<span class="x">2023/4/14,22.5,26.5</span>
+<span class="x">2023/4/15,18,26</span>
+<span class="x">2023/4/16,24.5,27.2</span>
+<span class="x">2023/4/17,20.3,28.7</span>
+<span class="x">2023/4/18,21,27.1</span>
+<span class="x">2023/4/19,24.9,26.5</span>
+<span class="x">2023/4/20,26,25.8</span>
+<span class="x">2023/4/21,26.8,26.2</span>
+<span class="x">2023/4/22,18.4,25.2</span>
+<span class="x">2023/4/23,20.5,25.8</span>
+<span class="x">2023/4/24,16,26.2</span>
+<span class="x">2023/4/25,19.1,27.1</span>
+<span class="x">2023/4/26,19.7,22.3</span>
+<span class="x">2023/4/27,23.8,24.4</span>
+<span class="x">2023/4/28,24.1,27</span>
+<span class="x">2023/4/29,23.8,28.4</span>
+<span class="x">2023/4/30,22,25.3</span>
+<span class="x">2023/5/1,22.5,24.6</span>
+<span class="x">2023/5/2,23,25.4</span>
+<span class="x">2023/5/3,23.4,25.8</span>
+<span class="x">2023/5/4,25.7,27.4</span>
+<span class="x">2023/5/5,26.6,27.5</span>
+<span class="x">2023/5/6,27.9,28.1</span>
+<span class="x">2023/5/7,22.3,26.6</span>
+<span class="x">2023/5/8,16.6,23.4</span>
+<span class="x">2023/5/9,20.6,25</span>
+<span class="x">2023/5/10,25,25.4</span>
+<span class="x">2023/5/11,23.4,25.7</span>
+<span class="x">2023/5/12,21.9,26.1</span>
+<span class="x">2023/5/13,18.1,26.6</span>
+<span class="x">2023/5/14,21.2,23.5</span>
+<span class="x">2023/5/15,18.1,25.3</span>
+<span class="x">2023/5/16,27.5,28.2</span>
+<span class="x">2023/5/17,31.6,27.6</span>
+<span class="x">2023/5/18,32.2,27.8</span>
+<span class="x">2023/5/19,24.5,27</span>
+<span class="x">2023/5/20,22.8,27</span>
+<span class="x">2023/5/21,26.3,27.4</span>
+<span class="x">2023/5/22,29.4,28.5</span>
+<span class="x">2023/5/23,17.2,25.2</span>
+<span class="x">2023/5/24,23.9,26.4</span>
+<span class="x">2023/5/25,23.8,28</span>
+<span class="x">2023/5/26,24.9,27.6</span>
+<span class="x">2023/5/27,26.7,27.3</span>
+<span class="x">2023/5/28,25.8,27.8</span>
+<span class="x">2023/5/29,21.3,30</span>
+<span class="x">2023/5/30,26.3,29.4</span>
+<span class="x">2023/5/31,22.2,29.6</span>
+<span class="x">2023/6/1,26.2,26.6</span>
+<span class="x">2023/6/2,23.8,26.5</span>
+<span class="x">2023/6/3,24,27.7</span>
+<span class="x">2023/6/4,27.5,29.3</span>
+<span class="x">2023/6/5,29.8,30.5</span>
+<span class="x">2023/6/6,25.1,29.1</span>
+<span class="x">2023/6/7,29.6,30.1</span>
+<span class="x">2023/6/8,28.7,29.9</span>
+<span class="x">2023/6/9,22.2,31.2</span>
+<span class="x">2023/6/10,26,30.2</span>
+<span class="x">2023/6/11,22.8,30.9</span>
+<span class="x">2023/6/12,22.5,29.4</span>
+<span class="x">2023/6/13,29.4,28</span>
+<span class="x">2023/6/14,25.8,25.8</span>
+<span class="x">2023/6/15,24.1,28</span>
+<span class="x">2023/6/16,30.7,28.5</span>
+<span class="x">2023/6/17,30.9,27.6</span>
+<span class="x">2023/6/18,31.1,30.3</span>
+<span class="x">2023/6/19,27.7,28.1</span>
+<span class="x">2023/6/20,27,30</span>
+<span class="x">2023/6/21,27.2,30.5</span>
+<span class="x">2023/6/22,22.6,29.9</span>
+<span class="x">2023/6/23,24.9,30.2</span>
+<span class="x">2023/6/24,29.5,31.9</span>
+<span class="x">2023/6/25,30.9,31.4</span>
+<span class="x">2023/6/26,30.4,31.5</span>
+<span class="x">2023/6/27,29.6,31.7</span>
+<span class="x">2023/6/28,32.3,30.7</span>
+<span class="x">2023/6/29,33.8,32.8</span>
+<span class="x">2023/6/30,30.5,32.3</span>
+<span class="x">2023/7/1,27.8,32</span>
+<span class="x">2023/7/2,31.7,32.5</span>
+<span class="x">2023/7/3,32.2,32.7</span>
+<span class="x">2023/7/4,30.6,32</span>
+<span class="x">2023/7/5,28.7,32.3</span>
+<span class="x">2023/7/6,33.4,32.6</span>
+<span class="x">2023/7/7,34.2,33.3</span>
+<span class="x">2023/7/8,30.9,32.8</span>
+<span class="x">2023/7/9,33,33.5</span>
+<span class="x">2023/7/10,36.5,34.1</span>
+<span class="x">2023/7/11,34.3,33.8</span>
+<span class="x">2023/7/12,37.5,34.2</span>
+<span class="x">2023/7/13,30.3,33.9</span>
+<span class="x">2023/7/14,30.5,33.7</span>
+<span class="x">2023/7/15,32.9,32.8</span>
+<span class="x">2023/7/16,35.3,32.7</span>
+<span class="x">2023/7/17,36.2,31.5</span>
+<span class="x">2023/7/18,37.5,32.8</span>
+<span class="x">2023/7/19,33.9,33.1</span>
+<span class="x">2023/7/20,32.6,33</span>
+<span class="x">2023/7/21,31.6,33.9</span>
+<span class="x">2023/7/22,33.4,33.9</span>
+<span class="x">2023/7/23,33.4,34.3</span>
+<span class="x">2023/7/24,35.7,33.2</span>
+<span class="x">2023/7/25,36.6,32.9</span>
+<span class="x">2023/7/26,37.7,31.3</span>
+<span class="x">2023/7/27,36.9,29.6</span>
+<span class="x">2023/7/28,36.2,32</span>
+<span class="x">2023/7/29,35.7,32.3</span>
+<span class="x">2023/7/30,36.6,32.6</span>
+<span class="x">2023/7/31,36.1,30.9</span>
+<span class="x">;</span>
+<span class="kr">run;</span>
 
-proc format ;
+<span class="kr">proc format </span>;
 value regionf
-1=&quot;Tokyo&quot;
-2=&quot;Naha&quot;;
-run;
+<span class="m">1</span>=<span class="s">&quot;Tokyo&quot;</span>
+<span class="m">2</span>=<span class="s">&quot;Naha&quot;</span><span class="kr">;</span>
+<span class="kr">run;</span>
 
-data max_temp;
-set raw;
-format region regionf.;
-label max_temp=&quot;maximum temperature (degree Celsius)&quot;
-      month=&quot;Month&quot;
-   region=&quot;Region&quot;;
+<span class="kr">data </span>max_temp;
+<span class="k">set</span> raw;
+<span class="k">format</span> region regionf.;
+<span class="k">label</span> max_temp=<span class="s">&quot;maximum temperature (degree Celsius)&quot;</span>
+      month=<span class="s">&quot;Month&quot;</span>
+   region=<span class="s">&quot;Region&quot;</span>;
 
-month=month(date);
-year=year(date);
-region=1; max_temp=tokyo;output;
-region=2; max_temp=naha; output;
-keep year month  date region max_temp;
-run;
+month=<span class="nb">month(</span>date);
+year=<span class="nb">year(</span>date);
+region=<span class="m">1</span>; max_temp=tokyo;<span class="k">output</span>;
+region=<span class="m">2</span>; max_temp=naha; <span class="k">output</span>;
+<span class="k">keep</span> year month  date region max_temp<span class="kr">;</span>
+<span class="kr">run;</span>
 </pre></div>
 </div>
 <p>code</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">title</span> <span class="s2">&quot;basic ridgeline plot&quot;</span><span class="p">;</span>
-<span class="n">ods</span> <span class="n">graphics</span> <span class="o">/</span> <span class="n">height</span><span class="o">=</span><span class="mi">15</span><span class="n">cm</span> <span class="n">width</span><span class="o">=</span><span class="mi">15</span><span class="n">cm</span> <span class="n">imagefmt</span><span class="o">=</span><span class="n">png</span> <span class="n">imagename</span><span class="o">=</span><span class="s2">&quot;ridge_simple&quot;</span> <span class="p">;</span>
-<span class="o">%</span><span class="n">ridgeline</span><span class="p">(</span>
-   <span class="n">data</span><span class="o">=</span><span class="n">max_temp</span><span class="p">(</span><span class="n">where</span><span class="o">=</span><span class="p">(</span><span class="n">region</span><span class="o">=</span><span class="mi">1</span><span class="p">)),</span>
-   <span class="n">x</span><span class="o">=</span><span class="n">month</span><span class="p">,</span>
-   <span class="n">y</span><span class="o">=</span><span class="n">max_temp</span><span class="p">,</span>
+<div class="highlight-SAS notranslate"><div class="highlight"><pre><span></span><span class="k">title</span> <span class="s">&quot;basic ridgeline plot&quot;</span>;
+ods graphics / height=15cm width=15cm imagefmt=png imagename=<span class="s">&quot;ridge_simple&quot;</span> ;
+<span class="nf">%ridgeline</span>(
+   data=max_temp(<span class="k">where</span>=(region=<span class="m">1</span>)),
+   <span class="k">x</span>=month,
+   y=max_temp,
 
-   <span class="n">yticks</span><span class="o">=</span><span class="mi">0</span> <span class="mi">5</span> <span class="mi">10</span> <span class="mi">15</span> <span class="mi">20</span> <span class="mi">25</span> <span class="mi">30</span> <span class="mi">35</span> <span class="mi">40</span><span class="p">,</span>
-   <span class="n">note</span><span class="o">=%</span><span class="n">nrstr</span><span class="p">(</span><span class="n">entrytitle</span> <span class="s1">&#39;your title here&#39;</span><span class="p">;</span>
-            <span class="n">entryfootnote</span> <span class="n">halign</span><span class="o">=</span><span class="n">left</span> <span class="s1">&#39;your footnote here&#39;</span><span class="p">;</span>
-            <span class="n">entryfootnote</span> <span class="n">halign</span><span class="o">=</span><span class="n">left</span> <span class="s1">&#39;your footnote here 2&#39;</span><span class="p">;)</span>
-               <span class="p">);</span>
+   yticks=<span class="m">0</span> <span class="m">5</span> <span class="m">10</span> <span class="m">15</span> <span class="m">20</span> <span class="m">25</span> <span class="m">30</span> <span class="m">35</span> <span class="m">40</span>,
+   note=<span class="nb">%nrstr</span>(entrytitle <span class="s">&#39;your title here&#39;</span>;
+            entryfootnote halign=left <span class="s">&#39;your footnote here&#39;</span>;
+            entryfootnote halign=left <span class="s">&#39;your footnote here 2&#39;</span>;)
+               );
 </pre></div>
 </div>
 <p>output</p>
@@ -616,16 +619,16 @@ run;
 <h3>grouped ridgeline plot<a class="headerlink" href="#grouped-ridgeline-plot" title="Permalink to this heading"></a></h3>
 <p>if group parameter is set,  density outline color will be defined based by group and fill appearance will be available.</p>
 <p>code</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">title</span> <span class="s2">&quot;grouped ridgeline plot&quot;</span><span class="p">;</span>
-<span class="n">ods</span> <span class="n">graphics</span> <span class="o">/</span> <span class="n">height</span><span class="o">=</span><span class="mi">15</span><span class="n">cm</span> <span class="n">width</span><span class="o">=</span><span class="mi">25</span><span class="n">cm</span> <span class="n">imagefmt</span><span class="o">=</span><span class="n">png</span> <span class="n">imagename</span><span class="o">=</span><span class="s2">&quot;ridge_group&quot;</span> <span class="p">;</span>
-<span class="o">%</span><span class="n">ridgeline</span><span class="p">(</span>
-   <span class="n">data</span><span class="o">=</span><span class="n">max_temp</span><span class="p">,</span>
-   <span class="n">x</span><span class="o">=</span><span class="n">month</span><span class="p">,</span>
-   <span class="n">y</span><span class="o">=</span><span class="n">max_temp</span><span class="p">,</span>
-   <span class="n">group</span><span class="o">=</span><span class="n">region</span><span class="p">,</span>
-   <span class="n">yticks</span><span class="o">=</span><span class="mi">0</span> <span class="mi">5</span> <span class="mi">10</span> <span class="mi">15</span> <span class="mi">20</span> <span class="mi">25</span> <span class="mi">30</span> <span class="mi">35</span> <span class="mi">40</span><span class="p">,</span>
-   <span class="n">legend</span><span class="o">=</span><span class="n">true</span>
-   <span class="p">);</span>
+<div class="highlight-SAS notranslate"><div class="highlight"><pre><span></span><span class="k">title</span> <span class="s">&quot;grouped ridgeline plot&quot;</span>;
+ods graphics / height=15cm width=25cm imagefmt=png imagename=<span class="s">&quot;ridge_group&quot;</span> ;
+<span class="nf">%ridgeline</span>(
+   data=max_temp,
+   <span class="k">x</span>=month,
+   y=max_temp,
+   <span class="k">group</span>=region,
+   yticks=<span class="m">0</span> <span class="m">5</span> <span class="m">10</span> <span class="m">15</span> <span class="m">20</span> <span class="m">25</span> <span class="m">30</span> <span class="m">35</span> <span class="m">40</span>,
+   legend=true
+   );
 </pre></div>
 </div>
 <p>output</p>
@@ -635,21 +638,21 @@ run;
 <p>this macro is supported displaying statistics, mean and quartile.
 Mean and quartile is displayed as line. the individual value is displayed as rug plot.</p>
 <p>code</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">title</span> <span class="s2">&quot;ridgeline plot with statistics&quot;</span><span class="p">;</span>
-<span class="n">ods</span> <span class="n">graphics</span> <span class="o">/</span><span class="n">reset</span><span class="o">=</span><span class="nb">all</span> <span class="n">height</span><span class="o">=</span><span class="mi">15</span><span class="n">cm</span> <span class="n">width</span><span class="o">=</span><span class="mi">25</span><span class="n">cm</span> <span class="n">imagename</span><span class="o">=</span><span class="s2">&quot;ridgeline_stat&quot;</span> <span class="n">imagefmt</span><span class="o">=</span><span class="n">png</span><span class="p">;</span>
+<div class="highlight-SAS notranslate"><div class="highlight"><pre><span></span><span class="k">title</span> <span class="s">&quot;ridgeline plot with statistics&quot;</span>;
+ods graphics /<span class="k">reset</span>=all height=15cm width=25cm imagename=<span class="s">&quot;ridgeline_stat&quot;</span> imagefmt=png;
 
-<span class="o">%</span><span class="n">ridgeline</span><span class="p">(</span>
-   <span class="n">data</span><span class="o">=</span><span class="n">max_temp</span><span class="p">(</span><span class="n">where</span><span class="o">=</span><span class="p">(</span><span class="n">region</span><span class="o">=</span><span class="mi">1</span><span class="p">)),</span>
-   <span class="n">x</span><span class="o">=</span><span class="n">month</span><span class="p">,</span>
-   <span class="n">y</span><span class="o">=</span><span class="n">max_temp</span><span class="p">,</span>
-   <span class="n">group</span><span class="o">=</span><span class="n">region</span><span class="p">,</span>
-   <span class="n">yticks</span><span class="o">=</span><span class="mi">0</span> <span class="mi">5</span> <span class="mi">10</span> <span class="mi">15</span> <span class="mi">20</span> <span class="mi">25</span> <span class="mi">30</span> <span class="mi">35</span> <span class="mi">40</span><span class="p">,</span>
-   <span class="n">legend</span><span class="o">=</span><span class="n">true</span><span class="p">,</span>
-   <span class="n">mean</span><span class="o">=</span><span class="n">true</span><span class="p">,</span>
-   <span class="n">quartile</span><span class="o">=</span><span class="n">true</span><span class="p">,</span>
-   <span class="n">rug</span><span class="o">=</span><span class="n">true</span><span class="p">,</span>
-   <span class="n">deletedata</span><span class="o">=</span><span class="n">false</span>
-   <span class="p">);</span>
+<span class="nf">%ridgeline</span>(
+   data=max_temp(<span class="k">where</span>=(region=<span class="m">1</span>)),
+   <span class="k">x</span>=month,
+   y=max_temp,
+   <span class="k">group</span>=region,
+   yticks=<span class="m">0</span> <span class="m">5</span> <span class="m">10</span> <span class="m">15</span> <span class="m">20</span> <span class="m">25</span> <span class="m">30</span> <span class="m">35</span> <span class="m">40</span>,
+   legend=true,
+   mean=true,
+   quartile=true,
+   rug=true,
+   deletedata=false
+   );
 </pre></div>
 </div>
 <p>output</p>
@@ -660,41 +663,41 @@ Mean and quartile is displayed as line. the individual value is displayed as rug
 <p>Group appearance and Quartile appearance is available when group parameter is set.</p>
 <p>group fill style</p>
 <p>code</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">title</span> <span class="s2">&quot;ridgeline plot with fill style&quot;</span><span class="p">;</span>
-<span class="n">ods</span> <span class="n">graphics</span> <span class="o">/</span><span class="n">reset</span><span class="o">=</span><span class="nb">all</span> <span class="n">height</span><span class="o">=</span><span class="mi">15</span><span class="n">cm</span> <span class="n">width</span><span class="o">=</span><span class="mi">25</span><span class="n">cm</span> <span class="n">imagename</span><span class="o">=</span><span class="s2">&quot;ridgeline_fill&quot;</span> <span class="n">imagefmt</span><span class="o">=</span><span class="n">png</span><span class="p">;</span>
+<div class="highlight-SAS notranslate"><div class="highlight"><pre><span></span><span class="k">title</span> <span class="s">&quot;ridgeline plot with fill style&quot;</span>;
+ods graphics /<span class="k">reset</span>=all height=15cm width=25cm imagename=<span class="s">&quot;ridgeline_fill&quot;</span> imagefmt=png;
 
-<span class="o">%</span><span class="n">ridgeline</span><span class="p">(</span>
-   <span class="n">data</span><span class="o">=</span><span class="n">max_temp</span><span class="p">,</span>
-   <span class="n">x</span><span class="o">=</span><span class="n">month</span><span class="p">,</span>
-   <span class="n">y</span><span class="o">=</span><span class="n">max_temp</span><span class="p">,</span>
-   <span class="n">group</span><span class="o">=</span><span class="n">region</span><span class="p">,</span>
-   <span class="n">yticks</span><span class="o">=</span><span class="mi">0</span> <span class="mi">5</span> <span class="mi">10</span> <span class="mi">15</span> <span class="mi">20</span> <span class="mi">25</span> <span class="mi">30</span> <span class="mi">35</span> <span class="mi">40</span><span class="p">,</span>
-   <span class="n">fillstyle</span><span class="o">=</span><span class="n">group</span><span class="p">,</span>
-   <span class="n">legend</span><span class="o">=</span><span class="n">true</span><span class="p">,</span>
-   <span class="n">mean</span><span class="o">=</span><span class="n">false</span><span class="p">,</span>
-   <span class="n">quartile</span><span class="o">=</span><span class="n">true</span><span class="p">,</span>
-   <span class="n">rug</span><span class="o">=</span><span class="n">true</span>
-   <span class="p">);</span>
+<span class="nf">%ridgeline</span>(
+   data=max_temp,
+   <span class="k">x</span>=month,
+   y=max_temp,
+   <span class="k">group</span>=region,
+   yticks=<span class="m">0</span> <span class="m">5</span> <span class="m">10</span> <span class="m">15</span> <span class="m">20</span> <span class="m">25</span> <span class="m">30</span> <span class="m">35</span> <span class="m">40</span>,
+   fillstyle=<span class="k">group</span>,
+   legend=true,
+   mean=false,
+   quartile=true,
+   rug=true
+   );
 </pre></div>
 </div>
 <p>output</p>
 <img alt="_images/ridgeline_fill1.svg" src="_images/ridgeline_fill1.svg" /><p>quartile fill style</p>
 <p>code</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">title</span> <span class="s2">&quot;ridgeline plot with quartile style&quot;</span><span class="p">;</span>
-<span class="n">ods</span> <span class="n">graphics</span> <span class="o">/</span><span class="n">reset</span><span class="o">=</span><span class="nb">all</span> <span class="n">height</span><span class="o">=</span><span class="mi">15</span><span class="n">cm</span> <span class="n">width</span><span class="o">=</span><span class="mi">25</span><span class="n">cm</span> <span class="n">imagename</span><span class="o">=</span><span class="s2">&quot;ridgeline_qtr&quot;</span> <span class="n">imagefmt</span><span class="o">=</span><span class="n">png</span><span class="p">;</span>
+<div class="highlight-SAS notranslate"><div class="highlight"><pre><span></span><span class="k">title</span> <span class="s">&quot;ridgeline plot with quartile style&quot;</span>;
+ods graphics /<span class="k">reset</span>=all height=15cm width=25cm imagename=<span class="s">&quot;ridgeline_qtr&quot;</span> imagefmt=png;
 
-<span class="o">%</span><span class="n">ridgeline</span><span class="p">(</span>
-   <span class="n">data</span><span class="o">=</span><span class="n">max_temp</span> <span class="p">(</span><span class="n">where</span><span class="o">=</span><span class="p">(</span><span class="n">region</span><span class="o">=</span><span class="mi">1</span><span class="p">)),</span>
-   <span class="n">x</span><span class="o">=</span><span class="n">month</span><span class="p">,</span>
-   <span class="n">y</span><span class="o">=</span><span class="n">max_temp</span><span class="p">,</span>
-   <span class="n">group</span><span class="o">=</span><span class="n">region</span><span class="p">,</span>
-   <span class="n">yticks</span><span class="o">=</span><span class="mi">0</span> <span class="mi">5</span> <span class="mi">10</span> <span class="mi">15</span> <span class="mi">20</span> <span class="mi">25</span> <span class="mi">30</span> <span class="mi">35</span> <span class="mi">40</span><span class="p">,</span>
-   <span class="n">fillstyle</span><span class="o">=</span><span class="n">quartile</span><span class="p">,</span>
-   <span class="n">legend</span><span class="o">=</span><span class="n">true</span><span class="p">,</span>
-   <span class="n">mean</span><span class="o">=</span><span class="n">false</span><span class="p">,</span>
-   <span class="n">quartile</span><span class="o">=</span><span class="n">true</span><span class="p">,</span>
-   <span class="n">rug</span><span class="o">=</span><span class="n">true</span>
-   <span class="p">);</span>
+<span class="nf">%ridgeline</span>(
+   data=max_temp (<span class="k">where</span>=(region=<span class="m">1</span>)),
+   <span class="k">x</span>=month,
+   y=max_temp,
+   <span class="k">group</span>=region,
+   yticks=<span class="m">0</span> <span class="m">5</span> <span class="m">10</span> <span class="m">15</span> <span class="m">20</span> <span class="m">25</span> <span class="m">30</span> <span class="m">35</span> <span class="m">40</span>,
+   fillstyle=quartile,
+   legend=true,
+   mean=false,
+   quartile=true,
+   rug=true
+   );
 </pre></div>
 </div>
 <img alt="_images/ridgeline_qtr1.svg" src="_images/ridgeline_qtr1.svg" /><p>quartile gradient style are as follows.</p>

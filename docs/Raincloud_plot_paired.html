@@ -6,6 +6,7 @@
   <title>Raincloud plot (paired) &mdash; SAS Plotter 1.3 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
 
   
   <!--[if lt IE 9]>
@@ -17,6 +18,8 @@
         <script src="_static/underscore.js"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/clipboard.min.js"></script>
+        <script src="_static/copybutton.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -354,142 +357,142 @@ default is True.</p>
 <div class="section" id="example">
 <h2>example<a class="headerlink" href="#example" title="Permalink to this heading"></a></h2>
 <p>output example can be executed using following code after loading SAS plotter.</p>
-<dl class="simple">
-<dt>code ::</dt><dd><p>ods listing gpath=&lt;your output path&gt;;
-filename exam url “<a class="reference external" href="https://github.com/Superman-jp/SAS_Plotter/raw/main/example/raincloudpaired_example.sas">https://github.com/Superman-jp/SAS_Plotter/raw/main/example/raincloudpaired_example.sas</a>” encoding=’UTF-8’;
-%include exam;</p>
-</dd>
-</dl>
+<p>code</p>
+<div class="highlight-SAS notranslate"><div class="highlight"><pre><span></span>ods listing gpath=<span class="s">&quot;your output path&quot;</span>;
+<span class="k">filename</span> exam url <span class="s">&quot;https://github.com/Superman-jp/SAS_Plotter/raw/main/example/raincloudpaired_example.sas&quot;</span> encoding=<span class="s">&#39;UTF-8&#39;</span>;
+<span class="nf">%include</span> exam;
+</pre></div>
+</div>
 <div class="section" id="simple-paired-raincloud-plot">
 <h3>Simple paired raincloud plot<a class="headerlink" href="#simple-paired-raincloud-plot" title="Permalink to this heading"></a></h3>
 <p>raw data</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">proc</span> <span class="nb">format</span><span class="p">;</span>
-   <span class="n">value</span> <span class="n">repeatf</span>
-   <span class="mi">1</span><span class="o">=</span><span class="s2">&quot;period 1&quot;</span>
-   <span class="mi">2</span><span class="o">=</span><span class="s2">&quot;period 2&quot;</span><span class="p">;</span>
+<div class="highlight-SAS notranslate"><div class="highlight"><pre><span></span><span class="kr">proc format;</span>
+   value repeatf
+   <span class="m">1</span>=<span class="s">&quot;period 1&quot;</span>
+   <span class="m">2</span>=<span class="s">&quot;period 2&quot;</span>;
 
-   <span class="n">value</span> <span class="n">seqf</span>
-   <span class="mi">1</span><span class="o">=</span><span class="s2">&quot;sequence A (placebo to drug A)&quot;</span>
-   <span class="mi">2</span><span class="o">=</span><span class="s2">&quot;sequence B (drug A to lacebo)&quot;</span>
-<span class="p">;</span>
+   value seqf
+   <span class="m">1</span>=<span class="s">&quot;sequence A (placebo to drug A)&quot;</span>
+   <span class="m">2</span>=<span class="s">&quot;sequence B (drug A to lacebo)&quot;</span>
+;
 
-<span class="n">value</span> <span class="n">trtf</span>
-<span class="mi">1</span><span class="o">=</span><span class="s2">&quot;Placebo&quot;</span>
-<span class="mi">2</span><span class="o">=</span><span class="s2">&quot;Drug A&quot;</span>
-<span class="p">;</span>
+value trtf
+<span class="m">1</span>=<span class="s">&quot;Placebo&quot;</span>
+<span class="m">2</span>=<span class="s">&quot;Drug A&quot;</span>
+;
 
-<span class="n">value</span> <span class="n">groupf</span>
-<span class="mi">1</span><span class="o">=</span><span class="s2">&quot;Factor XXX (-)&quot;</span>
-<span class="mi">2</span><span class="o">=</span><span class="s2">&quot;Factor XXX (+)&quot;</span><span class="p">;</span>
-<span class="n">run</span><span class="p">;</span>
+value groupf
+<span class="m">1</span>=<span class="s">&quot;Factor XXX (-)&quot;</span>
+<span class="m">2</span>=<span class="s">&quot;Factor XXX (+)&quot;</span><span class="kr">;</span>
+<span class="kr">run;</span>
 
-<span class="n">data</span> <span class="n">raincloudtest</span><span class="p">;</span>
-<span class="n">call</span> <span class="n">streaminit</span><span class="p">(</span><span class="mi">1234</span><span class="p">);</span>
-<span class="nb">format</span> <span class="n">repno</span> <span class="n">repeatf</span><span class="o">.</span> <span class="n">trt</span> <span class="n">seqf</span><span class="o">.</span><span class="p">;</span>
-<span class="n">label</span> <span class="n">response</span><span class="o">=</span><span class="s2">&quot;activity&quot;</span><span class="p">;</span>
+<span class="kr">data </span>raincloudtest;
+<span class="k">call</span> streaminit(<span class="m">1234</span>);
+<span class="k">format</span> repno repeatf. trt seqf.;
+<span class="k">label</span> response=<span class="s">&quot;activity&quot;</span>;
 
-<span class="n">do</span> <span class="n">trt</span><span class="o">=</span><span class="mi">1</span> <span class="n">to</span> <span class="mi">2</span><span class="p">;</span>
-<span class="n">do</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span> <span class="n">to</span> <span class="mi">100</span><span class="p">;</span>
-<span class="n">do</span> <span class="n">repno</span><span class="o">=</span><span class="mi">1</span> <span class="n">to</span> <span class="mi">2</span><span class="p">;</span>
-   <span class="n">usubjid</span><span class="o">=</span><span class="s2">&quot;A&quot;</span> <span class="o">||</span> <span class="n">strip</span><span class="p">(</span><span class="n">put</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">z3</span><span class="mf">.0</span><span class="p">));</span>
+<span class="k">do</span> trt=<span class="m">1</span> to <span class="m">2</span>;
+<span class="k">do</span> i=<span class="m">1</span> to <span class="m">100</span>;
+<span class="k">do</span> repno=<span class="m">1</span> to <span class="m">2</span>;
+   usubjid=<span class="s">&quot;A&quot;</span> || strip(<span class="k">put</span>(i,z3<span class="m">.0</span>));
 
-   <span class="k">if</span> <span class="n">trt</span><span class="o">=</span><span class="mi">1</span> <span class="ow">and</span> <span class="n">repno</span><span class="o">=</span><span class="mi">1</span> <span class="n">then</span> <span class="n">response</span><span class="o">=</span><span class="n">rand</span><span class="p">(</span><span class="s2">&quot;lognormal&quot;</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mf">0.2</span><span class="p">);</span>
-   <span class="k">else</span> <span class="k">if</span> <span class="n">trt</span><span class="o">=</span><span class="mi">1</span> <span class="ow">and</span> <span class="n">repno</span><span class="o">=</span><span class="mi">2</span> <span class="n">then</span> <span class="n">response</span><span class="o">=</span><span class="n">rand</span><span class="p">(</span><span class="s2">&quot;lognormal&quot;</span><span class="p">,</span><span class="mf">3.5</span><span class="p">,</span><span class="mf">0.23</span><span class="p">);</span>
-   <span class="k">else</span> <span class="k">if</span> <span class="n">trt</span><span class="o">=</span><span class="mi">2</span> <span class="ow">and</span> <span class="n">repno</span><span class="o">=</span><span class="mi">1</span> <span class="n">then</span> <span class="n">response</span><span class="o">=</span><span class="n">rand</span><span class="p">(</span><span class="s2">&quot;lognormal&quot;</span><span class="p">,</span><span class="mf">3.4</span><span class="p">,</span><span class="mf">0.21</span><span class="p">);</span>
-   <span class="k">else</span> <span class="k">if</span> <span class="n">trt</span><span class="o">=</span><span class="mi">2</span> <span class="ow">and</span> <span class="n">repno</span><span class="o">=</span><span class="mi">2</span> <span class="n">then</span> <span class="n">response</span><span class="o">=</span><span class="n">rand</span><span class="p">(</span><span class="s2">&quot;lognormal&quot;</span><span class="p">,</span><span class="mf">2.8</span><span class="p">,</span><span class="mf">0.17</span><span class="p">);</span>
+   <span class="k">if</span> trt=<span class="m">1</span> <span class="k">and</span> repno=<span class="m">1</span> <span class="k">then</span> response=rand(<span class="s">&quot;lognormal&quot;</span>,<span class="m">3</span>,<span class="m">0.2</span>);
+   <span class="k">else</span> <span class="k">if</span> trt=<span class="m">1</span> <span class="k">and</span> repno=<span class="m">2</span> <span class="k">then</span> response=rand(<span class="s">&quot;lognormal&quot;</span>,<span class="m">3.5</span>,<span class="m">0.23</span>);
+   <span class="k">else</span> <span class="k">if</span> trt=<span class="m">2</span> <span class="k">and</span> repno=<span class="m">1</span> <span class="k">then</span> response=rand(<span class="s">&quot;lognormal&quot;</span>,<span class="m">3.4</span>,<span class="m">0.21</span>);
+   <span class="k">else</span> <span class="k">if</span> trt=<span class="m">2</span> <span class="k">and</span> repno=<span class="m">2</span> <span class="k">then</span> response=rand(<span class="s">&quot;lognormal&quot;</span>,<span class="m">2.8</span>,<span class="m">0.17</span>);
 
-   <span class="k">if</span> <span class="n">response</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="n">then</span> <span class="n">response</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
-   <span class="n">output</span><span class="p">;</span>
-<span class="n">end</span><span class="p">;</span>
-<span class="n">end</span><span class="p">;</span>
-<span class="n">end</span><span class="p">;</span>
-<span class="n">run</span><span class="p">;</span>
+   <span class="k">if</span> response &lt; <span class="m">0</span> <span class="k">then</span> response=<span class="m">0</span>;
+   <span class="k">output</span>;
+<span class="k">end</span>;
+<span class="k">end</span>;
+<span class="k">end</span><span class="kr">;</span>
+<span class="kr">run;</span>
 </pre></div>
 </div>
 <p>code</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">title</span> <span class="s2">&quot; paired raincloud plot (vertical)&quot;</span><span class="p">;</span>
-<span class="n">ods</span> <span class="n">graphics</span> <span class="o">/</span> <span class="n">reset</span><span class="o">=</span><span class="nb">all</span> <span class="n">imagefmt</span><span class="o">=</span><span class="n">png</span> <span class="n">imagename</span><span class="o">=</span><span class="s2">&quot;rainpair_simple_v&quot;</span> <span class="n">width</span><span class="o">=</span><span class="mi">20</span><span class="n">cm</span> <span class="n">height</span><span class="o">=</span><span class="mi">20</span><span class="n">cm</span><span class="p">;</span>
+<div class="highlight-SAS notranslate"><div class="highlight"><pre><span></span><span class="k">title</span> <span class="s">&quot; paired raincloud plot (vertical)&quot;</span>;
+ods graphics / <span class="k">reset</span>=all imagefmt=png imagename=<span class="s">&quot;rainpair_simple_v&quot;</span> width=20cm height=20cm;
 
-<span class="o">%</span><span class="n">RainCloudPaired</span><span class="p">(</span>
-      <span class="n">data</span><span class="o">=</span><span class="n">raincloudtest</span><span class="p">,</span>
-      <span class="n">x</span><span class="o">=</span><span class="n">trt</span><span class="p">,</span>
-      <span class="n">y</span><span class="o">=</span><span class="n">response</span><span class="p">,</span>
-      <span class="n">group</span><span class="o">=</span><span class="n">trt</span><span class="p">,</span>
-      <span class="n">repeat</span><span class="o">=</span><span class="n">repno</span><span class="p">,</span>
-      <span class="n">subject</span><span class="o">=</span><span class="n">usubjid</span><span class="p">,</span>
-      <span class="n">orient</span><span class="o">=</span><span class="n">v</span><span class="p">,</span>
-      <span class="n">yticks</span><span class="o">=</span> <span class="mi">0</span> <span class="mi">20</span> <span class="mi">40</span> <span class="mi">60</span> <span class="mi">80</span><span class="p">,</span>
-      <span class="n">note</span><span class="o">=%</span><span class="n">nrstr</span><span class="p">(</span><span class="n">entrytitle</span> <span class="s1">&#39;your title here&#39;</span><span class="p">;</span>
-               <span class="n">entryfootnote</span> <span class="n">halign</span><span class="o">=</span><span class="n">left</span> <span class="s1">&#39;your footnote here&#39;</span><span class="p">;</span>
-               <span class="n">entryfootnote</span> <span class="n">halign</span><span class="o">=</span><span class="n">left</span> <span class="s1">&#39;your footnote here 2&#39;</span><span class="p">;)</span>
-<span class="p">);</span>
+<span class="nf">%RainCloudPaired</span>(
+      data=raincloudtest,
+      <span class="k">x</span>=trt,
+      y=response,
+      <span class="k">group</span>=trt,
+      repeat=repno,
+      subject=usubjid,
+      orient=v,
+      yticks= <span class="m">0</span> <span class="m">20</span> <span class="m">40</span> <span class="m">60</span> <span class="m">80</span>,
+      note=<span class="nb">%nrstr</span>(entrytitle <span class="s">&#39;your title here&#39;</span>;
+               entryfootnote halign=left <span class="s">&#39;your footnote here&#39;</span>;
+               entryfootnote halign=left <span class="s">&#39;your footnote here 2&#39;</span>;)
+);
 </pre></div>
 </div>
 <p>output</p>
 <img alt="_images/rainpair_simple_v1.svg" src="_images/rainpair_simple_v1.svg" /><p>when orient parameter is set “h”, the orientation of plot is changed horizontal (x=response, y=category)</p>
 <p>code</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">title</span> <span class="s2">&quot;paired raincloud plot (horizontal)&quot;</span><span class="p">;</span>
-<span class="n">ods</span> <span class="n">graphics</span> <span class="o">/</span> <span class="n">reset</span><span class="o">=</span><span class="nb">all</span> <span class="n">imagefmt</span><span class="o">=</span><span class="n">png</span> <span class="n">imagename</span><span class="o">=</span><span class="s2">&quot;rainpair_simple_h&quot;</span> <span class="n">width</span><span class="o">=</span><span class="mi">20</span><span class="n">cm</span> <span class="n">height</span><span class="o">=</span><span class="mi">20</span><span class="n">cm</span><span class="p">;</span>
+<div class="highlight-SAS notranslate"><div class="highlight"><pre><span></span><span class="k">title</span> <span class="s">&quot;paired raincloud plot (horizontal)&quot;</span>;
+ods graphics / <span class="k">reset</span>=all imagefmt=png imagename=<span class="s">&quot;rainpair_simple_h&quot;</span> width=20cm height=20cm;
 
-<span class="o">%</span><span class="n">RainCloudPaired</span><span class="p">(</span>
-      <span class="n">data</span><span class="o">=</span><span class="n">raincloudtest</span><span class="p">,</span>
-      <span class="n">x</span><span class="o">=</span><span class="n">trt</span><span class="p">,</span>
-      <span class="n">y</span><span class="o">=</span><span class="n">response</span><span class="p">,</span>
-      <span class="n">group</span><span class="o">=</span><span class="n">trt</span><span class="p">,</span>
-      <span class="n">repeat</span><span class="o">=</span><span class="n">repno</span><span class="p">,</span>
-      <span class="n">subject</span><span class="o">=</span><span class="n">usubjid</span><span class="p">,</span>
-      <span class="n">orient</span><span class="o">=</span><span class="n">h</span><span class="p">,</span>
-      <span class="n">scale</span><span class="o">=</span><span class="n">width</span><span class="p">,</span>
-      <span class="n">yticks</span><span class="o">=</span> <span class="mi">0</span> <span class="mi">20</span> <span class="mi">40</span> <span class="mi">60</span> <span class="mi">80</span><span class="p">,</span>
-      <span class="n">note</span><span class="o">=%</span><span class="n">nrstr</span><span class="p">(</span><span class="n">entrytitle</span> <span class="s1">&#39;your title here&#39;</span><span class="p">;</span>
-               <span class="n">entryfootnote</span> <span class="n">halign</span><span class="o">=</span><span class="n">left</span> <span class="s1">&#39;your footnote here&#39;</span><span class="p">;</span>
-               <span class="n">entryfootnote</span> <span class="n">halign</span><span class="o">=</span><span class="n">left</span> <span class="s1">&#39;your footnote here 2&#39;</span><span class="p">;)</span>
-<span class="p">);</span>
+<span class="nf">%RainCloudPaired</span>(
+      data=raincloudtest,
+      <span class="k">x</span>=trt,
+      y=response,
+      <span class="k">group</span>=trt,
+      repeat=repno,
+      subject=usubjid,
+      orient=h,
+      scale=width,
+      yticks= <span class="m">0</span> <span class="m">20</span> <span class="m">40</span> <span class="m">60</span> <span class="m">80</span>,
+      note=<span class="nb">%nrstr</span>(entrytitle <span class="s">&#39;your title here&#39;</span>;
+               entryfootnote halign=left <span class="s">&#39;your footnote here&#39;</span>;
+               entryfootnote halign=left <span class="s">&#39;your footnote here 2&#39;</span>;)
+);
 </pre></div>
 </div>
 <img alt="_images/rainpair_simple_h1.svg" src="_images/rainpair_simple_h1.svg" /></div>
 <div class="section" id="grouped-raincloud-plot">
 <h3>Grouped raincloud plot<a class="headerlink" href="#grouped-raincloud-plot" title="Permalink to this heading"></a></h3>
 <p>raw data</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="n">raincloudtest2</span><span class="p">;</span>
+<div class="highlight-SAS notranslate"><div class="highlight"><pre><span></span><span class="kr">data </span>raincloudtest2;
 
-<span class="n">call</span> <span class="n">streaminit</span><span class="p">(</span><span class="mi">1234</span><span class="p">);</span>
-<span class="nb">format</span> <span class="n">trt</span> <span class="n">trtf</span><span class="o">.</span> <span class="nb">type</span> <span class="n">groupf</span><span class="o">.</span><span class="p">;</span>
-<span class="n">label</span> <span class="n">response</span><span class="o">=</span><span class="s2">&quot;log(AUC)&quot;</span> <span class="n">cat</span><span class="o">=</span><span class="s2">&quot;population&quot;</span><span class="p">;</span>
+<span class="k">call</span> streaminit(<span class="m">1234</span>);
+<span class="k">format</span> trt trtf. type groupf.;
+<span class="k">label</span> response=<span class="s">&quot;log(AUC)&quot;</span> cat=<span class="s">&quot;population&quot;</span>;
 
-<span class="n">cat</span><span class="o">=</span><span class="s2">&quot;FAS&quot;</span><span class="p">;</span>
-<span class="n">do</span> <span class="nb">type</span><span class="o">=</span><span class="mi">1</span> <span class="n">to</span> <span class="mi">2</span><span class="p">;</span>
-<span class="n">do</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span> <span class="n">to</span> <span class="mi">100</span><span class="p">;</span>
-<span class="n">do</span> <span class="n">trt</span><span class="o">=</span><span class="mi">1</span> <span class="n">to</span> <span class="mi">2</span><span class="p">;</span>
+cat=<span class="s">&quot;FAS&quot;</span>;
+<span class="k">do</span> type=<span class="m">1</span> to <span class="m">2</span>;
+<span class="k">do</span> i=<span class="m">1</span> to <span class="m">100</span>;
+<span class="k">do</span> trt=<span class="m">1</span> to <span class="m">2</span>;
 
-   <span class="n">usubjid</span><span class="o">=</span><span class="s2">&quot;A&quot;</span> <span class="o">||</span> <span class="n">strip</span><span class="p">(</span><span class="n">put</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">z3</span><span class="mf">.0</span><span class="p">));</span>
+   usubjid=<span class="s">&quot;A&quot;</span> || strip(<span class="k">put</span>(i,z3<span class="m">.0</span>));
 
-   <span class="k">if</span> <span class="nb">type</span><span class="o">=</span><span class="mi">1</span> <span class="ow">and</span> <span class="n">trt</span><span class="o">=</span><span class="mi">1</span> <span class="n">then</span> <span class="n">response</span><span class="o">=</span><span class="n">rand</span><span class="p">(</span><span class="s2">&quot;normal&quot;</span><span class="p">,</span><span class="mf">0.8</span><span class="p">,</span><span class="mf">0.15</span><span class="p">);</span>
-   <span class="k">else</span> <span class="k">if</span> <span class="nb">type</span><span class="o">=</span><span class="mi">1</span> <span class="ow">and</span> <span class="n">trt</span><span class="o">=</span><span class="mi">2</span> <span class="n">then</span> <span class="n">response</span><span class="o">=</span><span class="n">rand</span><span class="p">(</span><span class="s2">&quot;normal&quot;</span><span class="p">,</span><span class="mf">1.3</span><span class="p">,</span><span class="mf">0.25</span><span class="p">);</span>
-   <span class="k">else</span> <span class="k">if</span> <span class="nb">type</span><span class="o">=</span><span class="mi">2</span> <span class="ow">and</span> <span class="n">trt</span><span class="o">=</span><span class="mi">1</span> <span class="n">then</span> <span class="n">response</span><span class="o">=</span><span class="n">rand</span><span class="p">(</span><span class="s2">&quot;normal&quot;</span><span class="p">,</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">0.17</span><span class="p">);</span>
-   <span class="k">else</span> <span class="k">if</span> <span class="nb">type</span><span class="o">=</span><span class="mi">2</span> <span class="ow">and</span> <span class="n">trt</span><span class="o">=</span><span class="mi">2</span> <span class="n">then</span> <span class="n">response</span><span class="o">=</span><span class="n">rand</span><span class="p">(</span><span class="s2">&quot;normal&quot;</span><span class="p">,</span><span class="mf">2.1</span> <span class="p">,</span><span class="mf">0.22</span><span class="p">);</span>
-   <span class="n">output</span><span class="p">;</span>
-<span class="n">end</span><span class="p">;</span>
-<span class="n">end</span><span class="p">;</span>
-<span class="n">end</span><span class="p">;</span>
-<span class="n">run</span><span class="p">;</span>
+   <span class="k">if</span> type=<span class="m">1</span> <span class="k">and</span> trt=<span class="m">1</span> <span class="k">then</span> response=rand(<span class="s">&quot;normal&quot;</span>,<span class="m">0.8</span>,<span class="m">0.15</span>);
+   <span class="k">else</span> <span class="k">if</span> type=<span class="m">1</span> <span class="k">and</span> trt=<span class="m">2</span> <span class="k">then</span> response=rand(<span class="s">&quot;normal&quot;</span>,<span class="m">1.3</span>,<span class="m">0.25</span>);
+   <span class="k">else</span> <span class="k">if</span> type=<span class="m">2</span> <span class="k">and</span> trt=<span class="m">1</span> <span class="k">then</span> response=rand(<span class="s">&quot;normal&quot;</span>,<span class="m">1.0</span>,<span class="m">0.17</span>);
+   <span class="k">else</span> <span class="k">if</span> type=<span class="m">2</span> <span class="k">and</span> trt=<span class="m">2</span> <span class="k">then</span> response=rand(<span class="s">&quot;normal&quot;</span>,<span class="m">2.1</span> ,<span class="m">0.22</span>);
+   <span class="k">output</span>;
+<span class="k">end</span>;
+<span class="k">end</span>;
+<span class="k">end</span><span class="kr">;</span>
+<span class="kr">run;</span>
 </pre></div>
 </div>
 <p>code</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">title</span> <span class="s2">&quot;paired raincloud plot (grouped)&quot;</span><span class="p">;</span>
-<span class="n">ods</span> <span class="n">graphics</span> <span class="o">/</span> <span class="n">reset</span><span class="o">=</span><span class="nb">all</span> <span class="n">imagefmt</span><span class="o">=</span><span class="n">png</span> <span class="n">imagename</span><span class="o">=</span><span class="s2">&quot;rainpaird_group&quot;</span> <span class="n">width</span><span class="o">=</span><span class="mi">20</span><span class="n">cm</span> <span class="n">height</span><span class="o">=</span><span class="mi">15</span><span class="n">cm</span><span class="p">;</span>
+<div class="highlight-SAS notranslate"><div class="highlight"><pre><span></span><span class="k">title</span> <span class="s">&quot;paired raincloud plot (grouped)&quot;</span>;
+ods graphics / <span class="k">reset</span>=all imagefmt=png imagename=<span class="s">&quot;rainpaird_group&quot;</span> width=20cm height=15cm;
 
-<span class="o">%</span><span class="n">RainCloudPaired</span><span class="p">(</span>
-      <span class="n">data</span><span class="o">=</span><span class="n">raincloudtest2</span><span class="p">,</span>
-      <span class="n">x</span><span class="o">=</span><span class="n">cat</span><span class="p">,</span>
-      <span class="n">y</span><span class="o">=</span><span class="n">response</span><span class="p">,</span>
-      <span class="n">group</span><span class="o">=</span><span class="nb">type</span><span class="p">,</span>
-      <span class="n">repeat</span><span class="o">=</span><span class="n">trt</span><span class="p">,</span>
-      <span class="n">subject</span><span class="o">=</span><span class="n">usubjid</span><span class="p">,</span>
-      <span class="n">orient</span><span class="o">=</span><span class="n">v</span><span class="p">,</span>
-      <span class="n">legend</span><span class="o">=</span><span class="n">true</span><span class="p">,</span>
-      <span class="n">yticks</span><span class="o">=</span><span class="mi">0</span> <span class="mf">0.5</span> <span class="mi">1</span> <span class="mf">1.5</span> <span class="mi">2</span> <span class="mf">2.5</span> <span class="mf">3.0</span>
-<span class="p">);</span>
+<span class="nf">%RainCloudPaired</span>(
+      data=raincloudtest2,
+      <span class="k">x</span>=cat,
+      y=response,
+      <span class="k">group</span>=type,
+      repeat=trt,
+      subject=usubjid,
+      orient=v,
+      legend=true,
+      yticks=<span class="m">0</span> <span class="m">0.5</span> <span class="m">1</span> <span class="m">1.5</span> <span class="m">2</span> <span class="m">2.5</span> <span class="m">3.0</span>
+);
 </pre></div>
 </div>
 <p>output</p>
@@ -498,21 +501,21 @@ filename exam url “<a class="reference external" href="https://github.com/Supe
 <h3>Connect parameter<a class="headerlink" href="#connect-parameter" title="Permalink to this heading"></a></h3>
 <p>If connect parameter is set “True”, means of each group will be connected.</p>
 <p>code</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">title</span> <span class="s2">&quot;paired raincloud plot with connect line&quot;</span><span class="p">;</span>
-<span class="n">ods</span> <span class="n">graphics</span> <span class="o">/</span> <span class="n">reset</span><span class="o">=</span><span class="nb">all</span> <span class="n">imagefmt</span><span class="o">=</span><span class="n">png</span> <span class="n">imagename</span><span class="o">=</span><span class="s2">&quot;rainpaird_group_connect&quot;</span> <span class="n">width</span><span class="o">=</span><span class="mi">20</span><span class="n">cm</span> <span class="n">height</span><span class="o">=</span><span class="mi">15</span><span class="n">cm</span><span class="p">;</span>
+<div class="highlight-SAS notranslate"><div class="highlight"><pre><span></span><span class="k">title</span> <span class="s">&quot;paired raincloud plot with connect line&quot;</span>;
+ods graphics / <span class="k">reset</span>=all imagefmt=png imagename=<span class="s">&quot;rainpaird_group_connect&quot;</span> width=20cm height=15cm;
 
-<span class="o">%</span><span class="n">RainCloudPaired</span><span class="p">(</span>
-      <span class="n">data</span><span class="o">=</span><span class="n">raincloudtest2</span><span class="p">,</span>
-      <span class="n">x</span><span class="o">=</span><span class="n">cat</span><span class="p">,</span>
-      <span class="n">y</span><span class="o">=</span><span class="n">response</span><span class="p">,</span>
-      <span class="n">group</span><span class="o">=</span><span class="nb">type</span><span class="p">,</span>
-      <span class="n">repeat</span><span class="o">=</span><span class="n">trt</span><span class="p">,</span>
-      <span class="n">subject</span><span class="o">=</span><span class="n">usubjid</span><span class="p">,</span>
-      <span class="n">orient</span><span class="o">=</span><span class="n">v</span><span class="p">,</span>
-      <span class="n">legend</span><span class="o">=</span><span class="n">true</span><span class="p">,</span>
-      <span class="n">connect</span><span class="o">=</span><span class="n">true</span><span class="p">,</span>
-      <span class="n">yticks</span><span class="o">=</span><span class="mi">0</span> <span class="mf">0.5</span> <span class="mi">1</span> <span class="mf">1.5</span> <span class="mi">2</span> <span class="mf">2.5</span> <span class="mf">3.0</span>
-<span class="p">);</span>
+<span class="nf">%RainCloudPaired</span>(
+      data=raincloudtest2,
+      <span class="k">x</span>=cat,
+      y=response,
+      <span class="k">group</span>=type,
+      repeat=trt,
+      subject=usubjid,
+      orient=v,
+      legend=true,
+      connect=true,
+      yticks=<span class="m">0</span> <span class="m">0.5</span> <span class="m">1</span> <span class="m">1.5</span> <span class="m">2</span> <span class="m">2.5</span> <span class="m">3.0</span>
+);
 </pre></div>
 </div>
 <p>output</p>

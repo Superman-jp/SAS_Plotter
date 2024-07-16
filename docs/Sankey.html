@@ -6,6 +6,7 @@
   <title>Sankey diagram (Alluvial Diagram) &mdash; SAS Plotter 1.3 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
 
   
   <!--[if lt IE 9]>
@@ -17,6 +18,8 @@
         <script src="_static/underscore.js"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/clipboard.min.js"></script>
+        <script src="_static/copybutton.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -448,67 +451,67 @@ default is True.</p>
 <div class="section" id="example">
 <h2>example<a class="headerlink" href="#example" title="Permalink to this heading"></a></h2>
 <p>output example can be executed using following code after loading SAS plotter.</p>
-<dl class="simple">
-<dt>code ::</dt><dd><p>ods listing gpath=&lt;your output path&gt;;
-filename exam url “<a class="reference external" href="https://github.com/Superman-jp/SAS_Plotter/raw/main/example/sankey_example.sas">https://github.com/Superman-jp/SAS_Plotter/raw/main/example/sankey_example.sas</a>” encoding=’UTF-8’;
-%include exam;</p>
-</dd>
-</dl>
+<p>code</p>
+<div class="highlight-SAS notranslate"><div class="highlight"><pre><span></span>ods listing gpath=<span class="s">&quot;your output path&quot;</span>;
+<span class="k">filename</span> exam url <span class="s">&quot;https://github.com/Superman-jp/SAS_Plotter/raw/main/example/sankey_example.sas&quot;</span> encoding=<span class="s">&#39;UTF-8&#39;</span>;
+<span class="nf">%include</span> exam;
+</pre></div>
+</div>
 <div class="section" id="basic-sankey-diagram">
 <h3>Basic sankey diagram<a class="headerlink" href="#basic-sankey-diagram" title="Permalink to this heading"></a></h3>
 <p>the regimen changes of the patients is displayed as sankey diagram using this macro.
 variables (day0, day30, day60, day120) are selected regimen of the patient at 0 ,30, 60 and 120days.
 these variables is set the regimen types.</p>
 <p>raw data</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">proc</span> <span class="nb">format</span><span class="p">;</span>
-<span class="n">value</span> <span class="n">domainf</span>
-<span class="mi">1</span><span class="o">=</span><span class="s2">&quot;day0&quot;</span>
-<span class="mi">2</span><span class="o">=</span><span class="s2">&quot;day30&quot;</span>
-<span class="mi">3</span><span class="o">=</span><span class="s2">&quot;day60&quot;</span>
-<span class="mi">4</span><span class="o">=</span><span class="s2">&quot;day120&quot;</span><span class="p">;</span>
+<div class="highlight-SAS notranslate"><div class="highlight"><pre><span></span><span class="kr">proc format;</span>
+value domainf
+<span class="m">1</span>=<span class="s">&quot;day0&quot;</span>
+<span class="m">2</span>=<span class="s">&quot;day30&quot;</span>
+<span class="m">3</span>=<span class="s">&quot;day60&quot;</span>
+<span class="m">4</span>=<span class="s">&quot;day120&quot;</span>;
 
-<span class="n">value</span> <span class="n">nodef</span>
-<span class="mi">0</span><span class="o">=</span><span class="s2">&quot;Drug A&quot;</span>
-<span class="mi">1</span><span class="o">=</span><span class="s2">&quot;Drug B&quot;</span>
-<span class="mi">2</span><span class="o">=</span><span class="s2">&quot;Drug C&quot;</span>
-<span class="mi">3</span><span class="o">=</span><span class="s2">&quot;Drug D&quot;</span>
-<span class="mi">4</span><span class="o">=</span><span class="s2">&quot;Drug E&quot;</span>
-<span class="p">;</span>
-<span class="n">run</span><span class="p">;</span>
-<span class="n">data</span> <span class="n">raw</span><span class="p">;</span>
-<span class="n">usubjid</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span>
-<span class="nb">input</span> <span class="n">day0</span> <span class="n">day30</span> <span class="n">day60</span> <span class="n">day120</span><span class="p">;</span>
-<span class="nb">format</span> <span class="n">day0</span> <span class="n">day30</span> <span class="n">day60</span> <span class="n">day120</span> <span class="n">nodef</span><span class="o">.</span><span class="p">;</span>
-<span class="n">cards</span><span class="p">;</span>
-<span class="mi">0</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span>
-<span class="mi">0</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span>
-<span class="mi">0</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span>
-<span class="mi">2</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">4</span>
-<span class="mi">2</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">4</span>
-<span class="mi">2</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">4</span>
-<span class="mi">2</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">4</span>
-<span class="mi">2</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">4</span>
-<span class="mi">2</span> <span class="mi">1</span> <span class="mi">4</span> <span class="mi">3</span>
-<span class="mi">4</span> <span class="mi">3</span> <span class="mi">2</span> <span class="mi">1</span>
-<span class="mi">4</span> <span class="mi">3</span> <span class="mi">2</span> <span class="mi">1</span>
-<span class="mi">4</span> <span class="mi">3</span> <span class="mi">2</span> <span class="mi">1</span>
-<span class="mi">4</span> <span class="mi">3</span> <span class="mi">2</span> <span class="mi">1</span>
-<span class="p">;</span>
-<span class="n">run</span><span class="p">;</span>
+value nodef
+<span class="m">0</span>=<span class="s">&quot;Drug A&quot;</span>
+<span class="m">1</span>=<span class="s">&quot;Drug B&quot;</span>
+<span class="m">2</span>=<span class="s">&quot;Drug C&quot;</span>
+<span class="m">3</span>=<span class="s">&quot;Drug D&quot;</span>
+<span class="m">4</span>=<span class="s">&quot;Drug E&quot;</span>
+<span class="kr">;</span>
+<span class="kr">run;</span>
+<span class="kr">data </span>raw;
+usubjid<span class="m">+1</span>;
+<span class="k">input</span> day0 day30 day60 day120;
+<span class="k">format</span> day0 day30 day60 day120 nodef.;
+<span class="k">cards;</span>
+<span class="x">0 2 3 4</span>
+<span class="x">0 2 3 4</span>
+<span class="x">0 2 3 4</span>
+<span class="x">2 1 2 4</span>
+<span class="x">2 1 2 4</span>
+<span class="x">2 1 2 4</span>
+<span class="x">2 1 2 4</span>
+<span class="x">2 1 2 4</span>
+<span class="x">2 1 4 3</span>
+<span class="x">4 3 2 1</span>
+<span class="x">4 3 2 1</span>
+<span class="x">4 3 2 1</span>
+<span class="x">4 3 2 1</span>
+<span class="x">;</span>
+<span class="kr">run;</span>
 </pre></div>
 </div>
 <p>code</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ods</span> <span class="n">graphics</span> <span class="o">/</span> <span class="n">height</span><span class="o">=</span><span class="mi">15</span><span class="n">cm</span> <span class="n">width</span><span class="o">=</span><span class="mi">20</span><span class="n">cm</span> <span class="n">imagefmt</span><span class="o">=</span><span class="n">png</span> <span class="n">imagename</span><span class="o">=</span><span class="s2">&quot;sankey_basic&quot;</span> <span class="n">noborder</span><span class="p">;</span>
-<span class="n">title</span> <span class="s2">&quot;Bacic Sankey&quot;</span><span class="p">;</span>
+<div class="highlight-SAS notranslate"><div class="highlight"><pre><span></span>ods graphics / height=15cm width=20cm imagefmt=png imagename=<span class="s">&quot;sankey_basic&quot;</span> noborder;
+<span class="k">title</span> <span class="s">&quot;Bacic Sankey&quot;</span>;
 
-<span class="o">%</span><span class="n">sankey</span><span class="p">(</span>
-   <span class="n">data</span><span class="o">=</span><span class="n">raw</span><span class="p">,</span>
-   <span class="n">domain</span><span class="o">=</span><span class="n">day0</span> <span class="n">day30</span> <span class="n">day60</span> <span class="n">day120</span><span class="p">,</span>
-   <span class="n">domainfmt</span><span class="o">=</span><span class="n">domainf</span><span class="p">,</span>
-   <span class="n">note</span><span class="o">=%</span><span class="n">nrstr</span><span class="p">(</span><span class="n">entrytitle</span> <span class="s1">&#39;your title here&#39;</span><span class="p">;</span>
-            <span class="n">entryfootnote</span> <span class="n">halign</span><span class="o">=</span><span class="n">left</span> <span class="s1">&#39;your footnote here&#39;</span><span class="p">;</span>
-            <span class="n">entryfootnote</span> <span class="n">halign</span><span class="o">=</span><span class="n">left</span> <span class="s1">&#39;your footnote here 2&#39;</span><span class="p">;)</span>
-   <span class="p">);</span>
+<span class="nf">%sankey</span>(
+   data=raw,
+   domain=day0 day30 day60 day120,
+   domainfmt=domainf,
+   note=<span class="nb">%nrstr</span>(entrytitle <span class="s">&#39;your title here&#39;</span>;
+            entryfootnote halign=left <span class="s">&#39;your footnote here&#39;</span>;
+            entryfootnote halign=left <span class="s">&#39;your footnote here 2&#39;</span>;)
+   );
 </pre></div>
 </div>
 <img alt="_images/sankey_basic1.svg" src="_images/sankey_basic1.svg" /></div>
@@ -519,22 +522,22 @@ when the domain format values are adjusted, then interval of the domain will be 
 <p>if the format is changed described below, the plot of the previous section “basic sankey diagram”
 is as follows.</p>
 <p>code</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">proc</span> <span class="nb">format</span><span class="p">;</span>
-<span class="n">value</span> <span class="n">domain2f</span>
-<span class="mi">1</span><span class="o">=</span><span class="s2">&quot;day0&quot;</span>
-<span class="mi">2</span><span class="o">=</span><span class="s2">&quot;day30&quot;</span>
-<span class="mi">3</span><span class="o">=</span><span class="s2">&quot;day60&quot;</span>
-<span class="mi">5</span><span class="o">=</span><span class="s2">&quot;day120&quot;</span><span class="p">;</span>
-<span class="n">run</span><span class="p">;</span>
+<div class="highlight-SAS notranslate"><div class="highlight"><pre><span></span><span class="kr">proc format;</span>
+value domain2f
+<span class="m">1</span>=<span class="s">&quot;day0&quot;</span>
+<span class="m">2</span>=<span class="s">&quot;day30&quot;</span>
+<span class="m">3</span>=<span class="s">&quot;day60&quot;</span>
+<span class="m">5</span>=<span class="s">&quot;day120&quot;</span><span class="kr">;</span>
+<span class="kr">run;</span>
 
-<span class="n">ods</span> <span class="n">graphics</span> <span class="o">/</span> <span class="n">height</span><span class="o">=</span><span class="mi">15</span><span class="n">cm</span> <span class="n">width</span><span class="o">=</span><span class="mi">20</span><span class="n">cm</span> <span class="n">imagefmt</span><span class="o">=</span><span class="n">png</span> <span class="n">imagename</span><span class="o">=</span><span class="s2">&quot;sankey_change_intervals&quot;</span> <span class="n">noborder</span><span class="p">;</span>
-<span class="n">title</span> <span class="s2">&quot;Adjust the domain interval&quot;</span><span class="p">;</span>
-<span class="n">ods</span> <span class="n">html</span><span class="p">;</span>
-<span class="o">%</span><span class="n">sankey</span><span class="p">(</span>
-   <span class="n">data</span><span class="o">=</span><span class="n">raw</span><span class="p">,</span>
-   <span class="n">domain</span><span class="o">=</span><span class="n">day0</span> <span class="n">day30</span> <span class="n">day60</span> <span class="n">day120</span><span class="p">,</span>
-   <span class="n">domainfmt</span><span class="o">=</span><span class="n">domain2f</span>
-<span class="p">);</span>
+ods graphics / height=15cm width=20cm imagefmt=png imagename=<span class="s">&quot;sankey_change_intervals&quot;</span> noborder;
+<span class="k">title</span> <span class="s">&quot;Adjust the domain interval&quot;</span>;
+ods html;
+<span class="nf">%sankey</span>(
+   data=raw,
+   domain=day0 day30 day60 day120,
+   domainfmt=domain2f
+);
 </pre></div>
 </div>
 <img alt="_images/sankey_change_intervals1.svg" src="_images/sankey_change_intervals1.svg" /></div>
@@ -545,36 +548,36 @@ is as follows.</p>
 <p>By default, the color of the nodes is defined based on the input data and domain variables.
 when the input dataset is modified, the color of the nodes might be changed even though same node.</p>
 <p>code</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">proc</span> <span class="nb">format</span><span class="p">;</span>
-<span class="n">value</span> <span class="n">domain3f</span>
-<span class="mi">1</span><span class="o">=</span><span class="s2">&quot;day0&quot;</span>
-<span class="mi">2</span><span class="o">=</span><span class="s2">&quot;day60&quot;</span>
-<span class="p">;</span>
-<span class="n">run</span><span class="p">;</span>
-<span class="n">ods</span> <span class="n">graphics</span> <span class="o">/</span> <span class="n">height</span><span class="o">=</span><span class="mi">15</span><span class="n">cm</span> <span class="n">width</span><span class="o">=</span><span class="mi">20</span><span class="n">cm</span> <span class="n">imagefmt</span><span class="o">=</span><span class="n">png</span> <span class="n">imagename</span><span class="o">=</span><span class="s2">&quot;sankey_not_set_nodefmt&quot;</span> <span class="n">noborder</span><span class="p">;</span>
-<span class="n">title</span> <span class="s2">&quot;not set nodefmt parameter&quot;</span><span class="p">;</span>
+<div class="highlight-SAS notranslate"><div class="highlight"><pre><span></span><span class="kr">proc format;</span>
+value domain3f
+<span class="m">1</span>=<span class="s">&quot;day0&quot;</span>
+<span class="m">2</span>=<span class="s">&quot;day60&quot;</span>
+<span class="kr">;</span>
+<span class="kr">run;</span>
+ods graphics / height=15cm width=20cm imagefmt=png imagename=<span class="s">&quot;sankey_not_set_nodefmt&quot;</span> noborder;
+<span class="k">title</span> <span class="s">&quot;not set nodefmt parameter&quot;</span>;
 
-<span class="o">%</span><span class="n">sankey</span><span class="p">(</span>
-   <span class="n">data</span><span class="o">=</span><span class="n">raw</span><span class="p">,</span>
-   <span class="n">domain</span><span class="o">=</span><span class="n">day0</span> <span class="n">day60</span><span class="p">,</span>
-   <span class="n">domainfmt</span><span class="o">=</span><span class="n">domain3f</span><span class="p">,</span>
-   <span class="n">legend</span><span class="o">=</span><span class="n">true</span>
-<span class="p">);</span>
+<span class="nf">%sankey</span>(
+   data=raw,
+   domain=day0 day60,
+   domainfmt=domain3f,
+   legend=true
+);
 </pre></div>
 </div>
 <img alt="_images/sankey_not_set_nodefmt1.svg" src="_images/sankey_not_set_nodefmt1.svg" /><p>if nodefmt parameter is set, the color of the nodes defined based on the node format. The node color is independent from dataset.
 All elements of the format is displayed in the legend if legend parameter is true.</p>
 <p>code</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ods</span> <span class="n">graphics</span> <span class="o">/</span> <span class="n">height</span><span class="o">=</span><span class="mi">15</span><span class="n">cm</span> <span class="n">width</span><span class="o">=</span><span class="mi">20</span><span class="n">cm</span> <span class="n">imagefmt</span><span class="o">=</span><span class="n">png</span> <span class="n">imagename</span><span class="o">=</span><span class="s2">&quot;sankey_set_nodefmt&quot;</span> <span class="n">noborder</span><span class="p">;</span>
-<span class="n">title</span> <span class="s2">&quot;set nodefmt parameter&quot;</span><span class="p">;</span>
+<div class="highlight-SAS notranslate"><div class="highlight"><pre><span></span>ods graphics / height=15cm width=20cm imagefmt=png imagename=<span class="s">&quot;sankey_set_nodefmt&quot;</span> noborder;
+<span class="k">title</span> <span class="s">&quot;set nodefmt parameter&quot;</span>;
 
-<span class="o">%</span><span class="n">sankey</span><span class="p">(</span>
-   <span class="n">data</span><span class="o">=</span><span class="n">raw</span><span class="p">,</span>
-   <span class="n">domain</span><span class="o">=</span><span class="n">day0</span> <span class="n">day60</span><span class="p">,</span>
-   <span class="n">domainfmt</span><span class="o">=</span><span class="n">domain3f</span><span class="p">,</span>
-   <span class="n">nodefmt</span><span class="o">=</span><span class="n">nodef</span><span class="p">,</span>
-   <span class="n">legend</span><span class="o">=</span><span class="n">true</span>
-<span class="p">);</span>
+<span class="nf">%sankey</span>(
+   data=raw,
+   domain=day0 day60,
+   domainfmt=domain3f,
+   nodefmt=nodef,
+   legend=true
+);
 </pre></div>
 </div>
 <img alt="_images/sankey_set_nodefmt1.svg" src="_images/sankey_set_nodefmt1.svg" /></div>
@@ -584,27 +587,27 @@ All elements of the format is displayed in the legend if legend parameter is tru
 If the nodeattrs or linkattrs are set, the fill color of the all the nodes or links will be changed.
 Nodefmt parameter will be ignored.</p>
 <p>code</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ods</span> <span class="n">graphics</span> <span class="o">/</span> <span class="n">height</span><span class="o">=</span><span class="mi">15</span><span class="n">cm</span> <span class="n">width</span><span class="o">=</span><span class="mi">20</span><span class="n">cm</span> <span class="n">imagefmt</span><span class="o">=</span><span class="n">png</span> <span class="n">imagename</span><span class="o">=</span><span class="s2">&quot;sankey_set_nodeattrs&quot;</span> <span class="n">noborder</span><span class="p">;</span>
-<span class="n">title</span> <span class="s2">&quot;change_the_node color&quot;</span><span class="p">;</span>
-<span class="n">ods</span> <span class="n">html</span><span class="p">;</span>
-<span class="o">%</span><span class="n">sankey</span><span class="p">(</span>
-   <span class="n">data</span><span class="o">=</span><span class="n">raw</span><span class="p">,</span>
-   <span class="n">domain</span><span class="o">=</span><span class="n">day0</span> <span class="n">day30</span> <span class="n">day60</span> <span class="n">day120</span><span class="p">,</span>
-   <span class="n">domainfmt</span><span class="o">=</span><span class="n">domainf</span><span class="p">,</span>
-   <span class="n">nodeattrs</span><span class="o">=</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">grey</span><span class="p">)</span>
-<span class="p">);</span>
+<div class="highlight-SAS notranslate"><div class="highlight"><pre><span></span>ods graphics / height=15cm width=20cm imagefmt=png imagename=<span class="s">&quot;sankey_set_nodeattrs&quot;</span> noborder;
+<span class="k">title</span> <span class="s">&quot;change_the_node color&quot;</span>;
+ods html;
+<span class="nf">%sankey</span>(
+   data=raw,
+   domain=day0 day30 day60 day120,
+   domainfmt=domainf,
+   nodeattrs=(color=grey)
+);
 </pre></div>
 </div>
 <img alt="_images/sankey_set_nodeattrs1.svg" src="_images/sankey_set_nodeattrs1.svg" /><p>code</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ods</span> <span class="n">graphics</span> <span class="o">/</span> <span class="n">height</span><span class="o">=</span><span class="mi">15</span><span class="n">cm</span> <span class="n">width</span><span class="o">=</span><span class="mi">20</span><span class="n">cm</span> <span class="n">imagefmt</span><span class="o">=</span><span class="n">png</span> <span class="n">imagename</span><span class="o">=</span><span class="s2">&quot;sankey_set_linkattrs&quot;</span> <span class="n">noborder</span><span class="p">;</span>
-<span class="n">title</span> <span class="s2">&quot;change the link color&quot;</span><span class="p">;</span>
-<span class="n">ods</span> <span class="n">html</span><span class="p">;</span>
-<span class="o">%</span><span class="n">sankey</span><span class="p">(</span>
-   <span class="n">data</span><span class="o">=</span><span class="n">raw</span><span class="p">,</span>
-   <span class="n">domain</span><span class="o">=</span><span class="n">day0</span> <span class="n">day30</span> <span class="n">day60</span> <span class="n">day120</span><span class="p">,</span>
-   <span class="n">domainfmt</span><span class="o">=</span><span class="n">domainf</span><span class="p">,</span>
-   <span class="n">linkattrs</span><span class="o">=</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">skyblue</span> <span class="n">transparency</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
-<span class="p">);</span>
+<div class="highlight-SAS notranslate"><div class="highlight"><pre><span></span>ods graphics / height=15cm width=20cm imagefmt=png imagename=<span class="s">&quot;sankey_set_linkattrs&quot;</span> noborder;
+<span class="k">title</span> <span class="s">&quot;change the link color&quot;</span>;
+ods html;
+<span class="nf">%sankey</span>(
+   data=raw,
+   domain=day0 day30 day60 day120,
+   domainfmt=domainf,
+   linkattrs=(color=skyblue transparency=<span class="m">0.7</span>)
+);
 </pre></div>
 </div>
 <img alt="_images/sankey_set_linkattrs1.svg" src="_images/sankey_set_linkattrs1.svg" /></div>
@@ -613,18 +616,18 @@ Nodefmt parameter will be ignored.</p>
 <p>The domaintextattrs, nodetextattrs and linktextattrs parameters are useful for modify text appearance of
 domains, nodes and links.</p>
 <p>code</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ods</span> <span class="n">graphics</span> <span class="o">/</span> <span class="n">height</span><span class="o">=</span><span class="mi">15</span><span class="n">cm</span> <span class="n">width</span><span class="o">=</span><span class="mi">20</span><span class="n">cm</span> <span class="n">imagefmt</span><span class="o">=</span><span class="n">png</span> <span class="n">imagename</span><span class="o">=</span><span class="s2">&quot;sankey_set_textattrs&quot;</span> <span class="n">noborder</span><span class="p">;</span>
-<span class="n">title</span> <span class="s2">&quot;change the text appearance&quot;</span><span class="p">;</span>
-<span class="n">ods</span> <span class="n">html</span><span class="p">;</span>
-<span class="o">%</span><span class="n">sankey</span><span class="p">(</span>
-   <span class="n">data</span><span class="o">=</span><span class="n">raw</span><span class="p">,</span>
-   <span class="n">domain</span><span class="o">=</span><span class="n">day0</span> <span class="n">day30</span> <span class="n">day60</span> <span class="n">day120</span><span class="p">,</span>
-   <span class="n">domainfmt</span><span class="o">=</span><span class="n">domainf</span><span class="p">,</span>
-   <span class="n">domaintextattrs</span><span class="o">=</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">red</span> <span class="n">size</span><span class="o">=</span><span class="mi">12</span><span class="p">),</span>
-   <span class="n">nodetextattrs</span><span class="o">=</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">blue</span> <span class="n">size</span><span class="o">=</span><span class="mi">12</span><span class="p">),</span>
-   <span class="n">linktext_offset</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span>
-   <span class="n">linktextattrs</span><span class="o">=</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">green</span> <span class="n">size</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
-<span class="p">);</span>
+<div class="highlight-SAS notranslate"><div class="highlight"><pre><span></span>ods graphics / height=15cm width=20cm imagefmt=png imagename=<span class="s">&quot;sankey_set_textattrs&quot;</span> noborder;
+<span class="k">title</span> <span class="s">&quot;change the text appearance&quot;</span>;
+ods html;
+<span class="nf">%sankey</span>(
+   data=raw,
+   domain=day0 day30 day60 day120,
+   domainfmt=domainf,
+   domaintextattrs=(color=red size=<span class="m">12</span>),
+   nodetextattrs=(color=blue size=<span class="m">12</span>),
+   linktext_offset=<span class="m">0.05</span>,
+   linktextattrs=(color=green size=<span class="m">8</span>)
+);
 </pre></div>
 </div>
 <img alt="_images/sankey_set_textattrs1.svg" src="_images/sankey_set_textattrs1.svg" /></div>
@@ -636,159 +639,159 @@ The not-highlighted links are set grey color and the link texts are not displaye
 the nodes is specified conditional statement (subset-if).</p>
 <p>the nodes described below are available to specify the focus links.</p>
 <p>raw data</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>proc format;
+<div class="highlight-SAS notranslate"><div class="highlight"><pre><span></span><span class="kr">proc format;</span>
 
 value druglist
-1=&quot;Drug A&quot;
-2=&quot;Drug B&quot;
-3=&quot;Drug C&quot;
-4=&quot;Drug D&quot;
-99=&quot;Lost to follow-up&quot;;
+<span class="m">1</span>=<span class="s">&quot;Drug A&quot;</span>
+<span class="m">2</span>=<span class="s">&quot;Drug B&quot;</span>
+<span class="m">3</span>=<span class="s">&quot;Drug C&quot;</span>
+<span class="m">4</span>=<span class="s">&quot;Drug D&quot;</span>
+<span class="m">99</span>=<span class="s">&quot;Lost to follow-up&quot;</span>;
 
 value timef
-1=&quot;Day 0&quot;
-2=&quot;Day 30&quot;
-3=&quot;Day 60&quot;
-4=&quot;day 90&quot;
-;
-run;
+<span class="m">1</span>=<span class="s">&quot;Day 0&quot;</span>
+<span class="m">2</span>=<span class="s">&quot;Day 30&quot;</span>
+<span class="m">3</span>=<span class="s">&quot;Day 60&quot;</span>
+<span class="m">4</span>=<span class="s">&quot;day 90&quot;</span>
+<span class="kr">;</span>
+<span class="kr">run;</span>
 
-data drug_switch;
-length usubjid $10 Day0 Day30 Day60 Day90 8;
-format Day0 Day30 Day60 Day90 druglist.;
-input usubjid $ Day0 Day30 Day60 Day90;
-datalines;
-A001 1 1 1 3
-A002 1 1 1 4
-A003 1 1 1 4
-A004 1 1 1 4
-A005 1 2 1 4
-A006 1 3 1 4
-A007 1 3 1 4
-A008 1 4 1 99
-A009 1 4 1 99
-A010 1 1 2 2
-A011 1 1 2 3
-A012 1 1 2 3
-A013 1 1 2 3
-A014 1 2 2 4
-A015 1 2 2 4
-A016 1 3 2 4
-A017 1 1 3 1
-A018 1 1 3 2
-A019 1 2 3 4
-A020 1 2 3 4
-A021 1 2 3 4
-A022 1 3 3 4
-A023 1 3 3 99
-A024 2 4 2 4
-A025 2 1 3 3
-A026 2 1 3 3
-A027 2 1 4 1
-A028 2 1 4 2
-A029 2 2 4 3
-A030 2 2 4 4
-A031 2 2 4 4
-A032 2 3 4 4
-A033 2 3 4 4
-A034 2 99 99 99
-A035 2 99 99 99
-A036 3 1 4 2
-A037 3 2 4 4
-A038 3 3 4 99
-A039 3 1 99 99
-A040 3 1 99 99
-A041 3 99 99 99
-A042 4 4 3 99
-A043 4 1 99 99
-A044 4 2 99 99
-;
-run;
+<span class="kr">data </span>drug_switch;
+<span class="k">length</span> usubjid $<span class="m">10</span> Day0 Day30 Day60 Day90 <span class="m">8</span>;
+<span class="k">format</span> Day0 Day30 Day60 Day90 druglist.;
+<span class="k">input</span> usubjid $ Day0 Day30 Day60 Day90;
+<span class="k">datalines;</span>
+<span class="x">A001 1 1 1 3</span>
+<span class="x">A002 1 1 1 4</span>
+<span class="x">A003 1 1 1 4</span>
+<span class="x">A004 1 1 1 4</span>
+<span class="x">A005 1 2 1 4</span>
+<span class="x">A006 1 3 1 4</span>
+<span class="x">A007 1 3 1 4</span>
+<span class="x">A008 1 4 1 99</span>
+<span class="x">A009 1 4 1 99</span>
+<span class="x">A010 1 1 2 2</span>
+<span class="x">A011 1 1 2 3</span>
+<span class="x">A012 1 1 2 3</span>
+<span class="x">A013 1 1 2 3</span>
+<span class="x">A014 1 2 2 4</span>
+<span class="x">A015 1 2 2 4</span>
+<span class="x">A016 1 3 2 4</span>
+<span class="x">A017 1 1 3 1</span>
+<span class="x">A018 1 1 3 2</span>
+<span class="x">A019 1 2 3 4</span>
+<span class="x">A020 1 2 3 4</span>
+<span class="x">A021 1 2 3 4</span>
+<span class="x">A022 1 3 3 4</span>
+<span class="x">A023 1 3 3 99</span>
+<span class="x">A024 2 4 2 4</span>
+<span class="x">A025 2 1 3 3</span>
+<span class="x">A026 2 1 3 3</span>
+<span class="x">A027 2 1 4 1</span>
+<span class="x">A028 2 1 4 2</span>
+<span class="x">A029 2 2 4 3</span>
+<span class="x">A030 2 2 4 4</span>
+<span class="x">A031 2 2 4 4</span>
+<span class="x">A032 2 3 4 4</span>
+<span class="x">A033 2 3 4 4</span>
+<span class="x">A034 2 99 99 99</span>
+<span class="x">A035 2 99 99 99</span>
+<span class="x">A036 3 1 4 2</span>
+<span class="x">A037 3 2 4 4</span>
+<span class="x">A038 3 3 4 99</span>
+<span class="x">A039 3 1 99 99</span>
+<span class="x">A040 3 1 99 99</span>
+<span class="x">A041 3 99 99 99</span>
+<span class="x">A042 4 4 3 99</span>
+<span class="x">A043 4 1 99 99</span>
+<span class="x">A044 4 2 99 99</span>
+<span class="x">;</span>
+<span class="kr">run;</span>
 </pre></div>
 </div>
 <div class="section" id="example-1-links-whose-source-node-is-1-drug-a">
 <h4>example 1: links whose source_node is 1 (Drug A)<a class="headerlink" href="#example-1-links-whose-source-node-is-1-drug-a" title="Permalink to this heading"></a></h4>
 <p>code</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ods</span> <span class="n">graphics</span> <span class="o">/</span> <span class="n">height</span><span class="o">=</span><span class="mi">15</span><span class="n">cm</span> <span class="n">width</span><span class="o">=</span><span class="mi">20</span><span class="n">cm</span> <span class="n">imagefmt</span><span class="o">=</span><span class="n">png</span> <span class="n">imagename</span><span class="o">=</span><span class="s2">&quot;sankey_focus1&quot;</span> <span class="n">noborder</span><span class="p">;</span>
-<span class="n">title</span> <span class="s2">&quot;focus parameter example 1&quot;</span><span class="p">;</span>
-<span class="o">%</span><span class="n">sankey</span><span class="p">(</span>
-   <span class="n">data</span><span class="o">=</span><span class="n">drug_switch</span><span class="p">,</span>
-   <span class="n">domain</span><span class="o">=</span><span class="n">day0</span> <span class="n">day30</span> <span class="n">day60</span> <span class="n">day90</span><span class="p">,</span>
-   <span class="n">domainfmt</span><span class="o">=</span><span class="n">timef</span><span class="p">,</span>
-   <span class="n">focus</span><span class="o">=</span><span class="p">(</span><span class="n">source_node</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
-   <span class="n">gap</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-   <span class="n">reverse</span><span class="o">=</span><span class="n">true</span><span class="p">,</span>
-   <span class="n">nodewidth</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
-   <span class="n">nodename</span><span class="o">=</span><span class="n">false</span><span class="p">,</span>
-   <span class="n">stat</span><span class="o">=</span><span class="n">freq</span><span class="p">,</span>
-   <span class="n">legend</span><span class="o">=</span><span class="n">true</span><span class="p">,</span>
-   <span class="n">linktext_offset</span><span class="o">=</span><span class="mf">0.03</span><span class="p">,</span>
-   <span class="n">palette</span><span class="o">=</span><span class="n">sns</span>
-<span class="p">);</span>
+<div class="highlight-SAS notranslate"><div class="highlight"><pre><span></span>ods graphics / height=15cm width=20cm imagefmt=png imagename=<span class="s">&quot;sankey_focus1&quot;</span> noborder;
+<span class="k">title</span> <span class="s">&quot;focus parameter example 1&quot;</span>;
+<span class="nf">%sankey</span>(
+   data=drug_switch,
+   domain=day0 day30 day60 day90,
+   domainfmt=timef,
+   focus=(source_node=<span class="m">1</span>),
+   gap=<span class="m">1</span>,
+   reverse=true,
+   nodewidth=<span class="m">0.1</span>,
+   nodename=false,
+   stat=freq,
+   legend=true,
+   linktext_offset=<span class="m">0.03</span>,
+   palette=sns
+);
 </pre></div>
 </div>
 <img alt="_images/sankey_focus11.svg" src="_images/sankey_focus11.svg" /></div>
 <div class="section" id="example-2-links-whose-target-node-is-5-lost-to-followup">
 <h4>example 2: links whose target_node is 5 (Lost to followup)<a class="headerlink" href="#example-2-links-whose-target-node-is-5-lost-to-followup" title="Permalink to this heading"></a></h4>
 <p>code</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ods</span> <span class="n">graphics</span> <span class="o">/</span> <span class="n">height</span><span class="o">=</span><span class="mi">15</span><span class="n">cm</span> <span class="n">width</span><span class="o">=</span><span class="mi">20</span><span class="n">cm</span> <span class="n">imagefmt</span><span class="o">=</span><span class="n">png</span> <span class="n">imagename</span><span class="o">=</span><span class="s2">&quot;sankey_focus2&quot;</span> <span class="n">noborder</span><span class="p">;</span>
-<span class="n">title</span> <span class="s2">&quot;focus parameter example 2&quot;</span><span class="p">;</span>
-<span class="o">%</span><span class="n">sankey</span><span class="p">(</span>
-   <span class="n">data</span><span class="o">=</span><span class="n">drug_switch</span><span class="p">,</span>
-   <span class="n">domain</span><span class="o">=</span><span class="n">day0</span> <span class="n">day30</span> <span class="n">day60</span> <span class="n">day90</span><span class="p">,</span>
-   <span class="n">domainfmt</span><span class="o">=</span><span class="n">timef</span><span class="p">,</span>
-   <span class="n">focus</span><span class="o">=</span><span class="p">(</span><span class="n">target_node</span><span class="o">=</span><span class="mi">99</span><span class="p">),</span>
-   <span class="n">gap</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-   <span class="n">reverse</span><span class="o">=</span><span class="n">true</span><span class="p">,</span>
-   <span class="n">nodewidth</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
-   <span class="n">nodename</span><span class="o">=</span><span class="n">false</span><span class="p">,</span>
-   <span class="n">stat</span><span class="o">=</span><span class="n">freq</span><span class="p">,</span>
-   <span class="n">legend</span><span class="o">=</span><span class="n">true</span><span class="p">,</span>
-   <span class="n">linktext_offset</span><span class="o">=</span><span class="mf">0.03</span><span class="p">,</span>
-   <span class="n">palette</span><span class="o">=</span><span class="n">sns</span><span class="p">);</span>
+<div class="highlight-SAS notranslate"><div class="highlight"><pre><span></span>ods graphics / height=15cm width=20cm imagefmt=png imagename=<span class="s">&quot;sankey_focus2&quot;</span> noborder;
+<span class="k">title</span> <span class="s">&quot;focus parameter example 2&quot;</span>;
+<span class="nf">%sankey</span>(
+   data=drug_switch,
+   domain=day0 day30 day60 day90,
+   domainfmt=timef,
+   focus=(target_node=<span class="m">99</span>),
+   gap=<span class="m">1</span>,
+   reverse=true,
+   nodewidth=<span class="m">0.1</span>,
+   nodename=false,
+   stat=freq,
+   legend=true,
+   linktext_offset=<span class="m">0.03</span>,
+   palette=sns);
 </pre></div>
 </div>
 <img alt="_images/sankey_focus21.svg" src="_images/sankey_focus21.svg" /></div>
 <div class="section" id="example-3-links-whose-domain-is-2-day-30">
 <h4>example 3: links whose domain is 2 (Day 30)<a class="headerlink" href="#example-3-links-whose-domain-is-2-day-30" title="Permalink to this heading"></a></h4>
 <p>code</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ods</span> <span class="n">graphics</span> <span class="o">/</span> <span class="n">height</span><span class="o">=</span><span class="mi">15</span><span class="n">cm</span> <span class="n">width</span><span class="o">=</span><span class="mi">20</span><span class="n">cm</span> <span class="n">imagefmt</span><span class="o">=</span><span class="n">png</span> <span class="n">imagename</span><span class="o">=</span><span class="s2">&quot;sankey_focus3&quot;</span> <span class="n">noborder</span><span class="p">;</span>
-<span class="n">title</span> <span class="s2">&quot;focus parameter example 3&quot;</span><span class="p">;</span>
+<div class="highlight-SAS notranslate"><div class="highlight"><pre><span></span>ods graphics / height=15cm width=20cm imagefmt=png imagename=<span class="s">&quot;sankey_focus3&quot;</span> noborder;
+<span class="k">title</span> <span class="s">&quot;focus parameter example 3&quot;</span>;
 
-<span class="o">%</span><span class="n">sankey</span><span class="p">(</span>
-   <span class="n">data</span><span class="o">=</span><span class="n">drug_switch</span><span class="p">,</span>
-   <span class="n">domain</span><span class="o">=</span><span class="n">day0</span> <span class="n">day30</span> <span class="n">day60</span> <span class="n">day90</span><span class="p">,</span>
-   <span class="n">domainfmt</span><span class="o">=</span><span class="n">timef</span><span class="p">,</span>
-   <span class="n">focus</span><span class="o">=</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span>
-   <span class="n">gap</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-   <span class="n">reverse</span><span class="o">=</span><span class="n">true</span><span class="p">,</span>
-   <span class="n">nodewidth</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
-   <span class="n">nodename</span><span class="o">=</span><span class="n">false</span><span class="p">,</span>
-   <span class="n">stat</span><span class="o">=</span><span class="n">freq</span><span class="p">,</span>
-   <span class="n">legend</span><span class="o">=</span><span class="n">true</span><span class="p">,</span>
-   <span class="n">linktext_offset</span><span class="o">=</span><span class="mf">0.03</span><span class="p">,</span>
-   <span class="n">palette</span><span class="o">=</span><span class="n">sns</span><span class="p">);</span>
+<span class="nf">%sankey</span>(
+   data=drug_switch,
+   domain=day0 day30 day60 day90,
+   domainfmt=timef,
+   focus=(domain=<span class="m">2</span>),
+   gap=<span class="m">1</span>,
+   reverse=true,
+   nodewidth=<span class="m">0.1</span>,
+   nodename=false,
+   stat=freq,
+   legend=true,
+   linktext_offset=<span class="m">0.03</span>,
+   palette=sns);
 </pre></div>
 </div>
 <img alt="_images/sankey_focus31.svg" src="_images/sankey_focus31.svg" /></div>
 <div class="section" id="example-4-multiple-condition">
 <h4>example 4: multiple condition<a class="headerlink" href="#example-4-multiple-condition" title="Permalink to this heading"></a></h4>
 <p>code</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ods</span> <span class="n">graphics</span> <span class="o">/</span> <span class="n">height</span><span class="o">=</span><span class="mi">15</span><span class="n">cm</span> <span class="n">width</span><span class="o">=</span><span class="mi">20</span><span class="n">cm</span> <span class="n">imagefmt</span><span class="o">=</span><span class="n">png</span> <span class="n">imagename</span><span class="o">=</span><span class="s2">&quot;sankey_focus4&quot;</span> <span class="n">noborder</span><span class="p">;</span>
-<span class="n">title</span> <span class="s2">&quot;focus parameter example 4&quot;</span><span class="p">;</span>
-<span class="o">%</span><span class="n">sankey</span><span class="p">(</span>
-   <span class="n">data</span><span class="o">=</span><span class="n">drug_switch</span><span class="p">,</span>
-   <span class="n">domain</span><span class="o">=</span><span class="n">day0</span> <span class="n">day30</span> <span class="n">day60</span> <span class="n">day90</span><span class="p">,</span>
-   <span class="n">domainfmt</span><span class="o">=</span><span class="n">timef</span><span class="p">,</span>
-   <span class="n">focus</span><span class="o">=</span><span class="p">((</span><span class="n">domain</span><span class="o">=</span><span class="mi">1</span> <span class="ow">and</span> <span class="n">source_node</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">next_domain</span><span class="o">=</span><span class="mi">4</span> <span class="ow">and</span> <span class="n">target_node</span><span class="o">=</span><span class="mi">99</span><span class="p">)),</span>
-   <span class="n">gap</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-   <span class="n">reverse</span><span class="o">=</span><span class="n">true</span><span class="p">,</span>
-   <span class="n">nodewidth</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
-   <span class="n">nodename</span><span class="o">=</span><span class="n">false</span><span class="p">,</span>
-   <span class="n">stat</span><span class="o">=</span><span class="n">freq</span><span class="p">,</span>
-   <span class="n">legend</span><span class="o">=</span><span class="n">true</span><span class="p">,</span>
-   <span class="n">linktext_offset</span><span class="o">=</span><span class="mf">0.03</span><span class="p">,</span>
-   <span class="n">palette</span><span class="o">=</span><span class="n">sns</span><span class="p">);</span>
+<div class="highlight-SAS notranslate"><div class="highlight"><pre><span></span>ods graphics / height=15cm width=20cm imagefmt=png imagename=<span class="s">&quot;sankey_focus4&quot;</span> noborder;
+<span class="k">title</span> <span class="s">&quot;focus parameter example 4&quot;</span>;
+<span class="nf">%sankey</span>(
+   data=drug_switch,
+   domain=day0 day30 day60 day90,
+   domainfmt=timef,
+   focus=((domain=<span class="m">1</span> <span class="k">and</span> source_node=<span class="m">2</span>) <span class="k">or</span> (next_domain=<span class="m">4</span> <span class="k">and</span> target_node=<span class="m">99</span>)),
+   gap=<span class="m">1</span>,
+   reverse=true,
+   nodewidth=<span class="m">0.1</span>,
+   nodename=false,
+   stat=freq,
+   legend=true,
+   linktext_offset=<span class="m">0.03</span>,
+   palette=sns);
 </pre></div>
 </div>
 <img alt="_images/sankey_focus41.svg" src="_images/sankey_focus41.svg" /></div>
@@ -798,24 +801,24 @@ run;
 <p>when the endfollowup parameter is set value of lost followup,
 percentage followup each domain will be displayed below the sankey diagram.</p>
 <p>code</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ods</span> <span class="n">graphics</span> <span class="o">/</span> <span class="n">height</span><span class="o">=</span><span class="mi">15</span><span class="n">cm</span> <span class="n">width</span><span class="o">=</span><span class="mi">20</span><span class="n">cm</span> <span class="n">imagefmt</span><span class="o">=</span><span class="n">png</span> <span class="n">imagename</span><span class="o">=</span><span class="s2">&quot;sankey_endfollowup&quot;</span> <span class="n">noborder</span><span class="p">;</span>
-<span class="n">title</span> <span class="s2">&quot;percentage of Followup&quot;</span><span class="p">;</span>
-<span class="o">%</span><span class="n">sankey</span><span class="p">(</span>
-   <span class="n">data</span><span class="o">=</span><span class="n">drug_switch</span><span class="p">,</span>
-   <span class="n">domain</span><span class="o">=</span><span class="n">day0</span> <span class="n">day30</span> <span class="n">day60</span> <span class="n">day90</span><span class="p">,</span>
-   <span class="n">domainfmt</span><span class="o">=</span><span class="n">timef</span><span class="p">,</span>
-   <span class="n">gap</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-   <span class="n">reverse</span><span class="o">=</span><span class="n">true</span><span class="p">,</span>
-   <span class="n">nodewidth</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
-   <span class="n">nodename</span><span class="o">=</span><span class="n">false</span><span class="p">,</span>
-   <span class="n">endfollowup</span><span class="o">=</span><span class="mi">99</span><span class="p">,</span>
-   <span class="n">stat</span><span class="o">=</span><span class="n">freq</span><span class="p">,</span>
-   <span class="n">legend</span><span class="o">=</span><span class="n">true</span><span class="p">,</span>
+<div class="highlight-SAS notranslate"><div class="highlight"><pre><span></span>ods graphics / height=15cm width=20cm imagefmt=png imagename=<span class="s">&quot;sankey_endfollowup&quot;</span> noborder;
+<span class="k">title</span> <span class="s">&quot;percentage of Followup&quot;</span>;
+<span class="nf">%sankey</span>(
+   data=drug_switch,
+   domain=day0 day30 day60 day90,
+   domainfmt=timef,
+   gap=<span class="m">1</span>,
+   reverse=true,
+   nodewidth=<span class="m">0.1</span>,
+   nodename=false,
+   endfollowup=<span class="m">99</span>,
+   stat=freq,
+   legend=true,
 
-   <span class="n">note</span><span class="o">=%</span><span class="n">nrstr</span><span class="p">(</span><span class="n">entrytitle</span> <span class="s1">&#39;your title here&#39;</span><span class="p">;</span>
-               <span class="n">entryfootnote</span> <span class="n">halign</span><span class="o">=</span><span class="n">left</span> <span class="s1">&#39;your footnote here&#39;</span><span class="p">;</span>
-            <span class="n">entryfootnote</span> <span class="n">halign</span><span class="o">=</span><span class="n">left</span> <span class="s1">&#39;your footnote here 2&#39;</span><span class="p">;)</span>
-<span class="p">);</span>
+   note=<span class="nb">%nrstr</span>(entrytitle <span class="s">&#39;your title here&#39;</span>;
+               entryfootnote halign=left <span class="s">&#39;your footnote here&#39;</span>;
+            entryfootnote halign=left <span class="s">&#39;your footnote here 2&#39;</span>;)
+);
 </pre></div>
 </div>
 <img alt="_images/sankey_endfollowup1.svg" src="_images/sankey_endfollowup1.svg" /></div>
