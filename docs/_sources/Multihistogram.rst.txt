@@ -278,6 +278,22 @@ code ::
 
 .. image:: ./img/multihisto_pair1.svg
 
+code ::
+
+   ods graphics / height=15cm width=15cm imagefmt=png imagename="multihisto_split" ;
+   title "multiple histogram (split mode)";
+   %multihistogram(
+      data=freq,
+      category=eyes,
+      pair=region,
+      level=hair,
+      response=count,
+      pairsplit=true,
+      levelfmt =haircolorf 
+   );
+
+.. image:: ./img/multihisto_pairsplit.svg
+
 =============================
 display response value
 =============================

@@ -386,7 +386,21 @@ whereas when split mode (pairsplit=true), the symmetrical histogram will be sepa
 );
 </pre></div>
 </div>
-<img alt="_images/multihisto_pair1.svg" src="_images/multihisto_pair1.svg" /></div>
+<img alt="_images/multihisto_pair1.svg" src="_images/multihisto_pair1.svg" /><p>code</p>
+<div class="highlight-SAS notranslate"><div class="highlight"><pre><span></span>ods graphics / height=15cm width=15cm imagefmt=png imagename=<span class="s">&quot;multihisto_split&quot;</span> ;
+<span class="k">title</span> <span class="s">&quot;multiple histogram (split mode)&quot;</span>;
+<span class="nf">%multihistogram</span>(
+   data=freq,
+   category=eyes,
+   pair=region,
+   level=hair,
+   response=count,
+   pairsplit=true,
+   levelfmt =haircolorf
+);
+</pre></div>
+</div>
+<img alt="_images/multihisto_pairsplit.svg" src="_images/multihisto_pairsplit.svg" /></div>
 <div class="section" id="display-response-value">
 <h3>display response value<a class="headerlink" href="#display-response-value" title="Permalink to this heading"></a></h3>
 <p>Basic multiple histogram is difficult to read the response value from the plot because there is not response variable axis.
