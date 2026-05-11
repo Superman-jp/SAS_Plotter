@@ -1,0 +1,8 @@
+{
+  "bundle": "t006_drugswitch_freq_crosstab",
+  "source_file": "example/sankey_example.sas",
+  "source_blob_sha": "fed68b46c3a32134ef1c0c2c0308ca7e41520f27",
+  "source_commit": "997ecef4f1103c473d261da6710f185a69a048d5",
+  "tier": "real_data",
+  "notes": "Lifted lines 155-223 of sankey_example.sas: the druglist and timef format definitions, length statement with usubjid $10 and four 8-byte Day variables, the input layout, and the first 30 datalines rows. Substituted PROC PRINT and PROC FREQ (univariate plus Day0xDay90 crosstab) where the original would call the %sankey focus=(...) examples. All data, formats, and length statement verbatim."
+}

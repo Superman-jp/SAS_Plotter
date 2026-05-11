@@ -1,0 +1,8 @@
+{
+  "bundle": "t007_raincloudtest2_retain_normal",
+  "source_file": "example/raincloudpaired_example.sas",
+  "source_blob_sha": "4edb9b7229357d61889ebf6af1c15964681b2d4d",
+  "source_commit": "997ecef4f1103c473d261da6710f185a69a048d5",
+  "tier": "real_data",
+  "notes": "Lifted lines 97-120 of raincloudpaired_example.sas: the trtf and groupf format definitions, call streaminit(1234), the cat=\"FAS\" pre-loop assignment (implicit retain on a string literal), the type/i/trt nested do-loop, and the four rand('normal',mean,sd) cell parameters. Inner loop reduced from 100 to 25 subjects so 2 types x 25 subjects x 2 trts = 100 rows fits the OBS=100 cap exactly. Means and SDs match the source. Substituted PROC PRINT and PROC MEANS in place of the %RainCloudPaired call."
+}

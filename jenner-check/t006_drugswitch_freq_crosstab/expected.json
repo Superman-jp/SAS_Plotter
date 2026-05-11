@@ -1,0 +1,21 @@
+{
+  "_captured_at": "2026-05-11T23:30:00Z",
+  "_captured_run_id": "r_019e17e0af457cb0b82ddacb8e45fe0c",
+  "status": "ok",
+  "exit_code": 0,
+  "log_contains": [
+    "NOTE: FORMAT druglist defined (5 ranges).",
+    "NOTE: FORMAT timef defined (4 ranges).",
+    "NOTE: Read 30 rows from DATALINES.",
+    "NOTE: Wrote drug_switch (30 rows, 5 columns).",
+    "NOTE: PROC PRINT completed: 10 observations printed, 5 variables"
+  ],
+  "log_does_not_contain": [
+    "ERROR:",
+    "[JENNER-ERROR"
+  ],
+  "diagnostics": {
+    "parse_warnings": [],
+    "runtime_warnings": []
+  }
+}

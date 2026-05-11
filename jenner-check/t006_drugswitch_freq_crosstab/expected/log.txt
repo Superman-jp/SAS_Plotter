@@ -1,0 +1,27 @@
+Jenner 0.1.0 (Unlicensed - limited to 100 observations)
+Get a license at https://jenneranalytics.com/license
+
+NOTE: Option OBS changed to 100.
+NOTE: PROC FORMAT library=WORK
+
+NOTE: FORMAT druglist defined (5 ranges).
+NOTE: FORMAT timef defined (4 ranges).
+NOTE: DATA drug_switch
+
+NOTE: Processing inline DATALINES (30 lines)
+
+NOTE: Read 30 rows from DATALINES.
+NOTE: Wrote drug_switch (30 rows, 5 columns).
+NOTE: DATA elapsed:
+  wall  0.00 seconds
+  cpu   0.00 seconds
+NOTE: PROC PRINT data=drug_switch
+
+NOTE: PROC PRINT completed: 10 observations printed, 5 variables
+NOTE: PROC FREQ
+NOTE: ODS plot written: freq_day0.spec.json
+NOTE: ODS plot written: freq_day90.spec.json
+NOTE: PROC FREQ statement used.
+NOTE: PROC FREQ
+NOTE: ODS plot written: freq_mosaic_day0_day90.spec.json
+NOTE: PROC FREQ statement used.

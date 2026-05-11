@@ -1,0 +1,37 @@
+                                        freq: dense grid after merge with dummy                                         
+
+  Obs  REGION  EYES  HAIR  COUNT
+    1       1     1     1      0
+    2       1     1     2     11
+    3       1     1     3     23
+    4       1     1     4     24
+    5       1     1     5      7
+    6       1     2     1      3
+    7       1     2     2     40
+    8       1     2     3     34
+    9       1     2     4     41
+   10       1     2     5      5
+   11       1     3     1      0
+   12       1     3     2     14
+   13       1     3     3     19
+   14       1     3     4     18
+   15       1     3     5      7
+
+... 15 more observations (showing 15 of 30)
+
+                                                totals by region x eyes                                                 
+
+                                                  The MEANS Procedure                                                   
+
+                                               Analysis Variable : COUNT                                                
+
+        Geographic Region  Eye Color            Sum
+        -------------------------------------------
+        1                  1             65.0000000
+        1                  2            123.0000000
+        1                  3             58.0000000
+        2                  1            157.0000000
+        2                  2            218.0000000
+        2                  3            141.0000000
+        -------------------------------------------
+

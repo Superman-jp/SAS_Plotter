@@ -1,0 +1,20 @@
+Jenner 0.1.0 (Unlicensed - limited to 100 observations)
+Get a license at https://jenneranalytics.com/license
+
+NOTE: Option OBS changed to 100.
+NOTE: PROC FORMAT library=WORK
+
+NOTE: FORMAT trtf defined (2 ranges).
+NOTE: FORMAT groupf defined (2 ranges).
+NOTE: DATA raincloudtest2
+
+
+NOTE: Wrote raincloudtest2 (100 rows, 6 columns).
+NOTE: DATA elapsed:
+  wall  0.00 seconds
+  cpu   0.00 seconds
+NOTE: PROC PRINT data=raincloudtest2
+
+NOTE: PROC PRINT completed: 12 observations printed, 6 variables
+NOTE: PROC MEANS
+NOTE: PROC MEANS statement used.

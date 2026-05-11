@@ -1,0 +1,26 @@
+Jenner 0.1.0 (Unlicensed - limited to 100 observations)
+Get a license at https://jenneranalytics.com/license
+
+NOTE: Option OBS changed to 100.
+NOTE: PROC FORMAT library=WORK
+
+NOTE: FORMAT domainf defined (4 ranges).
+NOTE: FORMAT nodef defined (5 ranges).
+NOTE: DATA raw
+
+NOTE: Processing inline DATALINES (13 lines)
+
+NOTE: Read 13 rows from DATALINES.
+NOTE: Wrote raw (13 rows, 5 columns).
+NOTE: DATA elapsed:
+  wall  0.00 seconds
+  cpu   0.00 seconds
+NOTE: PROC PRINT data=raw
+
+NOTE: PROC PRINT completed: 13 observations printed, 5 variables
+NOTE: PROC FREQ
+NOTE: ODS plot written: freq_day0.spec.json
+NOTE: ODS plot written: freq_day30.spec.json
+NOTE: ODS plot written: freq_day60.spec.json
+NOTE: ODS plot written: freq_day120.spec.json
+NOTE: PROC FREQ statement used.

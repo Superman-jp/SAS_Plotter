@@ -1,0 +1,8 @@
+{
+  "bundle": "t005_mirrorhist_covid19_age",
+  "source_file": "example/mirrored_histogram_example.sas",
+  "source_blob_sha": "7f93c4d940d212198ab8e886a3e61a0a3256077f",
+  "source_commit": "997ecef4f1103c473d261da6710f185a69a048d5",
+  "tier": "real_data",
+  "notes": "Lifted lines 91-165 of mirrored_histogram_example.sas verbatim: sexf and agegrpf format definitions, the length statement with sexc $10 agec $20, the two select/when blocks mapping string -> numeric, and the 23 rows of Tokyo 2021 COVID case datalines. PROC PRINT and PROC MEANS substituted in place of the macro call to verify the categorical mapping landed correctly."
+}
