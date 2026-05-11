@@ -1,0 +1,21 @@
+{
+  "_captured_at": "2026-05-11T23:29:00Z",
+  "_captured_run_id": "r_019e17e0230d72e3a20823050564fce2",
+  "status": "ok",
+  "exit_code": 0,
+  "log_contains": [
+    "NOTE: FORMAT sexf defined (2 ranges).",
+    "NOTE: FORMAT agegrpf defined (12 ranges).",
+    "NOTE: Read 23 rows from DATALINES.",
+    "NOTE: Wrote covid19_tokyo_2021 (23 rows, 5 columns).",
+    "NOTE: PROC PRINT completed: 23 observations printed, 5 variables"
+  ],
+  "log_does_not_contain": [
+    "ERROR:",
+    "[JENNER-ERROR"
+  ],
+  "diagnostics": {
+    "parse_warnings": [],
+    "runtime_warnings": []
+  }
+}

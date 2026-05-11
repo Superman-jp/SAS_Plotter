@@ -1,0 +1,39 @@
+                                   covid19_tokyo_2021: age band x sex x patient count                                   
+
+  Obs    SEXC     AGEC  PATIENTS  SEX  AGEGRP
+    1  Male    <10          8011    1       1
+    2  Male    10s         13821    1       2
+    3  Male    20s         49695    1       3
+    4  Male    30s         37503    1       4
+    5  Male    40s         30862    1       5
+    6  Male    50s         21952    1       6
+    7  Male    60s          8544    1       7
+    8  Male    70s          5202    1       8
+    9  Male    80s          2930    1       9
+   10  Male    90s           654    1      10
+   11  Male    >100           22    1      11
+   12  Male    unknown         4    1      99
+   13  Female  <10          7519    2       1
+   14  Female  10s         12359    2       2
+   15  Female  20s         43162    2       3
+   16  Female  30s         25594    2       4
+   17  Female  40s         20121    2       5
+   18  Female  50s         15931    2       6
+   19  Female  60s          6238    2       7
+   20  Female  70s          4872    2       8
+   21  Female  80s          4196    2       9
+   22  Female  90s          1765    2      10
+   23  Female  >100          116    2      11
+
+                                                     totals by sex                                                      
+
+                                                  The MEANS Procedure                                                   
+
+                                              Analysis Variable : PATIENTS                                              
+
+        SEX                  Sum
+        ------------------------
+        1         179200.0000000
+        2         141873.0000000
+        ------------------------
+

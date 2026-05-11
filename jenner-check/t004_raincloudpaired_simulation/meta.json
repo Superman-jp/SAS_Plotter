@@ -1,0 +1,8 @@
+{
+  "bundle": "t004_raincloudpaired_simulation",
+  "source_file": "example/raincloudpaired_example.sas",
+  "source_blob_sha": "4edb9b7229357d61889ebf6af1c15964681b2d4d",
+  "source_commit": "997ecef4f1103c473d261da6710f185a69a048d5",
+  "tier": "real_data",
+  "notes": "Lifted lines 11-56 of raincloudpaired_example.sas: four format definitions (repeatf, seqf, trtf, groupf), the call streaminit(1234) seed, the trt/i/repno nested do-loop with cell-specific rand('lognormal',...) parameters, the negative-clip guard, and the usubjid string construction. Inner loop reduced from 100 to 25 subjects so the 2x2 design x 25 subjects = 100 rows fits the OBS=100 cap exactly. Lognormal parameters and seed unchanged so the per-(trt,repno) means reproduce."
+}

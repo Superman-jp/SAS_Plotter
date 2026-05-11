@@ -1,0 +1,48 @@
+                                           raw: wide-form drug at each visit                                            
+
+  Obs  USUBJID  DAY0  DAY30  DAY60  DAY120
+    1        1     0      2      3       4
+    2        2     0      2      3       4
+    3        3     0      2      3       4
+    4        4     2      1      2       4
+    5        5     2      1      2       4
+    6        6     2      1      2       4
+    7        7     2      1      2       4
+    8        8     2      1      2       4
+    9        9     2      1      4       3
+   10       10     4      3      2       1
+   11       11     4      3      2       1
+   12       12     4      3      2       1
+   13       13     4      3      2       1
+
+                                          frequency of each drug at each visit                                          
+
+                                                   The FREQ Procedure
+
+                                  Cumulative    Cumulative
+DAY0    Frequency    Percent     Frequency      Percent
+-------------------------------------------------------------
+0               3     23.08            3        23.08
+2               6     46.15            9        69.23
+4               4     30.77           13       100.00
+
+                                   Cumulative    Cumulative
+DAY30    Frequency    Percent     Frequency      Percent
+--------------------------------------------------------------
+1                6     46.15            6        46.15
+2                3     23.08            9        69.23
+3                4     30.77           13       100.00
+
+                                   Cumulative    Cumulative
+DAY60    Frequency    Percent     Frequency      Percent
+--------------------------------------------------------------
+2                9     69.23            9        69.23
+3                3     23.08           12        92.31
+4                1      7.69           13       100.00
+
+                                    Cumulative    Cumulative
+DAY120    Frequency    Percent     Frequency      Percent
+---------------------------------------------------------------
+1                 4     30.77            4        30.77
+3                 1      7.69            5        38.46
+4                 8     61.54           13       100.00

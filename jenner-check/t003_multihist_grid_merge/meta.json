@@ -1,0 +1,8 @@
+{
+  "bundle": "t003_multihist_grid_merge",
+  "source_file": "example/multihistogram_example.sas",
+  "source_blob_sha": "f5d3be2510fbef4a5ff5e1160dc7f586c06e4570",
+  "source_commit": "997ecef4f1103c473d261da6710f185a69a048d5",
+  "tier": "real_data",
+  "notes": "Lifted lines 6-61 of multihistogram_example.sas verbatim: regionf/eyecolorf/haircolorf formats, the Color datalines (27 cells), the do-nested dummy grid, and the merge-with-fill-zero pattern. Added PROC PRINT and PROC MEANS to inspect the dense post-merge frequency table that %multihistogram consumes."
+}

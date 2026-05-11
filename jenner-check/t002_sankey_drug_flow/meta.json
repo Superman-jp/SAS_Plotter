@@ -1,0 +1,8 @@
+{
+  "bundle": "t002_sankey_drug_flow",
+  "source_file": "example/sankey_example.sas",
+  "source_blob_sha": "fed68b46c3a32134ef1c0c2c0308ca7e41520f27",
+  "source_commit": "997ecef4f1103c473d261da6710f185a69a048d5",
+  "tier": "real_data",
+  "notes": "Lifted lines 5-41 of sankey_example.sas: domainf and nodef formats, datalines block of 13 subjects with drugs at 4 timepoints, plus the auto-incrementing usubjid. Added PROC PRINT and PROC FREQ to exercise visit-by-visit drug counts (the same shape the %sankey macro would aggregate). All data, formats, and input statement verbatim."
+}

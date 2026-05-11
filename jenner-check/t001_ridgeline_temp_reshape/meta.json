@@ -1,0 +1,8 @@
+{
+  "bundle": "t001_ridgeline_temp_reshape",
+  "source_file": "example/ridgeline_example.sas",
+  "source_blob_sha": "fed68b46c3a32134ef1c0c2c0308ca7e41520f27",
+  "source_commit": "997ecef4f1103c473d261da6710f185a69a048d5",
+  "tier": "real_data",
+  "notes": "Lifted lines 12-255 of ridgeline_example.sas: datalines block of Tokyo/Naha daily max temperatures, regionf format, reshape DATA step that emits one row per region per date (the input to the %ridgeline call). Trimmed datalines from 213 rows to 28 sample rows spanning Jan-Jul 2023 to stay under the 100-row OBS cap while preserving the monthly coverage; everything else verbatim."
+}

@@ -1,0 +1,22 @@
+{
+  "_captured_at": "2026-05-11T23:28:00Z",
+  "_captured_run_id": "r_019e17df8d1a745283a62256e64120bb",
+  "status": "ok",
+  "exit_code": 0,
+  "log_contains": [
+    "NOTE: FORMAT repeatf defined (2 ranges).",
+    "NOTE: FORMAT seqf defined (2 ranges).",
+    "NOTE: FORMAT trtf defined (2 ranges).",
+    "NOTE: FORMAT groupf defined (2 ranges).",
+    "NOTE: Wrote raincloudtest (100 rows, 5 columns).",
+    "NOTE: PROC PRINT completed: 12 observations printed, 5 variables"
+  ],
+  "log_does_not_contain": [
+    "ERROR:",
+    "[JENNER-ERROR"
+  ],
+  "diagnostics": {
+    "parse_warnings": [],
+    "runtime_warnings": []
+  }
+}
